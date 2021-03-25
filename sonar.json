@@ -1,0 +1,4 @@
+{  
+  "sonarHost": "http://192.168.158.80:9000",
+  "sonarProjectKey": "9thWonder:agilitycms-09-2020"
+}
