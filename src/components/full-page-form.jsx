@@ -29,7 +29,7 @@ class FullPageForm extends React.Component {
 									<Form
 										beforeSubmit={this.beforeSubmit}
 										// postURL={this.props.postURL}
-										postURL= 'http://localhost:8000/contact-us/chat-sales'
+										postURL= 'https://agilitycms.ubu.carbon8test.com/contact-us/chat-sales'
 										thanksMessage={this.props.thanksMessage}
 										conversionScript={this.props.conversionScript}
 										redirectURL={this.props.redirectURL}
