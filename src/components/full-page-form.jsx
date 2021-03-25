@@ -28,8 +28,7 @@ class FullPageForm extends React.Component {
 								<div className="wrap-f-right">
 									<Form
 										beforeSubmit={this.beforeSubmit}
-										// postURL={this.props.postURL}
-										postURL= 'https://agilitycms.ubu.carbon8test.com/contact-us/chat-sales'
+										postURL={this.props.postURL}
 										thanksMessage={this.props.thanksMessage}
 										conversionScript={this.props.conversionScript}
 										redirectURL={this.props.redirectURL}

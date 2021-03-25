@@ -248,12 +248,12 @@ class Form extends React.Component {
 
 
 			// redirect if a redirect url has been set...
-			// if (this.props.redirectURL !== undefined
-			// 	&& this.props.redirectURL
-			// 	&& this.props.redirectURL.href) {
-			// 	window.location.href = this.props.redirectURL.href;
-			// 	return;
-			// };
+			if (this.props.redirectURL !== undefined
+				&& this.props.redirectURL
+				&& this.props.redirectURL.href) {
+				window.location.href = this.props.redirectURL.href;
+				return;
+			};
 
 			//otherwise, just set the state to success
 			this.setState({ isError: false, isSubmitting: false, isSuccess: true, isInvalid: false });

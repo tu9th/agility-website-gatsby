@@ -320,7 +320,7 @@ class NewGlobalHeader extends Component {
 					<a href={primaryButton.href} target={primaryButton.target} className="text-decoration-none btn btn-outline-primary 12 btn-menu">{primaryButton.text}</a>
 					<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
 					{ contactButton?.href && contactButton?.text &&
-					 <a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
+					 <a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2 btn-contact ">{contactButton.text}</a>
 					}
 				</li>
 				links.push(btnMenu)
