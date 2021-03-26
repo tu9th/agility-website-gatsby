@@ -391,7 +391,6 @@ class PricingPackagesModule2 extends React.Component {
 			trigger = scrollTop + header
 			if (trigger > rootOffset) {
 				pinEle.classList.add('table-pin');
-				pinEle.childNodes[0].classList.add('container');
 				virtual.style.height = pinEle.clientHeight + 'px'
 				if (trigger + pinEle.clientHeight < listOffset) {
 					pinEle.style.top = $header.clientHeight + 'px';
@@ -401,7 +400,6 @@ class PricingPackagesModule2 extends React.Component {
 			} else {
 				pinEle.classList.remove('table-pin')
 				virtual.style.height = '';
-				pinEle.childNodes[0].classList.remove('container');
 			}
 		}
 
@@ -433,7 +431,7 @@ class PricingPackagesModule2 extends React.Component {
 		let trigger = document.querySelectorAll('.trigger-catelogy')
 		Array.from(trigger).forEach((item,index) => {
 			item.addEventListener('click', (e) => {
-				const parent = e.target.parentElement
+				const parent = e.currentTarget.parentElement
 				const wrapT = parent.querySelector('.table-togger')
 				const table = wrapT.querySelector('table').offsetHeight
 				if(parent.classList.contains('hidden')) {
