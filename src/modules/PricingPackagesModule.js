@@ -65,27 +65,35 @@ const ModuleWithQuery = props => (
 			}
 			allAgilityPricingPackages(sort: {fields: properties___itemOrder}, filter: {customFields: {displayOnWebsite: {eq: "true"}}}) {
 			  nodes {
-				customFields {
-				  cTAButtonLabel
-				  cost
-				  saleCost
-				  costLabel
-				  isMostPopular
-				  isSaleOn
-				  title
-				  cTAButton {
-					target
-					href
-					text
-				  }
+					customFields {
+						cTAButtonLabel
+						cost
+						saleCost
+						costLabel
+						isMostPopular
+						isSaleOn
+						title
+						cTAButton {
+						target
+						href
+						text
+						}
+					}
+					properties {
+							referenceName
+							itemOrder
+						}
+					itemID
+					}
 				}
-				properties {
-				  referenceName
-				  itemOrder
+				allAgilityPricingCategories {
+					nodes {
+						customFields {
+							category
+						}
+						id
+					}
 				}
-				itemID
-			  }
-			}
 		  }
 
 
@@ -107,12 +115,14 @@ const ModuleWithQuery = props => (
 			// }
 			/**end */
 			/**row value */
+			const listPricingCategories = queryData.allAgilityPricingCategories.nodes
 			const packageFeatureValues = props.item.customFields.packageFeatureValues.referencename
 			const listPackageFeatureValues = queryData.allAgilityPackageFeatureValues.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureValues
 			})
 
 			const packageFeatureLabels = props.item.customFields.packageFeatureLabels.referencename
+			const listAllPackageFeature = queryData.allAgilityPackageFeatures.nodes
 			const listPackageFeaturePrimary = queryData.allAgilityPackageFeatures.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureLabels
 						&& obj.customFields.isPrimary !== undefined
@@ -146,11 +156,12 @@ const ModuleWithQuery = props => (
 			const viewModel = {
 				item: props.item,
 				dataQuery: {
+					listPricingCategories,
 					listPackageFeaturePrimary,
 					listPricingByCategory,
 					listPackageFeatureMore,
 					listPackageFeatureValues,
-					listPricingPackages
+					listPricingPackages,
 				}
 			}
 			return (
@@ -172,22 +183,22 @@ const HeaderColumn = ({ priceType, title, label, btnCta, btnCtaLabel, value, sal
 				{ popular }
 			</div>
 			<div>
-				<div className="price-value">
+				<div className="price-value last-mb-none">
 					{ !saleCost  &&
 						<>
 						<span>${ value }</span>
-						{/* <span className={`pr-month ${label ? '' : 'pr-hidden'}`}> {label}</span> */}
 						</>
 					}
 					{ saleCost  &&
 					<>
 						<span className="sale-override">${ value }</span>&nbsp;
-						{/* <span className={`pr-month strike-through ${label ? '' : 'pr-hidden'}`}> {label}</span><br/> */}
 						<span className="sale-price">${ saleCost }</span>
-						{/* <span className={`pr-month ${label ? '' : 'pr-hidden'}`}> {label}</span> */}
 					</>
 					}
-					<span className={`pr-month ${label ? '' : 'pr-hidden'}`}> {label}</span>
+					<p>Per month – Paid annually</p>
+				</div>
+				<div className="description last-mb-none">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
 				</div>
 				{ btnCta && btnCta.href && btnCta.href.length > 0 &&
 					(
@@ -212,7 +223,7 @@ const RowItem = ({props, maxCol}) => {
 			return <span dangerouslySetInnerHTML={{__html:textVal}}></span>
 		}
 		if (!textVal && checkedVal) {
-			return  (checkedVal === 'true' ? <span className="icomoon icon-check"></span> : <span className="icomoon icon-uncheck"></span>);
+			return  (checkedVal === 'true' ? <span className="icomoon icon-check-bg"><span className="path1"></span><span className="path2"></span></span> : <span>-</span>);
 		}
 	}
 	const rowFeatures = props.features.map((el, idx) => {
@@ -226,156 +237,38 @@ const RowItem = ({props, maxCol}) => {
 		}
 		return (
 			<td key={idx} className={`type-${classColor[Number(idx) % 4]}`}>
-				<div><span className="icomoon icon-uncheck"></span></div>
-			</td>
-		)
-	})
-	return (
-		<tr>
-			{ title &&
-				<td dangerouslySetInnerHTML={{__html: title}}></td>
-			}
-			{ rowFeatures && rowFeatures.length > 0 &&
-				rowFeatures
-			}
-		</tr>
-	);
-}
-
-
-const RowItemMobile = ({title, value}) => {
-	const CheckVal = ({val}) => {
-		if (val && val.customFields) {
-			const filedsVal = val.customFields
-			const textVal = filedsVal.textValue
-			const checkedVal = filedsVal.trueFalseValue
-			if ((textVal && checkedVal) || (textVal && !checkedVal) ) {
-				return (
-					<td>
-						<div><span>{textVal}</span></div>
-					</td>
-				)
-			}
-			if (!textVal && checkedVal) {
-				return (
-					<td>
-						<div>{checkedVal === 'true' ? <span className="icomoon icon-check"></span> : <span>-</span>}</div>
-					</td>
-				)
-			}
-		}
-		return (
-			<td>
 				<div><span>-</span></div>
 			</td>
 		)
-	}
+	})
 	return (
-		<tr>
-			<td>{ title }</td>
-			{
-				<CheckVal val={value}/>
+		<React.Fragment>
+			<tr className="tr-show-mb">
+			{ title &&
+				// <td dangerouslySetInnerHTML={{__html: title}}></td>
+				<td>
+					{title}
+				</td>
 			}
-		</tr>
+			</tr>
+			<tr>
+				{ title &&
+					// <td dangerouslySetInnerHTML={{__html: title}}></td>
+					<td>
+						{title}
+						<span>Lorem ipsum dolor sit amet, consectetur adipiscing.</span>
+					</td>
+				}
+				{ rowFeatures && rowFeatures.length > 0 &&
+					rowFeatures
+				}
+			</tr>
+		</React.Fragment>
 	);
 }
 
-/* Price Item Mobile */
-const PriceItemMobile = ({priceType, primaryFeaturesTitle, secondaryFeaturesTitle, data}) => {
-	const classColor = ['free', 'standard', 'pro', 'enterprise']
-	const [showMore, setShowMore] = useState(false);
-	const [isMobile, setIsMobile] = useState(false);
 
-	const showHideEle = useRef();
-	const checkIsMobile = () => {
-		if (window.innerWidth <  1025) {
-			setIsMobile(true);
-		} else {
-			setIsMobile(false);
-		}
-	}
-	const checkShowHideElement = () => {
-		if (isMobile) {
-			if (showMore) {
-				showHideEle.current.style.height = showHideEle.current.scrollHeight + 'px';
-			} else {
-				showHideEle.current.style.height = '0px';
-			}
-		}
-	}
-	const showMoreAction = () => {
-		if (showMore) {
-			HelperFunc.animateScrollTop(showHideEle.current.parentNode.offsetTop - document.querySelector('header').clientHeight, 300)
-		}
-		setShowMore(!showMore);
-	}
-	useEffect(() => {
-		let oldWidth = window.innerWidth;
-		checkShowHideElement();
-		checkIsMobile();
-	})
 
-	const fieldLabel = data.customFields
-	const btnCtaMB = fieldLabel.cTAButton
-	const btnCtaMBLabel = fieldLabel.cTAButtonLabel
-	const costMB = fieldLabel.cost
-	const costLabelMB = fieldLabel.costLabel
-	const isSaleOn = fieldLabel.isSaleOn
-	let saleCost = fieldLabel.saleCost
-
-	if (isSaleOn != "true") saleCost = null
-
-	const isMostPopularMB = fieldLabel.isMostPopular
-	const titleMB = fieldLabel.title
-	const primaryShow = data.listPrimary.map((el, idx) => {
-		const colFileds = el.customFields
-		const title = colFileds.title
-		const colVal = el.featureVal ? el.featureVal : null
-		return (
-			<RowItemMobile title={title} value={colVal} key={idx} />
-		)
-	})
-	const primaryMore = data.listMore.map((el, idx) => {
-		const colFileds = el.customFields
-		const title = colFileds.title
-		const colVal = el.featureVal ? el.featureVal : null
-		return (
-			<RowItemMobile title={title} value={colVal} key={idx} />
-		)
-	})
-	return (
-		<div className={`price-item-mb item-${classColor[priceType % 4]} ` + (!showMore ? '' : 'is-show-more') }>
-			<HeaderColumn priceType={priceType} title={titleMB} label={costLabelMB} btnCta={btnCtaMB} btnCtaLabel={btnCtaMBLabel} value={costMB} saleCost={saleCost} hasPopular={isMostPopularMB} />
-			<div>
-				<table>
-					<tbody>
-						{/* <tr className="pr-tr-title">
-							<td colSpan="2" className="pr-sub-title">{primaryFeaturesTitle}</td>
-						</tr> */}
-						{ primaryShow && primaryShow.length > 0 &&
-							primaryShow
-						}
-					</tbody>
-				</table>
-			</div>
-			<div className="show-hide-table-mb" ref={showHideEle}>
-				<table>
-					<tbody>
-						<tr className="pr-tr-title">
-						<td colSpan="2" className="pr-sub-title">{secondaryFeaturesTitle}</td>
-						</tr>
-						{ primaryMore && primaryMore.length > 0  &&
-							primaryMore
-						}
-					</tbody>
-				</table>
-			</div>
-			<div className="show-more-mb text-center" onClick={ () => { showMoreAction() } }>
-				<span className="icomoon icon-chevron-down"></span>
-			</div>
-		</div>
-	)
-}
 
 const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackages) => {
 	return listFilter.map(feature => {
@@ -429,7 +322,8 @@ class PricingPackagesModule2 extends React.Component {
 			loaded: false,
 			showMore: false,
 			isMobile: false,
-			isPin: false
+			isPin: false,
+			isMonthly: true,
 		}
 		this.pinHeaderTable = this.pinHeaderTable.bind(this)
 	}
@@ -438,33 +332,33 @@ class PricingPackagesModule2 extends React.Component {
 		this.setState({showMore: !this.state.showMore});
 	}
 	checkIsMobile() {
-		if (window.innerWidth <  1025) {
-			if(!this.state.isMobile) {
-				this.setState({isMobile: true})
-			}
-		} else {
-			if(this.state.isMobile) {
-				this.setState({isMobile: false})
-			}
-		}
+		// if (window.innerWidth <  1025) {
+		// 	if(!this.state.isMobile) {
+		// 		this.setState({isMobile: true})
+		// 	}
+		// } else {
+		// 	if(this.state.isMobile) {
+		// 		this.setState({isMobile: false})
+		// 	}
+		// }
 	}
 	checkShowHideSection() {
-		const section2 = document.querySelector('.show-hide-act');
-		const windowY = window.pageYOffset;
-		if (!this.state.isMobile) {
-			if (this.state.showMore) {
-				if (document.querySelector('html').classList.contains('chrome')) {
-					HelperFunc.animateScrollTop(windowY, 450);
-				}
-				setTimeout(() => {
-					section2.style.height = section2.scrollHeight + 'px';
-				}, 20)
-			} else {
-				setTimeout(() => {
-					section2.style.height = 0 + 'px'
-				}, 20)
-			}
-		}
+		// const section2 = document.querySelector('.show-hide-act');
+		// const windowY = window.pageYOffset;
+		// if (!this.state.isMobile) {
+		// 	if (this.state.showMore) {
+		// 		if (document.querySelector('html').classList.contains('chrome')) {
+		// 			HelperFunc.animateScrollTop(windowY, 450);
+		// 		}
+		// 		setTimeout(() => {
+		// 			section2.style.height = section2.scrollHeight + 'px';
+		// 		}, 20)
+		// 	} else {
+		// 		setTimeout(() => {
+		// 			section2.style.height = 0 + 'px'
+		// 		}, 20)
+		// 	}
+		// }
 	}
 
 	equalHeightHeader() {
@@ -490,36 +384,36 @@ class PricingPackagesModule2 extends React.Component {
 	}
 
 	caculatePin(pinEle, $header, virtual, scrollArea) {
-		let offsetPin
-		let rootOffset
-		let header
-		let trigger
-		let listOffset
-		let scrollTop
-		if (!this.state.isMobile) {
+		// let offsetPin
+		// let rootOffset
+		// let header
+		// let trigger
+		// let listOffset
+		// let scrollTop
+		// if (!this.state.isMobile) {
 
-			rootOffset = virtual.offsetTop;
-			scrollTop = window.pageYOffset;
-			header = $header.clientHeight;
-			offsetPin = virtual.offsetTop;
-			listOffset = scrollArea.offsetTop + scrollArea.clientHeight - document.querySelector('.table-3').clientHeight - pinEle.clientHeight - 90
-			trigger = scrollTop + header
+		// 	rootOffset = virtual.offsetTop;
+		// 	scrollTop = window.pageYOffset;
+		// 	header = $header.clientHeight;
+		// 	offsetPin = virtual.offsetTop;
+		// 	listOffset = scrollArea.offsetTop + scrollArea.clientHeight - document.querySelector('.table-3').clientHeight - pinEle.clientHeight - 90
+		// 	trigger = scrollTop + header
 
-			if (trigger > rootOffset && this.state.showMore) {
-				pinEle.classList.add('table-pin');
-				pinEle.childNodes[0].classList.add('container');
-				virtual.style.height = pinEle.clientHeight + 'px'
-				if (trigger + pinEle.clientHeight < listOffset) {
-					pinEle.style.top = $header.clientHeight + 'px';
-				} else {
-					pinEle.style.top = listOffset - pinEle.clientHeight - scrollTop + 'px';
-				}
-			} else {
-				pinEle.classList.remove('table-pin')
-				virtual.style.height = '';
-				pinEle.childNodes[0].classList.remove('container');
-			}
-		}
+		// 	if (trigger > rootOffset && this.state.showMore) {
+		// 		pinEle.classList.add('table-pin');
+		// 		pinEle.childNodes[0].classList.add('container');
+		// 		virtual.style.height = pinEle.clientHeight + 'px'
+		// 		if (trigger + pinEle.clientHeight < listOffset) {
+		// 			pinEle.style.top = $header.clientHeight + 'px';
+		// 		} else {
+		// 			pinEle.style.top = listOffset - pinEle.clientHeight - scrollTop + 'px';
+		// 		}
+		// 	} else {
+		// 		pinEle.classList.remove('table-pin')
+		// 		virtual.style.height = '';
+		// 		pinEle.childNodes[0].classList.remove('container');
+		// 	}
+		// }
 
 	}
 
@@ -531,12 +425,19 @@ class PricingPackagesModule2 extends React.Component {
 
 		this.caculatePin(pinEle, $header, virtual, scrollArea);
 	}
-
+	changeTooger(bool) {
+		// if (bool === true) {
+		// 	this.setState({isMonthly: true})
+		// } else {
+		// 	this.setState({isMonthly: false})
+		// }
+	}
 	componentDidMount() {
 		let oldWidth = window.innerWidth
 		this.checkIsMobile();
 		this.pinHeaderTable();
 		this.setState({loaded: true});
+		this.setState({isMonthly: true})
 		const interCount = 0;
 		const inter = setInterval(() => {
 			this.equalHeightHeader();
@@ -572,6 +473,7 @@ class PricingPackagesModule2 extends React.Component {
 		const primaryFeaturesTitle = fields.primaryFeaturesTitle
 		const secondaryFeaturesTitle = fields.secondaryFeaturesTitle
 		const headerList = dataQuery.listPricingPackages
+		const category = dataQuery.listPricingCategories
 		const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
 			return (
 				<RowItem props={row} maxCol={headerList.length} key={idx}/>
@@ -598,23 +500,26 @@ class PricingPackagesModule2 extends React.Component {
 				<RowItem props={row} maxCol={headerList.length} key={idx}/>
 			)
 		})
-		console.log('rowListHidden', rowListHidden)
-		// console.log('rowListHidden', typeof dataQuery.listPackageFeatureMore)
-		const mobileData = filterAllowColumn(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureMore, dataQuery.listPackageFeatureValues, headerList)
-
-		const BlockPriceMobile = () => {
-			const itemMobile = mobileData.length ? mobileData.map((mb, idx) => {
-				return <PriceItemMobile key={idx} priceType={idx} primaryFeaturesTitle={primaryFeaturesTitle} secondaryFeaturesTitle={secondaryFeaturesTitle} data={mb}/>
-			}): []
-			return (
-				<div className="price-mobile">
-					{ itemMobile && itemMobile.length > 0 &&
-						itemMobile
-					}
-				</div>
+		const ShowTilePin = headerList.length ? headerList.map((label, idx) => {
+			const classColor = ['free', 'standard', 'pro', 'enterprise']
+			const fieldLabel = label.customFields
+			const title = fieldLabel.title
+			const btnCta = fieldLabel.cTAButton
+			const btnCtaLabel = fieldLabel.cTAButtonLabel
+			const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
+			return(
+				<td key={idx}>
+					<div>
+						{title === 'Developer' ? 'Free' : title}
+						{ btnCta && btnCta.href && btnCta.href.length > 0 &&
+							(
+								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle} <span className="icomoon icon-arrow"></span></a>
+							)
+						}
+					</div>
+				</td>
 			)
-		}
-
+		}):[]
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
 			const fieldLabel = label.customFields
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
@@ -628,9 +533,9 @@ class PricingPackagesModule2 extends React.Component {
 			if (isSaleOn != "true") saleCost = null
 
 			return (
-				<th key={idx}>
+				<div className="col-md-6 col-lg-3" key={idx}>
 					<HeaderColumn priceType={idx} title={title} label={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} />
-				</th>
+				</div>
 			)
 		}) : []
 
@@ -652,36 +557,40 @@ class PricingPackagesModule2 extends React.Component {
 		}) : []
 		const BlockPriceDesktop = (<div className="price-desktop">
 			<div className="virtual-pin-bar" style={{height: `${this.state.isPin ? document.querySelector('.table-header').clientHeight + 'px' : ''}`}}></div>
-			<div className={`table-header ${this.state.isPin ? 'table-pin' : ''}`}>
-				<div className={ this.state.isPin ? 'container' : ''}>
-					<table>
-						<tbody>
-							<tr>
-								<th></th>
-								{ listHeaderColumn && listHeaderColumn.length > 0 &&
-									listHeaderColumn
-								}
-							</tr>
-						</tbody>
-					</table>
+			<div className="wrap-price-head table-header">
+				<div className="row">
+						{ listHeaderColumn && listHeaderColumn.length > 0 &&
+							listHeaderColumn
+						}
 				</div>
 			</div>
-			<table className="table-1">
+			<div className="content-pricing last-mb-none text-center">
+				<h2>Compare Packages</h2>
+			</div>
+			<table className="table-header-pin">
 				<tbody>
-					<tr className="pr-tr-title">
-						<td className="pr-sub-title" colSpan="5">
-							{ primaryFeaturesTitle && primaryFeaturesTitle}
-							{ !primaryFeaturesTitle && <span className="hidden-text" tabIndex='-1'>hidden</span>}
-						</td>
-
+					<tr>
+						<td></td>
+						{ShowTilePin &&
+							ShowTilePin
+						}
 					</tr>
+				</tbody>
+			</table>
+			<table className="table-1 item-price-catelogy">
+				<tbody>
 					{ rowListShow && rowListShow.length > 0 &&
 							rowListShow
 					}
 				</tbody>
 			</table>
-				{/* Table show/hide */}
-				<div className="show-hide-act">
+			<div className="item-price-catelogy">
+					<div className="trigger-catelogy">
+						<h3>
+						{ secondaryFeaturesTitle && secondaryFeaturesTitle}
+						</h3>
+						<span className="icomoon icon-down-menu"></span>
+					</div>
 					<table className={"table-2 "}>
 						<tbody>
 							<tr className="pr-tr-title">
@@ -699,42 +608,28 @@ class PricingPackagesModule2 extends React.Component {
 							}
 						</tbody>
 					</table>
-				</div>
-				{/* End Table show/hide */}
-				{ listBtnColumn && listBtnColumn.length > 0 &&
-					<table className="table-3">
-						<tbody>
-							<tr className="pr-tr-title">
-								<td></td>
-								{
-									listBtnColumn
-								}
-							</tr>
-						</tbody>
-					</table>
-				}
-				<div className={`show-more text-center ${this.state.showMore ? 'show' : ''}`}>
-					<a href="#" onClick={(e) => { e.preventDefault(); this.showMoreAction() }} >
-						{ this.state.showMore ?
-							(
-								<span>{btnShowLess}</span>
-							) :
-							(
-								<span>{btnShowMore}</span>
-							)
-						}
-						<span className="icomoon icon-down-menu"></span>
-					</a>
-				</div>
-			</div>);
+			</div>
+		</div>);
+
 		return (
 			<React.Fragment>
 			<section className={`PricingPackagesModule pricing-package animation anima-fixed ${!this.state.loaded ? 'opacity-0' : ''}`}>
 				<div className="container anima-bottom">
-					{this.state.isMobile &&
-						<BlockPriceMobile />
-					}
-					{!this.state.isMobile &&
+					<div className="wrap-togger-price d-flex justify-content-center align-items-center">
+						<div className="togger-price">
+							<div className={`item-t-price ${(this.state.isMonthly == true) ? `is-active ` : ``}`} onClick={this.changeTooger(true)}>
+								Monthly
+							</div>
+							<div className={`item-t-price ${(this.state.isMonthly == false) ? `is-active ` : ``}`} onClick={this.changeTooger(false)}>
+								Yearly
+							</div>
+							<div className="overlay-active">
+
+							</div>
+						</div>
+						<span>Save up to 25%</span>
+					</div>
+					{
 						BlockPriceDesktop
 					}
 				</div>
