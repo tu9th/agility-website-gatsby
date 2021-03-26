@@ -12,21 +12,21 @@
     h1 {
       font-size: rem(40);
     }
-    &::before {
-      content: '';
-      @include position(absolute,0,0,0,0,0);
-      opacity: 0.5;
-      background-image: linear-gradient(to bottom, #e9f0f5, #ffffff 100%);
-    }
-    &::after {
-      content: '';
-      @include position(absolute,$bottom: 0,$left: -340px,$index: 0);
-      @include sizeEx(719px,621px);
-      background-image: url('/images/icon-agility.svg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: right bottom;
-    }
+    // &::before {
+    //   content: '';
+    //   @include position(absolute,0,0,0,0,0);
+    //   opacity: 0.5;
+    //   background-image: linear-gradient(to bottom, #e9f0f5, #ffffff 100%);
+    // }
+    // &::after {
+    //   content: '';
+    //   @include position(absolute,$bottom: 0,$left: -340px,$index: 0);
+    //   @include sizeEx(719px,621px);
+    //   background-image: url('/images/icon-agility.svg');
+    //   background-size: cover;
+    //   background-repeat: no-repeat;
+    //   background-position: right bottom;
+    // }
     .container {
       position: relative;
       z-index: 1;

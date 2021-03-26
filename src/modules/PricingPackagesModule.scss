@@ -1,11 +1,8 @@
 @import '../global/setting';
 
 .pricing-package {
-  position: relative;
-  z-index: 4;
-  table {
-    width: 100%;
-  }
+  // position: relative;
+  // z-index: 4;
   .btn {
     border: 0;
     display: block;
@@ -17,6 +14,23 @@
     .icomoon {
       font-size: rem(11);
     }
+  }
+}
+.table-pin {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-color: transparent !important;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 110vw;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    background: rgba(76, 104, 132, 0.2);
   }
 }
 .wrap-price-head {
@@ -66,6 +80,10 @@
     }
   }
 }
+.table-header {
+  max-width: 970px;
+  background-color: #fff;
+}
 .price-type {
   font-size: rem(24);
   line-height: 1.29;
@@ -111,12 +129,12 @@
   }
 }
 
-.pr-sub-title {
-  font-size: rem(19);
-  font-weight: bold;
-  line-height: 1.37;
-  color: $color-2a;
-}
+// .pr-sub-title {
+//   font-size: rem(19);
+//   font-weight: bold;
+//   line-height: 1.37;
+//   color: $color-2a;
+// }
 .pr-month {
   position: relative;
   font-size: rem(14) !important;
@@ -175,6 +193,22 @@
   visibility: hidden;
   opacity: 0;
 }
+.sale-price {
+  font-size: rem(14);
+  letter-spacing: 1px;
+  color: #fff;
+  background-color: $color-4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $mlBold;
+  position: absolute;
+  right: -24px;
+  top: 20px;
+  width: 115px;
+  height: 23px;
+  transform: rotate(45deg);
+}
 .togger-price {
   display: flex;
   border-radius: 14px;
@@ -183,7 +217,7 @@
   font-size: 14px;
   color: #4c6884;
   position: relative;
-  font-weight: 600;
+  font-family: $mlBold;
   line-height: 1.29;
   .overlay-active {
     background-color: #5800d4;
@@ -224,6 +258,8 @@
 }
 .table-header-pin {
   border-bottom: 1px solid rgba(76, 104, 132, 0.2);
+  padding: 0 20px;
+  margin: 0 auto;
   td {
     div {
       color: $color-17;
@@ -244,7 +280,8 @@
   margin-top: 70px;
 }
 .trigger-catelogy {
-  padding: 11px 8px  11px 18px;
+  // padding: 11px 8px  11px 18px;
+  padding: 15px 13px  15px 18px;
   background-color: #e4ecf3;
   cursor: pointer;
   display: flex;
@@ -260,6 +297,75 @@
     color: $color-58;
   }
 }
+.tr-show-mb td {
+  color: $color-4c;
+  font-size: 14px;
+  line-height: 1.43;
+}
+.wrap-price-catelogy {
+  th,
+  td {
+    vertical-align: top;
+  }
+}
+.price-desktop {
+  th {
+    padding: 20px 6px;
+    vertical-align: top;
+    background-color: $white;
+    // &:first-child {
+    //   background-color: transparent;
+    // }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  th,
+  td {
+    width:25%;
+    &:first-child {
+      width: 0%;
+    }
+  }
+  td:not(.pr-sub-title) {
+    // border-bottom: 1px solid rgba(76, 104, 132, 0.2);
+    // padding: 0 10px;
+    font-size: rem(13);
+    font-weight: bold;
+    line-height: 1.38;
+    letter-spacing: -0.13px;
+    color: $color-17;
+    overflow: hidden;
+    position: relative;
+    font-family: $mlSemi;
+    &:first-child {
+      font-weight: 400;
+      font-size: rem(16);
+      color: $color-2a;
+      span {
+        display: block;
+        font-size: rem(14);
+        line-height: 1.5;
+        letter-spacing: -0.14px;
+        color: $color-4c;
+        opacity: .8;
+        margin-top: 6px;
+      }
+    }
+   
+
+    div {
+      padding: 14px 0;
+      text-align: center;
+      position: relative;
+    }
+  }
+}
+.item-price-catelogy {
+  tr:not(.tr-show-mb) {
+    background-color: rgba(233, 240, 245, 0.5);
+  }
+}
 @media (max-width: 991px) {
   .item-price-catelogy {
     tr:not(.tr-show-mb) td {
@@ -269,7 +375,17 @@
     }
   }
 }
+@media (max-width: 767px) {
+  .table-header-pin td {
+    &:not(:first-child) {
+      width: 25%;
+    }
+  }
+}
 @media (min-width: 768px) {
+  .table-header {
+    max-width: 970px;
+  }
   .pricing-package {
     margin-top: -84px;
     max-width: 610px;
@@ -281,6 +397,9 @@
   .pricing-package {
     margin-top: -135px;
     max-width: 645px;
+    table {
+      width: 100%;
+    }
   }
 }
 @media (min-width: 1025px) {
@@ -289,6 +408,15 @@
       transition: all .35s;
       &:hover {
         background-color: #e9f0f5;
+      }
+    }
+  }
+  .price-desktop {
+    th,
+    td {
+      width:21.5%;
+      &:first-child {
+        width: 14%;
       }
     }
   }
@@ -304,59 +432,6 @@
   .pricing-package {
     margin-top: -160px;
     max-width: 100%;
-  }
-  .price-desktop {
-    th {
-      padding: 20px 6px;
-      vertical-align: top;
-      background-color: $white;
-      // &:first-child {
-      //   background-color: transparent;
-      // }
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-    th,
-    td {
-      width:21.5%;
-      &:first-child {
-        width: 14%;
-      }
-    }
-    td:not(.pr-sub-title) {
-      // border-bottom: 1px solid rgba(76, 104, 132, 0.2);
-      padding: 0 10px;
-      font-size: rem(16);
-      font-weight: bold;
-      line-height: 1.56;
-      letter-spacing: -0.16px;
-      color: $color-17;
-      overflow: hidden;
-      position: relative;
-      font-family: $mlSemi;
-      &:first-child {
-        font-weight: 400;
-        font-size: rem(16);
-        color: $color-2a;
-        span {
-          display: block;
-          font-size: rem(14);
-          line-height: 1.5;
-          letter-spacing: -0.14px;
-          color: $color-4c;
-          opacity: .8;
-          margin-top: 6px;
-        }
-      }
-     
-
-      div {
-        padding: 14px 15px;
-        text-align: center;
-        position: relative;
-      }
-    }
   }
   .pr-tr-title {
     td {
@@ -441,15 +516,12 @@
       }
     }
   }
-  .table-pin {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 10;
-  }
 }
 
 @media (min-width: 1200px) {
+  .table-header {
+    max-width: 1150px;
+  }
   .table-header-pin {
     td {
       div {
@@ -460,6 +532,15 @@
     }
     .btn {
       display: none;
+    }
+    &.table-pin {
+      .btn {
+        display: block;
+        margin-top: 15px;
+      }
+      .text-pin {
+        display: block;
+      }
     }
   }
   .content-pricing {
@@ -486,6 +567,9 @@
   }
 }
 @media (min-width: 1501px) {
+  .table-header {
+    max-width: 1380px;
+  }
   .price-head {
     padding: 32px 37px 38px;
   }

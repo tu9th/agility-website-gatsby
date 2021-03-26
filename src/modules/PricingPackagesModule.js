@@ -138,6 +138,7 @@ const HeaderColumn = ({ priceType, title, label, btnCta, btnCtaLabel, value, sal
 
 	return (
 		<div className={'price-head ps-rv type-' + classColor[Number(priceType) % 4] }>
+			<div className="sale-price">SALE</div>
 			<div className="price-type ps-rv">
 				<span>{ title }</span>
 				{ popular }
@@ -206,7 +207,7 @@ const RowItem = ({props, maxCol}) => {
 			<tr className="tr-show-mb">
 			{ title &&
 				// <td dangerouslySetInnerHTML={{__html: title}}></td>
-				<td>
+				<td colSpan="5" className="pr-sub-title">
 					{title}
 				</td>
 			}
@@ -343,36 +344,38 @@ class PricingPackagesModule2 extends React.Component {
 	}
 
 	caculatePin(pinEle, $header, virtual, scrollArea) {
-		// let offsetPin
-		// let rootOffset
-		// let header
-		// let trigger
-		// let listOffset
-		// let scrollTop
-		// if (!this.state.isMobile) {
+		let offsetPin
+		let rootOffset
+		let header
+		let trigger
+		let listOffset
+		let scrollTop
+		let packagePricing
+		if (!this.state.isMobile) {
 
-		// 	rootOffset = virtual.offsetTop;
-		// 	scrollTop = window.pageYOffset;
-		// 	header = $header.clientHeight;
-		// 	offsetPin = virtual.offsetTop;
-		// 	listOffset = scrollArea.offsetTop + scrollArea.clientHeight - document.querySelector('.table-3').clientHeight - pinEle.clientHeight - 90
-		// 	trigger = scrollTop + header
-
-		// 	if (trigger > rootOffset && this.state.showMore) {
-		// 		pinEle.classList.add('table-pin');
-		// 		pinEle.childNodes[0].classList.add('container');
-		// 		virtual.style.height = pinEle.clientHeight + 'px'
-		// 		if (trigger + pinEle.clientHeight < listOffset) {
-		// 			pinEle.style.top = $header.clientHeight + 'px';
-		// 		} else {
-		// 			pinEle.style.top = listOffset - pinEle.clientHeight - scrollTop + 'px';
-		// 		}
-		// 	} else {
-		// 		pinEle.classList.remove('table-pin')
-		// 		virtual.style.height = '';
-		// 		pinEle.childNodes[0].classList.remove('container');
-		// 	}
-		// }
+			rootOffset = virtual.offsetTop;
+			scrollTop = window.pageYOffset;
+			header = $header.clientHeight;
+			offsetPin = virtual.offsetTop;
+			packagePricing = document.querySelector('.pricing-package')
+			listOffset = packagePricing.offsetTop + packagePricing.clientHeight - pinEle.clientHeight
+			trigger = scrollTop + header
+			if (trigger > rootOffset) {
+				pinEle.classList.add('table-pin');
+				pinEle.childNodes[0].classList.add('container');
+				virtual.style.height = pinEle.clientHeight + 'px'
+				console.log(trigger + pinEle.clientHeight,listOffset)
+				if (trigger + pinEle.clientHeight < listOffset) {
+					pinEle.style.top = $header.clientHeight + 'px';
+				} else {
+					pinEle.style.top = listOffset - pinEle.clientHeight - scrollTop + 'px';
+				}
+			} else {
+				pinEle.classList.remove('table-pin')
+				virtual.style.height = '';
+				pinEle.childNodes[0].classList.remove('container');
+			}
+		}
 
 	}
 
@@ -385,11 +388,11 @@ class PricingPackagesModule2 extends React.Component {
 		this.caculatePin(pinEle, $header, virtual, scrollArea);
 	}
 	changeTooger(bool) {
-		// if (bool === true) {
-		// 	this.setState({isMonthly: true})
-		// } else {
-		// 	this.setState({isMonthly: false})
-		// }
+		if (bool === true) {
+			this.setState({isMonthly: true})
+		} else {
+			this.setState({isMonthly: false})
+		}
 	}
 	componentDidMount() {
 		let oldWidth = window.innerWidth
@@ -467,13 +470,16 @@ class PricingPackagesModule2 extends React.Component {
 			const fieldLabel = label.customFields
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
 			const btnCta = fieldLabel.cTAButton
-			const cost = fieldLabel.cost
+			let cost = fieldLabel.cost
 			const costLabel = fieldLabel.costLabel
 			const isMostPopular = fieldLabel.isMostPopular
 			const title = fieldLabel.title
 			let saleCost = fieldLabel.saleCost
 			let isSaleOn = fieldLabel.isSaleOn
 			if (isSaleOn != "true") saleCost = null
+			if ( this.state.isMonthly === false) {
+				cost = '10'
+			}
 
 			return (
 				<div className="col-md-6 col-lg-3" key={idx}>
@@ -498,51 +504,49 @@ class PricingPackagesModule2 extends React.Component {
 				</td>
 			)
 		}) : []
-		const BlockPriceDesktop = (<div className="price-desktop">
+		const BlockPriceDesktop = (
+		<div className="price-desktop">
 			<div className="virtual-pin-bar" style={{height: `${this.state.isPin ? document.querySelector('.table-header').clientHeight + 'px' : ''}`}}></div>
-			<div className="wrap-price-head table-header">
-				<div className="row">
-						{ listHeaderColumn && listHeaderColumn.length > 0 &&
-							listHeaderColumn
-						}
-				</div>
-			</div>
-			<div className="content-pricing last-mb-none text-center">
-				<h2>Compare Packages</h2>
-			</div>
-			<table className="table-header-pin">
+			<table className="table-header-pin table-header">
 				<tbody>
 					<tr>
-						<td></td>
+						<td>
+							<div className="text-pin d-none">
+							All Features
+							</div>
+						</td>
 						{ShowTilePin &&
 							ShowTilePin
 						}
 					</tr>
 				</tbody>
 			</table>
-			<table className="table-1 item-price-catelogy">
-				<tbody>
-					{ rowListShow && rowListShow.length > 0 &&
-							rowListShow
-					}
-				</tbody>
-			</table>
-			<div className="item-price-catelogy">
-					<div className="trigger-catelogy">
-						<h3>
-						{ secondaryFeaturesTitle && secondaryFeaturesTitle}
-						</h3>
-						<span className="icomoon icon-down-menu"></span>
-					</div>
-					<table className={"table-2 "}>
-						<tbody>
-							{ rowListHidden && rowListHidden.length > 0 &&
-								rowListHidden
-							}
-						</tbody>
-					</table>
+			<div className="wrap-price-catelogy">
+				<table className="table-1 item-price-catelogy">
+					<tbody>
+						{ rowListShow && rowListShow.length > 0 &&
+								rowListShow
+						}
+					</tbody>
+				</table>
+				<div className="item-price-catelogy">
+						<div className="trigger-catelogy">
+							<h3>
+							{ secondaryFeaturesTitle && secondaryFeaturesTitle}
+							</h3>
+							<span className="icomoon icon-keyboard_arrow_right"></span>
+						</div>
+						<table className={"table-2 "}>
+							<tbody>
+								{ rowListHidden && rowListHidden.length > 0 &&
+									rowListHidden
+								}
+							</tbody>
+						</table>
+				</div>
 			</div>
 		</div>);
+
 
 		return (
 			<React.Fragment>
@@ -550,10 +554,10 @@ class PricingPackagesModule2 extends React.Component {
 				<div className="container anima-bottom">
 					<div className="wrap-togger-price d-flex justify-content-center align-items-center">
 						<div className="togger-price">
-							<div className={`item-t-price ${(this.state.isMonthly == true) ? `is-active ` : ``}`} onClick={this.changeTooger(true)}>
+							<div className={`item-t-price ${(this.state.isMonthly == true) ? `is-active ` : ``}`} onClick={() => { this.changeTooger(true) }}>
 								Monthly
 							</div>
-							<div className={`item-t-price ${(this.state.isMonthly == false) ? `is-active ` : ``}`} onClick={this.changeTooger(false)}>
+							<div className={`item-t-price ${(this.state.isMonthly == false) ? `is-active ` : ``}`} onClick={() => {this.changeTooger(false)}}>
 								Yearly
 							</div>
 							<div className="overlay-active">
@@ -562,6 +566,16 @@ class PricingPackagesModule2 extends React.Component {
 						</div>
 						<span>Save up to 25%</span>
 					</div>
+					<div className="wrap-price-head">
+					<div className="row">
+							{ listHeaderColumn && listHeaderColumn.length > 0 &&
+								listHeaderColumn
+							}
+					</div>
+				</div>
+				<div className="content-pricing last-mb-none text-center">
+					<h2>Compare Packages</h2>
+				</div>
 					{
 						BlockPriceDesktop
 					}
