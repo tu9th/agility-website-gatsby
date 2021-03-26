@@ -150,7 +150,6 @@ const ModuleWithQuery = props => (
 					listPackageFeature: val
 				})
 			})
-			console.log('listPricingByCategory', groupByCategory)
 
 			/**end */
 			const viewModel = {
@@ -287,7 +286,7 @@ const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackage
 			}
 			featureObj.features = listValPricing
 		}
-		console.log('featureObj', featureObj)
+		// console.log('featureObj', featureObj)
 		return featureObj
 	})
 }
@@ -331,17 +330,6 @@ class PricingPackagesModule2 extends React.Component {
 
 	showMoreAction() {
 		this.setState({showMore: !this.state.showMore});
-	}
-	checkIsMobile() {
-		// if (window.innerWidth <  1025) {
-		// 	if(!this.state.isMobile) {
-		// 		this.setState({isMobile: true})
-		// 	}
-		// } else {
-		// 	if(this.state.isMobile) {
-		// 		this.setState({isMobile: false})
-		// 	}
-		// }
 	}
 	checkShowHideSection() {
 		// const section2 = document.querySelector('.show-hide-act');
@@ -434,10 +422,35 @@ class PricingPackagesModule2 extends React.Component {
 			this.setState({isMonthly: false})
 		}
 	}
+	setheightTable () {
+		let table = document.querySelectorAll('.item-price-catelogy:not(.hidden) .table-togger')
+		Array.from(table).forEach((item,index) => {
+			let content = item.querySelector('table').offsetHeight
+			item.style.height = content + 'px'
+		})
+	}
+	toggerTable() {
+		let trigger = document.querySelectorAll('.trigger-catelogy')
+		Array.from(trigger).forEach((item,index) => {
+			item.addEventListener('click', (e) => {
+				const parent = e.target.parentElement
+				const wrapT = parent.querySelector('.table-togger')
+				const table = wrapT.querySelector('table').offsetHeight
+				if(parent.classList.contains('hidden')) {
+					parent.classList.remove('hidden')
+					wrapT.style.height = table + 'px'
+				} else {
+					parent.classList.add('hidden')
+					wrapT.style.height = 0
+				}
+			})
+		})
+	}
 	componentDidMount() {
 		let oldWidth = window.innerWidth
-		this.checkIsMobile();
 		this.pinHeaderTable();
+		this.setheightTable()
+		this.toggerTable()
 		this.setState({loaded: true});
 		this.setState({isMonthly: true})
 		const interCount = 0;
@@ -449,10 +462,12 @@ class PricingPackagesModule2 extends React.Component {
 		}, 200)
 
 		this.checkShowHideSection();
-		window.addEventListener('scroll', this.pinHeaderTable)
+		window.addEventListener('scroll', () => {
+			this.pinHeaderTable()
+			this.setheightTable()
+		})
 		window.addEventListener('resize', () => {
 			if (oldWidth !== window.innerWidth) {
-				this.checkIsMobile();
 				this.equalHeightHeader();
 				oldWidth = window.innerWidth;
 			}
@@ -491,18 +506,20 @@ class PricingPackagesModule2 extends React.Component {
 				)
 			})
 			return (
-				<div className="item-price-catelogy">
-					<div className="trigger-catelogy">
+				<div className="item-price-catelogy" key={index}>
+					<div className="trigger-catelogy" >
 						<h3>
 						{ category && category}
 						</h3>
 						<span className="icomoon icon-keyboard_arrow_right"></span>
 					</div>
-					<table>
-						<tbody>
-							{rowListHidden}
-						</tbody>
-					</table>
+					<div className="table-togger">
+						<table>
+							<tbody>
+								{rowListHidden}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			)
 		})
@@ -553,22 +570,6 @@ class PricingPackagesModule2 extends React.Component {
 			)
 		}) : []
 
-		const listBtnColumn = headerList.length ? headerList.map((label, idx) => {
-			const classColor = ['free', 'standard', 'pro', 'enterprise']
-			const fieldLabel = label.customFields
-			const btnCta = fieldLabel.cTAButton
-			const btnCtaLabel = fieldLabel.cTAButtonLabel
-			const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
-			return (
-				<td key={idx}>
-					{ btnCta && btnCta.href && btnCta.href.length > 0 &&
-						(
-							<a href={btnCta.href} target={btnCta.target} className={`btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle} <span className="icomoon icon-arrow"></span></a>
-						)
-					}
-				</td>
-			)
-		}) : []
 		const BlockPriceDesktop = (
 		<div className="price-desktop">
 			<div className="virtual-pin-bar" style={{height: `${this.state.isPin ? document.querySelector('.table-header').clientHeight + 'px' : ''}`}}></div>

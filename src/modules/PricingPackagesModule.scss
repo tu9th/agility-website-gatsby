@@ -365,6 +365,18 @@
   tr:not(.tr-show-mb) {
     background-color: rgba(233, 240, 245, 0.5);
   }
+  table {
+    width: 100%;
+  }
+  &:first-child {
+    .trigger-catelogy {
+      display: none;
+    }
+  }
+}
+.table-togger {
+  overflow: hidden;
+  transition: all .35s;
 }
 @media (max-width: 991px) {
   .item-price-catelogy {
