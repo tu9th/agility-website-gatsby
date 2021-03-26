@@ -3,6 +3,21 @@ import { graphql, StaticQuery } from 'gatsby'
 import Spacing from './Spacing'
 import HelperFunc from '../global/javascript/Helpers.js'
 import './PricingPackagesModule.scss'
+
+const groupByCondition = (list, keyGetter) => {
+  const map = new Map()
+  list.forEach((item) => {
+    const key = keyGetter(item)
+    const collection = map.get(key)
+    if (!collection) {
+      map.set(key, [item])
+    } else {
+      collection.push(item)
+    }
+  })
+  return map
+}
+
 const ModuleWithQuery = props => (
 	<StaticQuery
 		query={graphql`
@@ -26,11 +41,20 @@ const ModuleWithQuery = props => (
 				itemID
 			  }
 			}
+			allAgilityPricingCategories {
+				nodes {
+					customFields {
+						category
+					}
+					contentID
+				}
+			}
 			allAgilityPackageFeatures(sort: {fields: properties___itemOrder}) {
 			  nodes {
 				customFields {
 				  isPrimary
 				  title
+					pricingCategory_ValueField
 				}
 				properties {
 				  referenceName
@@ -105,13 +129,28 @@ const ModuleWithQuery = props => (
 						&& obj.customFields.isPrimary !== null
 						&& obj.customFields.isPrimary=== 'true'
 			}).sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
-
+			/**
+			 * group list packageFeature More by category
+			 */
 			const listPackageFeatureMore = queryData.allAgilityPackageFeatures.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureLabels
 				&& ( obj.customFields.isPrimary === undefined
 					|| obj.customFields.isPrimary === null
 					|| obj.customFields.isPrimary === 'false')
 			}).sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
+			const groupByCategory = groupByCondition(listPackageFeatureMore, (item) => item.customFields.pricingCategory_ValueField)
+			const listPricingByCategory = []
+			groupByCategory.forEach((val, key) => {
+				const categoryName = queryData.allAgilityPricingCategories.nodes.find(item => String(item.contentID) === key)?.customFields.category
+				listPricingByCategory.push({
+					category: {
+						id: key,
+						categoryName
+					},
+					listPackageFeature: val
+				})
+			})
+			console.log('listPricingByCategory', groupByCategory)
 
 			/**end */
 			const viewModel = {
@@ -119,6 +158,7 @@ const ModuleWithQuery = props => (
 				dataQuery: {
 					listPricingCategories,
 					listPackageFeaturePrimary,
+					listPricingByCategory,
 					listPackageFeatureMore,
 					listPackageFeatureValues,
 					listPricingPackages,
@@ -247,6 +287,7 @@ const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackage
 			}
 			featureObj.features = listValPricing
 		}
+		console.log('featureObj', featureObj)
 		return featureObj
 	})
 }
@@ -364,7 +405,6 @@ class PricingPackagesModule2 extends React.Component {
 				pinEle.classList.add('table-pin');
 				pinEle.childNodes[0].classList.add('container');
 				virtual.style.height = pinEle.clientHeight + 'px'
-				console.log(trigger + pinEle.clientHeight,listOffset)
 				if (trigger + pinEle.clientHeight < listOffset) {
 					pinEle.style.top = $header.clientHeight + 'px';
 				} else {
@@ -439,6 +479,31 @@ class PricingPackagesModule2 extends React.Component {
 		const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
 			return (
 				<RowItem props={row} maxCol={headerList.length} key={idx}/>
+			)
+		})
+
+		const listCategory = dataQuery.listPricingByCategory.map((item, index) => {
+			const category = item.category.categoryName
+			const listFeature = item.listPackageFeature
+			const rowListHidden = filterAllowRow(listFeature, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
+				return (
+					<RowItem props={row} maxCol={headerList.length} key={idx}/>
+				)
+			})
+			return (
+				<div className="item-price-catelogy">
+					<div className="trigger-catelogy">
+						<h3>
+						{ category && category}
+						</h3>
+						<span className="icomoon icon-keyboard_arrow_right"></span>
+					</div>
+					<table>
+						<tbody>
+							{rowListHidden}
+						</tbody>
+					</table>
+				</div>
 			)
 		})
 		const rowListHidden = filterAllowRow(dataQuery.listPackageFeatureMore, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
@@ -522,28 +587,9 @@ class PricingPackagesModule2 extends React.Component {
 				</tbody>
 			</table>
 			<div className="wrap-price-catelogy">
-				<table className="table-1 item-price-catelogy">
-					<tbody>
-						{ rowListShow && rowListShow.length > 0 &&
-								rowListShow
+				{ listCategory && listCategory.length > 0 &&
+							listCategory
 						}
-					</tbody>
-				</table>
-				<div className="item-price-catelogy">
-						<div className="trigger-catelogy">
-							<h3>
-							{ secondaryFeaturesTitle && secondaryFeaturesTitle}
-							</h3>
-							<span className="icomoon icon-keyboard_arrow_right"></span>
-						</div>
-						<table className={"table-2 "}>
-							<tbody>
-								{ rowListHidden && rowListHidden.length > 0 &&
-									rowListHidden
-								}
-							</tbody>
-						</table>
-				</div>
 			</div>
 		</div>);
 
