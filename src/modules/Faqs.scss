@@ -100,6 +100,21 @@
     padding-bottom: 100px;
 	}
 }
+@media (min-width: 992px) {
+	.faq-item {
+		pointer-events: none;
+		cursor: default;
+		&::after,
+		&::before {
+			opacity: 0;
+			pointer-events: none;
+		}
+		h4 {
+			color: $color-58;
+			pointer-events: none;
+		}
+	}
+}
 @media (min-width: 1200px) {
 	.faqs {
 		.container:not(.max-w-940) {

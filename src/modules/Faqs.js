@@ -88,19 +88,32 @@ const FaqsContent = ({ item }) => {
 		}
 	}
 	const resizeHeight = () => {
-		let open = document.querySelectorAll('.faq-item.open')
-		Array.from(open).forEach((ele) => {
-			let content = ele.querySelectorAll('.content')[0]
-			let height = 0
-			Array.from(content.children).forEach((elem) => {
-				height += (elem.scrollHeight + 30)
-			})
-      if (content !=  height - 15) {
-				content.style.height = (height - 15 ) + 'px'
+		if(window.innerWidth >= 992) {
+			let open = document.querySelectorAll('.faq-item')
+			if(open.length) {
+				Array.from(open).forEach((ele) => {
+					let content = ele.querySelectorAll('.content')[0]
+					let height = 0
+					Array.from(content.children).forEach((elem) => {
+						height += (elem.scrollHeight + 30)
+					})
+					if (content !=  height - 15) {
+						content.style.height = (height - 15 ) + 'px'
+					}
+				})
 			}
-    })
+		} else {
+			let open = document.querySelectorAll('.faq-item:not(.open)')
+			if(open.length) {
+				Array.from(open).forEach((ele) => {
+					let content = ele.querySelectorAll('.content')[0]
+					content.style.height = '0px'
+				})
+			}
+		}
 	}
 	useEffect(() => {
+		resizeHeight()
 		window.addEventListener('resize', resizeHeight)
   });
 	return (
