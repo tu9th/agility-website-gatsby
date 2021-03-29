@@ -191,7 +191,7 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 				<span>{ title }</span>
 				{ popular }
 			</div>
-			<div class="box-price">
+			<div className="box-price">
 				<div className="price-value last-mb-none">
 					{ !saleCost  &&
 						<>
@@ -562,7 +562,7 @@ class PricingPackagesModule2 extends React.Component {
 			)
 		}):[]
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
-			console.log(label)
+			// console.log(label)
 			const fieldLabel = label.customFields
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
 			const btnCta = fieldLabel.cTAButton
