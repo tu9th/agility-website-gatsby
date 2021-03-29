@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { graphql, StaticQuery } from 'gatsby'
 import Spacing from './Spacing'
+import { renderHTML } from '../agility/utils'
 import HelperFunc from '../global/javascript/Helpers.js'
 import './PricingPackagesModule.scss'
-
 const groupByCondition = (list, keyGetter) => {
   const map = new Map()
   list.forEach((item) => {
@@ -74,10 +74,17 @@ const ModuleWithQuery = props => (
 						isSaleOn
 						title
 						cTAButton {
-						target
-						href
-						text
+							target
+							href
+							text
 						}
+						description
+						yearlyCost
+						yearlyCostLabel
+						yearlyDescription
+						yearlySaleCost
+						displayInManager
+						displayOnWebsite
 					}
 					properties {
 							referenceName
@@ -170,19 +177,21 @@ const ModuleWithQuery = props => (
 	/>
 )
 
-const HeaderColumn = ({ priceType, title, label, btnCta, btnCtaLabel, value, saleCost, hasPopular }) => {
+const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaLabel, value, saleCost, hasPopular,isSaleOn }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most Popular</span>: ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
 
 	return (
 		<div className={'price-head ps-rv type-' + classColor[Number(priceType) % 4] }>
-			<div className="sale-price">SALE</div>
+			{isSaleOn == "true" && 
+				<div className="sale-price-box">SALE</div>
+			}
 			<div className="price-type ps-rv">
 				<span>{ title }</span>
 				{ popular }
 			</div>
-			<div>
+			<div class="box-price">
 				<div className="price-value last-mb-none">
 					{ !saleCost  &&
 						<>
@@ -191,22 +200,27 @@ const HeaderColumn = ({ priceType, title, label, btnCta, btnCtaLabel, value, sal
 					}
 					{ saleCost  &&
 					<>
-						<span className="sale-override">${ value }</span>&nbsp;
+						<span className="sale-override">${ value }</span>
 						<span className="sale-price">${ saleCost }</span>
 					</>
 					}
-					<p>Per month – Paid annually</p>
+					{costlabel && 
+						<p>
+							{costlabel}
+						</p>
+					}
 				</div>
-				<div className="description last-mb-none">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+				<div>
+					<div className="description last-mb-none" dangerouslySetInnerHTML={renderHTML(description)} >
+					</div>
+					{ btnCta && btnCta.href && btnCta.href.length > 0 &&
+						(
+							<div>
+								<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow">{btnTitle} <span className="icomoon icon-arrow"></span></a>
+							</div>
+						)
+					}
 				</div>
-				{ btnCta && btnCta.href && btnCta.href.length > 0 &&
-					(
-						<div>
-							<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow">{btnTitle} <span className="icomoon icon-arrow"></span></a>
-						</div>
-					)
-				}
 			</div>
 		</div>
 	);
@@ -351,25 +365,25 @@ class PricingPackagesModule2 extends React.Component {
 	}
 
 	equalHeightHeader() {
-		const headerPrice = document.querySelectorAll('.price-head');
-		let height = 0;
-		let count = 0;
-		headerPrice.forEach((e) => {
-			e.style.height = ''
-		})
-		if (!this.state.isMobile) {
-			headerPrice.forEach((e) => {
-				if (height < e.clientHeight) {
-					height = e.clientHeight;
-					count++;
-				}
-			})
-			if (count) {
-				headerPrice.forEach((e) => {
-					e.style.height = height + 'px'
-				})
-			}
-		}
+		// const headerPrice = document.querySelectorAll('.price-head');
+		// let height = 0;
+		// let count = 0;
+		// headerPrice.forEach((e) => {
+		// 	e.style.height = ''
+		// })
+		// if (!this.state.isMobile) {
+		// 	headerPrice.forEach((e) => {
+		// 		if (height < e.clientHeight) {
+		// 			height = e.clientHeight;
+		// 			count++;
+		// 		}
+		// 	})
+		// 	if (count) {
+		// 		headerPrice.forEach((e) => {
+		// 			e.style.height = height + 'px'
+		// 		})
+		// 	}
+		// }
 	}
 
 	caculatePin(pinEle, $header, virtual, scrollArea) {
@@ -536,7 +550,8 @@ class PricingPackagesModule2 extends React.Component {
 			return(
 				<td key={idx}>
 					<div>
-						{title === 'Developer' ? 'Free' : title}
+						{/* {title === 'Developer' ? 'Free' : title} */}
+						{title}
 						{ btnCta && btnCta.href && btnCta.href.length > 0 &&
 							(
 								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle} <span className="icomoon icon-arrow"></span></a>
@@ -547,23 +562,40 @@ class PricingPackagesModule2 extends React.Component {
 			)
 		}):[]
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
+			console.log(label)
 			const fieldLabel = label.customFields
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
 			const btnCta = fieldLabel.cTAButton
 			let cost = fieldLabel.cost
-			const costLabel = fieldLabel.costLabel
+			let costLabel = fieldLabel.costLabel
 			const isMostPopular = fieldLabel.isMostPopular
 			const title = fieldLabel.title
 			let saleCost = fieldLabel.saleCost
 			let isSaleOn = fieldLabel.isSaleOn
+			let description = fieldLabel.description
 			if (isSaleOn != "true") saleCost = null
 			if ( this.state.isMonthly === false) {
-				cost = '10'
+				let costY = fieldLabel.yearlyCost
+				if(costY !== null) {
+					cost = costY
+				}
+				let descriptionY = fieldLabel.yearlyDescription
+				if(descriptionY !== null) {
+					description = descriptionY
+				}
+				let costLabelY = fieldLabel.yearlyCostLabel
+				if(costLabelY !== null) {
+					costLabel = costLabelY
+				}
+				let saleCostY = fieldLabel.yearlySaleCost
+				if(saleCostY !== null) {
+					saleCost = saleCostY
+				}
 			}
 
 			return (
-				<div className="col-md-6 col-lg-3" key={idx}>
-					<HeaderColumn priceType={idx} title={title} label={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} />
+				<div className="col-md-6 col-xl-3" key={idx}>
+					<HeaderColumn priceType={idx} description= {description} title={title} costlabel={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
 				</div>
 			)
 		}) : []

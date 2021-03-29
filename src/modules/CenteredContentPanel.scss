@@ -6,11 +6,15 @@
 .page-pricing {
   .mod-intro {
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 75px;
+    padding-top: 37px;
+    padding-bottom: 10px;
     overflow: hidden;
     h1 {
       font-size: rem(40);
+      margin-bottom: 11px;
+    }
+    h5 {
+      margin-bottom: 10px;
     }
     // &::before {
     //   content: '';
@@ -40,8 +44,8 @@
   .page-new-pricing,
   .page-pricing {
     .mod-intro {
-      padding-top: 75px;
-      padding-bottom: 115px;
+      padding-top: 45px;
+      // padding-bottom: 115px;
       &::after {
         left: -245px;
         width: 557px;
@@ -54,7 +58,7 @@
   .page-new-pricing,
   .page-pricing {
     .mod-intro {
-      padding-bottom: 165px;
+      // padding-bottom: 165px;
       &::after {
         left: -223px;
         width: 687px;
@@ -63,27 +67,27 @@
     }
   }
 }
-@media (min-width: 1200px) {
-  .page-new-pricing,
-  .page-pricing {
-    .mod-intro {
-      padding-bottom: 230px;
-      &::after {
-        left: -360px;
-        width: 866px;
-        height: 748px;
-      }
-    }
-  }
-}
-@media (min-width: 1500px) {
-  .page-new-pricing,
-  .page-pricing {
-    .mod-intro {
-      padding-bottom: 230px;
-      &::after {
-        left: -315px
-      }
-    }
-  }
-}
+// @media (min-width: 1200px) {
+//   .page-new-pricing,
+//   .page-pricing {
+//     .mod-intro {
+//       padding-bottom: 230px;
+//       &::after {
+//         left: -360px;
+//         width: 866px;
+//         height: 748px;
+//       }
+//     }
+//   }
+// }
+// @media (min-width: 1500px) {
+//   .page-new-pricing,
+//   .page-pricing {
+//     .mod-intro {
+//       padding-bottom: 230px;
+//       &::after {
+//         left: -315px
+//       }
+//     }
+//   }
+// }
