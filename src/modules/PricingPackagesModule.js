@@ -179,7 +179,7 @@ const ModuleWithQuery = props => (
 
 const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaLabel, value, saleCost, hasPopular,isSaleOn }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
-	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most Popular</span>: ''
+	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span>: ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
 
 	return (
