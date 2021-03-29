@@ -241,9 +241,7 @@
     color: $color-4c;
     margin-left: 20px;
     font-style: italic;
-  }
-  &.text-purple {
-    span {
+    &.text-purple {
       color: $color-58;
     }
   }
@@ -351,11 +349,15 @@
   padding-top: 31px;
 }
 .item-price-catelogy {
-  margin-bottom: 52px;
+  // margin-bottom: 52px;
+  margin-bottom: 24px;
   &.hidden {
     .trigger-catelogy .icomoon {
       transform: translateY(-50%) rotate(90deg);
     }
+  }
+  &:not(.hidden) {
+    padding-bottom: 27px;
   }
   &:first-child {
     .table-togger {
@@ -627,6 +629,7 @@
   .item-price-catelogy {
     margin-bottom: 30px;
     &:not(.hidden) {
+      padding-bottom: 0;
       .table-togger {
         margin-top: 16px;
       }
@@ -707,9 +710,9 @@
       background-color: rgba(233, 240, 245, .5);
     }
   }
-  .item-price-catelogy {
-    margin-bottom: 42px;
-  }
+  // .item-price-catelogy {
+  //   margin-bottom: 42px;
+  // }
 }
 @media (min-width: 1501px) {
   .table-header {
