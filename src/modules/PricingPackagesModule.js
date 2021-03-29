@@ -345,46 +345,6 @@ class PricingPackagesModule2 extends React.Component {
 	showMoreAction() {
 		this.setState({showMore: !this.state.showMore});
 	}
-	checkShowHideSection() {
-		// const section2 = document.querySelector('.show-hide-act');
-		// const windowY = window.pageYOffset;
-		// if (!this.state.isMobile) {
-		// 	if (this.state.showMore) {
-		// 		if (document.querySelector('html').classList.contains('chrome')) {
-		// 			HelperFunc.animateScrollTop(windowY, 450);
-		// 		}
-		// 		setTimeout(() => {
-		// 			section2.style.height = section2.scrollHeight + 'px';
-		// 		}, 20)
-		// 	} else {
-		// 		setTimeout(() => {
-		// 			section2.style.height = 0 + 'px'
-		// 		}, 20)
-		// 	}
-		// }
-	}
-
-	equalHeightHeader() {
-		// const headerPrice = document.querySelectorAll('.price-head');
-		// let height = 0;
-		// let count = 0;
-		// headerPrice.forEach((e) => {
-		// 	e.style.height = ''
-		// })
-		// if (!this.state.isMobile) {
-		// 	headerPrice.forEach((e) => {
-		// 		if (height < e.clientHeight) {
-		// 			height = e.clientHeight;
-		// 			count++;
-		// 		}
-		// 	})
-		// 	if (count) {
-		// 		headerPrice.forEach((e) => {
-		// 			e.style.height = height + 'px'
-		// 		})
-		// 	}
-		// }
-	}
 
 	caculatePin(pinEle, $header, virtual, scrollArea) {
 		let offsetPin
@@ -467,26 +427,22 @@ class PricingPackagesModule2 extends React.Component {
 		this.setState({isMonthly: true})
 		const interCount = 0;
 		const inter = setInterval(() => {
-			this.equalHeightHeader();
 			if (interCount > 9) {
 				clearInterval(inter);
 			}
 		}, 200)
 
-		this.checkShowHideSection();
 		window.addEventListener('scroll', () => {
 			this.pinHeaderTable()
 			this.setheightTable()
 		})
 		window.addEventListener('resize', () => {
 			if (oldWidth !== window.innerWidth) {
-				this.equalHeightHeader();
 				oldWidth = window.innerWidth;
 			}
 		});
 	}
 	componentDidUpdate() {
-		this.checkShowHideSection();
 		this.pinHeaderTable();
 	}
 
