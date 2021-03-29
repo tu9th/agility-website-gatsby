@@ -19,7 +19,7 @@
 }
 .table-pin {
   position: fixed;
-  left: 50%;
+  left: 50% !important;
   z-index: 10;
   border-color: transparent !important;
   transform: translateX(-50%);
@@ -344,6 +344,11 @@
   &.hidden {
     .trigger-catelogy .icomoon {
       transform: translateY(-50%) rotate(90deg);
+    }
+  }
+  &:first-child {
+    .table-togger {
+      height: auto !important;
     }
   }
 }
