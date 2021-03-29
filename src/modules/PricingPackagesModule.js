@@ -55,6 +55,7 @@ const ModuleWithQuery = props => (
 				  isPrimary
 				  title
 					pricingCategory_ValueField
+					description
 				}
 				properties {
 				  referenceName
@@ -141,9 +142,6 @@ const ModuleWithQuery = props => (
 			 */
 			const listPackageFeatureMore = queryData.allAgilityPackageFeatures.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureLabels
-				&& ( obj.customFields.isPrimary === undefined
-					|| obj.customFields.isPrimary === null
-					|| obj.customFields.isPrimary === 'false')
 			}).sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 			const groupByCategory = groupByCondition(listPackageFeatureMore, (item) => item.customFields.pricingCategory_ValueField)
 			const listPricingByCategory = []
@@ -231,6 +229,8 @@ const RowItem = ({props, maxCol}) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const rowFields = props.customFields
 	const title = rowFields.title
+	const description = rowFields.description 
+	console.log(rowFields)
 	const CheckIsBoolean = ({textVal, checkedVal}) => {
 
 		if ((textVal && checkedVal) || (textVal && !checkedVal) ) {
@@ -270,7 +270,9 @@ const RowItem = ({props, maxCol}) => {
 					// <td dangerouslySetInnerHTML={{__html: title}}></td>
 					<td>
 						{title}
-						<span>Lorem ipsum dolor sit amet, consectetur adipiscing.</span>
+						{description &&
+							<div className="content-catelogy" dangerouslySetInnerHTML={{__html: description}}></div>
+						}
 					</td>
 				}
 				{ rowFeatures && rowFeatures.length > 0 &&

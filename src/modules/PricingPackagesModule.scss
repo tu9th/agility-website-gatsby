@@ -406,7 +406,7 @@
       font-weight: 400;
       font-size: rem(16);
       color: $color-2a;
-      span {
+      .content-catelogy {
         display: block;
         font-size: rem(14);
         line-height: 1.5;
@@ -414,6 +414,8 @@
         color: $color-4c;
         opacity: .8;
         margin-top: 6px;
+        text-align: left;
+        min-height: 0;
       }
     }
    
@@ -601,7 +603,7 @@
       &:first-child {
         padding-left: 12px;
         font-family: $mlBold;
-        span {
+        .content-catelogy {
           font-family: $ml;
           margin-left: 4px;
         }
@@ -733,7 +735,7 @@
         }
         &:first-child {
           padding-left: 17px;
-          span {
+          .content-catelogy {
             padding-left: 0;
           }
         }
