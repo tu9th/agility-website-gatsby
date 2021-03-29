@@ -89,6 +89,10 @@
 }
 .headline-faq {
 	margin-bottom: 40px;
+	h2 {
+		font-family: $ml;
+		font-weight: 400;
+	}
 }
 .faqs {
 	padding: 90px 0;

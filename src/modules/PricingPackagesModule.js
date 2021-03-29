@@ -641,7 +641,7 @@ class PricingPackagesModule2 extends React.Component {
 
 							</div>
 						</div>
-						<span>Save up to 25%</span>
+						<span className={`${(this.state.isMonthly == false) ? `text-purple ` : ``}`}>Save up to 25%</span>
 					</div>
 					<div className="wrap-price-head">
 					<div className="row">

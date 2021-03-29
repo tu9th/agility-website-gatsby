@@ -240,6 +240,12 @@
     line-height: 1.75;
     color: $color-4c;
     margin-left: 20px;
+    font-style: italic;
+  }
+  &.text-purple {
+    span {
+      color: $color-58;
+    }
   }
 }
 .item-t-price {
@@ -259,15 +265,16 @@
   // border-bottom: 1px solid rgba(76, 104, 132, 0.2);
   padding: 0 20px;
   margin: 0 auto;
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     width: 110vw;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    height: 1px;
-    background: rgba(76, 104, 132, 0.2);
+    top: 0;
+    border-bottom: 1px solid rgba(76, 104, 132, 0.2);
+    background-color: $white;
   }
   &:not(.table-pin) {
     position: relative;
@@ -290,6 +297,7 @@
 .content-pricing {
   margin-top: 65px;
   margin-bottom: 37px;
+  position: relative;
   h2 {
     font-family: $ml;
     font-weight: 400;
@@ -602,11 +610,11 @@
     background-color: transparent;
   }
   .table-header-pin {
-    &::after {
+    &::before {
       width: 100%;
     }
     &.table-pin {
-      &::after {
+      &::before {
         width: 110vw;
       }
     }
