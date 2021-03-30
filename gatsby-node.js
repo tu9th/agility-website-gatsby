@@ -77,6 +77,9 @@ exports.createSchemaCustomization = ({ actions }) => {
 			target: String,
 			text:String
 		}
+		type agilityPackageFeaturesCustomFields {
+			description: String
+		}
   `
   createTypes(typeDefs)
 }

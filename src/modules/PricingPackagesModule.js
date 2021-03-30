@@ -459,6 +459,8 @@ class PricingPackagesModule2 extends React.Component {
 		const btnShowLess = fields.showlesstext
 		const primaryFeaturesTitle = fields.primaryFeaturesTitle
 		const secondaryFeaturesTitle = fields.secondaryFeaturesTitle
+		const textSale = fields?.saleOnText
+		const title = fields?.comparePackagesTitle
 		const headerList = dataQuery.listPricingPackages
 		const category = dataQuery.listPricingCategories
 		const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
@@ -599,7 +601,7 @@ class PricingPackagesModule2 extends React.Component {
 
 							</div>
 						</div>
-						<span className={`${(this.state.isMonthly == false) ? `text-purple ` : ``}`}>Save up to 25%</span>
+						<span className={`${(this.state.isMonthly == false) ? `text-purple ` : ``}`} dangerouslySetInnerHTML={renderHTML(textSale)}></span>
 					</div>
 					<div className="wrap-price-head">
 					<div className="row">
@@ -609,7 +611,9 @@ class PricingPackagesModule2 extends React.Component {
 					</div>
 				</div>
 				<div className="content-pricing last-mb-none text-center">
-					<h2>Compare Packages</h2>
+					{title && 
+						<h2>{title}</h2>
+					}
 				</div>
 					{
 						BlockPriceDesktop
