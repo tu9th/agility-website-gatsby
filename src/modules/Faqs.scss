@@ -22,7 +22,7 @@
     height: 2px;
     background-color: $color-58;
     position: absolute;
-    right: 15px;
+    right: 2px;
     top: 12px;
 	}
 	&::before {
@@ -31,7 +31,7 @@
     height: 18px;
     background-color: $color-58;
     position: absolute;
-    right: 23px;
+    right: 10px;
 		top: 4px;
     transition: all .35s;
 	}
@@ -136,5 +136,12 @@
 				color: $color-58;
 			}
 		}
+	}
+}
+@media (max-width: 480px){
+	.features.faqs {
+		padding-left: 0;
+		padding-right: 0;
+		padding-top: 55px;
 	}
 }
