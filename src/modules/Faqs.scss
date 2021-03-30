@@ -108,6 +108,7 @@
 	.faq-item {
 		pointer-events: none;
 		cursor: default;
+		padding-right: 0;
 		&::after,
 		&::before {
 			opacity: 0;
