@@ -120,8 +120,6 @@ const ModuleWithQuery = props => (
 			// 		listPricingPackages[i + 1] = tam
 			// 	}
 			// }
-			/**end */
-			/**row value */
 			const listPricingCategories = queryData.allAgilityPricingCategories.nodes
 			const packageFeatureValues = props.item.customFields.packageFeatureValues.referencename
 			const listPackageFeatureValues = queryData.allAgilityPackageFeatureValues.nodes.filter(obj => {
