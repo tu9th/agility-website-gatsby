@@ -142,6 +142,8 @@ const ModuleWithQuery = props => (
 			 */
 			const listPackageFeatureMore = queryData.allAgilityPackageFeatures.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureLabels
+					&& obj.customFields.pricingCategory_ValueField !== undefined
+					&& obj.customFields.pricingCategory_ValueField !== null
 			}).sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 			const groupByCategory = groupByCondition(listPackageFeatureMore, (item) => item.customFields.pricingCategory_ValueField)
 			const listPricingByCategory = []
@@ -229,8 +231,7 @@ const RowItem = ({props, maxCol}) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const rowFields = props.customFields
 	const title = rowFields.title
-	const description = rowFields.description 
-	console.log(rowFields)
+	const description = rowFields.description
 	const CheckIsBoolean = ({textVal, checkedVal}) => {
 
 		if ((textVal && checkedVal) || (textVal && !checkedVal) ) {
