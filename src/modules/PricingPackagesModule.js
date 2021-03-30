@@ -112,7 +112,6 @@ const ModuleWithQuery = props => (
 				.filter(obj => { return obj.properties.referenceName === pricingPackages})
 				.sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 
-			// // order
 			// for(let i = 0; i < listPricingPackages.length - 1; i++) {
 			// 	if (listPricingPackages[i].properties.itemOrder > listPricingPackages[i + 1].properties.itemOrder) {
 			// 		const tam = listPricingPackages[i]
