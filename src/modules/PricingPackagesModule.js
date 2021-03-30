@@ -256,17 +256,18 @@ const RowItem = ({props, maxCol}) => {
 		<React.Fragment>
 			<tr className="tr-show-mb">
 			{ title &&
-				// <td dangerouslySetInnerHTML={{__html: title}}></td>
-				<td colSpan="5" className="pr-sub-title">
-					{title}
-				</td>
+				<td colSpan="5" className="pr-sub-title" dangerouslySetInnerHTML={{__html: title}}></td>
+				// <td colSpan="5" className="pr-sub-title">
+				// 	{title}
+				// </td>
 			}
 			</tr>
 			<tr>
 				{ title &&
 					// <td dangerouslySetInnerHTML={{__html: title}}></td>
 					<td>
-						{title}
+						{/* {title} */}
+						<span dangerouslySetInnerHTML={{__html: title}}></span>
 						{description &&
 							<div className="content-catelogy" dangerouslySetInnerHTML={{__html: description}}></div>
 						}

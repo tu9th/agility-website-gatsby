@@ -121,8 +121,12 @@
 }
 @media (min-width: 1200px) {
 	.faqs {
+		&.features {
+			padding-top: 90px;
+		}
 		.container:not(.max-w-940) {
-			max-width: 910px;
+			// max-width: 910px;
+			max-width: 1140px;
 		}
 	}
 	.faq-item {
