@@ -362,12 +362,15 @@ class PricingPackagesModule2 extends React.Component {
 			offsetPin = virtual.offsetTop;
 			packagePricing = document.querySelector('.pricing-package')
 			listOffset = packagePricing.offsetTop + packagePricing.clientHeight - pinEle.clientHeight
+			if (window.innerHeight < 673 && window.innerWidth < 767) {
+				header = 0
+			}
 			trigger = scrollTop + header
 			if (trigger > rootOffset) {
 				pinEle.classList.add('table-pin');
 				virtual.style.height = pinEle.clientHeight + 'px'
 				if (trigger + pinEle.clientHeight < listOffset) {
-					pinEle.style.top = $header.clientHeight + 'px';
+					pinEle.style.top = header + 'px';
 				} else {
 					pinEle.style.top = listOffset - pinEle.clientHeight - scrollTop + 'px';
 				}
