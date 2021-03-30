@@ -107,7 +107,6 @@ const ModuleWithQuery = props => (
 
 		`}
 		render={queryData => {
-			/**pricing header */
 			const pricingPackages = props.item.customFields.pricingPackages.referencename
 			const listPricingPackages = queryData.allAgilityPricingPackages.nodes
 				.filter(obj => { return obj.properties.referenceName === pricingPackages})
