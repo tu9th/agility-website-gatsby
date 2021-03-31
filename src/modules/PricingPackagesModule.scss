@@ -89,7 +89,7 @@
 }
 .table-header {
   max-width: 970px;
-  background-color: #fff;
+  // background-color: #fff;
   max-width: 100%;
 }
 .price-type {
@@ -292,11 +292,15 @@
     transform: translateX(-50%);
     top: 0;
     border-bottom: 1px solid rgba(76, 104, 132, 0.2);
-    background-color: $white;
   }
   &:not(.table-pin) {
     position: relative;
     top: 0 !important;
+  }
+  &.table-pin {
+    &::before {
+      background-color: $white;
+    }
   }
   td {
     div {
