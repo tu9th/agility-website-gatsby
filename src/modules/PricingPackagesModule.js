@@ -5,17 +5,17 @@ import { renderHTML } from '../agility/utils'
 import HelperFunc from '../global/javascript/Helpers.js'
 import './PricingPackagesModule.scss'
 const groupByCondition = (list, keyGetter) => {
-  const map = new Map()
-  list.forEach((item) => {
-    const key = keyGetter(item)
-    const collection = map.get(key)
-    if (!collection) {
-      map.set(key, [item])
-    } else {
-      collection.push(item)
-    }
-  })
-  return map
+	const map = new Map()
+	list.forEach((item) => {
+		const key = keyGetter(item)
+		const collection = map.get(key)
+		if (!collection) {
+			map.set(key, [item])
+		} else {
+			collection.push(item)
+		}
+	})
+	return map
 }
 
 const ModuleWithQuery = props => (
@@ -109,7 +109,7 @@ const ModuleWithQuery = props => (
 		render={queryData => {
 			const pricingPackages = props.item.customFields.pricingPackages.referencename
 			const listPricingPackages = queryData.allAgilityPricingPackages.nodes
-				.filter(obj => { return obj.properties.referenceName === pricingPackages})
+				.filter(obj => { return obj.properties.referenceName === pricingPackages })
 				.sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 
 			// for(let i = 0; i < listPricingPackages.length - 1; i++) {
@@ -129,9 +129,9 @@ const ModuleWithQuery = props => (
 			const listAllPackageFeature = queryData.allAgilityPackageFeatures.nodes
 			const listPackageFeaturePrimary = queryData.allAgilityPackageFeatures.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureLabels
-						&& obj.customFields.isPrimary !== undefined
-						&& obj.customFields.isPrimary !== null
-						&& obj.customFields.isPrimary=== 'true'
+					&& obj.customFields.isPrimary !== undefined
+					&& obj.customFields.isPrimary !== null
+					&& obj.customFields.isPrimary === 'true'
 			}).sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 			/**
 			 * group list packageFeature More by category
@@ -173,9 +173,9 @@ const ModuleWithQuery = props => (
 	/>
 )
 
-const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaLabel, value, saleCost, hasPopular,isSaleOn }) => {
+const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCtaLabel, value, saleCost, hasPopular, isSaleOn }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
-	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span>: ''
+	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span> : ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
 
 	const [salCostHeight, setSalCostHeight] = useState(0)
@@ -191,21 +191,21 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 		setSalCostHeight(h)
 	}, [saleCost])
 	return (
-		<div className={'price-head ps-rv type-' + classColor[Number(priceType) % 4] }>
-			{isSaleOn == "true" && 
+		<div className={'price-head ps-rv type-' + classColor[Number(priceType) % 4]}>
+			{isSaleOn == "true" &&
 				<div className="sale-price-box">SALE</div>
 			}
 			<div className="price-type ps-rv">
-				<span>{ title }</span>
-				{ popular }
+				<span>{title}</span>
+				{popular}
 			</div>
 			<div className="box-price">
 				<div className="price-value last-mb-none">
 					<div className="sale-price-cover ps-rv" style={{ height: `${salCostHeight}px` }}>
-						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={ saleCostRef }>${ saleCost }</span>
+						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${saleCost}</span>
 					</div>
-					<span className={`transition-25 ${saleCost ? 'sale-price' : '' }`}>${ saleCost?? value }</span>
-					{costlabel && 
+					<span className={`transition-25 ${saleCost ? 'sale-price' : ''}`}>${saleCost ?? value}</span>
+					{costlabel &&
 						<p>
 							{costlabel}
 						</p>
@@ -214,7 +214,7 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 				<div>
 					<div className="description last-mb-none" dangerouslySetInnerHTML={renderHTML(description)} >
 					</div>
-					{ btnCta && btnCta.href && btnCta.href.length > 0 &&
+					{btnCta && btnCta.href && btnCta.href.length > 0 &&
 						(
 							<div>
 								<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow">{btnTitle} <span className="icomoon icon-arrow"></span></a>
@@ -228,18 +228,18 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 }
 
 
-const RowItem = ({props, maxCol}) => {
+const RowItem = ({ props, maxCol }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const rowFields = props.customFields
 	const title = rowFields.title
 	const description = rowFields.description
-	const CheckIsBoolean = ({textVal, checkedVal}) => {
+	const CheckIsBoolean = ({ textVal, checkedVal }) => {
 
-		if ((textVal && checkedVal) || (textVal && !checkedVal) ) {
-			return <span dangerouslySetInnerHTML={{__html:textVal}}></span>
+		if ((textVal && checkedVal) || (textVal && !checkedVal)) {
+			return <span dangerouslySetInnerHTML={{ __html: textVal }}></span>
 		}
 		if (!textVal && checkedVal) {
-			return  (checkedVal === 'true' ? <span className="icomoon icon-check-bg"><span className="path1"></span><span className="path2"></span></span> : <span>-</span>);
+			return (checkedVal === 'true' ? <span className="icomoon icon-check-bg"><span className="path1"></span><span className="path2"></span></span> : <span>-</span>);
 		}
 	}
 	const rowFeatures = props.features.map((el, idx) => {
@@ -260,25 +260,25 @@ const RowItem = ({props, maxCol}) => {
 	return (
 		<React.Fragment>
 			<tr className="tr-show-mb">
-			{ title &&
-				<td colSpan="5" className="pr-sub-title" dangerouslySetInnerHTML={{__html: title}}></td>
-				// <td colSpan="5" className="pr-sub-title">
-				// 	{title}
-				// </td>
-			}
+				{title &&
+					<td colSpan="5" className="pr-sub-title" dangerouslySetInnerHTML={{ __html: title }}></td>
+					// <td colSpan="5" className="pr-sub-title">
+					// 	{title}
+					// </td>
+				}
 			</tr>
 			<tr>
-				{ title &&
+				{title &&
 					// <td dangerouslySetInnerHTML={{__html: title}}></td>
 					<td>
 						{/* {title} */}
-						<span dangerouslySetInnerHTML={{__html: title}}></span>
+						<span dangerouslySetInnerHTML={{ __html: title }}></span>
 						{description &&
-							<div className="content-catelogy" dangerouslySetInnerHTML={{__html: description}}></div>
+							<div className="content-catelogy" dangerouslySetInnerHTML={{ __html: description }}></div>
 						}
 					</td>
 				}
-				{ rowFeatures && rowFeatures.length > 0 &&
+				{rowFeatures && rowFeatures.length > 0 &&
 					rowFeatures
 				}
 			</tr>
@@ -293,11 +293,11 @@ const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackage
 	return listFilter.map(feature => {
 		const featureObj = Object.assign({}, feature)
 		const listValPricing = []
-		if(featureObj.itemID) {
+		if (featureObj.itemID) {
 			const listVal = listPackageFeatureValues.filter(val => {
 				return val.customFields.packageFeature?.contentid === featureObj?.itemID
 			})
-			for(let i = 0; i < listPricingPackages.length; i++) {
+			for (let i = 0; i < listPricingPackages.length; i++) {
 				const orderByPricing = listVal.find(el => el.customFields.pricingPackage.contentid === listPricingPackages[i].itemID) || 'none'
 				if (orderByPricing) {
 					listValPricing.push(orderByPricing)
@@ -343,12 +343,15 @@ class PricingPackagesModule2 extends React.Component {
 			isMobile: false,
 			isPin: false,
 			isMonthly: true,
+			widthSaleText: 'auto'
 		}
 		this.pinHeaderTable = this.pinHeaderTable.bind(this)
+		this.textSaleRef = React.createRef(null)
+
 	}
 
 	showMoreAction() {
-		this.setState({showMore: !this.state.showMore});
+		this.setState({ showMore: !this.state.showMore });
 	}
 
 	caculatePin(pinEle, $header, virtual, scrollArea) {
@@ -397,26 +400,26 @@ class PricingPackagesModule2 extends React.Component {
 	}
 	changeTooger(bool) {
 		if (bool === true) {
-			this.setState({isMonthly: true})
+			this.setState({ isMonthly: true })
 		} else {
-			this.setState({isMonthly: false})
+			this.setState({ isMonthly: false })
 		}
 	}
-	setheightTable () {
+	setheightTable() {
 		let table = document.querySelectorAll('.item-price-catelogy:not(.hidden) .table-togger')
-		Array.from(table).forEach((item,index) => {
+		Array.from(table).forEach((item, index) => {
 			let content = item.querySelector('table').offsetHeight
 			item.style.height = content + 'px'
 		})
 	}
 	toggerTable() {
 		let trigger = document.querySelectorAll('.trigger-catelogy')
-		Array.from(trigger).forEach((item,index) => {
+		Array.from(trigger).forEach((item, index) => {
 			item.addEventListener('click', (e) => {
 				const parent = e.currentTarget.parentElement
 				const wrapT = parent.querySelector('.table-togger')
 				const table = wrapT.querySelector('table').offsetHeight
-				if(parent.classList.contains('hidden')) {
+				if (parent.classList.contains('hidden')) {
 					parent.classList.remove('hidden')
 					wrapT.style.height = table + 'px'
 				} else {
@@ -431,14 +434,20 @@ class PricingPackagesModule2 extends React.Component {
 		this.pinHeaderTable();
 		this.setheightTable()
 		this.toggerTable()
-		this.setState({loaded: true});
-		this.setState({isMonthly: true})
+		this.setState({ loaded: true });
+		this.setState({ isMonthly: true })
 		const interCount = 0;
 		const inter = setInterval(() => {
 			if (interCount > 9) {
 				clearInterval(inter);
 			}
 		}, 200)
+
+		/* set Width sale Text */
+		const textSaleElm = this.textSaleRef.current.querySelector('span')
+		const w = textSaleElm ? textSaleElm.offsetWidth : 0
+		this.setState({ widthSaleText: w })
+
 
 		window.addEventListener('scroll', () => {
 			this.pinHeaderTable()
@@ -450,15 +459,27 @@ class PricingPackagesModule2 extends React.Component {
 			}
 		});
 	}
-	componentDidUpdate() {
+
+	// shouldComponentUpdate(prevProps, prevState) {
+
+	// }
+
+	componentDidUpdate(prevProps, prevState) {
+
 		this.pinHeaderTable();
+		/* set Width sale Text */
+		if (prevProps.textSale !== this.props.textSale || prevProps.textSaleYearly !== this.props.textSaleYearly || prevState.isMonthly !== this.state.isMonthly) {
+			const textSaleElm = this.textSaleRef.current.querySelector('span')
+			const w = textSaleElm ? textSaleElm.offsetWidth : 0;
+			this.setState({ widthSaleText: w });
+		}
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.pinHeaderTable)
 	}
 
-	render () {
+	render() {
 		const dataQuery = this.props.dataQuery
 		const fields = this.props.item.customFields
 		const btnShowMore = fields.showmoretext
@@ -466,12 +487,13 @@ class PricingPackagesModule2 extends React.Component {
 		const primaryFeaturesTitle = fields.primaryFeaturesTitle
 		const secondaryFeaturesTitle = fields.secondaryFeaturesTitle
 		const textSale = fields?.saleOnText
+		const textSaleYearly = fields?.saleOnTextYearly
 		const title = fields?.comparePackagesTitle
 		const headerList = dataQuery.listPricingPackages
 		const category = dataQuery.listPricingCategories
 		const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
 			return (
-				<RowItem props={row} maxCol={headerList.length} key={idx}/>
+				<RowItem props={row} maxCol={headerList.length} key={idx} />
 			)
 		})
 
@@ -480,14 +502,14 @@ class PricingPackagesModule2 extends React.Component {
 			const listFeature = item.listPackageFeature
 			const rowListHidden = filterAllowRow(listFeature, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
 				return (
-					<RowItem props={row} maxCol={headerList.length} key={idx}/>
+					<RowItem props={row} maxCol={headerList.length} key={idx} />
 				)
 			})
 			return (
 				<div className="item-price-catelogy" key={index}>
 					<div className="trigger-catelogy" >
 						<h3>
-						{ category && category}
+							{category && category}
 						</h3>
 						<span className="icomoon icon-keyboard_arrow_right"></span>
 					</div>
@@ -503,7 +525,7 @@ class PricingPackagesModule2 extends React.Component {
 		})
 		const rowListHidden = filterAllowRow(dataQuery.listPackageFeatureMore, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
 			return (
-				<RowItem props={row} maxCol={headerList.length} key={idx}/>
+				<RowItem props={row} maxCol={headerList.length} key={idx} />
 			)
 		})
 		const ShowTilePin = headerList.length ? headerList.map((label, idx) => {
@@ -513,12 +535,12 @@ class PricingPackagesModule2 extends React.Component {
 			const btnCta = fieldLabel.cTAButton
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
 			const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
-			return(
+			return (
 				<td key={idx}>
 					<div>
 						{/* {title === 'Developer' ? 'Free' : title} */}
 						{title}
-						{ btnCta && btnCta.href && btnCta.href.length > 0 &&
+						{btnCta && btnCta.href && btnCta.href.length > 0 &&
 							(
 								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle} <span className="icomoon icon-arrow"></span></a>
 							)
@@ -526,7 +548,7 @@ class PricingPackagesModule2 extends React.Component {
 					</div>
 				</td>
 			)
-		}):[]
+		}) : []
 
 		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
@@ -542,94 +564,104 @@ class PricingPackagesModule2 extends React.Component {
 			let isSaleOn = fieldLabel.isSaleOn
 			let description = fieldLabel.description
 			if (isSaleOn != "true") saleCost = null
-			if ( this.state.isMonthly === false) {
+			if (this.state.isMonthly === false) {
 				let costY = fieldLabel.yearlyCost
-				if(costY !== null) {
+				if (costY !== null) {
 					cost = costY
 				}
 				let descriptionY = fieldLabel.yearlyDescription
-				if(descriptionY !== null) {
+				if (descriptionY !== null) {
 					description = descriptionY
 				}
 				let costLabelY = fieldLabel.yearlyCostLabel
-				if(costLabelY !== null) {
+				if (costLabelY !== null) {
 					costLabel = costLabelY
 				}
 				let saleCostY = fieldLabel.yearlySaleCost
-				if(saleCostY !== null) {
+				if (saleCostY !== null) {
 					saleCost = saleCostY
 				}
 			}
 
 			return (
 				<div className="col-md-6 col-xl-3" key={idx}>
-					<HeaderColumn priceType={idx} description= {description} title={title} costlabel={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
+					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
 				</div>
 			)
 		}) : []
 
 		const BlockPriceDesktop = (
-		<div className="price-desktop">
-			<div className="virtual-pin-bar" style={{height: `${this.state.isPin ? document.querySelector('.table-header').clientHeight + 'px' : ''}`}}></div>
-			<table className="table-header-pin table-header">
-				<tbody>
-					<tr>
-						<td>
-							<div className="text-pin d-none">
-							All Features
+			<div className="price-desktop">
+				<div className="virtual-pin-bar" style={{ height: `${this.state.isPin ? document.querySelector('.table-header').clientHeight + 'px' : ''}` }}></div>
+				<table className="table-header-pin table-header">
+					<tbody>
+						<tr>
+							<td>
+								<div className="text-pin d-none">
+									All Features
 							</div>
-						</td>
-						{ShowTilePin &&
-							ShowTilePin
-						}
-					</tr>
-				</tbody>
-			</table>
-			<div className="wrap-price-catelogy">
-				{ listCategory && listCategory.length > 0 &&
-							listCategory
-						}
-			</div>
-		</div>);
+							</td>
+							{ShowTilePin &&
+								ShowTilePin
+							}
+						</tr>
+					</tbody>
+				</table>
+				<div className="wrap-price-catelogy">
+					{listCategory && listCategory.length > 0 &&
+						listCategory
+					}
+				</div>
+			</div>);
 
 
 		return (
 			<React.Fragment>
-			<section className={`PricingPackagesModule pricing-package animation anima-fixed ${!this.state.loaded ? 'opacity-0' : ''}`}>
-				<div className="container anima-bottom">
-					<div className="wrap-togger-price d-flex justify-content-center align-items-center">
-						<div className="togger-price">
-							<div className={`item-t-price ${(this.state.isMonthly == true) ? `is-active ` : ``}`} onClick={() => { this.changeTooger(true) }}>
-								Monthly
+				<section className={`PricingPackagesModule pricing-package animation anima-fixed ${!this.state.loaded ? 'opacity-0' : ''}`}>
+					<div className="container anima-bottom">
+						<div className="wrap-togger-price d-flex justify-content-center align-items-center">
+							<div className="togger-price">
+								<div className={`item-t-price ${(this.state.isMonthly == true) ? `is-active ` : ``}`} onClick={() => { this.changeTooger(true) }}>
+									Monthly
 							</div>
-							<div className={`item-t-price ${(this.state.isMonthly == false) ? `is-active ` : ``}`} onClick={() => {this.changeTooger(false)}}>
-								Yearly
+								<div className={`item-t-price ${(this.state.isMonthly == false) ? `is-active ` : ``}`} onClick={() => { this.changeTooger(false) }}>
+									Yearly
 							</div>
-							<div className="overlay-active">
+								<div className="overlay-active">
 
+								</div>
+							</div>
+							<span className="transition-25 ps-rv overflow-hidden sale-text text-purple"
+							style={{ width: `${this.state.widthSaleText !== 'auto' ? this.state.widthSaleText + 'px' : this.state.widthSaleText}` }}
+							ref={this.textSaleRef}>
+								{this.state.isMonthly && textSale &&
+									<span className="text-purple" dangerouslySetInnerHTML={renderHTML(textSale)}></span>
+								}
+								{!this.state.isMonthly && textSaleYearly &&
+									<span className="text-purple" dangerouslySetInnerHTML={renderHTML(textSaleYearly)}></span>
+								}
+							</span>
+
+						</div>
+						<div className="wrap-price-head">
+							<div className="row">
+								{listHeaderColumn && listHeaderColumn.length > 0 &&
+									listHeaderColumn
+								}
 							</div>
 						</div>
-						<span className={`${(this.state.isMonthly == false) ? `text-purple ` : ``}`} dangerouslySetInnerHTML={renderHTML(textSale)}></span>
-					</div>
-					<div className="wrap-price-head">
-					<div className="row">
-							{ listHeaderColumn && listHeaderColumn.length > 0 &&
-								listHeaderColumn
+						<div className="content-pricing last-mb-none text-center">
+							{title &&
+								<h2>{title}</h2>
 							}
+						</div>
+						{
+							BlockPriceDesktop
+						}
 					</div>
-				</div>
-				<div className="content-pricing last-mb-none text-center">
-					{title && 
-						<h2>{title}</h2>
-					}
-				</div>
-					{
-						BlockPriceDesktop
-					}
-				</div>
-			</section>
-				<Spacing item={this.props.item}/>
-				</React.Fragment>
+				</section>
+				<Spacing item={this.props.item} />
+			</React.Fragment>
 		);
 	}
 }

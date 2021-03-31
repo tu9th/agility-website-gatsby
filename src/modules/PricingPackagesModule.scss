@@ -254,13 +254,14 @@
   }
 }
 .wrap-togger-price {
-  span {
+  .sale-text {
     font-size: 12px;
     font-weight: 600;
     line-height: 1.75;
     color: $color-4c;
     margin-left: 20px;
     font-style: italic;
+    white-space: nowrap;
     &.text-purple {
       color: $color-58;
     }
