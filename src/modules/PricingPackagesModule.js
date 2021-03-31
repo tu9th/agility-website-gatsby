@@ -186,7 +186,6 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 		let h = 0
 		if (saleCost) {
 			h = saleCostRef.current.scrollHeight
-			console.log('sacleCostHeihgt', h);
 		}
 		setSalCostHeight(h)
 	}, [saleCost])
