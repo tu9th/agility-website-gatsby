@@ -77,14 +77,16 @@ const Faqs = ({ item, faqs }) => {
 const FaqsContent = ({ item }) => {
 	const lazyRef = useRef(null)
 	const checkFQA = (ref) => {
-		let current = ref.current
-		let content = current.querySelectorAll('.content')[0]
-		if(current.classList.contains('open')) {
-			current.classList.remove('open')
-			content.style.height = '0'
-		} else {
-			current.classList.add('open')
-			content.style.height = content.scrollHeight + 'px'
+		if(window.innerWidth < 992) {
+			let current = ref.current
+			let content = current.querySelectorAll('.content')[0]
+			if(current.classList.contains('open')) {
+				current.classList.remove('open')
+				content.style.height = '0'
+			} else {
+				current.classList.add('open')
+				content.style.height = content.scrollHeight + 'px'
+			}
 		}
 	}
 	const resizeHeight = () => {
