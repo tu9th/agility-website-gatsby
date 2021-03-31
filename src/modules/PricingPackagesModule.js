@@ -460,14 +460,10 @@ class PricingPackagesModule2 extends React.Component {
 		});
 	}
 
-	// shouldComponentUpdate(prevProps, prevState) {
-
-	// }
-
 	componentDidUpdate(prevProps, prevState) {
-
 		this.pinHeaderTable();
-		/* set Width sale Text */
+
+		/* set Width sale Text Month or Year */
 		if (prevProps.textSale !== this.props.textSale || prevProps.textSaleYearly !== this.props.textSaleYearly || prevState.isMonthly !== this.state.isMonthly) {
 			const textSaleElm = this.textSaleRef.current.querySelector('span')
 			const w = textSaleElm ? textSaleElm.offsetWidth : 0;
