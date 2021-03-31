@@ -178,6 +178,18 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span>: ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
 
+	const [salCostHeight, setSalCostHeight] = useState(0)
+	const saleCostRef = useRef(null)
+
+	/* set height for sale override cost Element */
+	useEffect(() => {
+		let h = 0
+		if (saleCost) {
+			h = saleCostRef.current.scrollHeight
+			console.log('sacleCostHeihgt', h);
+		}
+		setSalCostHeight(h)
+	}, [saleCost])
 	return (
 		<div className={'price-head ps-rv type-' + classColor[Number(priceType) % 4] }>
 			{isSaleOn == "true" && 
@@ -189,17 +201,10 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 			</div>
 			<div className="box-price">
 				<div className="price-value last-mb-none">
-					{ !saleCost  &&
-						<>
-						<span>${ value }</span>
-						</>
-					}
-					{ saleCost  &&
-					<>
-						<span className="sale-override">${ value }</span>
-						<span className="sale-price">${ saleCost }</span>
-					</>
-					}
+					<div className="sale-price-cover ps-rv" style={{ height: `${salCostHeight}px` }}>
+						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={ saleCostRef }>${ saleCost }</span>
+					</div>
+					<span className={`${saleCost ? 'sale-price' : '' }`}>${ saleCost?? value }</span>
 					{costlabel && 
 						<p>
 							{costlabel}
@@ -522,8 +527,10 @@ class PricingPackagesModule2 extends React.Component {
 				</td>
 			)
 		}):[]
+
+		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
-			// console.log(label)
+			// console.log('labellabel', label)
 			const fieldLabel = label.customFields
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
 			const btnCta = fieldLabel.cTAButton
