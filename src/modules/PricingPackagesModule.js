@@ -204,7 +204,7 @@ const HeaderColumn = ({ priceType,description, title, costlabel, btnCta, btnCtaL
 					<div className="sale-price-cover ps-rv" style={{ height: `${salCostHeight}px` }}>
 						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={ saleCostRef }>${ saleCost }</span>
 					</div>
-					<span className={`${saleCost ? 'sale-price' : '' }`}>${ saleCost?? value }</span>
+					<span className={`transition-25 ${saleCost ? 'sale-price' : '' }`}>${ saleCost?? value }</span>
 					{costlabel && 
 						<p>
 							{costlabel}
