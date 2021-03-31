@@ -401,6 +401,9 @@ input {
 .opacity-0 {
   opacity: 0;
 }
+.transition-25 {
+  transition: all .25s;
+}
 @include media-breakpoint-up(sm) {
   .main-content {
     padding-top: 105px;
