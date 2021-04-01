@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root'
 import PostUtil from '../utils/post-util.js';
 import { renderHTML } from '../agility/utils'
 
@@ -174,7 +173,7 @@ class Form extends React.Component {
 				});
 			})
 		}
-		document.addEventListener('click', (event) =>  { 
+		document.addEventListener('click', (event) =>  {
 			let $target = event.target
 			if(!$target.closest('.form-item')) {
 				this.checkFocus()
@@ -282,11 +281,7 @@ class Form extends React.Component {
 
 		return (
 			<div className="form-success">
-				{/* <div dangerouslySetInnerHTML={ renderHTML(this.props.thanksMessage)} /> */}
-				<img src="/images/thanks-you.svg" alt="Thanks for submitting the form"/>
-				<h4>Thanks for submitting the form, we'll be in contact with you within 48 hours.</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-					Ut enim ad minim veniam, quis nostrud exercitation.</p>
+				<div dangerouslySetInnerHTML={ renderHTML(this.props.thanksMessage)} />
 			</div>
 		);
 	}
@@ -398,4 +393,4 @@ class Form extends React.Component {
 	}
 }
 
-export default hot(Form);
+export default Form;
