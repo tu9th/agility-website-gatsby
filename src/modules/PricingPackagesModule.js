@@ -273,7 +273,7 @@ const RowItem = ({ props, maxCol }) => {
 						{/* {title} */}
 						<span dangerouslySetInnerHTML={{ __html: title }}></span>
 						{description &&
-							<div className="content-catelogy" dangerouslySetInnerHTML={{ __html: description }}></div>
+							<div className="content-catelogy last-mb-none" dangerouslySetInnerHTML={{ __html: description }}></div>
 						}
 					</td>
 				}
