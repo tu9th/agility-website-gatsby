@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+        docker { image 'node:14-alpine' }
+  }
   environment {
     CURRENT_WORKSPACE = "${env.WORKSPACE}"
     AWS_CARBON8_IP = credentials('AWS_CARBON8_IP ')
