@@ -201,7 +201,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 			<div className="box-price">
 				<div className="price-value last-mb-none">
 					<div className="sale-price-cover ps-rv" style={{ height: `${salCostHeight}px` }}>
-						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${saleCost}</span>
+						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
 					</div>
 					<span className={`transition-25 ${saleCost ? 'sale-price' : ''}`}>${saleCost ?? value}</span>
 					{costlabel &&
@@ -304,7 +304,6 @@ const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackage
 			}
 			featureObj.features = listValPricing
 		}
-		// console.log('featureObj', featureObj)
 		return featureObj
 	})
 }
@@ -547,7 +546,6 @@ class PricingPackagesModule2 extends React.Component {
 
 		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
-			// console.log('labellabel', label)
 			const fieldLabel = label.customFields
 			const btnCtaLabel = fieldLabel.cTAButtonLabel
 			const btnCta = fieldLabel.cTAButton
