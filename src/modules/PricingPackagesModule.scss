@@ -333,7 +333,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   &::before {
     content: '';
@@ -501,9 +501,17 @@
   }
 }
 @media (max-width: 767px) {
-  .table-header-pin td {
-    &:not(:first-child) {
-      width: 25%;
+  .table-header-pin {
+    &.table-pin {
+      left: 20px !important;
+      transform: none !important;
+      width: calc(100% - 40px);
+      margin: 0 !important;
+    }
+    td {
+      &:not(:first-child) {
+        width: 25%;
+      }
     }
   }
 }
