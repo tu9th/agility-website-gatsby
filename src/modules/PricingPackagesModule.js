@@ -216,7 +216,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 					{btnCta && btnCta.href && btnCta.href.length > 0 &&
 						(
 							<div>
-								<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow">{btnTitle} <span className="icomoon icon-arrow"></span></a>
+								<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow">{btnTitle}&nbsp;<span className="icomoon icon-arrow"></span></a>
 							</div>
 						)
 					}
@@ -536,7 +536,7 @@ class PricingPackagesModule2 extends React.Component {
 						{title}
 						{btnCta && btnCta.href && btnCta.href.length > 0 &&
 							(
-								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle} <span className="icomoon icon-arrow"></span></a>
+								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle}&nbsp;<span className="icomoon icon-arrow"></span></a>
 							)
 						}
 					</div>
