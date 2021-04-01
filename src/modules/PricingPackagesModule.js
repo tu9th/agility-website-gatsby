@@ -216,7 +216,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 					{btnCta && btnCta.href && btnCta.href.length > 0 &&
 						(
 							<div>
-								<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow">{btnTitle}&nbsp;<span className="icomoon icon-arrow"></span></a>
+								<a href={btnCta.href} target={btnCta.target} className="btn btn-arrow"><span>{btnTitle}</span>&nbsp;<span className="icomoon icon-arrow"></span></a>
 							</div>
 						)
 					}
