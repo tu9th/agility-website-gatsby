@@ -32,7 +32,7 @@ module.exports = {
 		`gatsby-plugin-netlify`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-gatsby-cloud`,
-		`gatsby-plugin-loadable-components-ssr`,
+		// `gatsby-plugin-loadable-components-ssr`,
 		{
 			//the name of the plugin
 			resolve: "@agility/gatsby-source-agilitycms",
