@@ -536,7 +536,7 @@ class PricingPackagesModule2 extends React.Component {
 						{title}
 						{btnCta && btnCta.href && btnCta.href.length > 0 &&
 							(
-								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}>{btnTitle}&nbsp;<span className="icomoon icon-arrow"></span></a>
+								<a href={btnCta.href} target={btnCta.target} className={`d-none btn btn-arrow btn-${classColor[idx % 4]}`}><span>{btnTitle}</span>&nbsp;<span className="icomoon icon-arrow"></span></a>
 							)
 						}
 					</div>
