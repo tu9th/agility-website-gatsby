@@ -50,7 +50,7 @@
   }
   .btn {
     color: $white;
-    padding: 11px 10px !important;
+    padding: 12px 10px !important;
     background-color: $color-4c;
     border-color: $color-4c;
     &::after {
@@ -184,7 +184,7 @@
   background-color: #e9f0f5;
   font-size: rem(12);
   font-weight: 600;
-  letter-spacing: .7px;
+  letter-spacing: .2px !important;
   font-style: italic;
   line-height: 1.75;
   padding: 2px 5px;
