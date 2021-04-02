@@ -28,7 +28,7 @@
   margin-top: 82px;
 }
 .price-head {
-  padding: 39px 40px 35px;
+  padding: 37px 38px 29px;
   color: $color-17;
   overflow: hidden;
   background-color: $white;
@@ -141,7 +141,7 @@
 }
 .description {
   margin-bottom: 23px;
-  margin-top: 2px;
+  margin-top: 22px;
   p {
     font-size: 15px;
     color: $color-4c;
@@ -554,6 +554,9 @@
       padding: 15px 0;
     }
   }
+  .description {
+    margin-top: 9px;
+  }
 }
 @media (min-width: 992px) {
   .table-header {
@@ -750,6 +753,9 @@
       background-color: rgba(233, 240, 245, .5);
       .content-catelogy {
         color: $color-2a !important;
+      }
+      td:not(.pr-sub-title):first-child {
+        color: $color-17;
       }
     }
   }
