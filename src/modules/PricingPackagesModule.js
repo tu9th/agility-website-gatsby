@@ -203,7 +203,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 					<div className="sale-price-cover ps-rv" style={{ height: `${salCostHeight}px` }}>
 						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
 					</div>
-					<span className={`transition-25 ${saleCost ? 'sale-price' : ''}`}>${saleCost ?? value}</span>
+					<span className={`transition-25`}>${saleCost ?? value}</span>
 					{costlabel &&
 						<p>
 							{costlabel}
@@ -344,6 +344,7 @@ class PricingPackagesModule2 extends React.Component {
 			widthSaleText: 'auto'
 		}
 		this.pinHeaderTable = this.pinHeaderTable.bind(this)
+		this.eventScrollFunc = this.eventScrollFunc.bind(this)
 		this.textSaleRef = React.createRef(null)
 
 	}
@@ -427,6 +428,10 @@ class PricingPackagesModule2 extends React.Component {
 			})
 		})
 	}
+	eventScrollFunc(event) {
+		this.pinHeaderTable()
+		this.setheightTable()
+	}
 	componentDidMount() {
 		let oldWidth = window.innerWidth
 		this.pinHeaderTable();
@@ -447,10 +452,8 @@ class PricingPackagesModule2 extends React.Component {
 		this.setState({ widthSaleText: w })
 
 
-		window.addEventListener('scroll', () => {
-			this.pinHeaderTable()
-			this.setheightTable()
-		})
+
+		window.addEventListener('scroll', this.eventScrollFunc)
 		window.addEventListener('resize', () => {
 			if (oldWidth !== window.innerWidth) {
 				oldWidth = window.innerWidth;
@@ -470,7 +473,7 @@ class PricingPackagesModule2 extends React.Component {
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener('scroll', this.pinHeaderTable)
+		window.removeEventListener('scroll', this.eventScrollFunc)
 	}
 
 	render() {
