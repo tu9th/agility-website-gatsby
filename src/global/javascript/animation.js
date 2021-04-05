@@ -2,7 +2,7 @@
 
 import Helper from './Helpers'
 export const animationElementInnerComponent = ($elmComponent) =>  {
-  let $elems = $elmComponent?.classList?.contains('animation') ? [$elmComponent] : $elmComponent.querySelectorAll('.animation')
+  let $elems = $elmComponent?.classList?.contains('animation') ? [$elmComponent] : $elmComponent?.querySelectorAll('.animation')
   let winH = window.innerHeight
   let winW = window.innerWidth
   let offset
@@ -14,7 +14,8 @@ export const animationElementInnerComponent = ($elmComponent) =>  {
   }
   if (winW > 1024) {
     let wintop = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
-      $elems.map($elm => {
+    if ($elems) {
+      [...$elems].map($elm => {
         if ($elm.classList.contains('set-animation') && $elm.classList.contains('anima-fixed')) {
           return true
         }
@@ -34,7 +35,7 @@ export const animationElementInnerComponent = ($elmComponent) =>  {
           } 
         }
       })
-      
+    }
   } else {
       $elmComponent.classList.add('set-animation')
   }
