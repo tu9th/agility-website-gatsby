@@ -25,8 +25,6 @@ export const animationElementInnerComponent = ($elmComponent) =>  {
         } else {
           add = 0
         }
-        console.log('come in anim Func 3', topcoords + add , wintop + winH);
-  
         if (wintop > (topcoords - (winH * offset) + add) && $elm.offsetHeight + topcoords - add - (winH * (1 - offset))  > wintop ) {
           $elm.classList.add('set-animation')
         } else {
