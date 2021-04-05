@@ -407,6 +407,9 @@ input {
 .transition-25 {
   transition: all .25s;
 }
+.font-bold {
+  font-family: $mlBold, sans-serif;
+}
 @include media-breakpoint-up(sm) {
   .main-content {
     padding-top: 105px;

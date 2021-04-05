@@ -194,16 +194,16 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 			{isSaleOn == "true" &&
 				<div className="sale-price-box">SALE</div>
 			}
-			<div className="price-type ps-rv">
+			<div className="price-type ps-rv font-bold">
 				<span>{title}</span>
 				{popular}
 			</div>
 			<div className="box-price">
 				<div className="price-value last-mb-none">
-					<div className="sale-price-cover ps-rv" style={{ height: `${salCostHeight}px` }}>
+					<div className="sale-price-cover ps-rv font-bold" style={{ height: `${salCostHeight}px` }}>
 						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
 					</div>
-					<span className={`transition-25`}>${saleCost ?? value}</span>
+					<span className={`font-bold transition-25`}>${saleCost ?? value}</span>
 					{costlabel &&
 						<p>
 							{costlabel}
