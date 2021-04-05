@@ -456,7 +456,7 @@ class PricingPackagesModule2 extends React.Component {
 
 		setTimeout(() => {
 			animationElementInnerComponent(this.thisElm.current)
-		}, 200)
+		}, 400)
 		window.addEventListener('scroll', this.eventScrollFunc)
 		window.addEventListener('resize', () => {
 			if (oldWidth !== window.innerWidth) {
@@ -469,7 +469,7 @@ class PricingPackagesModule2 extends React.Component {
 		this.pinHeaderTable();
 		setTimeout(() => {
 			animationElementInnerComponent(this.thisElm.current)
-		}, 200)
+		}, 400)
 
 		/* set Width sale Text Month or Year */
 		if (prevProps.textSale !== this.props.textSale || prevProps.textSaleYearly !== this.props.textSaleYearly || prevState.isMonthly !== this.state.isMonthly) {
