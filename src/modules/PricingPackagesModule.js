@@ -4,6 +4,7 @@ import Spacing from './Spacing'
 import { renderHTML } from '../agility/utils'
 import HelperFunc from '../global/javascript/Helpers.js'
 import './PricingPackagesModule.scss'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 const groupByCondition = (list, keyGetter) => {
 	const map = new Map()
 	list.forEach((item) => {
@@ -346,6 +347,7 @@ class PricingPackagesModule2 extends React.Component {
 		this.pinHeaderTable = this.pinHeaderTable.bind(this)
 		this.eventScrollFunc = this.eventScrollFunc.bind(this)
 		this.textSaleRef = React.createRef(null)
+		this.thisElm = React.createRef(null)
 
 	}
 
@@ -431,6 +433,7 @@ class PricingPackagesModule2 extends React.Component {
 	eventScrollFunc(event) {
 		this.pinHeaderTable()
 		this.setheightTable()
+		animationElementInnerComponent(this.thisElm.current)
 	}
 	componentDidMount() {
 		let oldWidth = window.innerWidth
@@ -451,8 +454,9 @@ class PricingPackagesModule2 extends React.Component {
 		const w = textSaleElm ? textSaleElm.offsetWidth : 0
 		this.setState({ widthSaleText: w })
 
-
-
+		setTimeout(() => {
+			animationElementInnerComponent(this.thisElm.current)
+		}, 200)
 		window.addEventListener('scroll', this.eventScrollFunc)
 		window.addEventListener('resize', () => {
 			if (oldWidth !== window.innerWidth) {
@@ -463,6 +467,9 @@ class PricingPackagesModule2 extends React.Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		this.pinHeaderTable();
+		setTimeout(() => {
+			animationElementInnerComponent(this.thisElm.current)
+		}, 200)
 
 		/* set Width sale Text Month or Year */
 		if (prevProps.textSale !== this.props.textSale || prevProps.textSaleYearly !== this.props.textSaleYearly || prevState.isMonthly !== this.state.isMonthly) {
@@ -613,7 +620,7 @@ class PricingPackagesModule2 extends React.Component {
 
 		return (
 			<React.Fragment>
-				<section className={`PricingPackagesModule pricing-package animation anima-fixed ${!this.state.loaded ? 'opacity-0' : ''}`}>
+				<section className={`PricingPackagesModule pricing-package animation anima-fixed anima-inner-component ${!this.state.loaded ? 'opacity-0' : ''}`} ref={ this.thisElm }>
 					<div className="container anima-bottom">
 						<div className="wrap-togger-price d-flex justify-content-center align-items-center">
 							<div className="togger-price">
