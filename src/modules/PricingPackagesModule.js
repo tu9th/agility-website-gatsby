@@ -206,9 +206,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 					</div>
 					<span className={`font-bold transition-25`}>${saleCost ?? value}</span>
 					{costlabel &&
-						<p>
-							{costlabel}
-						</p>
+						<p dangerouslySetInnerHTML={{ __html: costlabel }}></p>
 					}
 				</div>
 				<div>
