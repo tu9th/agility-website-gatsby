@@ -53,6 +53,7 @@
     padding: 12px 10px !important;
     background-color: $color-4c;
     border-color: $color-4c;
+    box-shadow: 1px 0px 1px 0 $white;
     &::after {
       top: 15px !important;
     }
