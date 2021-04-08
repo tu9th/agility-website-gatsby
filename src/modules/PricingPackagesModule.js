@@ -80,6 +80,7 @@ const ModuleWithQuery = props => (
 							href
 							text
 						}
+						pricingPlan
 						yearlyCTAButton {
 							href
 							target
@@ -89,6 +90,7 @@ const ModuleWithQuery = props => (
 						description
 						yearlyCost
 						yearlyCostLabel
+						yearlyPricingPlan
 						yearlyDescription
 						yearlySaleCost
 						displayInManager
@@ -180,7 +182,7 @@ const ModuleWithQuery = props => (
 	/>
 )
 
-const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCtaLabel, value, saleCost, hasPopular, isSaleOn }) => {
+const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, btnCta, btnCtaLabel, value, saleCost, hasPopular, isSaleOn }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span> : ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
@@ -211,8 +213,8 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
 					</div>
 					<span className={`font-bold transition-25`}>${saleCost ?? value}</span>
-					{costlabel &&
-						<p dangerouslySetInnerHTML={{ __html: costlabel }}></p>
+					{pricingPlan &&
+						<p dangerouslySetInnerHTML={{ __html: pricingPlan }}></p>
 					}
 				</div>
 				<div>
@@ -575,6 +577,7 @@ class PricingPackagesModule2 extends React.Component {
 			let saleCost = fieldLabel.saleCost
 			let isSaleOn = fieldLabel.isSaleOn
 			let description = fieldLabel.description
+			let pricingPlan = fieldLabel.pricingPlan
 			if (isSaleOn != "true") saleCost = null
 			if (this.state.isMonthly === false) {
 				let costY = fieldLabel.yearlyCost
@@ -589,6 +592,7 @@ class PricingPackagesModule2 extends React.Component {
 				if (costLabelY !== null) {
 					costLabel = costLabelY
 				}
+				pricingPlan = fieldLabel.yearlyPricingPlan ?? pricingPlan
 				let saleCostY = fieldLabel.yearlySaleCost
 				if (saleCostY !== null) {
 					saleCost = saleCostY
@@ -600,7 +604,7 @@ class PricingPackagesModule2 extends React.Component {
 
 			return (
 				<div className="col-md-6 col-xl-3" key={idx}>
-					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
+					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} pricingPlan={pricingPlan} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
 				</div>
 			)
 		}) : []
