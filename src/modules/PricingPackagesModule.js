@@ -80,6 +80,12 @@ const ModuleWithQuery = props => (
 							href
 							text
 						}
+						yearlyCTAButton {
+							href
+							target
+							text
+						}
+						yearlyCTAButtonLabel
 						description
 						yearlyCost
 						yearlyCostLabel
@@ -534,8 +540,13 @@ class PricingPackagesModule2 extends React.Component {
 			const classColor = ['free', 'standard', 'pro', 'enterprise']
 			const fieldLabel = label.customFields
 			const title = fieldLabel.title
-			const btnCta = fieldLabel.cTAButton
-			const btnCtaLabel = fieldLabel.cTAButtonLabel
+			let btnCta = fieldLabel.cTAButton
+			let btnCtaLabel = fieldLabel.cTAButtonLabel
+			if (this.state.isMonthly === false) {
+				/* CTA Button */
+				btnCta = fieldLabel.yearlyCTAButton ?? btnCta
+				btnCtaLabel = fieldLabel.yearlyCTAButtonLabel ?? btnCtaLabel
+			}
 			const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
 			return (
 				<td key={idx}>
@@ -555,8 +566,8 @@ class PricingPackagesModule2 extends React.Component {
 		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
 			const fieldLabel = label.customFields
-			const btnCtaLabel = fieldLabel.cTAButtonLabel
-			const btnCta = fieldLabel.cTAButton
+			let btnCtaLabel = fieldLabel.cTAButtonLabel
+			let btnCta = fieldLabel.cTAButton
 			let cost = fieldLabel.cost
 			let costLabel = fieldLabel.costLabel
 			const isMostPopular = fieldLabel.isMostPopular
@@ -582,6 +593,9 @@ class PricingPackagesModule2 extends React.Component {
 				if (saleCostY !== null) {
 					saleCost = saleCostY
 				}
+				/* CTA Button */
+				btnCta = fieldLabel.yearlyCTAButton ?? btnCta
+				btnCtaLabel = fieldLabel.yearlyCTAButtonLabel ?? btnCtaLabel
 			}
 
 			return (
