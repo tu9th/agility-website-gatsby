@@ -107,7 +107,7 @@
 }
 .price-value {
   font-size: rem(35);
-  font-weight: bold;
+  // font-weight: $fw-bold;
   line-height: 1.11;
   letter-spacing: 0.5px;
   margin-bottom: 11px;
@@ -135,7 +135,7 @@
     font-size: 14px;
     line-height: 1.57;
     color: $color-17;
-    font-weight: 400;
+    // font-weight: 400;
     margin-top: 7px;
     letter-spacing: 0;
   }
@@ -162,7 +162,7 @@
   line-height: 2.14;
   color: $color-e9;
   top: -15px;
-  font-weight: 400;
+  // font-weight: 400;
   &.strike-through {
 	text-decoration:line-through;
 	color: #ddd
@@ -193,7 +193,8 @@
   top: -3px;
   margin-left: 6px;
   color: $color-58;
-  font-family: $mlSemi;
+  // font-family: $mlSemi;
+  font-weight: $fw-semi-bold;
   .icomoon {
     margin-right: 5px;
     font-size: rem(10);
@@ -223,7 +224,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   position: absolute;
   right: -24px;
   top: 20px;
@@ -239,7 +241,8 @@
   font-size: 14px;
   color: #4c6884;
   position: relative;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   line-height: 1.29;
   .overlay-active {
     background-color: #5800d4;
@@ -259,7 +262,8 @@
 .wrap-togger-price {
   .sale-text {
     font-size: 12px;
-    font-weight: 600;
+    // font-weight: 600;
+    font-weight: $fw-bold;
     line-height: 1.75;
     color: $color-4c;
     margin-left: 11px;
@@ -309,8 +313,9 @@
   td {
     div {
       color: $color-17;
-      font-weight: bold;
-      font-family: $mlBold;
+      // font-weight: bold;
+      // font-family: $mlBold;
+      font-weight: $fw-bold;
       font-size: 15px;
       line-height: 1.67;
       letter-spacing: -0.15px;
@@ -325,8 +330,9 @@
   margin-bottom: 37px;
   position: relative;
   h2 {
-    font-family: $ml;
-    font-weight: 400;
+    // font-family: $ml;
+    // font-weight: 400;
+    font-weight: $fw-regular;
   }
 }
 .trigger-catelogy {
@@ -350,7 +356,8 @@
   }
   h3 {
     color: $color-58;
-    font-family: $mlBold;
+    // font-family: $mlBold;
+    font-weight: $fw-bold;
     margin-bottom: 0;
     position: relative;
     z-index: 1;
@@ -372,7 +379,8 @@
   color: $color-4c;
   font-size: 14px;
   line-height: 1.43;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   padding-bottom: 4px;
   padding-top: 31px;
 }
@@ -423,15 +431,16 @@
     // border-bottom: 1px solid rgba(76, 104, 132, 0.2);
     // padding: 0 10px;
     font-size: rem(13);
-    font-weight: bold;
+    // font-weight: bold;
     line-height: 1.38;
     letter-spacing: -0.13px;
     color: $color-17;
     overflow: hidden;
     position: relative;
-    font-family: $mlSemi;
+    // font-family: $mlSemi;
+    font-weight: $fw-semi-bold;
     &:first-child {
-      font-weight: 400;
+      // font-weight: $fw-regular;
       font-size: rem(16);
       color: $color-2a;
       .content-catelogy {
@@ -643,9 +652,11 @@
       padding: 17px 15px 15px 15px;
       &:first-child {
         padding-left: 12px;
-        font-family: $mlBold;
+        // font-family: $mlBold;
+        font-weight: $fw-bold;
         .content-catelogy {
-          font-family: $ml;
+          // font-family: $ml;
+          font-weight: $fw-regular;
           // margin-left: 4px;
         }
       }
@@ -859,7 +870,8 @@
       &:nth-child(2) {
         width: 144px;
         background-color: $color-e9;
-        font-weight: 600;
+        // font-weight: 600;
+        font-weight: $fw-bold;
         font-size: rem(15);
         text-align: center;
       }

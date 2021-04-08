@@ -1,4 +1,5 @@
 @import "../global/_variables.scss";
+@import "../global/setting";
 
 .event-list {
   margin: $module-margin-spacing;
@@ -69,7 +70,8 @@
 		  font-weight: 600;
 
           margin-bottom: 15px;
-          font-family: $bold;
+          // font-family: $bold;
+          font-weight: $fw-bold;
           color: $titles;
 		}
 

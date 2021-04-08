@@ -2,7 +2,8 @@
 /* mod-framework  */
 .step {
   text-transform: uppercase;
-  font-family: 'Muli-Bold', sans-serif;;
+  // font-family: 'Muli-Bold', sans-serif;;
+  font-weight: $fw-bold;
   font-size: rem(13);
   letter-spacing: .65px;
   line-height: 26px;

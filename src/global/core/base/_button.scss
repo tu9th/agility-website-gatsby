@@ -1,12 +1,13 @@
 .btn {
   margin: 0 15px 15px 0;
   display: inline-block;
-  font-weight: $btn-font-weight;
+  // font-weight: $btn-font-weight;
   text-align: center;
   vertical-align: middle;
   user-select: none;
   border: $btn-border-width solid $border-color;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   position: relative;
   cursor: pointer;
   transition: all .35s;
@@ -98,7 +99,8 @@
 .link-line {
   font-size: rem(16);
   line-height: 1.31;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   position: relative;
   &::after {
     content: '\e906';

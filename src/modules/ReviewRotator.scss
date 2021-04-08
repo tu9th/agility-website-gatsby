@@ -42,7 +42,8 @@
   }
   .show-less {
     display: inline-block;
-    font-family: $mlBold;
+    // font-family: $mlBold;
+    font-weight: $fw-bold;
     position: relative;
     z-index: -1;
     font-size: rem(16);
