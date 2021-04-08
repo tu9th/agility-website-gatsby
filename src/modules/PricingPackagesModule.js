@@ -80,9 +80,17 @@ const ModuleWithQuery = props => (
 							href
 							text
 						}
+						pricingPlan
+						yearlyCTAButton {
+							href
+							target
+							text
+						}
+						yearlyCTAButtonLabel
 						description
 						yearlyCost
 						yearlyCostLabel
+						yearlyPricingPlan
 						yearlyDescription
 						yearlySaleCost
 						displayInManager
@@ -174,7 +182,7 @@ const ModuleWithQuery = props => (
 	/>
 )
 
-const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCtaLabel, value, saleCost, hasPopular, isSaleOn }) => {
+const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, btnCta, btnCtaLabel, value, saleCost, hasPopular, isSaleOn }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span> : ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
@@ -205,8 +213,8 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
 					</div>
 					<span className={`font-bold transition-25`}>${saleCost ?? value}</span>
-					{costlabel &&
-						<p dangerouslySetInnerHTML={{ __html: costlabel }}></p>
+					{pricingPlan &&
+						<p dangerouslySetInnerHTML={{ __html: pricingPlan }}></p>
 					}
 				</div>
 				<div>
@@ -454,7 +462,7 @@ class PricingPackagesModule2 extends React.Component {
 
 		setTimeout(() => {
 			animationElementInnerComponent(this.thisElm.current)
-		}, 400)
+		}, 300)
 		window.addEventListener('scroll', this.eventScrollFunc)
 		window.addEventListener('resize', () => {
 			if (oldWidth !== window.innerWidth) {
@@ -467,7 +475,7 @@ class PricingPackagesModule2 extends React.Component {
 		this.pinHeaderTable();
 		setTimeout(() => {
 			animationElementInnerComponent(this.thisElm.current)
-		}, 400)
+		}, 300)
 
 		/* set Width sale Text Month or Year */
 		if (prevProps.textSale !== this.props.textSale || prevProps.textSaleYearly !== this.props.textSaleYearly || prevState.isMonthly !== this.state.isMonthly) {
@@ -534,8 +542,13 @@ class PricingPackagesModule2 extends React.Component {
 			const classColor = ['free', 'standard', 'pro', 'enterprise']
 			const fieldLabel = label.customFields
 			const title = fieldLabel.title
-			const btnCta = fieldLabel.cTAButton
-			const btnCtaLabel = fieldLabel.cTAButtonLabel
+			let btnCta = fieldLabel.cTAButton
+			let btnCtaLabel = fieldLabel.cTAButtonLabel
+			if (this.state.isMonthly === false) {
+				/* CTA Button */
+				btnCta = fieldLabel.yearlyCTAButton ?? btnCta
+				btnCtaLabel = fieldLabel.yearlyCTAButtonLabel ?? btnCtaLabel
+			}
 			const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
 			return (
 				<td key={idx}>
@@ -555,8 +568,8 @@ class PricingPackagesModule2 extends React.Component {
 		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
 			const fieldLabel = label.customFields
-			const btnCtaLabel = fieldLabel.cTAButtonLabel
-			const btnCta = fieldLabel.cTAButton
+			let btnCtaLabel = fieldLabel.cTAButtonLabel
+			let btnCta = fieldLabel.cTAButton
 			let cost = fieldLabel.cost
 			let costLabel = fieldLabel.costLabel
 			const isMostPopular = fieldLabel.isMostPopular
@@ -564,6 +577,7 @@ class PricingPackagesModule2 extends React.Component {
 			let saleCost = fieldLabel.saleCost
 			let isSaleOn = fieldLabel.isSaleOn
 			let description = fieldLabel.description
+			let pricingPlan = fieldLabel.pricingPlan
 			if (isSaleOn != "true") saleCost = null
 			if (this.state.isMonthly === false) {
 				let costY = fieldLabel.yearlyCost
@@ -578,15 +592,19 @@ class PricingPackagesModule2 extends React.Component {
 				if (costLabelY !== null) {
 					costLabel = costLabelY
 				}
+				pricingPlan = fieldLabel.yearlyPricingPlan ?? pricingPlan
 				let saleCostY = fieldLabel.yearlySaleCost
 				if (saleCostY !== null) {
 					saleCost = saleCostY
 				}
+				/* CTA Button */
+				btnCta = fieldLabel.yearlyCTAButton ?? btnCta
+				btnCtaLabel = fieldLabel.yearlyCTAButtonLabel ?? btnCtaLabel
 			}
 
 			return (
 				<div className="col-md-6 col-xl-3" key={idx}>
-					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
+					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} pricingPlan={pricingPlan} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
 				</div>
 			)
 		}) : []

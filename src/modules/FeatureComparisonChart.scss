@@ -30,9 +30,20 @@
   background-color: rgba(233,240,245,.5);
   padding: 65px 0;
   overflow: hidden;
+  .table-header {
+    width: 100%;
+  }
   .conatiner {
     position: relative;
     z-index: 2;
+  }
+  @media screen and (min-width: 768px) {
+    .container {
+      padding: 0;
+    }
+    .table-header {
+      max-width: 100%;
+    }
   }
 }
 .cta-feature-table {

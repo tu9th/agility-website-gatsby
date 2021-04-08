@@ -77,8 +77,20 @@ exports.createSchemaCustomization = ({ actions }) => {
 			target: String,
 			text:String
 		}
-		type agilityPackageFeaturesCustomFields {
+		type agilityPackageFeaturesCustomFields implements Node {
 			description: String
+		}
+		type agilityPricingPackagesCustomFields implements Node {
+			pricingPlan: String,
+			yearlyPricingPlan: String,
+			yearlyCostLabel: String,
+			costLabel: String,
+			yearlyCTAButton: agilityPricingPackagesCustomFieldsYearlyCTAButton
+		}
+		type agilityPricingPackagesCustomFieldsYearlyCTAButton {
+			href: String,
+			target: String,
+			text:String
 		}
   `
   createTypes(typeDefs)
