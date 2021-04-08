@@ -211,9 +211,9 @@ const HeaderColumn = ({ priceType, description, title, costlabel, btnCta, btnCta
 						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
 					</div>
 					<span className={`font-bold transition-25`}>${saleCost ?? value}</span>
-					{/* {costlabel &&
+					{costlabel &&
 						<p dangerouslySetInnerHTML={{ __html: costlabel }}></p>
-					} */}
+					}
 				</div>
 				<div>
 					<div className="description last-mb-none" dangerouslySetInnerHTML={renderHTML(description)} >
