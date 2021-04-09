@@ -13,14 +13,14 @@
   transition: all .35s;
   box-shadow: 1px 1px 0 0 transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
-  padding-top: 16px;
-  padding-bottom: 13px;
+  padding-top: 17px;
+  padding-bottom: 12px;
   @include hover {
     transform: scale(1.03);
     opacity: .93;
   }
   &:not(.btn-menu) {
-    padding-right: 25px;
+    padding-right: 22px;
     &::after {
       content: '\e906';
       font-family: $icomoon;
@@ -29,7 +29,7 @@
       position: relative;
       display: inline-block;
       font-size: rem(11);
-      margin-left: 5px;
+      margin-left: 7px;
     }
   }
 }

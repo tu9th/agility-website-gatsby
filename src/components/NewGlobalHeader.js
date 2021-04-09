@@ -362,7 +362,7 @@ class NewGlobalHeader extends Component {
 							:
 								''
 							}
-							<div className="col-3 text-right d-lg-none">
+							<div className="col-3 text-right d-lg-none d-flex justify-content-end align-items-center">
 								<Hamburger showMenuMobile={ () => this.showMenuMobile() } />
 							</div>
 						</div>
