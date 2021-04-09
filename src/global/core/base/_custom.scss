@@ -222,7 +222,7 @@ form  button[type='submit'] {
       content: '\e906';
       font-family: 'icomoon';
       position: absolute;
-      top: 5px;
+      top: 2px;
       right: -16px;
       font-size: 11px;
       font-weight: normal;
@@ -356,7 +356,8 @@ input {
     padding: 0 7px;
     border: 2px solid transparent;
     color: $color-4c;
-    font-family: $mlBold;
+    // font-family: $mlBold;
+    font-weight: $fw-bold;
     position: relative;
     cursor: pointer;
     transition: all .35s;
@@ -408,7 +409,8 @@ input {
   transition: all .25s;
 }
 .font-bold {
-  font-family: $mlBold, sans-serif;
+  // font-family: $mlBold, sans-serif;
+  font-weight: $fw-bold;
 }
 @include media-breakpoint-up(sm) {
   .main-content {

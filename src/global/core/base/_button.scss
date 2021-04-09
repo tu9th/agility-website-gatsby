@@ -1,16 +1,20 @@
 .btn {
   margin: 0 15px 15px 0;
   display: inline-block;
-  font-weight: $btn-font-weight;
+  // font-weight: $btn-font-weight;
   text-align: center;
   vertical-align: middle;
   user-select: none;
   border: $btn-border-width solid $border-color;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   position: relative;
   cursor: pointer;
   transition: all .35s;
+  box-shadow: 1px 1px 0 0 transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+  padding-top: 16px;
+  padding-bottom: 13px;
   @include hover {
     transform: scale(1.03);
     opacity: .93;
@@ -20,14 +24,15 @@
     &::after {
       content: '\e906';
       font-family: $icomoon;
-      @include position(absolute,$top: 20px,$right: 21px);
+      font-weight: $fw-regular;
+      @include position(absolute,$top: 19px,$right: 21px);
       font-size: rem(11);
     }
   }
 }
 .header .btn-menu {
   margin: 0;
-  padding: 9px 19px;
+  padding: 10px 19px 8px;
 }
 .btn-primary {
   color: $white;
@@ -98,14 +103,16 @@
 .link-line {
   font-size: rem(16);
   line-height: 1.31;
-  font-family: $mlBold;
+  // font-family: $mlBold;
+  font-weight: $fw-bold;
   position: relative;
   &::after {
     content: '\e906';
     font-family: $icomoon;
+    font-weight: $fw-regular;
     position: absolute;
     font-size: rem(11);
-    top: 6px;
+    top: 4px;
     margin-left: 6px;
   }
   &::before {

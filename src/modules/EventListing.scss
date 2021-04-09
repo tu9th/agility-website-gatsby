@@ -1,4 +1,5 @@
 @import "../global/_variables.scss";
+@import "../global/setting";
 
 .event-list {
   margin: $module-margin-spacing;
@@ -69,7 +70,8 @@
 		  font-weight: 600;
 
           margin-bottom: 15px;
-          font-family: $bold;
+          // font-family: $bold;
+          font-weight: $fw-bold;
           color: $titles;
 		}
 
@@ -77,7 +79,7 @@
 			margin-bottom: 15px;
 			border-radius: 4px;
 			span {
-			  padding: 8px 10px 8px 30px;
+			  padding: 13px 10px 8px 30px;
 			  font-weight: 600;
 			  font-size: 14px;
 			  color: $greyColor;

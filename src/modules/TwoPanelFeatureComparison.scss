@@ -27,7 +27,8 @@
     text-transform: uppercase;
     color: inherit;
     font-size: inherit;
-    font-family: 'Muli-Bold',sans-serif;
+    // font-family: 'Muli-Bold',sans-serif;
+    font-weight: $fw-bold;
     line-height: 1.86;
     letter-spacing: 0.66px;
   }
