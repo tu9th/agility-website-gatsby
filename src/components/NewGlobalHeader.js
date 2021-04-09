@@ -101,6 +101,13 @@ class NewGlobalHeader extends Component {
 		this.clickAwebinar()
 		window.addEventListener('scroll', this.stickyHeader);
 		window.addEventListener('resize', this.setPaddingBody);
+
+		if (navigator.platform.indexOf('Mac') > -1) {
+			document.querySelector('html').classList.add('mac-os')
+		}
+		if (navigator.platform.indexOf('Win') > -1) {
+			document.querySelector('html').classList.add('window-os')
+		}
 	}
 	setPaddingBody () {
 		setTimeout (() => {
