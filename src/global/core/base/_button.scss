@@ -25,8 +25,11 @@
       content: '\e906';
       font-family: $icomoon;
       font-weight: $fw-regular;
-      @include position(absolute,$top: 19px,$right: 21px);
+      // @include position(absolute,$top: 19px,$right: 21px);
+      position: relative;
+      display: inline-block;
       font-size: rem(11);
+      left: 5px;
     }
   }
 }
@@ -110,9 +113,10 @@
     content: '\e906';
     font-family: $icomoon;
     font-weight: $fw-regular;
-    position: absolute;
+    position: relative;
+    display: inline-block;
     font-size: rem(11);
-    top: 4px;
+    // top: 4px;
     margin-left: 6px;
   }
   &::before {
