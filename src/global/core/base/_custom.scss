@@ -211,7 +211,9 @@ img {
 
 form  button[type='submit'] {
   transition: all .35s;
-  padding-right: 35px !important;
+  &.btn {
+    padding-right: 35px !important;
+  }
   &::after {
     display: none !important;
     content: none;
