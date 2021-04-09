@@ -13,8 +13,8 @@
   transition: all .35s;
   box-shadow: 1px 1px 0 0 transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
-  padding-top: 17px;
-  padding-bottom: 12px;
+  padding-top: 15px;
+  padding-bottom: 14px;
   @include hover {
     transform: scale(1.03);
     opacity: .93;
