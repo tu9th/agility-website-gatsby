@@ -150,7 +150,7 @@
     &::after,
     &::before {
       content: '';
-      @include position(absolute,$top: 7px,$left: 0);
+      @include position(absolute,$top: 4px,$left: 0);
       @include sizeEx(14px);
       background-size: contain;
     }

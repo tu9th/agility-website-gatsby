@@ -24,7 +24,8 @@ p.intro {
   margin: 0 auto 30px;
   font-size: 20px;
   line-height: 1.6;
-  font-family: "Muli-SemiBold", sans-serif;
+  // font-family: "Muli-SemiBold", sans-serif;
+  font-weight: $fw-semi-bold;
   color: #484b4d;
   text-align: center;
 }

@@ -26,7 +26,7 @@
   &::after {
     content: "\e90e";
     font-family: $icomoon;
-    @include position(absolute,$top: 4px,$left: 0);
+    @include position(absolute,$top: 2px,$left: 0);
     font-size: rem(11);
   }
 }

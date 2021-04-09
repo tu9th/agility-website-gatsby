@@ -74,7 +74,7 @@
     color: #2a3846;
     &::after {
       content: '';
-      @include position(absolute,$top: 17px,$left: 16px);
+      @include position(absolute,$top: 14px,$left: 16px);
       @include sizeEx(14px);
       background-size: contain;
       background-image: url('/images/check-purple.svg')

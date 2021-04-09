@@ -20,7 +20,7 @@
     opacity: .93;
   }
   &:not(.btn-menu) {
-    padding-right: 35px;
+    padding-right: 25px;
     &::after {
       content: '\e906';
       font-family: $icomoon;
@@ -29,7 +29,7 @@
       position: relative;
       display: inline-block;
       font-size: rem(11);
-      left: 5px;
+      margin-left: 5px;
     }
   }
 }
