@@ -24,6 +24,7 @@
     &::after {
       content: '\e906';
       font-family: $icomoon;
+      font-weight: $fw-regular;
       @include position(absolute,$top: 19px,$right: 21px);
       font-size: rem(11);
     }
@@ -108,9 +109,10 @@
   &::after {
     content: '\e906';
     font-family: $icomoon;
+    font-weight: $fw-regular;
     position: absolute;
     font-size: rem(11);
-    top: 6px;
+    top: 4px;
     margin-left: 6px;
   }
   &::before {
