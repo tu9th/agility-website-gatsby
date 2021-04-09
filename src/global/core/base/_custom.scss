@@ -212,7 +212,8 @@ img {
 form  button[type='submit'] {
   transition: all .35s;
   &::after {
-    display: none;
+    display: none !important;
+    content: none;
   }
   span {
     margin-bottom: 0;
