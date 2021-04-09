@@ -55,7 +55,7 @@
   th {
     background-color: $color-4c;
     color: $white;
-    padding: 7px 10px;
+    padding: 8px 10px 6px;
     height: 100px;
     &:first-child {
       background-color: $color-75;
@@ -70,7 +70,7 @@
   td {
     text-align: center;
     line-height: 1;
-    padding: 17px 10px;
+    padding: 17px 10px 15px;
     // font-family: $mlBold;
     font-weight: $fw-bold;
     &:first-child {
@@ -83,7 +83,7 @@
       width: 30%;
       &:first-child {
         width: 40%;
-        padding: 10px 25px;
+        padding: 10px 25px 8px;
       }
   }
   tr {
@@ -172,7 +172,7 @@
 }
 .box-select {
   margin-top: 15px;
-  padding: 8px 30px 8px 10px;
+  padding: 9px 30px 7px 10px;
   border-radius: 2px;
   background-color: rgba(42, 56, 70, .45);
   cursor: pointer;
