@@ -12,7 +12,7 @@
   text-align: center;
   display: inline-block;
   margin-bottom: 25px;
-  padding: 2px 0 0;
+  padding: 2px 0;
   color: #fff;
   background-color: #6d06ff;
 }
@@ -20,6 +20,7 @@
 .window-os {
   .step {
     padding-top: 4px;
+    padding-bottom: 0;
   }
 }
 .bg-right-step {
