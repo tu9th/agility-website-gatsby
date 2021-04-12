@@ -113,6 +113,12 @@
     transition: height .3s;
   }
 }
+
+/* Fix slider has Image render gatsby */
+.gatsby-image-wrapper img[aria-hidden="true"] {
+  position: absolute !important;
+}
+
 @media (min-width: 375px){
   .list-logo-feature .slick-slide {
     min-width: 110px;
