@@ -73,7 +73,6 @@ const ModuleWithQuery = props => (
 						saleCost
 						costLabel
 						isMostPopular
-						isSaleOn
 						title
 						cTAButton {
 							target
@@ -116,6 +115,7 @@ const ModuleWithQuery = props => (
 
 		`}
 		render={queryData => {
+			// console.log('props aaa', props, queryData);
 			const pricingPackages = props.item.customFields.pricingPackages.referencename
 			const listPricingPackages = queryData.allAgilityPricingPackages.nodes
 				.filter(obj => { return obj.properties.referenceName === pricingPackages })
@@ -135,7 +135,7 @@ const ModuleWithQuery = props => (
 			})
 
 			const packageFeatureLabels = props.item.customFields.packageFeatureLabels.referencename
-			const listAllPackageFeature = queryData.allAgilityPackageFeatures.nodes
+			// const listAllPackageFeature = queryData.allAgilityPackageFeatures.nodes
 			const listPackageFeaturePrimary = queryData.allAgilityPackageFeatures.nodes.filter(obj => {
 				return obj.properties.referenceName === packageFeatureLabels
 					&& obj.customFields.isPrimary !== undefined
@@ -182,7 +182,7 @@ const ModuleWithQuery = props => (
 	/>
 )
 
-const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, btnCta, btnCtaLabel, value, saleCost, hasPopular, isSaleOn }) => {
+const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, btnCta, btnCtaLabel, value, saleCost, hasPopular }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span> : ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
@@ -200,7 +200,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, b
 	}, [saleCost])
 	return (
 		<div className={'price-head ps-rv type-' + classColor[Number(priceType) % 4]}>
-			{isSaleOn == "true" &&
+			{saleCost &&
 				<div className="sale-price-box">SALE</div>
 			}
 			<div className="price-type ps-rv font-bold">
@@ -315,32 +315,33 @@ const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackage
 	})
 }
 
-const filterAllowColumn = (listFilterPrimary, listFilterMore, listPackageFeatureValues, listPricingPackages) => {
-	return listPricingPackages.map(pricing => {
-		const pricingObj = Object.assign({}, pricing)
-		const itemID = pricingObj.itemID
-		const listPrimary = listFilterPrimary.map(fil => {
-			const filObj = Object.assign({}, fil)
-			filObj.featureVal = listPackageFeatureValues.find(fe => {
-				return fe.customFields.packageFeature?.contentid === filObj.itemID && fe.customFields.pricingPackage.contentid === itemID
-			})
-			return filObj
-		})
-		const listMore = listFilterMore.map(fil => {
-			const filObj = Object.assign({}, fil)
-			filObj.featureVal = listPackageFeatureValues.find(fe => {
-				return fe.customFields.packageFeature?.contentid === filObj.itemID && fe.customFields.pricingPackage.contentid === itemID
-			})
-			return filObj
-		})
-		pricingObj.listPrimary = listPrimary
-		pricingObj.listMore = listMore
-		return pricingObj
-	})
-}
+// const filterAllowColumn = (listFilterPrimary, listFilterMore, listPackageFeatureValues, listPricingPackages) => {
+// 	return listPricingPackages.map(pricing => {
+// 		const pricingObj = Object.assign({}, pricing)
+// 		const itemID = pricingObj.itemID
+// 		const listPrimary = listFilterPrimary.map(fil => {
+// 			const filObj = Object.assign({}, fil)
+// 			filObj.featureVal = listPackageFeatureValues.find(fe => {
+// 				return fe.customFields.packageFeature?.contentid === filObj.itemID && fe.customFields.pricingPackage.contentid === itemID
+// 			})
+// 			return filObj
+// 		})
+// 		const listMore = listFilterMore.map(fil => {
+// 			const filObj = Object.assign({}, fil)
+// 			filObj.featureVal = listPackageFeatureValues.find(fe => {
+// 				return fe.customFields.packageFeature?.contentid === filObj.itemID && fe.customFields.pricingPackage.contentid === itemID
+// 			})
+// 			return filObj
+// 		})
+// 		pricingObj.listPrimary = listPrimary
+// 		pricingObj.listMore = listMore
+// 		return pricingObj
+// 	})
+// }
 
 class PricingPackagesModule2 extends React.Component {
 	constructor(props) {
+		// console.log(' props.loadsByDefault',  props.item.customFields.loadsByDefault);
 		super(props);
 		let isMonthly = props.item.customFields.loadsByDefault === 'Monthly' ? true : false
 		this.state = {
@@ -449,12 +450,12 @@ class PricingPackagesModule2 extends React.Component {
 		this.toggerTable()
 		this.setState({ loaded: true });
 		// this.setState({ isMonthly: true })
-		const interCount = 0;
-		const inter = setInterval(() => {
-			if (interCount > 9) {
-				clearInterval(inter);
-			}
-		}, 200)
+		// const interCount = 0;
+		// const inter = setInterval(() => {
+		// 	if (interCount > 9) {
+		// 		clearInterval(inter);
+		// 	}
+		// }, 200)
 
 		/* set Width sale Text */
 		const textSaleElm = this.textSaleRef.current.querySelector('span')
@@ -493,25 +494,27 @@ class PricingPackagesModule2 extends React.Component {
 	render() {
 		const dataQuery = this.props.dataQuery
 		const fields = this.props.item.customFields
-		const btnShowMore = fields.showmoretext
-		const btnShowLess = fields.showlesstext
-		const primaryFeaturesTitle = fields.primaryFeaturesTitle
-		const secondaryFeaturesTitle = fields.secondaryFeaturesTitle
+		// const btnShowMore = fields.showmoretext
+		// const btnShowLess = fields.showlesstext
+		// const primaryFeaturesTitle = fields.primaryFeaturesTitle
+		// const secondaryFeaturesTitle = fields.secondaryFeaturesTitle
 		const textSale = fields?.saleOnText
 		const textSaleYearly = fields?.saleOnTextYearly
 		const title = fields?.comparePackagesTitle
 		const headerList = dataQuery.listPricingPackages
 		const category = dataQuery.listPricingCategories
-		const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
-			return (
-				<RowItem props={row} maxCol={headerList.length} key={idx} />
-			)
-		})
+		// const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
+		// 	return (
+		// 		<RowItem props={row} maxCol={headerList.length} key={idx} />
+		// 	)
+		// })
 
 		const listCategory = dataQuery.listPricingByCategory.map((item, index) => {
+			// console.log('listFeature', item.listPackageFeature);
 			const category = item.category.categoryName
 			const listFeature = item.listPackageFeature
 			const rowListHidden = filterAllowRow(listFeature, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
+				// console.log('rowrowrow', row);
 				return (
 					<RowItem props={row} maxCol={headerList.length} key={idx} />
 				)
@@ -534,11 +537,11 @@ class PricingPackagesModule2 extends React.Component {
 				</div>
 			)
 		})
-		const rowListHidden = filterAllowRow(dataQuery.listPackageFeatureMore, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
-			return (
-				<RowItem props={row} maxCol={headerList.length} key={idx} />
-			)
-		})
+		// const rowListHidden = filterAllowRow(dataQuery.listPackageFeatureMore, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
+		// 	return (
+		// 		<RowItem props={row} maxCol={headerList.length} key={idx} />
+		// 	)
+		// })
 		const ShowTilePin = headerList.length ? headerList.map((label, idx) => {
 			const classColor = ['free', 'standard', 'pro', 'enterprise']
 			const fieldLabel = label.customFields
@@ -569,6 +572,7 @@ class PricingPackagesModule2 extends React.Component {
 		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
 			const fieldLabel = label.customFields
+			// console.log('fffff', fieldLabel);
 			let btnCtaLabel = fieldLabel.cTAButtonLabel
 			let btnCta = fieldLabel.cTAButton
 			let cost = fieldLabel.cost
@@ -576,10 +580,8 @@ class PricingPackagesModule2 extends React.Component {
 			const isMostPopular = fieldLabel.isMostPopular
 			const title = fieldLabel.title
 			let saleCost = fieldLabel.saleCost
-			let isSaleOn = fieldLabel.isSaleOn
 			let description = fieldLabel.description
 			let pricingPlan = fieldLabel.pricingPlan
-			if (isSaleOn != "true") saleCost = null
 			if (this.state.isMonthly === false) {
 				let costY = fieldLabel.yearlyCost
 				if (costY !== null) {
@@ -605,7 +607,7 @@ class PricingPackagesModule2 extends React.Component {
 
 			return (
 				<div className="col-md-6 col-xl-3" key={idx}>
-					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} pricingPlan={pricingPlan} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} isSaleOn={isSaleOn} />
+					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} pricingPlan={pricingPlan} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} />
 				</div>
 			)
 		}) : []
