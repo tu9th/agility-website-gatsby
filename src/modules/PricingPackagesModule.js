@@ -210,9 +210,9 @@ const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, b
 			<div className="box-price">
 				<div className="price-value last-mb-none">
 					<div className="sale-price-cover ps-rv font-bold" style={{ height: `${salCostHeight}px` }}>
-						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>${value}</span>
+						<span className={`sale-override ${saleCost ? '' : 'opacity-0'}`} ref={saleCostRef}>{value}</span>
 					</div>
-					<span className={`font-bold transition-25`}>${saleCost ?? value}</span>
+					<span className={`font-bold transition-25`}>{saleCost ?? value}</span>
 					{pricingPlan &&
 						<p dangerouslySetInnerHTML={{ __html: pricingPlan }}></p>
 					}
@@ -342,12 +342,13 @@ const filterAllowColumn = (listFilterPrimary, listFilterMore, listPackageFeature
 class PricingPackagesModule2 extends React.Component {
 	constructor(props) {
 		super(props);
+		let isMonthly = props.item.customFields.loadsByDefault === 'Monthly' ? true : false
 		this.state = {
 			loaded: false,
 			showMore: false,
 			isMobile: false,
 			isPin: false,
-			isMonthly: true,
+			isMonthly: isMonthly,
 			widthSaleText: 'auto'
 		}
 		this.pinHeaderTable = this.pinHeaderTable.bind(this)
@@ -447,7 +448,7 @@ class PricingPackagesModule2 extends React.Component {
 		this.setheightTable()
 		this.toggerTable()
 		this.setState({ loaded: true });
-		this.setState({ isMonthly: true })
+		// this.setState({ isMonthly: true })
 		const interCount = 0;
 		const inter = setInterval(() => {
 			if (interCount > 9) {
