@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { graphql, StaticQuery } from 'gatsby'
 import Spacing from './Spacing'
 import { renderHTML } from '../agility/utils'
-import HelperFunc from '../global/javascript/Helpers.js'
+// import HelperFunc from '../global/javascript/Helpers.js'
 import './PricingPackagesModule.scss'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 const groupByCondition = (list, keyGetter) => {
@@ -71,7 +71,6 @@ const ModuleWithQuery = props => (
 						cTAButtonLabel
 						cost
 						saleCost
-						costLabel
 						isMostPopular
 						title
 						cTAButton {
@@ -88,7 +87,6 @@ const ModuleWithQuery = props => (
 						yearlyCTAButtonLabel
 						description
 						yearlyCost
-						yearlyCostLabel
 						yearlyPricingPlan
 						yearlyDescription
 						yearlySaleCost
@@ -115,19 +113,11 @@ const ModuleWithQuery = props => (
 
 		`}
 		render={queryData => {
-			// console.log('props aaa', props, queryData);
 			const pricingPackages = props.item.customFields.pricingPackages.referencename
 			const listPricingPackages = queryData.allAgilityPricingPackages.nodes
 				.filter(obj => { return obj.properties.referenceName === pricingPackages })
 				.sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 
-			// for(let i = 0; i < listPricingPackages.length - 1; i++) {
-			// 	if (listPricingPackages[i].properties.itemOrder > listPricingPackages[i + 1].properties.itemOrder) {
-			// 		const tam = listPricingPackages[i]
-			// 		listPricingPackages[i] = listPricingPackages[i + 1]
-			// 		listPricingPackages[i + 1] = tam
-			// 	}
-			// }
 			const listPricingCategories = queryData.allAgilityPricingCategories.nodes
 			const packageFeatureValues = props.item.customFields.packageFeatureValues.referencename
 			const listPackageFeatureValues = queryData.allAgilityPackageFeatureValues.nodes.filter(obj => {
@@ -182,7 +172,7 @@ const ModuleWithQuery = props => (
 	/>
 )
 
-const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, btnCta, btnCtaLabel, value, saleCost, hasPopular }) => {
+const HeaderColumn = ({ priceType, description, title, pricingPlan, btnCta, btnCtaLabel, value, saleCost, hasPopular }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const popular = hasPopular && hasPopular === 'true' ? <span className={'most-popular'}><span className="icomoon icon-Star"></span>Most popular</span> : ''
 	const btnTitle = btnCta && btnCta.text && btnCta.text.length > 0 ? btnCta.text : btnCtaLabel
@@ -234,7 +224,7 @@ const HeaderColumn = ({ priceType, description, title, costlabel, pricingPlan, b
 }
 
 
-const RowItem = ({ props, maxCol }) => {
+const RowItem = ({ props }) => {
 	const classColor = ['free', 'standard', 'pro', 'enterprise']
 	const rowFields = props.customFields
 	const title = rowFields.title
@@ -268,16 +258,11 @@ const RowItem = ({ props, maxCol }) => {
 			<tr className="tr-show-mb">
 				{title &&
 					<td colSpan="5" className="pr-sub-title" dangerouslySetInnerHTML={{ __html: title }}></td>
-					// <td colSpan="5" className="pr-sub-title">
-					// 	{title}
-					// </td>
 				}
 			</tr>
 			<tr>
 				{title &&
-					// <td dangerouslySetInnerHTML={{__html: title}}></td>
 					<td>
-						{/* {title} */}
 						<span dangerouslySetInnerHTML={{ __html: title }}></span>
 						{description &&
 							<div className="content-catelogy last-mb-none" dangerouslySetInnerHTML={{ __html: description }}></div>
@@ -315,33 +300,8 @@ const filterAllowRow = (listFilter, listPackageFeatureValues, listPricingPackage
 	})
 }
 
-// const filterAllowColumn = (listFilterPrimary, listFilterMore, listPackageFeatureValues, listPricingPackages) => {
-// 	return listPricingPackages.map(pricing => {
-// 		const pricingObj = Object.assign({}, pricing)
-// 		const itemID = pricingObj.itemID
-// 		const listPrimary = listFilterPrimary.map(fil => {
-// 			const filObj = Object.assign({}, fil)
-// 			filObj.featureVal = listPackageFeatureValues.find(fe => {
-// 				return fe.customFields.packageFeature?.contentid === filObj.itemID && fe.customFields.pricingPackage.contentid === itemID
-// 			})
-// 			return filObj
-// 		})
-// 		const listMore = listFilterMore.map(fil => {
-// 			const filObj = Object.assign({}, fil)
-// 			filObj.featureVal = listPackageFeatureValues.find(fe => {
-// 				return fe.customFields.packageFeature?.contentid === filObj.itemID && fe.customFields.pricingPackage.contentid === itemID
-// 			})
-// 			return filObj
-// 		})
-// 		pricingObj.listPrimary = listPrimary
-// 		pricingObj.listMore = listMore
-// 		return pricingObj
-// 	})
-// }
-
 class PricingPackagesModule2 extends React.Component {
 	constructor(props) {
-		// console.log(' props.loadsByDefault',  props.item.customFields.loadsByDefault);
 		super(props);
 		let isMonthly = props.item.customFields.loadsByDefault === 'Monthly' ? true : false
 		this.state = {
@@ -449,13 +409,6 @@ class PricingPackagesModule2 extends React.Component {
 		this.setheightTable()
 		this.toggerTable()
 		this.setState({ loaded: true });
-		// this.setState({ isMonthly: true })
-		// const interCount = 0;
-		// const inter = setInterval(() => {
-		// 	if (interCount > 9) {
-		// 		clearInterval(inter);
-		// 	}
-		// }, 200)
 
 		/* set Width sale Text */
 		const textSaleElm = this.textSaleRef.current.querySelector('span')
@@ -494,29 +447,18 @@ class PricingPackagesModule2 extends React.Component {
 	render() {
 		const dataQuery = this.props.dataQuery
 		const fields = this.props.item.customFields
-		// const btnShowMore = fields.showmoretext
-		// const btnShowLess = fields.showlesstext
-		// const primaryFeaturesTitle = fields.primaryFeaturesTitle
-		// const secondaryFeaturesTitle = fields.secondaryFeaturesTitle
 		const textSale = fields?.saleOnText
 		const textSaleYearly = fields?.saleOnTextYearly
 		const title = fields?.comparePackagesTitle
 		const headerList = dataQuery.listPricingPackages
 		const category = dataQuery.listPricingCategories
-		// const rowListShow = filterAllowRow(dataQuery.listPackageFeaturePrimary, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
-		// 	return (
-		// 		<RowItem props={row} maxCol={headerList.length} key={idx} />
-		// 	)
-		// })
 
 		const listCategory = dataQuery.listPricingByCategory.map((item, index) => {
-			// console.log('listFeature', item.listPackageFeature);
 			const category = item.category.categoryName
 			const listFeature = item.listPackageFeature
 			const rowListHidden = filterAllowRow(listFeature, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
-				// console.log('rowrowrow', row);
 				return (
-					<RowItem props={row} maxCol={headerList.length} key={idx} />
+					<RowItem props={row} key={idx} />
 				)
 			})
 			return (
@@ -537,11 +479,7 @@ class PricingPackagesModule2 extends React.Component {
 				</div>
 			)
 		})
-		// const rowListHidden = filterAllowRow(dataQuery.listPackageFeatureMore, dataQuery.listPackageFeatureValues, headerList).map((row, idx) => {
-		// 	return (
-		// 		<RowItem props={row} maxCol={headerList.length} key={idx} />
-		// 	)
-		// })
+
 		const ShowTilePin = headerList.length ? headerList.map((label, idx) => {
 			const classColor = ['free', 'standard', 'pro', 'enterprise']
 			const fieldLabel = label.customFields
@@ -557,7 +495,6 @@ class PricingPackagesModule2 extends React.Component {
 			return (
 				<td key={idx}>
 					<div>
-						{/* {title === 'Developer' ? 'Free' : title} */}
 						{title}
 						{btnCta && btnCta.href && btnCta.href.length > 0 &&
 							(
@@ -572,11 +509,9 @@ class PricingPackagesModule2 extends React.Component {
 		/* List Header Column */
 		const listHeaderColumn = headerList.length ? headerList.map((label, idx) => {
 			const fieldLabel = label.customFields
-			// console.log('fffff', fieldLabel);
 			let btnCtaLabel = fieldLabel.cTAButtonLabel
 			let btnCta = fieldLabel.cTAButton
 			let cost = fieldLabel.cost
-			let costLabel = fieldLabel.costLabel
 			const isMostPopular = fieldLabel.isMostPopular
 			const title = fieldLabel.title
 			let saleCost = fieldLabel.saleCost
@@ -591,10 +526,6 @@ class PricingPackagesModule2 extends React.Component {
 				if (descriptionY !== null) {
 					description = descriptionY
 				}
-				let costLabelY = fieldLabel.yearlyCostLabel
-				if (costLabelY !== null) {
-					costLabel = costLabelY
-				}
 				pricingPlan = fieldLabel.yearlyPricingPlan ?? pricingPlan
 				let saleCostY = fieldLabel.yearlySaleCost
 				if (saleCostY !== null) {
@@ -607,7 +538,7 @@ class PricingPackagesModule2 extends React.Component {
 
 			return (
 				<div className="col-md-6 col-xl-3" key={idx}>
-					<HeaderColumn priceType={idx} description={description} title={title} costlabel={costLabel} pricingPlan={pricingPlan} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} />
+					<HeaderColumn priceType={idx} description={description} title={title} pricingPlan={pricingPlan} btnCta={btnCta} btnCtaLabel={btnCtaLabel} value={cost} saleCost={saleCost} hasPopular={isMostPopular} />
 				</div>
 			)
 		}) : []
