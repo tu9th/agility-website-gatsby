@@ -10,6 +10,7 @@ import { getLeadSourceDetailForForm } from '../../utils/lead-utils.js'
 const ContactUs = ({ item }) => {
 
 	item = item.customFields;
+	console.log('item.customFields', item);
 
 
 	// var countryOptions = Countries.map(country => {
@@ -69,21 +70,22 @@ const ContactUs = ({ item }) => {
 			redirectURL={item.redirectURL}
 			postURL={item.submissionPOSTURL}
 			submissionCopy={item.submissionCopy}
+			submitButtonLabel={ item.submitButtonLabel }
 		>
-			<FormField id="firstname" label="First Name">
-				<input id="firstname" className="changed" type="text" placeholder="First Name" required />
+			<FormField id="firstname" label={ item.firstNameLabel }>
+				<input id="firstname" className="changed" type="text" placeholder={ item.firstNameLabel } required />
 			</FormField>
-			<FormField id="lastname" label="Last Name">
-				<input id="lastname" className="changed" type="text" placeholder="Last Name" required />
+			<FormField id="lastname" label={ item.lastNameLabel }>
+				<input id="lastname" className="changed" type="text" placeholder={ item.lastNameLabel } required />
 			</FormField>
-			<FormField id="company" label="Company">
-				<input id="company" className="changed" type="text" placeholder="Company" required />
+			<FormField id="company" label={ item.companyLabel }>
+				<input id="company" className="changed" type="text" placeholder={ item.companyLabel } required />
 			</FormField>
-			<FormField id="email" label="Email">
-				<input id="email" className="changed" type="email" placeholder="Email" required />
+			<FormField id="email" label={ item.emailLabel }>
+				<input id="email" className="changed" type="email" placeholder={ item.emailLabel } required />
 			</FormField>
-			<FormField id="phonenumber" label="Phone">
-				<input id="phonenumber" className="changed" type="tel" placeholder="Phone" minLength="9" maxLength="20" message="Please enter your phone number." required />
+			<FormField id="phonenumber" label={ item.phoneLabel }>
+				<input id="phonenumber" className="changed" type="tel" placeholder={ item.phoneLabel } minLength="9" maxLength="20" message="Please enter your phone number." required />
 			</FormField>
 
 			{/* <FormField id="role" label="Role">
