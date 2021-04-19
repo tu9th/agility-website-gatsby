@@ -10,7 +10,11 @@ import { getLeadSourceDetailForForm } from '../../utils/lead-utils.js'
 const ContactUs = ({ item }) => {
 
 	item = item.customFields;
-	console.log('item.customFields', item);
+	const firstNameLabel = item.firstNameLabel ?? 'First Name'
+	const lastNameLabel = item.lastNameLabel ?? 'Last Name'
+	const emailLabel = item.emailLabel ?? 'Email'
+	const phoneLabel = item.phoneLabel ?? 'Phone'
+	const companyLabel = item.companyLabel ?? 'Company'
 
 
 	// var countryOptions = Countries.map(country => {
@@ -72,20 +76,20 @@ const ContactUs = ({ item }) => {
 			submissionCopy={item.submissionCopy}
 			submitButtonLabel={ item.submitButtonLabel }
 		>
-			<FormField id="firstname" label={ item.firstNameLabel }>
-				<input id="firstname" className="changed" type="text" placeholder={ item.firstNameLabel } required />
+			<FormField id="firstname" label={ firstNameLabel }>
+				<input id="firstname" className="changed" type="text" placeholder={ firstNameLabel } required />
 			</FormField>
-			<FormField id="lastname" label={ item.lastNameLabel }>
-				<input id="lastname" className="changed" type="text" placeholder={ item.lastNameLabel } required />
+			<FormField id="lastname" label={ lastNameLabel }>
+				<input id="lastname" className="changed" type="text" placeholder={ lastNameLabel } required />
 			</FormField>
-			<FormField id="company" label={ item.companyLabel }>
-				<input id="company" className="changed" type="text" placeholder={ item.companyLabel } required />
+			<FormField id="company" label={ companyLabel }>
+				<input id="company" className="changed" type="text" placeholder={ companyLabel } required />
 			</FormField>
-			<FormField id="email" label={ item.emailLabel }>
-				<input id="email" className="changed" type="email" placeholder={ item.emailLabel } required />
+			<FormField id="email" label={ emailLabel }>
+				<input id="email" className="changed" type="email" placeholder={ emailLabel } required />
 			</FormField>
-			<FormField id="phonenumber" label={ item.phoneLabel }>
-				<input id="phonenumber" className="changed" type="tel" placeholder={ item.phoneLabel } minLength="9" maxLength="20" message="Please enter your phone number." required />
+			<FormField id="phonenumber" label={ phoneLabel }>
+				<input id="phonenumber" className="changed" type="tel" placeholder={ phoneLabel } minLength="9" maxLength="20" message="Please enter your phone number." required />
 			</FormField>
 
 			{/* <FormField id="role" label="Role">

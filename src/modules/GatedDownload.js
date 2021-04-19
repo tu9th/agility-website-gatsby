@@ -10,6 +10,12 @@ const GatedDownload = ({ item }) => {
 
 	item = item.customFields
 
+	const firstNameLabel = item.firstNameLabel ?? 'First Name'
+	const lastNameLabel = item.lastNameLabel ?? 'Last Name'
+	const emailLabel = item.emailLabel ?? 'Work Email'
+	const phoneLabel = item.phoneLabel ?? 'Phone'
+	const companyLabel = item.companyLabel ?? 'Company'
+
 	return (
 		<FullPageForm
 				colour={item.backgroundColour}
@@ -23,21 +29,21 @@ const GatedDownload = ({ item }) => {
 				submissionCopy={item.submissionCopy}
 				submitButtonLabel={ item.submitButtonLabel }
 			>
-				<FormField id="firstname" label={ item.firstNameLabel }>
-					<input id="firstname" className="changed" type="text" placeholder={ item.firstNameLabel } required />
+				<FormField id="firstname" label={ firstNameLabel }>
+					<input id="firstname" className="changed" type="text" placeholder={ firstNameLabel } required />
 				</FormField>
-				<FormField id="lastname" label={ item.lastNameLabel }>
-					<input id="lastname" className="changed" type="text" placeholder={ item.lastNameLabel } required />
+				<FormField id="lastname" label={ lastNameLabel }>
+					<input id="lastname" className="changed" type="text" placeholder={ lastNameLabel } required />
 				</FormField>
-				<FormField id="email" label={ item.emailLabel }>
-					<input id="email" className="changed" type="email" placeholder={ item.emailLabel } required />
+				<FormField id="email" label={ emailLabel }>
+					<input id="email" className="changed" type="email" placeholder={ emailLabel } required />
 				</FormField>
-				<FormField id="phonenumber" label={ item.phoneLabel }>
+				<FormField id="phonenumber" label={ phoneLabel }>
 					<input id="phonenumber" className="changed" type="tel" placeholder="XXX-XXX-XXXX" minLength="9" maxLength="20" required />
 				</FormField>
 
-				<FormField id="company" label={ item.companyLabel }>
-					<input id="company" className="changed" type="text" placeholder={ item.companyLabel } required />
+				<FormField id="company" label={ companyLabel }>
+					<input id="company" className="changed" type="text" placeholder={ companyLabel } required />
 				</FormField>
 
 				<input type="hidden" id="journeytrigger" name="journeytrigger" value={item.autopilotJourneyTrigger} />
