@@ -108,7 +108,7 @@ const AnimationScrollPage = () => {
     } else {
       removeLoading()
     }
-  }, 100)
+  }, 300)
   dectectEventClick()
 }
 const dectectEventClick = () => {

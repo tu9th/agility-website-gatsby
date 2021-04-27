@@ -1,6 +1,5 @@
 import React from 'react';
 import { getModule} from "../../modules"
-import { animationEle } from '../../global/javascript/animation'
 
 const ContentZone = ({ name, page, dynamicPageItem }) => {
 
@@ -26,11 +25,6 @@ const ContentZone = ({ name, page, dynamicPageItem }) => {
 
 				try {
 					ModuleComponentToRender = getModule(moduleDefName)
-					ModuleComponentToRender.load().then(() => {
-						console.log(`${moduleDefName} loaded`);
-						animationEle()
-					})
-
 				} catch (er) {
 					console.error(`Could not load module ${moduleDefName}`, er)
 				}
