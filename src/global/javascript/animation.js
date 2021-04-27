@@ -97,7 +97,7 @@ const removeLoading = () => {
 }
 const AnimationScrollPage = () => {
   // document.querySelector('html').scrollTop = 0;
-  // setTimeout (() => {
+  setTimeout (() => {
     if(document.querySelectorAll('.ani-banner').length) {
       let inter = setInterval(() => {
         if (document.querySelectorAll('.done-ani').length) {
@@ -108,7 +108,7 @@ const AnimationScrollPage = () => {
     } else {
       removeLoading()
     }
-  // }, 100)
+  }, 100)
   dectectEventClick()
 }
 const dectectEventClick = () => {
