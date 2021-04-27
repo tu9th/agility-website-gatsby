@@ -40,7 +40,6 @@ export const animationElementInnerComponent = ($elmComponent) =>  {
 }
 
 export const animationEle = () =>  {
-  console.log('run anim');
   let $elems = document.querySelectorAll('.animation')
   let winH = window.innerHeight
   let winW = window.innerWidth
