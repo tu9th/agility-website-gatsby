@@ -39,7 +39,8 @@ export const animationElementInnerComponent = ($elmComponent) =>  {
   }
 }
 
-const animationEle = () =>  {
+export const animationEle = () =>  {
+  console.log('run anim');
   let $elems = document.querySelectorAll('.animation')
   let winH = window.innerHeight
   let winW = window.innerWidth
@@ -107,7 +108,7 @@ const AnimationScrollPage = () => {
     } else {
       removeLoading()
     }
-  }, 300)
+  }, 100)
   dectectEventClick()
 }
 const dectectEventClick = () => {
