@@ -497,6 +497,9 @@ input {
   }
 }
 @include media-custom-up(1500) {
+  .main-content {
+    padding-top: 143px;
+  }
   .container:not(.max-w-940) {
     max-width: 1380px;
   }

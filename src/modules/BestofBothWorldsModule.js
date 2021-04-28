@@ -165,12 +165,12 @@ const BestofBothWorldsModule = ({ item }) => {
 	}
 	useEffect(() => {
 		calluseEffect()
-	});
+	}, []);
 	const calluseEffect = () => {
 		initComparisons()
 	}
 	const togglePause = () => {
-    setIsPaused(!isPaused);
+    setIsPaused( isPaused => !isPaused);
   };
 	function Video() {
 		return (

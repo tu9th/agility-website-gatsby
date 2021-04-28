@@ -97,16 +97,16 @@ const removeLoading = () => {
 const AnimationScrollPage = () => {
   // document.querySelector('html').scrollTop = 0;
   setTimeout (() => {
-    if(document.querySelectorAll('.ani-banner').length) {
-      let inter = setInterval(() => {
-        if (document.querySelectorAll('.done-ani').length) {
-          clearInterval(inter)
-          removeLoading()
-        }
-      }, 5)
-    } else {
+    // if(document.querySelectorAll('.ani-banner').length) {
+    //   let inter = setInterval(() => {
+    //     if (document.querySelectorAll('.done-ani').length) {
+    //       clearInterval(inter)
+    //       removeLoading()
+    //     }
+    //   }, 5)
+    // } else {
       removeLoading()
-    }
+    // }
   }, 300)
   dectectEventClick()
 }
