@@ -112,9 +112,10 @@ class NewGlobalHeader extends Component {
 	setPaddingBody () {
 		setTimeout (() => {
 			if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
-				const header = document.querySelectorAll('#header')[0].offsetHeight
+				const header = document.querySelectorAll('#header .box-message')[0].offsetHeight
 				const main = document.querySelectorAll('.main-content')[0]
-				main.style.paddingTop = header + 'px'
+				main.style.transform = `translateY(${header}px)`
+				main.style.marginBottom = `${header}px`
 			}
 		}, 200)
 	}
@@ -350,8 +351,8 @@ class NewGlobalHeader extends Component {
 				<header id="header" className={classHeader} data-module="header">
 					{/* <a className="skip-link text-center d-block w-100 bg-black text-white" href="javascript:;">
 						<span>Skip to content</span></a> */}
-					{ (item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' &&
-						<div className={`box-message text-white ${ this.state.flag ? '' : 'opacity-0'}`}>
+					{ (item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' && this.state.flag &&
+						<div className={`box-message text-white`}>
 							<div className="container last-mb-none text-center">
 								<div className="close-message" onClick={this.hiddenMessage}></div>
 								<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(item.marketingBanner)} />
