@@ -116,7 +116,7 @@ class NewGlobalHeader extends Component {
 		// setTimeout (() => {
 			if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
 				const header = document.querySelectorAll('#header .box-message')
-				const headerH = header ? header[0].offsetHeight : 0
+				const headerH = header.length > 0 ? header[0].offsetHeight : 0
 				const main = document.querySelectorAll('.main-content')[0]
 				main.style.transform = `translateY(${headerH}px)`
 				main.style.marginBottom = `${headerH}px`
