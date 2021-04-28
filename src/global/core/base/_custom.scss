@@ -3,8 +3,8 @@
 // }
 
 .main-content {
-  padding-top: 69px;
-  transition: padding .25s, transform .25s;
+  // padding-top: 69px;
+  // transition: padding .25s, transform .25s;
   > .mod-banner:first-child:not(.mod-intro) {
     margin-top: 20px;
   }
@@ -439,7 +439,7 @@ input {
 @include media-breakpoint-up(lg) {
   .main-content {
     // padding-top: 135px;
-    padding-top: 95px;
+    // padding-top: 95px;
     > .mod-banner:first-child:not(.mod-intro) {
       margin-top: 40px;
     }

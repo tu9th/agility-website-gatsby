@@ -111,22 +111,30 @@ class NewGlobalHeader extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		// if (this.state.sticky) {
+					
+		// }
 		this.setPaddingBody()
+
 	}
 	setPaddingBody () {
 		// setTimeout (() => {
 			if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
-				const header = document.querySelectorAll('#header .box-message')
+				const header = document.querySelectorAll('#header')
 				const headerH = header.length > 0 ? header[0].offsetHeight : 0
 				const main = document.querySelectorAll('.main-content')[0]
-				main.style.transform = `translateY(${headerH}px)`
-				main.style.marginBottom = `${headerH}px`
+				if (!this.state.sticky) {
+					main.style.paddingTop = `${0}px`
+					return false
+				}
+				main.style.paddingTop = `${headerH}px`
 			}
+			return true
 		// }, 200)
 	}
 	stickyHeader () {
 		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
-		if(winScroll > 50) {
+		if(winScroll > 1) {
 			this.setState({
 				sticky: true
 			})
@@ -234,7 +242,7 @@ class NewGlobalHeader extends Component {
 		// const header = document.querySelectorAll('#header .navbar')[0].offsetHeight
 		// main.style.paddingTop = header + 'px'
 		this.setState({ webinar: 'true' })
-		this.setPaddingBody()
+		// this.setPaddingBody()
 		Helpers.setCookie('WebinarHidden', 'true', { path: '/' })
 		// Cookies.save('WebinarHidden', 'true', { path: '/' });
 	}
