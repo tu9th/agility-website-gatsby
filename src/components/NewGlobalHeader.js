@@ -97,7 +97,6 @@ class NewGlobalHeader extends Component {
 		this.inputLine()
 		this.hiddenSeach()
 		this.removeClassOpenMenuOnHtml()
-		this.setPaddingBody()
 		this.clickAwebinar()
 		window.addEventListener('scroll', this.stickyHeader);
 		window.addEventListener('resize', this.setPaddingBody);
@@ -109,15 +108,20 @@ class NewGlobalHeader extends Component {
 			document.querySelector('html').classList.add('window-os')
 		}
 	}
+
+	componentDidUpdate(prevProps, prevState) {
+		this.setPaddingBody()
+	}
 	setPaddingBody () {
-		setTimeout (() => {
+		// setTimeout (() => {
 			if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
-				const header = document.querySelectorAll('#header .box-message')[0].offsetHeight
+				const header = document.querySelectorAll('#header .box-message')
+				const headerH = header ? header[0].offsetHeight : 0
 				const main = document.querySelectorAll('.main-content')[0]
-				main.style.transform = `translateY(${header}px)`
-				main.style.marginBottom = `${header}px`
+				main.style.transform = `translateY(${headerH}px)`
+				main.style.marginBottom = `${headerH}px`
 			}
-		}, 200)
+		// }, 200)
 	}
 	stickyHeader () {
 		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
