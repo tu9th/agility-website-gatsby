@@ -1,7 +1,43 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
+import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
+
+
+
+const HasImg = ({img, isHomePage}) => {
+		return (
+			<React.Fragment>
+				{/* <picture>
+					<source srcSet={img.url}></source>
+					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
+				</picture> */}
+				<Helmet>
+					<link rel="preload" as="image" href={img.url} media="(max-width: 767px)" />
+				</Helmet>
+
+				<img src={img.url} alt={ img.label ? img.label : 'image video' } className={ isHomePage ? 'img-mb' : 'anima-right'} />
+				{isHomePage &&
+					<div className="d-none d-sl-block">
+						<div className="ani-banner"></div>
+						<div className="ani-banner"></div>
+						<div className="ani-banner"></div>
+						<div className="ani-banner item-bg"></div>
+						<div className="ani-banner"></div>
+					</div>
+				}
+				
+			</React.Fragment>
+		)
+	// return (
+	// 	<img src={img.url} className="anima-right" alt={ img.label ? img.label : 'image video' } />
+	// )
+}
+
+const ImgRender = React.memo(HasImg)
+
+
 const RightOrLeftContent = ({ item }) => {
 	const heading = item.customFields.title
 	const des = item.customFields.description
@@ -10,7 +46,7 @@ const RightOrLeftContent = ({ item }) => {
 	const btn2 = item.customFields.cTA2Optional
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white': ''}`
 	const array = []
-	const [isHomePage, setIsHomePage] = useState(false);
+	const [isHomePage, setIsHomePage] = useState(true);
 	const [classWrap, setClassWrap] = useState('wrap-ani-home ps-rv internal-wrap');
 	const [classBtn, setClassBtn] = useState('wrap-btn internal-btn');
 	let classAniImg = 'col-md-6 col-right-lr'
@@ -20,6 +56,14 @@ const RightOrLeftContent = ({ item }) => {
 	} else {
 		classAniImg = classAniImg + ' anima-right'
 	}
+
+
+	/*  */
+
+	const bannerRef = useRef(null)
+	const [isLottieLoad, setIsLottieLoad] = useState(false)
+
+	/*  */
 	const detectHomePage = () => {
 		if(typeof window !== `undefined`) {
 
@@ -35,33 +79,26 @@ const RightOrLeftContent = ({ item }) => {
 
 		}
 	}
-	const appenLottie = () => {
+	const appenLottie = (callback = function(){}) => {
 		const script = document.createElement("script");
 		script.src = "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js";
 		script.async = true;
 		document.body.appendChild(script);
+		script.onload = () => {
+			console.log('loottie', window.lottie);
+			callback()
+		}
 	}
 	const init = () => {
 		callAnimation()
 		window.addEventListener('resize', callAnimation);
 	}
+
+	/*  */
 	const callAnimation = () => {
-		let banner = document.getElementsByClassName('mod-banner')
-		let inter,inter2
-		if (banner.length && window.innerWidth >= 1025 && !banner[0].classList.contains('done-ani')) {
-			appenLottie()
-			inter2 = setInterval(() => {
-				if(window.lottie) {
-					loadAni()
-					clearInterval(inter2)
-				}
-			}, 5);
-			inter = setInterval(() => {
-				if(banner.length > 0 && banner[0] && banner[0].classList.contains('set-animation')) {
-					clearInterval(inter)
-					callLotie()
-				}
-			}, 5);
+		let banner = bannerRef.current
+		if (banner.classList.contains('mod-banner') && window.innerWidth >= 1025 && !banner.classList.contains('done-ani')) {
+			appenLottie(() => { setIsLottieLoad(true) })
 		}
 	}
 	const loadAni = () => {
@@ -83,15 +120,12 @@ const RightOrLeftContent = ({ item }) => {
 				})
 			}
 		})
-	}
-	const callLotie = () => {
+
 		setTimeout(() => {
 			array.forEach(element => element.play());
-		}, 400)
-		setTimeout(() => {
-			document.getElementsByClassName('mod-banner')[0].classList.remove('done-ani')
-		}, 1000)
+		}, 600)
 	}
+
 	const initParallax = () => {
 		if (document.getElementsByClassName('ani-banner').length) {
 			parallaxBanner()
@@ -114,51 +148,50 @@ const RightOrLeftContent = ({ item }) => {
 	const NoImg = () => {
 		return <React.Fragment></React.Fragment>
 	}
-	const HasImg = ({img}) => {
-		if (isHomePage) {
-			return (
-				<React.Fragment>
-					{/* <picture>
-						<source srcSet={img.url}></source>
-					  <img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
-					</picture> */}
-					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
-					<div className="d-none d-sl-block">
-						<div className="ani-banner"></div>
-						<div className="ani-banner"></div>
-						<div className="ani-banner"></div>
-						<div className="ani-banner item-bg"></div>
-						<div className="ani-banner"></div>
-					</div>
-				</React.Fragment>
-			)
-		}
-		return (
-			<img src={img.url} className="anima-right" alt={ img.label ? img.label : 'image video' } />
-		)
-	}
+
+
 	useEffect(() => {
 		detectHomePage()
+  }, []);
+
+	useEffect(() => {
+		console.log('banner ', bannerRef);
+		// detectHomePage()
 		if (imgModule && isHomePage) {
 			init()
 			if(!navigator.userAgent.match(/Trident\/7\./)) {
 				window.addEventListener('scroll', initParallax);
 			}
+		} else {
+			window.removeEventListener('scroll', initParallax);
 		}
-  });
+
+		return () => {
+			window.removeEventListener('resize', callAnimation);
+			window.removeEventListener('scroll', initParallax);
+		}
+  }, [isHomePage, imgModule]);
+
+	/* catch running lottie animation */
+	useEffect(() => {
+		if (isLottieLoad) {
+			console.log('lootie loadddd', isLottieLoad);
+			loadAni()
+		}
+	}, [isLottieLoad])
 	return (
 		<React.Fragment>
-			<section className={classSection}>
+			<section className={classSection} ref={ bannerRef }>
 				<div className="container">
 					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
 						<div className={classAniImg}>
 							<div className={classWrap}>
-								{ imgModule ? <HasImg img={imgModule}/> : <NoImg /> }
+								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
 						</div>
 						<div className="col-md-6 large-paragraph last-mb-none anima-left">
 							{breadcrumb && <h5>{breadcrumb}</h5> }
-							{heading && <h1>{heading}</h1> }
+							<h1>{heading}</h1>
 							{ des &&
 								<div dangerouslySetInnerHTML={renderHTML(des)}></div>
 							}

@@ -3,7 +3,7 @@
 // }
 
 .main-content {
-  padding-top: 90px;
+  padding-top: 173px;
   transition: padding .25s;
   > .mod-banner:first-child:not(.mod-intro) {
     margin-top: 20px;
@@ -266,7 +266,7 @@ form  button[type='submit'] {
   position: relative;
   // background-image: linear-gradient(to bottom, #f6fbff, #e9f0f5);
   background-color: $color-e3;
-  transition: all .35s;
+  transition: all .35s, opacity 0s;
   overflow: hidden;
   min-height: 48px;
   &.hidden-mess {
