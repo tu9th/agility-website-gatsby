@@ -366,8 +366,8 @@ class NewGlobalHeader extends Component {
 				<header id="header" className={classHeader} data-module="header">
 					{/* <a className="skip-link text-center d-block w-100 bg-black text-white" href="javascript:;">
 						<span>Skip to content</span></a> */}
-					{ (item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' && this.state.flag &&
-						<div className={`box-message text-white`}>
+					{ (item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' &&
+						<div className={`box-message text-white `}>
 							<div className="container last-mb-none text-center">
 								<div className="close-message" onClick={this.hiddenMessage}></div>
 								<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(item.marketingBanner)} />
