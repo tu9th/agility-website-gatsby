@@ -87,6 +87,7 @@ class NewGlobalHeader extends Component {
 			flag: false
 		}
 		this.stickyHeader = this.stickyHeader.bind(this)
+		this.hiddenMessage = this.hiddenMessage.bind(this)
 		this.showMenuMobile = this.showMenuMobile.bind(this)
 		this.removeClassOpenMenuOnHtml = this.removeClassOpenMenuOnHtml.bind(this)
 	}
@@ -228,10 +229,12 @@ class NewGlobalHeader extends Component {
 		document.getElementById('search-page-header').focus()
 	}
 	hiddenMessage () {
-		document.querySelectorAll('.box-message')[0].classList.add('hidden-mess')
-		const main = document.querySelectorAll('.main-content')[0]
-		const header = document.querySelectorAll('#header .navbar')[0].offsetHeight
-		main.style.paddingTop = header + 'px'
+		// document.querySelectorAll('.box-message')[0].classList.add('hidden-mess')
+		// const main = document.querySelectorAll('.main-content')[0]
+		// const header = document.querySelectorAll('#header .navbar')[0].offsetHeight
+		// main.style.paddingTop = header + 'px'
+		this.setState({ webinar: 'true' })
+		this.setPaddingBody()
 		Helpers.setCookie('WebinarHidden', 'true', { path: '/' })
 		// Cookies.save('WebinarHidden', 'true', { path: '/' });
 	}
