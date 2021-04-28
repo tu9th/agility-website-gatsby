@@ -17,7 +17,7 @@ const HasImg = ({img, isHomePage}) => {
 					<link rel="preload" as="image" href={img.url} media="(max-width: 767px)" />
 				</Helmet>
 
-				<img src={img.url} alt={ img.label ? img.label : 'image video' } className={ isHomePage ? 'img-mb' : 'anima-right'} />
+				<img src={img.url} width="320" height="208" alt={ img.label ? img.label : 'image video' } className={ isHomePage ? 'img-mb' : 'anima-right'} />
 				{isHomePage &&
 					<div className="d-none d-sl-block">
 						<div className="ani-banner"></div>
