@@ -123,7 +123,7 @@ const RightOrLeftContent = ({ item }) => {
 
 		setTimeout(() => {
 			array.forEach(element => element.play());
-		}, 900)
+		}, 600)
 	}
 
 	const initParallax = () => {
