@@ -116,7 +116,7 @@ const SEO = ({ page }) => {
 
         <link rel="preload" href="/fonts/icomoon.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 			<link rel="preload" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" as="style" media='screen' />
-			<link rel="stylesheet" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" type='text/css' media="screen and (min-width: 1px)" onLoad="if(media!='screen')media='screen'" />
+			<link rel="stylesheet" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" type='text/css' media="screen and (min-width: 1px)" />
 
 			{/* <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="https://static.agilitycms.com/layout/fonts/Mulisemibold.woff2" />
 			<link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="https://static.agilitycms.com/layout/fonts/Muliextrabold.woff2" />
