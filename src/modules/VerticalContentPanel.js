@@ -91,6 +91,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     const section = document.querySelectorAll('.mod-image-content')
     Array.from(section).forEach((ele) => {
       const $this = ele
+      let flag = true
       setheight($this)
       initClass($this)
       if (ele.classList.contains('is-full')) {
@@ -99,11 +100,12 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
         setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical')[0])
       }
       caculatePin($this)
-      setInterval (() => {
-        setheight($this)
-      }, 3000)
       window.addEventListener('scroll', () => {
         caculatePin($this)
+        if (flag === true) {
+          setheight($this)
+          flag = false
+        }
       } )
       window.addEventListener('resize', () => {
         initClass($this)
