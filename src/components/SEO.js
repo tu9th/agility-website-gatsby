@@ -61,6 +61,7 @@ const SEO = ({ page }) => {
 			<link rel="dns-prefetch" href="//www.googletagmanager.com" />
 			<link rel="dns-prefetch" href="//p.typekit.net" />
 			<link rel="dns-prefetch" href="//use.typekit.net" />
+			<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
 
 			{/* <link rel="dns-prefetch" href="//t.co" />
 			<link rel="dns-prefetch" href="//stats.g.doubleclick.net" />
@@ -90,6 +91,7 @@ const SEO = ({ page }) => {
 			<link rel="preconnect" href="//api-iam.intercom.io" />
 			<link rel="preconnect" href="//p.typekit.net" />
 			<link rel="preconnect" href="//use.typekit.net" />
+			<link rel="preconnect" href="//cdnjs.cloudflare.com" />
 
 			<link rel="apple-touch-icon" sizes="114x114" href="https://static.agilitycms.com/favicon-web/apple-touch-icon-144x144.png"/>
 			<meta name="apple-mobile-web-app-capable" content="yes"/>
