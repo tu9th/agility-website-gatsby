@@ -183,7 +183,6 @@ const RightOrLeftContent = ({ item }) => {
 	/* catch running lottie animation */
 	useEffect(() => {
 		if (isLottieLoad) {
-			console.log('lootie loadddd', isLottieLoad);
 			loadAni()
 		}
 	}, [isLottieLoad])

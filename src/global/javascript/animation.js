@@ -89,10 +89,10 @@ export const animationEle = () =>  {
 }
 const removeLoading = () => {
     document.getElementsByTagName('html')[0].classList.add('hide-loader')
-    animationEle()
-    window.addEventListener('scroll', function(e) {
-      animationEle()
-    })
+    // animationEle()
+    // window.addEventListener('scroll', function(e) {
+    //   animationEle()
+    // })
 }
 const AnimationScrollPage = () => {
   // document.querySelector('html').scrollTop = 0;
