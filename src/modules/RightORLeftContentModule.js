@@ -47,8 +47,8 @@ const RightOrLeftContent = ({ item }) => {
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white': ''}`
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
-	const [classWrap, setClassWrap] = useState('wrap-ani-home ps-rv internal-wrap');
-	const [classBtn, setClassBtn] = useState('wrap-btn internal-btn');
+	// const [classWrap, setClassWrap] = useState('wrap-ani-home ps-rv internal-wrap');
+	// const [classBtn, setClassBtn] = useState('wrap-btn internal-btn');
 	let classAniImg = 'col-md-6 col-right-lr'
 	let imgModule
 	if (item.customFields.graphic && item.customFields.graphic.url) {
@@ -65,19 +65,19 @@ const RightOrLeftContent = ({ item }) => {
 
 	/*  */
 	const detectHomePage = () => {
-		if(typeof window !== `undefined`) {
+		// if(typeof window !== `undefined`) {
 
 			const detectHome = ['/new-home', '/new-home/', '/'].includes(window.location.pathname)
 
 			setIsHomePage(detectHome)
 
-			if (isHomePage || detectHome) {
+			// if (isHomePage || detectHome) {
 
-				setClassWrap('wrap-ani-home ps-rv')
-				setClassBtn('wrap-btn')
-			}
+			// 	// setClassWrap('wrap-ani-home ps-rv')
+			// 	// setClassBtn('wrap-btn')
+			// }
 
-		}
+		// }
 	}
 	const appenLottie = (callback = function(){}) => {
 		const script = document.createElement("script");
@@ -85,7 +85,7 @@ const RightOrLeftContent = ({ item }) => {
 		script.async = true;
 		document.body.appendChild(script);
 		script.onload = () => {
-			console.log('loottie', window.lottie);
+			// console.log('loottie', window.lottie);
 			callback()
 		}
 	}
@@ -185,7 +185,7 @@ const RightOrLeftContent = ({ item }) => {
 				<div className="container">
 					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
 						<div className={classAniImg}>
-							<div className={classWrap}>
+							<div className={`wrap-ani-home ps-rv ${ isHomePage ? 'is-home' : 'internal-wrap'}`}>
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
 						</div>
@@ -196,7 +196,7 @@ const RightOrLeftContent = ({ item }) => {
 								<div dangerouslySetInnerHTML={renderHTML(des)}></div>
 							}
 							{ (btn1 || btn2) &&
-								<p className={classBtn}>
+								<p className={`wrap-btn ${ isHomePage ? '' : 'internal-btn' }`}>
 									{ btn1 && btn1.href &&
 										<a href={btn1.href} target={btn1.target} className="text-decoration-none btn btn-primary">{btn1.text}</a>
 									}

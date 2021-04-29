@@ -43,7 +43,7 @@ const BestofBothWorldsModule = ({ item }) => {
 			// console.log('...', thisModuleRef.current.querySelectorAll('.item-how input'));
 			// clearInterval(inter)
 			// for (i = 0; i < x.length; i++) {
-			compareImages(imgOverlayRef.current);
+			// compareImages(imgOverlayRef.current);
 			// }
 			// }
 			// }, 50);
@@ -72,7 +72,6 @@ const BestofBothWorldsModule = ({ item }) => {
 	const compareImages = (img) => {
 		var clicked = 0, w, h, comparImg;
 		const wrap = document.getElementsByClassName('img-comp-container')[0];
-		console.log('img', img);
 		w = wrap.offsetWidth;
 		h = wrap.offsetHeight;
 		comparImg = (1 / Math.tan(69 * Math.PI / 180)) * h;
@@ -179,12 +178,13 @@ const BestofBothWorldsModule = ({ item }) => {
 		});
 	}
 	useEffect(() => {
-		calluseEffect()
-		window.removeEventListener("resize", displayWindowSize);
-	}, []);
-	const calluseEffect = () => {
 		initComparisons()
-	}
+		
+		return () => {
+			window.removeEventListener("resize", displayWindowSize);
+		}
+	}, []);
+
 	const togglePause = () => {
 		setIsPaused(isPaused => !isPaused);
 	};
@@ -198,7 +198,7 @@ const BestofBothWorldsModule = ({ item }) => {
 		const idInput = `API${key.contentID}`
 		return (
 			<div className={className} key={key.contentID}>
-				<input type="checkbox" id={idInput} name="API" checked={true}></input>
+				<input type="checkbox" id={idInput} name="API" defaultChecked={true}></input>
 				<label htmlFor={idInput}>{key.customFields.title}</label><br></br>
 			</div>
 		)
@@ -209,7 +209,7 @@ const BestofBothWorldsModule = ({ item }) => {
 		const idInput = `API${key2.contentID}`
 		return (
 			<div className={className} key={key2.contentID}>
-				<input type="checkbox" id={idInput} name="API" checked={true}></input>
+				<input type="checkbox" id={idInput} name="API" defaultChecked={true}></input>
 				<label htmlFor={idInput}>{key2.customFields.title}</label><br></br>
 			</div>
 		)
