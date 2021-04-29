@@ -63,44 +63,6 @@ pipeline {
         }
       }
     }
-	stage("Scan Performance with Lighthouse CI") {
-        when {
-			branch 'develop'
-		}
-		steps {
-		  script{
-
-			  env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
-			  env.LHCI_BUILD_CONTEXT__COMMIT_MESSAGE = "${env.GIT_COMMIT_MSG} - ${env.BUILD_URL}"
-
-			}
-			echo "${env.LHCI_BUILD_CONTEXT__COMMIT_MESSAGE}"
-			sh 'lhci autorun'
-		}
-    }
-		stage('Sonarqube Analysis') {
-        when {
-          anyOf {
-            branch 'develop'
-            allOf {
-              environment name: 'CHANGE_TARGET', value: 'develop'
-              branch 'PR-*'
-            }
-          }
-        }
-        steps {
-            script {
-              withSonarQubeEnv("9thWonder SonarQube") {
-                sh "${SCANNER_QUBE_HOME}/bin/sonar-scanner"
-              }
-              def qg = waitForQualityGate()
-              if(qg.status != "OK"){
-                echo "${qg.status}"
-                error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
-              }
-            }
-        }
-    }
 
   }
 }
