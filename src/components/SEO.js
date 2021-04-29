@@ -119,6 +119,7 @@ const SEO = ({ page }) => {
 			<meta name="msapplication-square310x310logo" content="https://static.agilitycms.com/favicon-web/mstile-310x310.png" />
 
 			<link rel="preload" href="/fonts/icomoon.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+			<link rel="preload" href="https://static.agilitycms.com/panels/homepage-illustration_20201029040638_0.png" as="image" />
 			<link rel="preload" href="https://use.typekit.net/af/7fe570/00000000000000007735a0ee/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" as="font" />
 			<link rel="preload" href="https://use.typekit.net/af/b0bf15/00000000000000007735a103/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3" as="font" />
 			<link rel="preload" href="https://use.typekit.net/af/1e8fb7/00000000000000007735a0fe/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3" as="font" />
