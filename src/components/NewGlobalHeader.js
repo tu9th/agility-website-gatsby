@@ -116,10 +116,9 @@ class NewGlobalHeader extends Component {
 					
 		// }
 		this.setPaddingBody()
-
+		this.removeClassOpenMenuOnHtml()
 	}
 	setPaddingBody () {
-		// setTimeout (() => {
 			if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
 				const header = document.querySelectorAll('#header')
 				const headerH = header.length > 0 ? header[0].offsetHeight : 0
@@ -131,7 +130,6 @@ class NewGlobalHeader extends Component {
 				main.style.paddingTop = `${headerH}px`
 			}
 			return true
-		// }, 200)
 	}
 	stickyHeader () {
 		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
@@ -154,19 +152,19 @@ class NewGlobalHeader extends Component {
 			this.setState({
 				openMenu: !this.state.openMenu
 			})
-			this.removeClassOpenMenuOnHtml()
+			// this.removeClassOpenMenuOnHtml()
 		}
 	}
 	removeClassOpenMenuOnHtml() {
 		const isOpenMenuText = 'is-open-menu';
 		const html = document.querySelector('html')
-		setTimeout(() => {
+		// setTimeout(() => {
 			if (this.state.openMenu === false) {
 				html.classList.remove(isOpenMenuText)
 			} else {
 				html.classList.add(isOpenMenuText)
 			}
-		}, 50)
+		// }, 50)
 	}
 	openMenuLv1(event) {
 		if(window.innerWidth < 992) {

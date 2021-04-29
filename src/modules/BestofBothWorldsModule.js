@@ -244,7 +244,7 @@ const BestofBothWorldsModule = ({ item }) => {
 						<LazyLoad offset={0}><img src="/images/bg-top.svg" className="bg-top-video" alt="image"></img></LazyLoad>
 					</div>
 				</div>
-				{/* <div className="best-HIW animation anima-bottom">
+				<div className="best-HIW animation anima-bottom">
 					<div className="container ">
 						{title &&
 							<div className="title-best-HIW last-mb-none text-center">
@@ -305,18 +305,11 @@ const BestofBothWorldsModule = ({ item }) => {
 						</div>
 					}
 					<LazyLoad offset={Helpers.lazyOffset}><img src="/images/bg-bottom2.svg" className="bg-bottom" alt="image"></img></LazyLoad>
-				</div> */}
+				</div>
 			</section>
 			<Spacing item={item} />
 		</React.Fragment>
 	);
 }
 
-
-const VerticalContentPanel = () => {
-
-	return(
-		<></>
-	)
-}
 export default BestofBothWorldsModule;
