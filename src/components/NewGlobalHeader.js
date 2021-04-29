@@ -87,6 +87,7 @@ class NewGlobalHeader extends Component {
 			flag: false
 		}
 		this.stickyHeader = this.stickyHeader.bind(this)
+		this.setPaddingBody = this.setPaddingBody.bind(this)
 		this.hiddenMessage = this.hiddenMessage.bind(this)
 		this.showMenuMobile = this.showMenuMobile.bind(this)
 		this.removeClassOpenMenuOnHtml = this.removeClassOpenMenuOnHtml.bind(this)
