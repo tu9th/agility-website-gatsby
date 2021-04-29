@@ -63,21 +63,21 @@ module.exports = {
 				masterPageTemplate: "./src/AgilityPage.js"
 			},
 		},
-		// {
-		// 	resolve: "gatsby-plugin-google-tagmanager",
-		// 	options: {
-		// 		id: "GTM-NJW8WMX", //Agilitycms.com - Gatsby Container
-		// 		includeInDevelopment: false
-		// 	},
-		// },
-		// {
-		// 	resolve: 'gatsby-plugin-intercom-spa',
-		// 	options: {
-		// 		app_id: 'ipjo8vwm',
-		// 		include_in_development: false,
-		// 		delay_timeout: 2000
-		// 	}
-		// },
+		{
+			resolve: "gatsby-plugin-google-tagmanager",
+			options: {
+				id: "GTM-NJW8WMX", //Agilitycms.com - Gatsby Container
+				includeInDevelopment: false
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-intercom-spa',
+			options: {
+				app_id: 'ipjo8vwm',
+				include_in_development: false,
+				delay_timeout: 2000
+			}
+		},
 		{
 			resolve: `gatsby-plugin-sitemap`,
 			options: {
