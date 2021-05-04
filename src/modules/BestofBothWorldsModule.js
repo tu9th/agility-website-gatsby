@@ -19,7 +19,7 @@ const BestofBothWorldsModule = ({ item }) => {
 	const classSection = `module mod-HIW BestofBothWorldsModule ${fields.darkMode && fields.darkMode === 'true' ? 'dark-mode' : ''}`
 	const urlVideo = fields.videoPath
 	const thumbnail = fields.thumbnail
-	const urlThumbnail = thumbnail ? thumbnail.url : '/images/bg-video.jpg'
+	const urlThumbnail = '/images/test_home_LCP.jpg' //thumbnail ? thumbnail.url : '/images/bg-video.jpg'
 	const [isPaused, setIsPaused] = useState(false);
 
 	/*  */
