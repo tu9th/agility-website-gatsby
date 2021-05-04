@@ -78,6 +78,7 @@ class NewGlobalHeader extends Component {
 	constructor(props) {
 		super(props);
 		this.header = React.createRef()
+		this.timeoutOpenMenu = React.createRef()
 		this.state = {
 			sticky: false,
 			openMenu: false,
@@ -109,6 +110,7 @@ class NewGlobalHeader extends Component {
 		if (navigator.platform.indexOf('Win') > -1) {
 			document.querySelector('html').classList.add('window-os')
 		}
+		console.log('this.header', this.header);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -148,10 +150,22 @@ class NewGlobalHeader extends Component {
 	}
 	showMenuMobile () {
 		const w = window.innerWidth || document.documentElement.offsetWidth
+
+		// clearTimeout(this.timeoutOpenMenu)
 		if (w < 992) {
 			this.setState({
 				openMenu: !this.state.openMenu
+			}, () => {
+				this.header.classList.add('pos-fixed')
+				if (this.state.openMenu) {
+					// this.header.classList.add('pos-fixed')
+				} else {
+					setTimeout(() => {
+						this.header.classList.remove('pos-fixed')
+					}, 350)
+				}
 			})
+
 			// this.removeClassOpenMenuOnHtml()
 		}
 	}
@@ -362,7 +376,7 @@ class NewGlobalHeader extends Component {
 		const classMainMenu = `navbar-collapse main-menu menu-header-right ${this.state.openMenu === true ? isOpenMenuText : ''}`
 		return (
 			<React.Fragment>
-				<header id="header" className={classHeader} data-module="header">
+				<header id="header" className={classHeader} data-module="header" ref={ reference => ( this.header = reference)}>
 					{/* <a className="skip-link text-center d-block w-100 bg-black text-white" href="javascript:;">
 						<span>Skip to content</span></a> */}
 					{ (item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' &&
