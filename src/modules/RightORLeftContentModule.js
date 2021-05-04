@@ -7,22 +7,17 @@ import Spacing from './Spacing'
 
 
 const HasImg = ({ img, isHomePage }) => {
+	img.url = 'images/homepage-illustration_20201029040638_0.png';
 	return (
 		<React.Fragment>
 			{/* <picture>
 					<source srcSet={img.url}></source>
 					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
 				</picture> */}
-			{isHomePage &&
 				<Helmet>
-					<link rel="preload" as="image" href={img.url} media="(max-width: 767px)" />
-				</Helmet>
-			}
-			{!isHomePage &&
-				<Helmet>
+					{/* <link rel="preload" as="image" href={img.url} media="screen" /> */}
 					<link rel="preload" as="image" href={img.url} media="screen" />
 				</Helmet>
-			}
 
 
 			<img src={img.url} width="320" height="208" alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
