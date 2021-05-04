@@ -78,20 +78,22 @@ class NewGlobalHeader extends Component {
 	constructor(props) {
 		super(props);
 		this.header = React.createRef()
-		this.timeoutOpenMenu = React.createRef()
+		this.fakeHeaderMb = React.createRef()
 		this.state = {
 			sticky: false,
 			openMenu: false,
+			pinHeader: false,
 			menuLv2Opening: '',
 			activeMenu: '',
 			webinar: '',
 			flag: false
 		}
 		this.stickyHeader = this.stickyHeader.bind(this)
-		this.setPaddingBody = this.setPaddingBody.bind(this)
+		this.setHeightFakeHeader = this.setHeightFakeHeader.bind(this)
 		this.hiddenMessage = this.hiddenMessage.bind(this)
 		this.showMenuMobile = this.showMenuMobile.bind(this)
 		this.removeClassOpenMenuOnHtml = this.removeClassOpenMenuOnHtml.bind(this)
+		this.resizeWindow = this.resizeWindow.bind(this)
 	}
 	componentDidMount() {
 		this.setState({activeMenu: window.location.pathname})
@@ -101,8 +103,9 @@ class NewGlobalHeader extends Component {
 		this.hiddenSeach()
 		this.removeClassOpenMenuOnHtml()
 		this.clickAwebinar()
+		this.setHeightFakeHeader()
 		window.addEventListener('scroll', this.stickyHeader);
-		window.addEventListener('resize', this.setPaddingBody);
+		window.addEventListener('resize', this.resizeWindow);
 
 		if (navigator.platform.indexOf('Mac') > -1) {
 			document.querySelector('html').classList.add('mac-os')
@@ -110,28 +113,39 @@ class NewGlobalHeader extends Component {
 		if (navigator.platform.indexOf('Win') > -1) {
 			document.querySelector('html').classList.add('window-os')
 		}
-		console.log('this.header', this.header);
+		this.setState({ pinHeader: true })
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// if (this.state.sticky) {
-					
-		// }
-		this.setPaddingBody()
 		this.removeClassOpenMenuOnHtml()
 	}
-	setPaddingBody () {
-			if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
-				const header = document.querySelectorAll('#header')
-				const headerH = header.length > 0 ? header[0].offsetHeight : 0
-				const main = document.querySelectorAll('.main-content')[0]
-				if (!this.state.sticky) {
-					main.style.paddingTop = `${0}px`
-					return false
-				}
-				main.style.paddingTop = `${headerH}px`
-			}
-			return true
+
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.resizeWindow)
+	}
+
+	/* resize Window */
+	resizeWindow() {
+		this.setHeightFakeHeader()
+	}
+
+	// setPaddingBody () {
+	// 		// if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
+	// 		// 	const header = document.querySelectorAll('#header')
+	// 		// 	const headerH = header.length > 0 ? header[0].offsetHeight : 0
+	// 		// 	const main = document.querySelectorAll('.main-content')[0]
+	// 		// 	if (!this.state.sticky) {
+	// 		// 		main.style.paddingTop = `${0}px`
+	// 		// 		return false
+	// 		// 	}
+	// 		// 	main.style.paddingTop = `${headerH}px`
+	// 		// }
+	// 		// return true
+	// }
+	setHeightFakeHeader() {
+		if(!(window.innerWidth < 992 && document.querySelectorAll('html')[0].classList.contains('is-open-menu'))) {
+			this.fakeHeaderMb.style.height = this.header.offsetHeight + 'px'
+		}
 	}
 	stickyHeader () {
 		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
@@ -151,19 +165,9 @@ class NewGlobalHeader extends Component {
 	showMenuMobile () {
 		const w = window.innerWidth || document.documentElement.offsetWidth
 
-		// clearTimeout(this.timeoutOpenMenu)
 		if (w < 992) {
 			this.setState({
 				openMenu: !this.state.openMenu
-			}, () => {
-				this.header.classList.add('pos-fixed')
-				if (this.state.openMenu) {
-					// this.header.classList.add('pos-fixed')
-				} else {
-					setTimeout(() => {
-						this.header.classList.remove('pos-fixed')
-					}, 350)
-				}
 			})
 
 			// this.removeClassOpenMenuOnHtml()
@@ -172,13 +176,11 @@ class NewGlobalHeader extends Component {
 	removeClassOpenMenuOnHtml() {
 		const isOpenMenuText = 'is-open-menu';
 		const html = document.querySelector('html')
-		// setTimeout(() => {
 			if (this.state.openMenu === false) {
 				html.classList.remove(isOpenMenuText)
 			} else {
 				html.classList.add(isOpenMenuText)
 			}
-		// }, 50)
 	}
 	openMenuLv1(event) {
 		if(window.innerWidth < 992) {
@@ -255,7 +257,6 @@ class NewGlobalHeader extends Component {
 		// const header = document.querySelectorAll('#header .navbar')[0].offsetHeight
 		// main.style.paddingTop = header + 'px'
 		this.setState({ webinar: 'true' })
-		// this.setPaddingBody()
 		Helpers.setCookie('WebinarHidden', 'true', { path: '/' })
 		// Cookies.save('WebinarHidden', 'true', { path: '/' });
 	}
@@ -372,7 +373,7 @@ class NewGlobalHeader extends Component {
 			this.setState({ sticky: !stickyNow })
 		}
 		const item = this.props.item.customFields;
-		const classHeader = `module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''}`;
+		const classHeader = `module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`;
 		const classMainMenu = `navbar-collapse main-menu menu-header-right ${this.state.openMenu === true ? isOpenMenuText : ''}`
 		return (
 			<React.Fragment>
@@ -407,6 +408,7 @@ class NewGlobalHeader extends Component {
 						</div>
 					</nav>
 				</header>
+				<div ref={ ref => ( this.fakeHeaderMb = ref ) }></div>
 			</React.Fragment>
 		);
 	}
