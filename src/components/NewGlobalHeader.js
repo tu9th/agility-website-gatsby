@@ -392,7 +392,7 @@ class NewGlobalHeader extends Component {
 							{ item.logo ?
 								<div className="col-9 col-lg-12">
 									<Link to="/" id="header-logo" title={item.logo.label} className="navbar-brand header-logo w-100">
-										<img src={item.stickyLogo.url} alt={item.logo.label} />
+										<img src={item.stickyLogo.url} alt={item.logo.label} width="158" height="40" className="w-100"/>
 									</Link>
 								</div>
 							:
