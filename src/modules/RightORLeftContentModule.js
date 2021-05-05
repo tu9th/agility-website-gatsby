@@ -7,7 +7,6 @@ import Spacing from './Spacing'
 
 
 const HasImg = ({ img, isHomePage }) => {
-	img.url = 'images/homepage-illustration_20201029040638_0.png';
 	return (
 		<React.Fragment>
 			{/* <picture>
@@ -15,7 +14,6 @@ const HasImg = ({ img, isHomePage }) => {
 					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
 				</picture> */}
 				<Helmet>
-					{/* <link rel="preload" as="image" href={img.url} media="screen" /> */}
 					<link rel="preload" as="image" href={img.url} media="screen" />
 				</Helmet>
 
