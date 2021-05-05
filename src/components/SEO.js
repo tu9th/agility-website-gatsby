@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from "react-helmet"
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from 'html-react-parser';
 
 
 const SEO = ({ page }) => {
