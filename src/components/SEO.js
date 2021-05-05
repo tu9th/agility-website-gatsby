@@ -118,14 +118,14 @@ const SEO = ({ page }) => {
 			<meta name="msapplication-wide310x150logo" content="https://static.agilitycms.com/favicon-web/mstile-310x150.png" />
 			<meta name="msapplication-square310x310logo" content="https://static.agilitycms.com/favicon-web/mstile-310x310.png" />
 
+			{/* <link rel="preload" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" as="style" media='screen' /> */}
+			<link rel="stylesheet" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" type='text/css' media="screen and (min-width: 1px)" />
 			<link rel="preload" href="/fonts/icomoon.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 			<link rel="preload" href="https://static.agilitycms.com/panels/homepage-illustration_20201029040638_0.png" as="image" />
 			<link rel="preload" href="https://use.typekit.net/af/7fe570/00000000000000007735a0ee/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" as="font" />
 			<link rel="preload" href="https://use.typekit.net/af/b0bf15/00000000000000007735a103/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3" as="font" />
 			<link rel="preload" href="https://use.typekit.net/af/1e8fb7/00000000000000007735a0fe/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3" as="font" />
 			<link rel="preload" href="https://use.typekit.net/af/437da9/00000000000000007735a0e5/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3" as="font" />
-			<link rel="preload" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" as="style" media='screen' />
-			<link rel="stylesheet" crossOrigin="anonymous" href="https://use.typekit.net/arl7bjd.css" type='text/css' media="screen and (min-width: 1px)" />
 
 			{/* <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="https://static.agilitycms.com/layout/fonts/Mulisemibold.woff2" />
 			<link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="https://static.agilitycms.com/layout/fonts/Muliextrabold.woff2" />
