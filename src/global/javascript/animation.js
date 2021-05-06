@@ -89,15 +89,15 @@ export const animationEle = () => {
 }
 const removeLoading = () => {
   document.getElementsByTagName('html')[0].classList.add('hide-loader')
-  animationEle()
-  window.addEventListener('scroll', function (e) {
-    animationEle()
-  })
+  // animationEle()
+  // window.addEventListener('scroll', function (e) {
+  //   animationEle()
+  // })
 }
 const AnimationScrollPage = () => {
   // document.querySelector('html').scrollTop = 0;
   if (window.innerWidth > 991) {
-    setTimeout(() => {
+    // setTimeout(() => {
       // if(document.querySelectorAll('.ani-banner').length) {
       //   let inter = setInterval(() => {
       //     if (document.querySelectorAll('.done-ani').length) {
@@ -108,7 +108,7 @@ const AnimationScrollPage = () => {
       // } else {
       removeLoading()
       // }
-    }, 300)
+    // }, 300)
   }
   dectectEventClick()
 }

@@ -7,6 +7,7 @@ import Spacing from './Spacing'
 import ReactPlayer from 'react-player'
 import Helpers from '../global/javascript/Helpers'
 import { Helmet } from 'react-helmet';
+import { animationElementInnerComponent } from '../global/javascript/animation'
 const BestofBothWorldsModule = ({ item }) => {
 	const fields = item.customFields
 	const ctaBtn = fields.cTA1
@@ -184,6 +185,19 @@ const BestofBothWorldsModule = ({ item }) => {
 			window.removeEventListener("resize", displayWindowSize);
 		}
 	}, []);
+
+	/* animation module */
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
 
 	const togglePause = () => {
 		setIsPaused(isPaused => !isPaused);

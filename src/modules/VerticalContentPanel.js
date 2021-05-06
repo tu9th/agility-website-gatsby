@@ -6,6 +6,7 @@ import Lazyload, { forceCheck } from 'react-lazyload'
 import Spacing from './Spacing'
 import Helpers from '../global/javascript/Helpers'
 import ResponsiveImage from '../components/responsive-image';
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 export default props => (
 <StaticQuery
@@ -117,6 +118,20 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   useEffect(() => {
     init()
   }, [])
+
+  /* animation module */
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(lazyRef.current)
+		}
+		animationElementInnerComponent(lazyRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
   const classPin = 'list-pin'
   const classPin2 = 'list-pin-bottom'
   let scrollTop

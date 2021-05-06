@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 
 
@@ -151,12 +152,23 @@ const RightOrLeftContent = ({ item }) => {
 	}
 
 
+	
 	useEffect(() => {
 		detectHomePage()
+
+		/* animation module */
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(bannerRef.current)
+		}
+		animationElementInnerComponent(bannerRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
 	}, []);
 
 	useEffect(() => {
-		console.log('banner ', bannerRef);
 		// detectHomePage()
 		if (imgModule && isHomePage) {
 			init()
