@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Lazyload from 'react-lazyload'
 import './RightOrLeftSteps.scss'
 import Spacing from './Spacing'
 import Helpers from '../global/javascript/Helpers'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 const RightOrLeftSteps = ({ item }) => {
 	const fields = item.customFields
@@ -15,9 +16,24 @@ const RightOrLeftSteps = ({ item }) => {
 	const imgURL = fields.image && fields.image.url.length > 0 ? fields.image.url : null
 	const classSection = `module mod-framework RightOrLeftSteps animation ${fields.darkMode && fields.darkMode === 'true' ? ' dark-mode style-back text-white bg-17': ''}`
 	const classTextSlide = `item-step row ps-rv align-items-center justify-content-space-betwwen anima-bottom delay-2 ${textSide === 'right' ? 'style-right' : ''}`
+
+	const thisModuleRef = useRef(null)
+	/* animation module */
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
 		<React.Fragment>
-			<section className={classSection}>
+			<section className={classSection} ref={ thisModuleRef }>
 				<div className="container">
 					{ (title || subTitle) &&
 						<div className="title-framework last-mb-none text-center anima-bottom ">

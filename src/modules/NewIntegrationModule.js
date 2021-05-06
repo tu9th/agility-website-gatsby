@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { renderHTML } from '../agility/utils'
 import './NewIntegrationModule.scss'
 import Helpers from '../global/javascript/Helpers'
 import Lazyload from 'react-lazyload'
 import Spacing from './Spacing'
+import { animationElementInnerComponent } from '../global/javascript/animation'
+
 const NewIntegrationModule = ({ item }) => {
 	const heading = item.customFields.title
 	const des = item.customFields.description
@@ -181,9 +183,24 @@ const NewIntegrationModule = ({ item }) => {
 			}
 		}
   });
+
+	const thisModuleRef = useRef(null)
+	/* animation module */
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
 		<React.Fragment>
-			<section className={classSection}>
+			<section className={classSection} ref={ thisModuleRef }>
 				<div className="container">
 					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
 						<div className={classAniImg}>
