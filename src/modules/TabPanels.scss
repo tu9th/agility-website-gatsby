@@ -107,6 +107,8 @@
   }
 
   .features-toggle-tab-items {
+    flex: 0 0 100%;
+    max-width: 100%;
     .react-tabs__tab-panel {
       height: 0;
       padding: 0 60px;

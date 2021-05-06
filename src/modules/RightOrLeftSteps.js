@@ -41,13 +41,15 @@ const RightOrLeftSteps = ({ item }) => {
 								<p>{description}</p>
 							}
 						</div>
-						<div className="step-img ps-rv col-md-6">
-
-							{ imgURL &&
-								<React.Fragment>
-									<Lazyload offset={ Helpers.lazyOffset }><img src={imgURL} className="ps-rv img-step" alt="Create your content structure"></img></Lazyload>
-								</React.Fragment>
-							}
+						<div className="step-img ps-rv col-md-6 d-table">
+							<div className="d-table-cell align-middle">
+								
+								{ imgURL &&
+									<React.Fragment>
+										<Lazyload offset={ Helpers.lazyOffset }><img src={imgURL} className="ps-rv img-step" alt="Create your content structure"></img></Lazyload>
+									</React.Fragment>
+								}
+							</div>
 						</div>
 					</div>
 				</div>

@@ -88,6 +88,8 @@
 .step-img {
   margin-left: -20px;
   margin-right: -25px;
+  // min-height: 350px;
+  height: 342px;
   width: auto !important;
 }
 .content-step {
@@ -131,6 +133,9 @@
     color: $color-17;
     background-color: $color-ff;
   }
+}
+.align-middle {
+  vertical-align: middle;
 }
 @media (max-width: 767px) {
 	.item-step {
@@ -199,6 +204,9 @@
   .item-step {
     min-height: 390px;
     padding-left: 50px;
+  }
+  .step-img {
+    min-height: 350px;
   }
 }
 @media (min-width: 1200px) {
