@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useRef} from 'react';
 import { graphql, StaticQuery } from 'gatsby'
 import LazyLoad from 'react-lazyload'
 import './GuideLinks.scss'
@@ -70,19 +70,26 @@ const GuideLinks = ({ item, listGuideLinks }) => {
 			</div>
 		)
 	})
+
+	const thisModuleRef = useRef(null)
+
 	const init = (() => {
-		Array.from(document.querySelectorAll('.mod-user-guides')).forEach((ele) => {
-      if(ele.nextSibling.nextSibling.classList.contains('module-chanel')) {
-				ele.classList.add('has-chanel')
-			}
-    })
+		// Array.from(document.querySelectorAll('.mod-user-guides')).forEach((ele) => {
+    //   if(ele.nextSibling.nextSibling.classList.contains('module-chanel')) {
+		// 		ele.classList.add('has-chanel')
+		// 	}
+    // })
+		const nextElm = thisModuleRef.current.nextElementSibling.nextElementSibling
+		if (nextElm && typeof nextElm === 'object' && nextElm.classList.contains('module-chanel')) {
+			thisModuleRef.current.classList.add('has-chanel')
+		}
 	})
 	useEffect(() => {
 		init()
   });
 	return (
 		<React.Fragment>
-			<section className={classSection}>
+			<section className={classSection} ref={ thisModuleRef }>
 				<LazyLoad offset={ Helpers.lazyOffset }><img src="/images/computer.png" alt='Ready to dive in?' className='bg-guides'></img></LazyLoad>
 				<span className="icomoon icon-gears"></span>
 				<div className="container">
