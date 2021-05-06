@@ -79,7 +79,7 @@ const GuideLinks = ({ item, listGuideLinks }) => {
 		// 		ele.classList.add('has-chanel')
 		// 	}
     // })
-		const nextElm = thisModuleRef.current.nextElementSibling.nextElementSibling
+		const nextElm = thisModuleRef.current.nextElementSibling?.nextElementSibling
 		if (nextElm && typeof nextElm === 'object' && nextElm.classList.contains('module-chanel')) {
 			thisModuleRef.current.classList.add('has-chanel')
 		}

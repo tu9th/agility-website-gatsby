@@ -18,7 +18,7 @@ const BoxContent = ({ item }) => {
 	const thisModuleRef = useRef(null)
 
 	useEffect(() => {
-		const prevElem = thisModuleRef.current.previousElementSibling.previousElementSibling
+		const prevElem = thisModuleRef.current.previousElementSibling?.previousElementSibling
 		if (prevElem && typeof prevElem === 'object' && prevElem.classList.contains('mod-user-guides')) {
 			prevElem.classList.add('has-chanel')
 		}
