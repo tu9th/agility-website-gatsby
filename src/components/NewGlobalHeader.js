@@ -78,7 +78,7 @@ class NewGlobalHeader extends Component {
 	constructor(props) {
 		super(props);
 		this.header = React.createRef()
-		this.fakeHeaderMb = React.createRef()
+		this.mainNode = React.createRef()
 		this.heightHeaderBackup = React.createRef()
 		this.boxMessage = React.createRef()
 		this.state = {
@@ -98,6 +98,7 @@ class NewGlobalHeader extends Component {
 		this.resizeWindow = this.resizeWindow.bind(this)
 	}
 	componentDidMount() {
+		this.mainNode = document.querySelector('.main-content')
 		this.setState({activeMenu: window.location.pathname})
 		this.setState({webinar: Helpers.getCookie('WebinarHidden')})
 		this.setState({flag: true})
@@ -136,10 +137,10 @@ class NewGlobalHeader extends Component {
 
 	setHeightFakeHeader() {
 		if(!(window.innerWidth < 992 && this.state.openMenu)) {
-			this.fakeHeaderMb.style.height = this.header.offsetHeight + 'px'
+			this.mainNode.style.paddingTop = this.header.offsetHeight + 'px'
 			this.heightHeaderBackup = this.header.offsetHeight
 		} else {
-			this.fakeHeaderMb.style.height = this.heightHeaderBackup + 'px'
+			this.mainNode.style.paddingTop = this.heightHeaderBackup + 'px'
 		}
 	}
 	stickyHeader () {
@@ -249,8 +250,8 @@ class NewGlobalHeader extends Component {
 	hiddenMessage () {
 		this.setState({ webinar: 'true' })
 		Helpers.setCookie('WebinarHidden', 'true', { path: '/' })
-		this.setHeightFakeHeader()
-		this.fakeHeaderMb.style.height = this.heightHeaderBackup - (this.boxMessage ? this.boxMessage.offsetHeight : 0) + 'px'
+		// this.setHeightFakeHeader()
+		this.mainNode.style.paddingTop = this.heightHeaderBackup - (this.boxMessage ? this.boxMessage.offsetHeight : 0) + 'px'
 	}
 	render() {
 		const menuGetstart = this.props.item.customFields.secondaryButton;
@@ -357,13 +358,6 @@ class NewGlobalHeader extends Component {
 			return <ul className={level === 0 ? className: 'list-inline'}>{links}</ul>;
 		};
 
-		const onStickyActive = () => {
-			let stickyNow = false;
-			if (this.state) {
-				stickyNow = this.state.sticky
-			}
-			this.setState({ sticky: !stickyNow })
-		}
 		const item = this.props.item.customFields;
 		const classHeader = `module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`;
 		const classMainMenu = `navbar-collapse main-menu menu-header-right ${this.state.openMenu === true ? isOpenMenuText : ''}`
@@ -400,7 +394,6 @@ class NewGlobalHeader extends Component {
 						</div>
 					</nav>
 				</header>
-				<div ref={ ref => ( this.fakeHeaderMb = ref ) }></div>
 			</React.Fragment>
 		);
 	}
