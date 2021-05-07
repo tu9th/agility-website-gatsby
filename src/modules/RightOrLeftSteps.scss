@@ -149,9 +149,16 @@
       margin: 0;
     }
   }
+  .img-step {
+    max-width: 100%;
+  }
   .step-img {
     margin-left: 0;
     margin-right: 0;
+  } 
+  .style-right .img-step {
+    margin-left: 0;
+    
   }
 }
 @media (min-width: 768px) {
