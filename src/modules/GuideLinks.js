@@ -74,11 +74,11 @@ const GuideLinks = ({ item, listGuideLinks }) => {
 		)
 	})
 	const init = (() => {
-		// Array.from(document.querySelectorAll('.mod-user-guides')).forEach((ele) => {
-    //   if(ele.nextSibling.nextSibling.classList.contains('module-chanel')) {
-		// 		ele.classList.add('has-chanel')
-		// 	}
-    // })
+		Array.from(document.querySelectorAll('.mod-user-guides')).forEach((ele) => {
+			if (ele && ele.nextSibling && ele.nextSibling.nextSibling && ele.nextSibling.nextSibling.classList.contains('module-chanel')) {
+				ele.classList.add('has-chanel')
+			}
+    })
 	})
 	useEffect(() => {
 		init()
