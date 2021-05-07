@@ -132,6 +132,9 @@ const FaqsContent = ({ item }) => {
 	useEffect(() => {
 		resizeHeight()
 		window.addEventListener('resize', resizeHeight)
+		return () => {
+			window.removeEventListener('resize', resizeHeight)
+		}
   });
 	return (
 		<div ref={ lazyRef } className="faq-item" onClick={() => { checkFQA(lazyRef)}}>

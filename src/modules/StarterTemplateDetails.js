@@ -28,6 +28,10 @@ const StarterDetails = ({ item, dynamicPageItem, page }) => {
 	useEffect(() => {
 		checkIsMobile()
 		window.addEventListener('resize', checkIsMobile)
+
+		return () => {
+			window.removeEventListener('resize', checkIsMobile)
+		}
   });
 
 	const thisModuleRef = useRef(null)
