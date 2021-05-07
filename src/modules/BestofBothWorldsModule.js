@@ -180,7 +180,7 @@ const BestofBothWorldsModule = ({ item }) => {
 	}
 	useEffect(() => {
 		initComparisons()
-		
+
 		return () => {
 			window.removeEventListener("resize", displayWindowSize);
 		}
@@ -228,6 +228,7 @@ const BestofBothWorldsModule = ({ item }) => {
 			</div>
 		)
 	})
+
 	return (
 		<React.Fragment>
 

@@ -80,6 +80,14 @@
     margin-bottom: 35px;
   }
 }
+
+@media (max-width: 530px){
+	.wrap-ani-home {
+		.img-mb {
+		  width: 100%;
+		}
+	  }
+}
 @media (max-width: 767px){
   .mod-framework + .mod-space + .right-or-left-content {
     .col-right-lr {
