@@ -12,7 +12,7 @@ const AnimationScrollPage = require('./src/global/javascript/animation').default
 exports.onRouteUpdate = () => {
   AnimationScrollPage()
 }
-exports.onInitialClientRender = () => {
+exports.onClientEntry = () => {
   if (!Math.trunc) {
     Math.trunc = function (n) {
       return n < 0 ? Math.ceil(n) : Math.floor(n);
