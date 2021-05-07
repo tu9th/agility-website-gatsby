@@ -559,7 +559,7 @@ class PricingPackagesModule2 extends React.Component {
 						</table>
 					</div>
 				</div>
-				
+
 				<div className="wrap-price-catelogy">
 					{listCategory && listCategory.length > 0 &&
 						listCategory
