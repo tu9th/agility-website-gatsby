@@ -138,6 +138,7 @@
 }
 @media (max-width: 767px) {
 	.item-step {
+    justify-content: center;
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -147,6 +148,10 @@
       max-width: 100%;
       margin: 0;
     }
+  }
+  .step-img {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 @media (min-width: 768px) {
