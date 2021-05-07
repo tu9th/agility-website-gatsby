@@ -27,6 +27,9 @@ const BestofBothWorldsModule = ({ item }) => {
 	const thisModuleRef = useRef(null)
 	const imgOverlayRef = useRef(null)
 	const compSliderRef = useRef(null)
+	const slideReadyRef = useRef(null)
+	// const slideFinishRef = useRef(null)
+	let slideFinishRef = null
 	/*  */
 
 	const initComparisons = () => {
@@ -83,26 +86,28 @@ const BestofBothWorldsModule = ({ item }) => {
 			ele.style.left = comparImg + 'px';
 		})
 		compSliderRef.current.style.left = (w / 2) - 30.5 + 'px';
-		compSliderRef.current.addEventListener('mousedown', slideReady);
-		window.addEventListener('mouseup', slideFinish);
-		compSliderRef.current.addEventListener('touchstart', slideReady);
-		window.addEventListener('touchend', slideFinish);
-		function slideReady(e) {
-			e.preventDefault();
-			clicked = 1;
-			window.addEventListener('mousemove', slideMove);
-			window.addEventListener('touchmove', slideMove);
-		}
-		function slideFinish() {
-			clicked = 0;
-			wrap.classList.add('add-transition')
-			let h = wrap.offsetHeight;
-			let comparImg = (1 / Math.tan(69 * Math.PI / 180)) * h;
-			slide((wrap.offsetWidth + comparImg * 2 - 8) / 2)
-			setTimeout(() => {
-				wrap.classList.remove('add-transition')
-			}, 350)
-		}
+		// compSliderRef.current.addEventListener('mousedown', slideReady);
+		// window.addEventListener('mouseup', slideFinish);
+		// compSliderRef.current.addEventListener('touchstart', slideReady);
+		// window.addEventListener('touchend', slideFinish);
+		// function slideReady(e) {
+		// 	e.preventDefault();
+		// 	clicked = 1;
+		// 	window.addEventListener('mousemove', slideMove);
+		// 	window.addEventListener('touchmove', slideMove);
+		// }
+		// function slideFinish() {
+		// 	clicked = 0;
+		// 	wrap.classList.add('add-transition')
+		// 	let h = wrap.offsetHeight;
+		// 	let comparImg = (1 / Math.tan(69 * Math.PI / 180)) * h;
+		// 	slide((wrap.offsetWidth + comparImg * 2 - 8) / 2)
+		// 	window.removeEventListener('mousemove', slideMove);
+		// 	window.removeEventListener('touchmove', slideMove);
+		// 	setTimeout(() => {
+		// 		wrap.classList.remove('add-transition')
+		// 	}, 350)
+		// }
 		function slideMove(e) {
 			var pos;
 			const hCurent = wrap.offsetHeight;
@@ -134,7 +139,9 @@ const BestofBothWorldsModule = ({ item }) => {
 			const comparImg = (1 / Math.tan(69 * Math.PI / 180)) * hCurent;
 			img.style.width = x / wCurent * 100 + '%';
 			img.style.left = -comparImg + 'px';
-			compSliderRef.current.style.left = (x - 30.5 - comparImg) / wCurent * 100 + '%';
+			if (compSliderRef.current) {
+				compSliderRef.current.style.left = (x - 30.5 - comparImg) / wCurent * 100 + '%';
+			}
 			const l = x - 30.5 - comparImg
 			Array.from(img.querySelectorAll('img')).forEach((ele) => {
 				ele.style.left = comparImg + 'px';
@@ -161,6 +168,32 @@ const BestofBothWorldsModule = ({ item }) => {
 				}
 			}
 		}
+
+		// slideReadyRef.current = slideReady
+		slideFinishRef = slideFinish
+		compSliderRef.current.addEventListener('mousedown', slideReady);
+		window.addEventListener('mouseup', slideFinishRef);
+		compSliderRef.current.addEventListener('touchstart', slideReady);
+		window.addEventListener('touchend', slideFinishRef);
+		function slideReady(e) {
+			e.preventDefault();
+			clicked = 1;
+			window.addEventListener('mousemove', slideMove);
+			window.addEventListener('touchmove', slideMove);
+		}
+		function slideFinish() {
+			clicked = 0;
+			wrap.classList.add('add-transition')
+			let h = wrap.offsetHeight;
+			let comparImg = (1 / Math.tan(69 * Math.PI / 180)) * h;
+			slide((wrap.offsetWidth + comparImg * 2 - 8) / 2)
+			window.removeEventListener('mousemove', slideMove);
+			window.removeEventListener('touchmove', slideMove);
+			setTimeout(() => {
+				wrap.classList.remove('add-transition')
+			}, 350)
+		}
+
 		document.getElementsByClassName('healine-v1')[0].addEventListener('click', () => {
 			const comparImg = (1 / Math.tan(69 * Math.PI / 180)) * wrap.offsetHeight;
 			wrap.classList.add('add-transition')
@@ -183,6 +216,10 @@ const BestofBothWorldsModule = ({ item }) => {
 
 		return () => {
 			window.removeEventListener("resize", displayWindowSize);
+			// compSliderRef.current.removeEventListener('mousedown', slideReadyRef.current);
+			window.removeEventListener('mouseup', slideFinishRef);
+			// compSliderRef.current.removeEventListener('touchstart', slideReadyRef.current);
+			window.removeEventListener('touchend', slideFinishRef);
 		}
 	}, []);
 

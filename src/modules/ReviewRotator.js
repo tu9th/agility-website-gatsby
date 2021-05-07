@@ -150,10 +150,10 @@ const ReviewRotator = ({ item, listReviews }) => {
       }
     }]
 	};
-	const callcheckHeight = () => {
-		checkHeight()
-		window.addEventListener('resize', checkHeight);
-	}
+	// const callcheckHeight = () => {
+	// 	checkHeight()
+	// 	window.addEventListener('resize', checkHeight);
+	// }
 	const checkHeight = () => {
 		const content = document.querySelectorAll('.content-review');
 		const maxHeight = 150
@@ -179,7 +179,13 @@ const ReviewRotator = ({ item, listReviews }) => {
 		}, 200)
 	}
 	useEffect(() => {
-		callcheckHeight()
+		// callcheckHeight()
+		checkHeight()
+		window.addEventListener('resize', checkHeight);
+
+		return () => {
+			window.removeEventListener('resize', checkHeight);
+		}
   });
 
 	/* animation module */
