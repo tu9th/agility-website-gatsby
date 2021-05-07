@@ -92,10 +92,13 @@ class NewGlobalHeader extends Component {
 		}
 		this.stickyHeader = this.stickyHeader.bind(this)
 		this.setHeightFakeHeader = this.setHeightFakeHeader.bind(this)
+		this.updatePinHeader = this.updatePinHeader.bind(this)
+		this.updateHeighHeaderBackup = this.updateHeighHeaderBackup.bind(this)
 		this.hiddenMessage = this.hiddenMessage.bind(this)
 		this.showMenuMobile = this.showMenuMobile.bind(this)
 		this.removeClassOpenMenuOnHtml = this.removeClassOpenMenuOnHtml.bind(this)
 		this.resizeWindow = this.resizeWindow.bind(this)
+		this.scrollWindow = this.scrollWindow.bind(this)
 	}
 	componentDidMount() {
 		this.mainNode = document.querySelector('.main-content')
@@ -106,8 +109,7 @@ class NewGlobalHeader extends Component {
 		this.hiddenSeach()
 		this.removeClassOpenMenuOnHtml()
 		this.clickAwebinar()
-		this.setHeightFakeHeader()
-		window.addEventListener('scroll', this.stickyHeader);
+		window.addEventListener('scroll', this.scrollWindow);
 		window.addEventListener('resize', this.resizeWindow);
 
 		if (navigator.platform.indexOf('Mac') > -1) {
@@ -116,32 +118,54 @@ class NewGlobalHeader extends Component {
 		if (navigator.platform.indexOf('Win') > -1) {
 			document.querySelector('html').classList.add('window-os')
 		}
-		this.setState({ pinHeader: true })
+
+		this.updateHeighHeaderBackup()
+		// this.setState({ pinHeader: true })
+		// this.setHeightFakeHeader()
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		this.removeClassOpenMenuOnHtml()
 		if (prevState.webinar !== this.state.webinar) {
-			this.setHeightFakeHeader()
+			this.updateHeighHeaderBackup()
+			this.updatePinHeader()
 		}
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener('resize', this.resizeWindow)
+		window.removeEventListener('scroll', this.scrollWindow)
 	}
 
 	/* resize Window */
 	resizeWindow() {
+		this.updateHeighHeaderBackup()
+		this.updatePinHeader()
+	}
+	/* SCROLL */
+	scrollWindow() {
+		this.updatePinHeader()
+		this.stickyHeader()
+	}
+
+	updatePinHeader() {
+		this.setState({ pinHeader: true })
 		this.setHeightFakeHeader()
 	}
 
-	setHeightFakeHeader() {
+	/* update height value ò header prepare for append space */
+	updateHeighHeaderBackup() {
 		if(!(window.innerWidth < 992 && this.state.openMenu)) {
-			this.mainNode.style.paddingTop = this.header.offsetHeight + 'px'
 			this.heightHeaderBackup = this.header.offsetHeight
-		} else {
-			this.mainNode.style.paddingTop = this.heightHeaderBackup + 'px'
 		}
+	}
+	setHeightFakeHeader() {
+		// if(!(window.innerWidth < 992 && this.state.openMenu)) {
+		// 	this.mainNode.style.paddingTop = this.header.offsetHeight + 'px'
+		// 	this.heightHeaderBackup = this.header.offsetHeight
+		// } else {
+			this.mainNode.style.paddingTop = this.heightHeaderBackup + 'px'
+		// }
 	}
 	stickyHeader () {
 		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
@@ -165,6 +189,7 @@ class NewGlobalHeader extends Component {
 			this.setState({
 				openMenu: !this.state.openMenu
 			})
+			this.updatePinHeader()
 
 			// this.removeClassOpenMenuOnHtml()
 		}
@@ -230,7 +255,8 @@ class NewGlobalHeader extends Component {
 			const target = event.target
 			if(target.classList.contains('link-line') && target.offsetParent.classList.contains('box-message')) {
 				Helpers.setCookie('WebinarHidden', 'true', { path: '/' })
-				this.setHeightFakeHeader()
+				this.updateHeighHeaderBackup()
+				this.updatePinHeader()
 			}
 		})
 	}
@@ -248,10 +274,10 @@ class NewGlobalHeader extends Component {
 		document.getElementById('search-page-header').focus()
 	}
 	hiddenMessage () {
+		this.mainNode.style.paddingTop = this.heightHeaderBackup - (this.boxMessage ? this.boxMessage.offsetHeight : 0) + 'px'
 		this.setState({ webinar: 'true' })
 		Helpers.setCookie('WebinarHidden', 'true', { path: '/' })
 		// this.setHeightFakeHeader()
-		this.mainNode.style.paddingTop = this.heightHeaderBackup - (this.boxMessage ? this.boxMessage.offsetHeight : 0) + 'px'
 	}
 	render() {
 		const menuGetstart = this.props.item.customFields.secondaryButton;
