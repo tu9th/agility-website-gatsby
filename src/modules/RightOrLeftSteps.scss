@@ -89,7 +89,6 @@
   margin-left: -20px;
   margin-right: -25px;
   // min-height: 350px;
-  height: 342px;
   width: auto !important;
 }
 .content-step {
@@ -190,6 +189,9 @@
 			background: linear-gradient(-90deg, rgb(23, 27, 32) 0%, rgb(42, 56, 70) 100%);
 		}
 	}
+  .step-img {
+    height: 342px;
+  }
 }
 @media (min-width: 992px) {
   .style-back {
@@ -206,7 +208,7 @@
     padding-left: 50px;
   }
   .step-img {
-    min-height: 350px;
+    height: 350px;
   }
 }
 @media (min-width: 1200px) {

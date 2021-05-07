@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
@@ -8,6 +8,13 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 
 
 const HasImg = ({ img, isHomePage }) => {
+
+	const [isLoaded, setIsLoaded] = useState(false)
+
+	useEffect(() => {
+			setIsLoaded(true)
+	}, [])
+
 	return (
 		<React.Fragment>
 			{/* <picture>
@@ -19,7 +26,7 @@ const HasImg = ({ img, isHomePage }) => {
 				</Helmet>
 
 
-			<img src={img.url} width="320" height="208" alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
+			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
 			{isHomePage &&
 				<div className="d-none d-sl-block">
 					<div className="ani-banner"></div>
