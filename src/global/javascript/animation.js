@@ -106,7 +106,7 @@ const AnimationScrollPage = () => {
   //     //     }
   //     //   }, 5)
   //     // } else {
-  //     removeLoading()
+      removeLoading()
   //     // }
   //   // }, 300)
   // }
