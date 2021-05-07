@@ -96,20 +96,20 @@ const removeLoading = () => {
 }
 const AnimationScrollPage = () => {
   // document.querySelector('html').scrollTop = 0;
-  if (window.innerWidth > 991) {
-    // setTimeout(() => {
-      // if(document.querySelectorAll('.ani-banner').length) {
-      //   let inter = setInterval(() => {
-      //     if (document.querySelectorAll('.done-ani').length) {
-      //       clearInterval(inter)
-      //       removeLoading()
-      //     }
-      //   }, 5)
-      // } else {
-      removeLoading()
-      // }
-    // }, 300)
-  }
+  // if (window.innerWidth > 991) {
+  //   // setTimeout(() => {
+  //     // if(document.querySelectorAll('.ani-banner').length) {
+  //     //   let inter = setInterval(() => {
+  //     //     if (document.querySelectorAll('.done-ani').length) {
+  //     //       clearInterval(inter)
+  //     //       removeLoading()
+  //     //     }
+  //     //   }, 5)
+  //     // } else {
+  //     removeLoading()
+  //     // }
+  //   // }, 300)
+  // }
   dectectEventClick()
 }
 const dectectEventClick = () => {
