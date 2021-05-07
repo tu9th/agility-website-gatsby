@@ -135,7 +135,7 @@
 	&::before {
 		content: '\E906';
 		font-family: $icomoon;
-		@include position(absolute,$top: -4px,$left: -2px);
+		@include position(absolute,$top: -7px,$left: -2px);
 		color: inherit;
 		transform: rotate(180deg);
     font-size: 11px;
