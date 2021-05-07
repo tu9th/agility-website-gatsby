@@ -354,7 +354,7 @@ class NewGlobalHeader extends Component {
 				const btnMenu = <li className="d-lg-flex align-items-center box-search-header" key="btnMenu">
 					<div className="group-search">
 					<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center dectect-open">
-						<Lazyload offset={ Helpers.lazyOffset }><img src={'/images/search.svg'} className="lazy dectect-open" alt="search" /></Lazyload>
+						<Lazyload offset={ Helpers.lazyOffset }><img src={'/images/search.svg'} className="lazy dectect-open" width="25" height="25" alt="search" /></Lazyload>
 					</button>
 						<form onSubmit={event => {
 							event.preventDefault()

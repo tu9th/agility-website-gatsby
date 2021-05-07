@@ -15,7 +15,7 @@ const BoxContent = ({ item }) => {
 	const image = fields.image
 	const image2 = fields.image2
 	const classitem  = ( btnCta || image || heading || description) && ( btnCta2 || image2 || heading2 || description2)  ? 'col-lg-6 item-chanel' : 'col-lg-8 item-chanel'
-	
+
 	const thisModuleRef = useRef(null)
 	/* animation module */
 	useEffect(() => {
@@ -29,6 +29,13 @@ const BoxContent = ({ item }) => {
 			window.removeEventListener('scroll', scrollEventFunc)
 		}
 	}, [])
+
+	useEffect(() => {
+		const prevElem = thisModuleRef.current.previousElementSibling?.previousElementSibling
+		if (prevElem && typeof prevElem === 'object' && prevElem.classList.contains('mod-user-guides')) {
+			prevElem.classList.add('has-chanel')
+		}
+	})
 
 	return (
 		<React.Fragment>
