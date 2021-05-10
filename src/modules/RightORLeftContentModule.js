@@ -223,7 +223,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	useEffect(() => {
 		// detectHomePage()
 		if (imgModule && isHomePage) {
-			// init()
+			init()
 			if (!navigator.userAgent.match(/Trident\/7\./)) {
 				window.addEventListener('scroll', initParallax);
 			}
