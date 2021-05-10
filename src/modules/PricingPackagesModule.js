@@ -421,6 +421,7 @@ class PricingPackagesModule2 extends React.Component {
 				oldWidth = window.innerWidth;
 			}
 		});
+		window.addEventListener('click', this.eventScrollFunc)
 	}
 
 	componentDidUpdate(prevProps, prevState) {
