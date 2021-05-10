@@ -60,6 +60,8 @@ const HasImg = ({ img, isHomePage, page }) => {
 						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="image" href={`/images/ani-banner/img_0.png`} media="(min-width: 768px)" />
+						<link rel="preload" as="image" href={`/images/ani-banner/img_1.png`} media="(min-width: 768px)" />
 					</Helmet>
 					<div className="d-none d-sl-block">
 						{
