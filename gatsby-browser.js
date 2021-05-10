@@ -24,7 +24,6 @@ exports.onClientEntry = () => {
     };
   }
 
-}
-exports.onInitialClientRender = () => {
+  /* loading animattion page */
   AnimationScrollPage()
 }
