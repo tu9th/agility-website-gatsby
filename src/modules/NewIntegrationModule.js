@@ -23,7 +23,7 @@ const NewIntegrationModule = ({ item }) => {
 	if (item.customFields.graphic && item.customFields.graphic.url) {
 		imgModule = item.customFields.graphic
 	} else {
-		classAniImg = classAniImg + ' anima-right'
+		classAniImg = classAniImg + ' anima-right w-100'
 	}
 	const detectHomePage = () => {
 		if(typeof window !== `undefined`) {
