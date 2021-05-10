@@ -4,11 +4,11 @@ import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
 import Lottie from 'react-lottie'
-import layer0 from '../static/data/layer_0.json'
-import layer1 from '../static/data/layer_1.json'
-import layer2 from '../static/data/layer_2.json'
-import layer3 from '../static/data/layer_3.json'
-import layer4 from '../static/data/layer_4.json'
+// import layer0 from '../static/data/layer_0.json'
+// import layer1 from '../static/data/layer_1.json'
+// import layer2 from '../static/data/layer_2.json'
+// import layer3 from '../static/data/layer_3.json'
+// import layer4 from '../static/data/layer_4.json'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 
 
@@ -17,14 +17,15 @@ const HasImg = ({ img, isHomePage, page }) => {
 
 	const [isLoaded, setIsLoaded] = useState(false)
 
-	const dataLayerList = [layer0, layer1, layer2, layer3, layer4]
+	// const dataLayerList = [layer0, layer1, layer2, layer3, layer4]
 	let listLottieOptions = []
 
-	for (let i = 0; i < dataLayerList.length; i++) {
+	for (let i = 0; i < 5; i++) {
 		let opts = {
 			loop: false,
 			autoplay: isLoaded,
-			animationData: dataLayerList[i],
+			// animationData: dataLayerList[i],
+			path: `/js/layer_${i}.json`,
 			rendererSettings: {
 				preserveAspectRatio: 'xMidYMid slice'
 			}
@@ -53,13 +54,13 @@ const HasImg = ({ img, isHomePage, page }) => {
 				className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
 			{ isHomePage &&
 				<>
-					{/* <Helmet>
-						<link rel="preload" as="fetch" href={`static/js/layer_0.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`static/js/layer_1.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`static/js/layer_2.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`static/js/layer_3.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`static/js/layer_4.json`} media="(min-width: 768px)" />
-					</Helmet> */}
+					<Helmet>
+						<link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_1.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" />
+					</Helmet>
 					<div className="d-none d-sl-block">
 						{
 							listLottieOptions.map((opt, index) => {
