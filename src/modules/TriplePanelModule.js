@@ -64,7 +64,7 @@ const TriplePanelModule = ({ item, tripePanels }) => {
 					{ customField.graphic && customField.graphic.url &&
 						<div className="img-3col d-flex align-items-center justify-content-center">
 							<LazyLoad offset={ Helpers.lazyOffset }>
-								<img src={customField.graphic.url} alt={customField.graphic.label} />
+								<img width="60" height="60" src={customField.graphic.url} alt={customField.graphic.label} />
 							</LazyLoad>
 						</div>
 					}
