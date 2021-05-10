@@ -64,6 +64,8 @@ const HasImg = ({ img, isHomePage, page }) => {
 						<link rel="preload" as="image" href={`/images/ani-banner/img_1.png`} media="(min-width: 768px)" />
 					</Helmet>
 					<div className="d-none d-sl-block">
+						<img style={{ opacity: 0, position: 'absolute', width: '1px', height: '1px' }} src={ `/images/ani-banner/img_0.png` } />
+						<img style={{ opacity: 0, position: 'absolute', width: '1px', height: '1px' }} src={ `/images/ani-banner/img_1.png` } />
 						{
 							listLottieOptions.map((opt, index) => {
 								return <div key={index} className="ani-banner">

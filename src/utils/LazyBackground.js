@@ -70,7 +70,7 @@ export default class LazyImage extends React.Component {
 		const style = { backgroundImage: `url(${placeHolder})` }
 
 		return (
-			<div ref={bgElm => this.bgElm = bgElm} className={this.props.className} style={style}>
+			<div ref={bgElm => this.bgElm = bgElm} className={this.props.className}>
 				{ this.props.children}
 			</div>
 		)
