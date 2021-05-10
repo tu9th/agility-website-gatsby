@@ -85,6 +85,7 @@ const RightOrLeftContent = ({ item, page }) => {
 
 	const appenLottie = (callback = function () { }) => {
 		const script = document.createElement("script");
+		script.id = 'lottie-script'
 		script.src = "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js";
 		script.async = true;
 		document.body.appendChild(script);
@@ -101,7 +102,11 @@ const RightOrLeftContent = ({ item, page }) => {
 	const callAnimation = () => {
 		let banner = bannerRef.current
 		if (banner.classList.contains('mod-banner') && window.innerWidth >= 1025 && !banner.classList.contains('done-ani')) {
-			appenLottie(() => { setIsLottieLoad(true) })
+			if (!document.querySelectorAll('#lottie-script').length) {
+				appenLottie(() => { setIsLottieLoad(true) })
+			} else {
+				setIsLottieLoad(true)
+			}
 		}
 	}
 	const loadAni = () => {
