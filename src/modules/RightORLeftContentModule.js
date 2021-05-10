@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 // import layer0 from '../static/data/layer_0.json'
 // import layer1 from '../static/data/layer_1.json'
 // import layer2 from '../static/data/layer_2.json'
@@ -55,17 +55,18 @@ const HasImg = ({ img, isHomePage, page }) => {
 			{ isHomePage &&
 				<>
 					<Helmet>
-						<link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 768px)" />
+						{/* <link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_1.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" /> */}
+						<link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js" media="(min-width: 768px)" />
 					</Helmet>
 					<div className="d-none d-sl-block">
 						{
 							listLottieOptions.map((opt, index) => {
 								return <div key={index} className="ani-banner">
-									<Lottie options={opt} />
+									{/* <Lottie options={opt} /> */}
 								</div>
 							})
 						}
@@ -222,7 +223,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	useEffect(() => {
 		// detectHomePage()
 		if (imgModule && isHomePage) {
-			// init()
+			init()
 			if (!navigator.userAgent.match(/Trident\/7\./)) {
 				window.addEventListener('scroll', initParallax);
 			}
