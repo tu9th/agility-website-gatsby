@@ -150,3 +150,21 @@
 		}
 	}
 }
+.ie {
+	.event-details {
+		.event-date {
+			span.event-type {
+				background-size: 48px;
+				background-position: -9px 7px;
+			}
+			span.date {
+				background-size: 62px;
+				background-position: -14px 5px;
+			}
+			span.time {
+				background-size: 43px;
+				background-position: -6px 5px;
+			}
+		}
+	}
+}
