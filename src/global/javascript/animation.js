@@ -2,6 +2,13 @@
 
 import Helper from './Helpers'
 export const animationElementInnerComponent = ($elmComponent) => {
+
+  /* return when first load */
+  if (typeof window !== 'undefined' && window.firstLoad === true) {
+    return false
+  }
+  /*  */
+
   let $elems = $elmComponent?.classList?.contains('animation') ? [$elmComponent] : $elmComponent?.querySelectorAll('.animation')
   let winH = window.innerHeight
   let winW = window.innerWidth
@@ -37,6 +44,8 @@ export const animationElementInnerComponent = ($elmComponent) => {
   } else {
     $elmComponent.classList.add('set-animation')
   }
+
+  return true
 }
 
 export const animationEle = () => {
@@ -89,10 +98,11 @@ export const animationEle = () => {
 }
 const removeLoading = () => {
   document.getElementsByTagName('html')[0].classList.add('hide-loader')
-  // animationEle()
+  animationEle()
   // window.addEventListener('scroll', function (e) {
   //   animationEle()
   // })
+  window.firstLoad = false
 }
 const AnimationScrollPage = () => {
   // document.querySelector('html').scrollTop = 0;

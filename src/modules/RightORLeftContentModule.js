@@ -207,7 +207,7 @@ const RightOrLeftContent = ({ item, page }) => {
 								<ImgRender img={imgModule} isHomePage={isHomePage} page={ page } />
 							</div>
 						</div>
-						<div className="col-md-6 large-paragraph last-mb-none">
+						<div className="col-md-6 large-paragraph last-mb-none anima-left">
 							{breadcrumb && <h5>{breadcrumb}</h5>}
 							<h1>{heading}</h1>
 							{des &&
