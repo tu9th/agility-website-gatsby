@@ -399,6 +399,7 @@ class PricingPackagesModule2 extends React.Component {
 		})
 	}
 	eventScrollFunc(event) {
+		console.log(333)
 		this.pinHeaderTable()
 		this.setheightTable()
 		animationElementInnerComponent(this.thisElm.current)
