@@ -27,7 +27,7 @@ const HasImg = ({ img, isHomePage, page }) => {
 
 
 			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'}
-			className={`${isHomePage ? 'img-mb' : ''} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
+			className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
 			{ isHomePage &&
 				<div className="d-none d-sl-block">
 					<div className="ani-banner"></div>
@@ -49,7 +49,10 @@ const ImgRender = React.memo(HasImg)
 
 
 const RightOrLeftContent = ({ item, page }) => {
-	console.log('propsps', page);
+	// console.log('propsps', page);
+
+	const homepage = page.name === 'home' ? true : false
+
 	const heading = item.customFields.title
 	const des = item.customFields.description
 	const breadcrumb = item.customFields.breadcrumb
@@ -57,7 +60,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	const btn2 = item.customFields.cTA2Optional
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white' : ''}`
 	const array = []
-	const [isHomePage, setIsHomePage] = useState(false);
+	const [isHomePage, setIsHomePage] = useState(homepage);
 	// const [classWrap, setClassWrap] = useState('wrap-ani-home ps-rv internal-wrap');
 	// const [classBtn, setClassBtn] = useState('wrap-btn internal-btn');
 	let classAniImg = 'col-md-6 col-right-lr'
@@ -76,27 +79,16 @@ const RightOrLeftContent = ({ item, page }) => {
 
 	/*  */
 	const detectHomePage = () => {
-		// if(typeof window !== `undefined`) {
-
 		const detectHome = ['/new-home', '/new-home/', '/'].includes(window.location.pathname)
-
 		setIsHomePage(detectHome)
-
-		// if (isHomePage || detectHome) {
-
-		// 	// setClassWrap('wrap-ani-home ps-rv')
-		// 	// setClassBtn('wrap-btn')
-		// }
-
-		// }
 	}
+
 	const appenLottie = (callback = function () { }) => {
 		const script = document.createElement("script");
 		script.src = "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js";
 		script.async = true;
 		document.body.appendChild(script);
 		script.onload = () => {
-			// console.log('loottie', window.lottie);
 			callback()
 		}
 	}
