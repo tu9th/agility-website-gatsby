@@ -27,7 +27,7 @@ const HasImg = ({ img, isHomePage, page }) => {
 
 
 			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'}
-			className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
+			className={`${isHomePage ? 'img-mb' : ''} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
 			{ isHomePage &&
 				<div className="d-none d-sl-block">
 					<div className="ani-banner"></div>
@@ -210,7 +210,7 @@ const RightOrLeftContent = ({ item, page }) => {
 								<ImgRender img={imgModule} isHomePage={isHomePage} page={ page } />
 							</div>
 						</div>
-						<div className="col-md-6 large-paragraph last-mb-none anima-left">
+						<div className="col-md-6 large-paragraph last-mb-none">
 							{breadcrumb && <h5>{breadcrumb}</h5>}
 							<h1>{heading}</h1>
 							{des &&
