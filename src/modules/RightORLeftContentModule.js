@@ -23,7 +23,7 @@ const HasImg = ({ img, isHomePage, page }) => {
 	for (let i = 0; i < dataLayerList.length; i++) {
 		let opts = {
 			loop: false,
-			autoplay: true,
+			autoplay: isLoaded,
 			animationData: dataLayerList[i],
 			rendererSettings: {
 				preserveAspectRatio: 'xMidYMid slice'
@@ -52,21 +52,33 @@ const HasImg = ({ img, isHomePage, page }) => {
 			<img src={img.url} width={!isLoaded ? '320' : ''} height={!isLoaded ? '208' : ''} alt={img.label ? img.label : 'image video'}
 				className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
 			{ isHomePage &&
-				<div className="d-none d-sl-block">
-					{
-						listLottieOptions.map((opt, index) => {
-							return <div key={index} className="ani-banner">
-								<Lottie options={ opt } />
-							</div>
-						})
-					}
+				<>
+					{/* <Helmet>
+						<link rel="preload" as="fetch" href={`static/js/layer_0.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`static/js/layer_1.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`static/js/layer_2.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`static/js/layer_3.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`static/js/layer_4.json`} media="(min-width: 768px)" />
+					</Helmet> */}
+					<div className="d-none d-sl-block">
+						{
+							listLottieOptions.map((opt, index) => {
+								return <div key={index} className="ani-banner">
+									<Lottie options={opt} />
+								</div>
+							})
+						}
 
-					{/* <div className="ani-banner"></div>
+						{/* <div className="ani-banner"></div>
 					<div className="ani-banner"></div>
 					<div className="ani-banner"></div>
 					<div className="ani-banner item-bg"></div>
 					<div className="ani-banner"></div> */}
-				</div>
+					</div>
+				</>
+
+
+
 			}
 
 
