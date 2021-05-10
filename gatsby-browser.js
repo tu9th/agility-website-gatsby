@@ -24,5 +24,7 @@ exports.onClientEntry = () => {
     };
   }
 
+}
+exports.onInitialClientRender = () => {
   AnimationScrollPage()
 }
