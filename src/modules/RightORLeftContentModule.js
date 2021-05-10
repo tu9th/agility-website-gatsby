@@ -55,11 +55,11 @@ const HasImg = ({ img, isHomePage, page }) => {
 			{ isHomePage &&
 				<>
 					<Helmet>
-						{/* <link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_1.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" /> */}
+						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" />
 						<link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js" media="(min-width: 768px)" />
 					</Helmet>
 					<div className="d-none d-sl-block">
