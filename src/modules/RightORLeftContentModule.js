@@ -112,7 +112,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	if (item.customFields.graphic && item.customFields.graphic.url) {
 		imgModule = item.customFields.graphic
 	} else {
-		classAniImg = classAniImg + ' anima-right w-100'
+		classAniImg = classAniImg + ' anima-right'
 	}
 
 
@@ -247,7 +247,7 @@ const RightOrLeftContent = ({ item, page }) => {
 				<div className="container">
 					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
 						<div className={classAniImg}>
-							<div className={`wrap-ani-home 2 ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
+							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
 								<ImgRender img={imgModule} isHomePage={isHomePage} page={page} />
 							</div>
 						</div>
