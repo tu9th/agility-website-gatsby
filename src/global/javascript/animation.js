@@ -2,6 +2,7 @@
 
 import Helper from './Helpers'
 export const animationElementInnerComponent = ($elmComponent) => {
+  console.log($elmComponent);
 
   /* return when first load */
   if (typeof window !== 'undefined' && window.firstLoad === true) {
