@@ -98,7 +98,11 @@
     }
   }
 }
-
+.ie {
+  .list-logo-feature {
+    transform: translateY(-22px);
+  }
+}
 .title-f-casestudy {
   margin-bottom: 30px;
 }
