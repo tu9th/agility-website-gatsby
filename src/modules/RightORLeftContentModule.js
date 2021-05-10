@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 // import layer0 from '../static/data/layer_0.json'
 // import layer1 from '../static/data/layer_1.json'
 // import layer2 from '../static/data/layer_2.json'
@@ -18,26 +18,26 @@ const HasImg = ({ img, isHomePage, page }) => {
 	const [isLoaded, setIsLoaded] = useState(false)
 
 	// const dataLayerList = [layer0, layer1, layer2, layer3, layer4]
-	let listLottieOptions = []
+	// let listLottieOptions = []
 
-	for (let i = 0; i < 5; i++) {
-		let opts = {
-			loop: false,
-			autoplay: isLoaded,
-			// animationData: dataLayerList[i],
-			path: `/js/layer_${i}.json`,
-			rendererSettings: {
-				preserveAspectRatio: 'xMidYMid slice'
-			}
-		}
-		listLottieOptions.push(opts)
-	}
+	// for (let i = 0; i < 5; i++) {
+	// 	let opts = {
+	// 		loop: false,
+	// 		autoplay: isLoaded,
+	// 		// animationData: dataLayerList[i],
+	// 		path: `/js/layer_${i}.json`,
+	// 		rendererSettings: {
+	// 			preserveAspectRatio: 'xMidYMid slice'
+	// 		}
+	// 	}
+	// 	listLottieOptions.push(opts)
+	// }
 
 	useEffect(() => {
 		setIsLoaded(true)
 	}, [])
 
-	console.log('listLottieOptions', listLottieOptions);
+	// console.log('listLottieOptions', listLottieOptions);
 
 	return (
 		<React.Fragment>
@@ -51,39 +51,35 @@ const HasImg = ({ img, isHomePage, page }) => {
 
 
 			<img src={img.url} width={!isLoaded ? '320' : ''} height={!isLoaded ? '208' : ''} alt={img.label ? img.label : 'image video'}
-				className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
+				className={`${isHomePage ? 'img-mb' : 'anima-right'} ${isHomePage && !isLoaded ? 'opacity-0' : ''}`} />
 			{ isHomePage &&
 				<>
 					<Helmet>
-						<link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_1.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 768px)" />
-						<link rel="preload" as="image" href={`/images/ani-banner/img_0.png`} media="(min-width: 768px)" />
-						<link rel="preload" as="image" href={`/images/ani-banner/img_1.png`} media="(min-width: 768px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 1025px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_1.json`} media="(min-width: 1025px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 1025px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 1025px)" />
+						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 1025px)" />
+						<link rel="preload" as="image" href={`/images/ani-banner/img_0.png`} media="(min-width: 1025px)" />
+						<link rel="preload" as="image" href={`/images/ani-banner/img_1.png`} media="(min-width: 1025px)" />
+						<link rel="preload" as="script" href={`https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js`} media="(min-width: 1025px)" />
 					</Helmet>
 					<div className="d-none d-sl-block">
-						<img style={{ opacity: 0, position: 'absolute', width: '1px', height: '1px' }} src={ `/images/ani-banner/img_0.png` } />
-						<img style={{ opacity: 0, position: 'absolute', width: '1px', height: '1px' }} src={ `/images/ani-banner/img_1.png` } />
 						{
-							listLottieOptions.map((opt, index) => {
-								return <div key={index} className="ani-banner">
-									<Lottie options={opt} />
-								</div>
-							})
+							// listLottieOptions.map((opt, index) => {
+							// 	return <div key={index} className="ani-banner">
+							// 		{/* <Lottie options={opt} /> */}
+							// 	</div>
+							// })
 						}
 
-						{/* <div className="ani-banner"></div>
-					<div className="ani-banner"></div>
-					<div className="ani-banner"></div>
-					<div className="ani-banner item-bg"></div>
-					<div className="ani-banner"></div> */}
+						<div className="ani-banner"></div>
+						<div className="ani-banner"></div>
+						<div className="ani-banner"></div>
+						<div className="ani-banner item-bg"></div>
+						<div className="ani-banner"></div>
 					</div>
 				</>
-
-
-
 			}
 
 
@@ -226,7 +222,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	useEffect(() => {
 		// detectHomePage()
 		if (imgModule && isHomePage) {
-			// init()
+			init()
 			if (!navigator.userAgent.match(/Trident\/7\./)) {
 				window.addEventListener('scroll', initParallax);
 			}
