@@ -305,7 +305,7 @@ class PricingPackagesModule2 extends React.Component {
 		super(props);
 		let isMonthly = props.item.customFields.loadsByDefault === 'Monthly' ? true : false
 		this.state = {
-			loaded: false,
+			// loaded: false,
 			showMore: false,
 			isMobile: false,
 			isPin: false,
@@ -314,6 +314,7 @@ class PricingPackagesModule2 extends React.Component {
 		}
 		this.pinHeaderTable = this.pinHeaderTable.bind(this)
 		this.eventScrollFunc = this.eventScrollFunc.bind(this)
+		this.eventClickFunc = this.eventClickFunc.bind(this)
 		this.textSaleRef = React.createRef(null)
 		this.thisElm = React.createRef(null)
 
@@ -398,18 +399,24 @@ class PricingPackagesModule2 extends React.Component {
 			})
 		})
 	}
+
+	/* event scroll window */
 	eventScrollFunc(event) {
-		console.log(333)
 		this.pinHeaderTable()
 		this.setheightTable()
 		animationElementInnerComponent(this.thisElm.current)
 	}
+	/* event click Window */
+	eventClickFunc() {
+		this.pinHeaderTable()
+		this.setheightTable()
+	}
 	componentDidMount() {
-		let oldWidth = window.innerWidth
+		// let oldWidth = window.innerWidth
 		this.pinHeaderTable();
 		this.setheightTable()
 		this.toggerTable()
-		this.setState({ loaded: true });
+		// this.setState({ loaded: true });
 
 		/* set Width sale Text */
 		const textSaleElm = this.textSaleRef.current.querySelector('span')
@@ -417,12 +424,12 @@ class PricingPackagesModule2 extends React.Component {
 		this.setState({ widthSaleText: w })
 
 		window.addEventListener('scroll', this.eventScrollFunc)
-		window.addEventListener('resize', () => {
-			if (oldWidth !== window.innerWidth) {
-				oldWidth = window.innerWidth;
-			}
-		});
-		window.addEventListener('click', this.eventScrollFunc)
+		// window.addEventListener('resize', () => {
+		// 	if (oldWidth !== window.innerWidth) {
+		// 		oldWidth = window.innerWidth;
+		// 	}
+		// });
+		window.addEventListener('click', this.eventClickFunc)
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -439,6 +446,7 @@ class PricingPackagesModule2 extends React.Component {
 
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.eventScrollFunc)
+		window.removeEventListener('click', this.eventClickFunc)
 	}
 
 	render() {
@@ -572,7 +580,7 @@ class PricingPackagesModule2 extends React.Component {
 
 		return (
 			<React.Fragment>
-				<section className={`PricingPackagesModule pricing-package animation anima-fixed anima-inner-component ${!this.state.loaded ? 'opacity-0' : ''}`} ref={ this.thisElm }>
+				<section className={`PricingPackagesModule pricing-package animation anima-fixed anima-inner-component`} ref={ this.thisElm }>
 					<div className="container anima-bottom">
 						<div className="wrap-togger-price d-flex justify-content-center align-items-center">
 							<div className="togger-price">
