@@ -3,6 +3,12 @@ import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
+import Lottie from 'react-lottie'
+import layer0 from '../static/data/layer_0.json'
+import layer1 from '../static/data/layer_1.json'
+import layer2 from '../static/data/layer_2.json'
+import layer3 from '../static/data/layer_3.json'
+import layer4 from '../static/data/layer_4.json'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 
 
@@ -11,9 +17,26 @@ const HasImg = ({ img, isHomePage, page }) => {
 
 	const [isLoaded, setIsLoaded] = useState(false)
 
+	const dataLayerList = [layer0, layer1, layer2, layer3, layer4]
+	let listLottieOptions = []
+
+	for (let i = 0; i < dataLayerList.length; i++) {
+		let opts = {
+			loop: false,
+			autoplay: true,
+			animationData: dataLayerList[i],
+			rendererSettings: {
+				preserveAspectRatio: 'xMidYMid slice'
+			}
+		}
+		listLottieOptions.push(opts)
+	}
+
 	useEffect(() => {
-			setIsLoaded(true)
+		setIsLoaded(true)
 	}, [])
+
+	console.log('listLottieOptions', listLottieOptions);
 
 	return (
 		<React.Fragment>
@@ -21,22 +44,31 @@ const HasImg = ({ img, isHomePage, page }) => {
 					<source srcSet={img.url}></source>
 					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
 				</picture> */}
-				<Helmet>
-					<link rel="preload" as="image" href={img.url} media="screen" />
-				</Helmet>
+			<Helmet>
+				<link rel="preload" as="image" href={img.url} media="screen" />
+			</Helmet>
 
 
-			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'}
-			className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
+			<img src={img.url} width={!isLoaded ? '320' : ''} height={!isLoaded ? '208' : ''} alt={img.label ? img.label : 'image video'}
+				className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
 			{ isHomePage &&
 				<div className="d-none d-sl-block">
-					<div className="ani-banner"></div>
+					{
+						listLottieOptions.map((opt, index) => {
+							return <div key={index} className="ani-banner">
+								<Lottie options={ opt } />
+							</div>
+						})
+					}
+
+					{/* <div className="ani-banner"></div>
 					<div className="ani-banner"></div>
 					<div className="ani-banner"></div>
 					<div className="ani-banner item-bg"></div>
-					<div className="ani-banner"></div>
+					<div className="ani-banner"></div> */}
 				</div>
 			}
+
 
 		</React.Fragment>
 	)
@@ -158,7 +190,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	}
 
 
-	
+
 	useEffect(() => {
 		detectHomePage()
 
@@ -177,7 +209,7 @@ const RightOrLeftContent = ({ item, page }) => {
 	useEffect(() => {
 		// detectHomePage()
 		if (imgModule && isHomePage) {
-			init()
+			// init()
 			if (!navigator.userAgent.match(/Trident\/7\./)) {
 				window.addEventListener('scroll', initParallax);
 			}
@@ -204,7 +236,7 @@ const RightOrLeftContent = ({ item, page }) => {
 					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
 						<div className={classAniImg}>
 							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
-								<ImgRender img={imgModule} isHomePage={isHomePage} page={ page } />
+								<ImgRender img={imgModule} isHomePage={isHomePage} page={page} />
 							</div>
 						</div>
 						<div className="col-md-6 large-paragraph last-mb-none anima-left">
