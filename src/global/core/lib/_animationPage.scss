@@ -2,34 +2,34 @@
   .anima-revert {
     .anima-bottom:not(.not-anima) {
       transform: translate3d(0, -100px, 0);
-      opacity: 0;
+      // opacity: 0;
     }
   }
   .anima-left:not(.not-anima)  {
     transform: translate3d(-100px, 0, 0);
-    opacity: 0;
+    // opacity: 0;
   }
   .anima-left-v2:not(.not-anima)  {
     transform: translate3d(-100px, 0, 0);
-    opacity: 0;
+    // opacity: 0;
   }
   .anima-right:not(.not-anima) {
     transform: translate3d(100px, 0, 0);
-    opacity: 0;
+    // opacity: 0;
   }
   .anima-bottom:not(.not-anima) {
     transform: translate3d(0, 100px, 0);
-    opacity: 0;
+    // opacity: 0;
     &.anima-revert {
       transform: translate3d(0, -100px, 0);
     }
   }
   .anima-top:not(.not-anima) {
     transform: translate3d(0, -100px, 0);
-    opacity: 0;
+    // opacity: 0;
   }
   .anima-opacity:not(.not-anima) {
-    opacity: 0;
+    // opacity: 0;
   }
   .action-animation,
   .set-animation {

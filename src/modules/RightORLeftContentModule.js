@@ -7,7 +7,7 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 
 
 
-const HasImg = ({ img, isHomePage }) => {
+const HasImg = ({ img, isHomePage, page }) => {
 
 	const [isLoaded, setIsLoaded] = useState(false)
 
@@ -26,8 +26,9 @@ const HasImg = ({ img, isHomePage }) => {
 				</Helmet>
 
 
-			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
-			{isHomePage &&
+			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'}
+			className={`${isHomePage ? 'img-mb' : 'anima-right'} ${page.name === 'home' && !isLoaded ? 'opacity-0' : ''}`} />
+			{ isHomePage &&
 				<div className="d-none d-sl-block">
 					<div className="ani-banner"></div>
 					<div className="ani-banner"></div>
@@ -47,7 +48,8 @@ const HasImg = ({ img, isHomePage }) => {
 const ImgRender = React.memo(HasImg)
 
 
-const RightOrLeftContent = ({ item }) => {
+const RightOrLeftContent = ({ item, page }) => {
+	console.log('propsps', page);
 	const heading = item.customFields.title
 	const des = item.customFields.description
 	const breadcrumb = item.customFields.breadcrumb
@@ -205,7 +207,7 @@ const RightOrLeftContent = ({ item }) => {
 					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
 						<div className={classAniImg}>
 							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
-								<ImgRender img={imgModule} isHomePage={isHomePage} />
+								<ImgRender img={imgModule} isHomePage={isHomePage} page={ page } />
 							</div>
 						</div>
 						<div className="col-md-6 large-paragraph last-mb-none anima-left">
