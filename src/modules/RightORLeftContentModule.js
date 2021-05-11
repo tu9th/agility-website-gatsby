@@ -3,12 +3,6 @@ import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
-// import Lottie from 'react-lottie'
-// import layer0 from '../static/data/layer_0.json'
-// import layer1 from '../static/data/layer_1.json'
-// import layer2 from '../static/data/layer_2.json'
-// import layer3 from '../static/data/layer_3.json'
-// import layer4 from '../static/data/layer_4.json'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 
 
@@ -201,7 +195,6 @@ const RightOrLeftContent = ({ item, page }) => {
 	const NoImg = () => {
 		return <React.Fragment></React.Fragment>
 	}
-
 
 
 	useEffect(() => {

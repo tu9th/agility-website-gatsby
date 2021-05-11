@@ -45,10 +45,10 @@
 // .parent-link-inhert {
 //   @extend %parent-link-inhert;
 // }
-// html.hide-loader {
-//   min-height: 100vh;
-//   background-color: $color-e3;
-// }
+html.hide-loader {
+  min-height: 100vh;
+  // background-color: $color-e3;
+}
 .bg {
   @include background-size(cover);
 }
