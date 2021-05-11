@@ -19,11 +19,17 @@
     display: block;
     img:not(.layer-image) {
       animation: opacity .6s;
-      // animation-fill-mode: forwards; // comment for bug with gatsby-image plugin render
+      animation-fill-mode: forwards; // comment for bug with gatsby-image plugin render
     }
     .layer-image {
       animation: opacityLayer .6s .35s;
       animation-fill-mode: forwards;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    img {
+      animation: none !important;
     }
   }
 }
