@@ -47,7 +47,7 @@
 // }
 html.hide-loader {
   min-height: 100vh;
-  // background-color: $color-e3;
+  background-color: $color-e3;
 }
 .bg {
   @include background-size(cover);
