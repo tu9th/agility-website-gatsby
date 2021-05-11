@@ -131,17 +131,24 @@
 	font-weight: $fw-bold;
 	position: relative;
 	text-transform: uppercase;
-	padding-left: 12px;
-	&::before {
-		content: '\E906';
-		font-family: $icomoon;
-		@include position(absolute,$top: -7px,$left: -2px);
-		color: inherit;
-		transform: rotate(180deg);
-    font-size: 11px;
-	}
+	margin-left: 12px;
+	// &::before {
+	// 	content: '\E906';
+	// 	font-family: $icomoon;
+	// 	@include position(absolute,$top: -7px,$left: -2px);
+	// 	color: inherit;
+	// 	transform: rotate(180deg);
+  //   font-size: 11px;
+	// }
 	&:hover {
 		color: $color-58;
+	}
+	.icomoon {
+		position: relative;
+		display: inline-block;
+		transform: rotate(180deg) translateX(12px);
+		// margin-right: 10px;
+		font-size: rem(11);
 	}
 }
 // .wrap-black {
@@ -297,16 +304,20 @@
 		}
 	}
 	.black-starters {
-		&::after {
-			content: '';
-			@include position(absolute,null,null,-6px,12px,0);
-			height: 2px;
-			background-color: $color-58;
-			transition: all .35s;
-			width: 0;
+		.line-anim {
+			&::after {
+				content: '';
+				@include position(absolute,null,null,-6px,0,0);
+				height: 2px;
+				background-color: $color-58;
+				transition: all .35s;
+				width: 0;
+			}
 		}
-		&:hover::after {
-			width: calc(100% - 12px);
+		
+		&:hover .line-anim::after {
+			width: 100%;
+			// left: 12px;
 		}
 	}
 }

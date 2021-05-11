@@ -125,7 +125,7 @@ const StarterDetails = ({ item, dynamicPageItem, page }) => {
 						</div>
 					</div>
 					<div className='last-md-none wrap-black wrap-black-bot anima-bottom delay-2'>
-						<Link to="/starters" className='black-starters'>Back to Starters</Link>
+						<Link to="/starters" className='black-starters'><span className="icomoon icon-arrow"></span><span className="line-anim ps-rv">Back to Starters</span></Link>
 					</div>
 				</div>
 			</section>
