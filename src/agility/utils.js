@@ -45,9 +45,9 @@ const buildPageViewModel = ({ pageContext, data, location }) => {
 */
 const checkPageHasSEOImageModule = (page) => {
 
-	let seoImage = page?.seo?.image
+	let seoImage = page.seo.image
 	let modulesList = []
-	if (page?.zones) {
+	if (page.zones) {
 		const keysZone = Object.keys(page.zones)
 		modulesList = page.zones[keysZone[0]]
 
@@ -55,7 +55,11 @@ const checkPageHasSEOImageModule = (page) => {
 			for (let i = 0; i < modulesList.length; i++) {
 				// is SEOImage module
 				if (modulesList[i].module === 'SEOImage') {
-					seoImage = modulesList[i].item?.customFields?.image
+
+					if (modulesList[i].item && modulesList[i].item.customFields && modulesList[i].item.customFields.image) {
+						seoImage = modulesList[i].item.customFields.image
+					}
+
 					/* remove module SEOImage for no render this one */
 					modulesList.splice(i, 1)
 					break;
