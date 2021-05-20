@@ -162,7 +162,7 @@ const RightOrLeftContent = ({ item, page }) => {
 				array[index].addEventListener('loaded_images', function (e) {
 					temp++
 					if (temp === 2) {
-						document.getElementsByClassName('mod-banner')[0].classList.add('done-ani')
+						bannerRef.current?.classList.add('done-ani')
 					}
 				})
 			}
@@ -192,10 +192,6 @@ const RightOrLeftContent = ({ item, page }) => {
 		item3.style.transform = 'translateY(' + -(top / 2.3) + 'px)'
 		item4.style.transform = 'translateY(' + -(top / 3.5) + 'px)'
 	}
-	const NoImg = () => {
-		return <React.Fragment></React.Fragment>
-	}
-
 
 	useEffect(() => {
 		detectHomePage()

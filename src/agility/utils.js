@@ -25,6 +25,9 @@ const buildPageViewModel = ({ pageContext, data, location }) => {
 	//set the title from the page context...
 	page.title = pageContext.title;
 
+	/* Check Page has SEO Image Module */
+	page.seo.image = checkPageHasSEOImageModule(page)
+
 	//do any custom processing on the page and stuff...
 	page.seo = customSEOProcessing({ pageContext, data, page, dynamicPageItem, location });
 
@@ -37,6 +40,32 @@ const buildPageViewModel = ({ pageContext, data, location }) => {
 	}
 }
 
+/*
+	Check Page has SEOImage Module to replace default SEO image
+*/
+const checkPageHasSEOImageModule = (page) => {
+
+	let seoImage = page?.seo?.image
+	let modulesList = []
+	if (page?.zones) {
+		const keysZone = Object.keys(page.zones)
+		modulesList = page.zones[keysZone[0]]
+
+		if (modulesList && modulesList.length) {
+			for (let i = 0; i < modulesList.length; i++) {
+				// is SEOImage module
+				if (modulesList[i].module === 'SEOImage') {
+					seoImage = modulesList[i].item?.customFields?.image
+					/* remove module SEOImage for no render this one */
+					modulesList.splice(i, 1)
+					break;
+				}
+			}
+		}
+	}
+
+	return seoImage
+}
 
 /**
  * Perform processing on dynamic page items that want to update stuff in the page seo content.
@@ -47,7 +76,7 @@ const customSEOProcessing = ({ pageContext, data, page, dynamicPageItem, locatio
 
 	let seo = {
 		metaDescription: null,
-		metaHTML: null
+		metaHTML: null,
 	};
 
 	if (page.seo) {
@@ -236,7 +265,7 @@ const customSEOProcessing = ({ pageContext, data, page, dynamicPageItem, locatio
 
 			let validFrom = new Date();
 			let startTime = DateTime.fromISO(dynamicPageItem.customFields.date);
-			let endTime = DateTime.fromISO(startTime).plus({hours: 1})
+			let endTime = DateTime.fromISO(startTime).plus({ hours: 1 })
 
 			let extLink = canonicalUrl;
 			if (dynamicPageItem.customFields.externalLink) extLink = dynamicPageItem.customFields.externalLink.href;
