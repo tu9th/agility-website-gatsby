@@ -26,7 +26,12 @@ const HasImg = ({ img, isHomePage }) => {
 				</Helmet>
 
 
-			<img src={img.url} width={ !isLoaded ? '320' : '' } height={ !isLoaded ? '208' : '' } alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
+
+			<img
+				src={img.url}
+				// width={ !isLoaded ? '320' : '' }
+				// height={ !isLoaded ? '208' : '' }
+				alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
 			{isHomePage &&
 				<div className="d-none d-sl-block">
 					<div className="ani-banner"></div>
@@ -48,16 +53,18 @@ const ImgRender = React.memo(HasImg)
 
 
 const RightOrLeftContent = ({ item }) => {
+
+
 	const heading = item.customFields.title
 	const des = item.customFields.description
 	const breadcrumb = item.customFields.breadcrumb
 	const btn1 = item.customFields.cTA1Optional
 	const btn2 = item.customFields.cTA2Optional
+	const textSide = item.customFields.textSide
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white' : ''}`
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
-	// const [classWrap, setClassWrap] = useState('wrap-ani-home ps-rv internal-wrap');
-	// const [classBtn, setClassBtn] = useState('wrap-btn internal-btn');
+
 	let classAniImg = 'col-md-6 col-right-lr'
 	let imgModule
 	if (item.customFields.graphic && item.customFields.graphic.url) {
@@ -159,7 +166,7 @@ const RightOrLeftContent = ({ item }) => {
 	}
 
 
-	
+
 	useEffect(() => {
 		detectHomePage()
 
@@ -202,7 +209,7 @@ const RightOrLeftContent = ({ item }) => {
 		<React.Fragment>
 			<section className={classSection} ref={bannerRef}>
 				<div className="container">
-					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
+					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} hero-text align-items-lg-center h1-big`}>
 						<div className={classAniImg}>
 							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
