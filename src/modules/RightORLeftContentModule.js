@@ -39,41 +39,25 @@ const HasImg = ({ img, isHomePage, page }) => {
 					<source srcSet={img.url}></source>
 					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
 				</picture> */}
-			<Helmet>
-				<link rel="preload" as="image" href={img.url} media="screen" />
-			</Helmet>
+				<Helmet>
+					<link rel="preload" as="image" href={img.url} media="screen" />
+				</Helmet>
 
 
-			<img src={img.url} width={!isLoaded ? '320' : ''} height={!isLoaded ? '208' : ''} alt={img.label ? img.label : 'image video'}
-				className={`${isHomePage ? 'img-mb' : 'anima-right'} ${isHomePage && !isLoaded ? 'opacity-0' : ''}`} />
-			{ isHomePage &&
-				<>
-					<Helmet>
-						<link rel="preload" as="fetch" href={`/js/layer_0.json`} media="(min-width: 1025px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_1.json`} media="(min-width: 1025px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_2.json`} media="(min-width: 1025px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_3.json`} media="(min-width: 1025px)" />
-						<link rel="preload" as="fetch" href={`/js/layer_4.json`} media="(min-width: 1025px)" />
-						<link rel="preload" as="image" href={`/images/ani-banner/img_0.png`} media="(min-width: 1025px)" />
-						<link rel="preload" as="image" href={`/images/ani-banner/img_1.png`} media="(min-width: 1025px)" />
-						<link rel="preload" as="script" href={`https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.7/lottie_light_html.min.js`} media="(min-width: 1025px)" />
-					</Helmet>
-					<div className="d-none d-sl-block">
-						{
-							// listLottieOptions.map((opt, index) => {
-							// 	return <div key={index} className="ani-banner">
-							// 		{/* <Lottie options={opt} /> */}
-							// 	</div>
-							// })
-						}
 
-						<div className="ani-banner"></div>
-						<div className="ani-banner"></div>
-						<div className="ani-banner"></div>
-						<div className="ani-banner item-bg"></div>
-						<div className="ani-banner"></div>
-					</div>
-				</>
+			<img
+				src={img.url}
+				// width={ !isLoaded ? '320' : '' }
+				// height={ !isLoaded ? '208' : '' }
+				alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
+			{isHomePage &&
+				<div className="d-none d-sl-block">
+					<div className="ani-banner"></div>
+					<div className="ani-banner"></div>
+					<div className="ani-banner"></div>
+					<div className="ani-banner item-bg"></div>
+					<div className="ani-banner"></div>
+				</div>
 			}
 
 
@@ -87,21 +71,19 @@ const HasImg = ({ img, isHomePage, page }) => {
 const ImgRender = React.memo(HasImg)
 
 
-const RightOrLeftContent = ({ item, page }) => {
-	// console.log('propsps', page);
+const RightOrLeftContent = ({ item }) => {
 
-	const homepage = page.name === 'home' ? true : false
 
 	const heading = item.customFields.title
 	const des = item.customFields.description
 	const breadcrumb = item.customFields.breadcrumb
 	const btn1 = item.customFields.cTA1Optional
 	const btn2 = item.customFields.cTA2Optional
+	const textSide = item.customFields.textSide
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white' : ''}`
 	const array = []
-	const [isHomePage, setIsHomePage] = useState(homepage);
-	// const [classWrap, setClassWrap] = useState('wrap-ani-home ps-rv internal-wrap');
-	// const [classBtn, setClassBtn] = useState('wrap-btn internal-btn');
+	const [isHomePage, setIsHomePage] = useState(false);
+
 	let classAniImg = 'col-md-6 col-right-lr'
 	let imgModule
 	if (item.customFields.graphic && item.customFields.graphic.url) {
@@ -235,7 +217,7 @@ const RightOrLeftContent = ({ item, page }) => {
 		<React.Fragment>
 			<section className={classSection} ref={bannerRef}>
 				<div className="container">
-					<div className="row flex-md-row-reverse hero-text align-items-lg-center h1-big">
+					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} hero-text align-items-lg-center h1-big`}>
 						<div className={classAniImg}>
 							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
 								<ImgRender img={imgModule} isHomePage={isHomePage} page={page} />
