@@ -197,6 +197,7 @@
 	a {
 		color: $color-58;
 		text-decoration: underline;
+		word-break: break-all;
 	}
 	p {
 		color: $color-4c;
@@ -303,7 +304,6 @@
 	.child-item-right {
 		margin-left: 35px;
 		a {
-			word-break: break-all;
 			&:hover {
 				color: $color-58;
 				text-decoration: underline;
