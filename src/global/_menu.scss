@@ -307,14 +307,16 @@
         top: 50%;
         right: 5px;
       }
-      &:hover {
+
+    }
+    &:hover {
+      > a {
         &::after {
           transform: translateY(-50%) scale(1);
         }
       }
+
     }
-
-
   }
   .main-menu-dropdown {
     margin: 0;
