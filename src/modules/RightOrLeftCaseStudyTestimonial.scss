@@ -14,10 +14,10 @@
 	margin-right: 10px;
   p:not(.position) {
     font-style: italic;
-    font-size: rem(18);
+    font-size: rem(17);
     color: #2a3846;
     letter-spacing: -.14px;
-    line-height: 32px;
+    line-height: 27px;
   }
   .position {
     font-size: rem(14);
@@ -41,6 +41,7 @@
   }
   h6 {
     color: $color-58;
+    margin-top: 35px;
   }
 }
 // .left-tes-detail {

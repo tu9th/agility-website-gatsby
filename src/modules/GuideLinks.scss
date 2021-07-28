@@ -42,7 +42,7 @@
     top: 27px;
 	}
   h4 {
-    margin-bottom: 0;
+    margin-bottom: 2px;
   }
   p {
     color: rgb(233, 238, 241);
@@ -69,7 +69,7 @@
 }
 @media (min-width: 768px) {
 	.list-guides {
-		padding: 25px 30;
+		padding: 25px 30px;
 	}
 	.item-guides .icon-right {
 		top: 25px;
@@ -85,12 +85,12 @@
 @media (min-width: 992px) {
 	.list-guides {
 		margin: 0;
-		padding: 30px 25px;
+		padding: 25px;
 	}
 	.item-guides {
-		padding: 21px 50px 21px 25px;
+		padding: 22px 50px 22px 20px;
 		.icon-right {
-			right: 20px;
+			right: 23px;
 			top: 24px;
 		}
 	}
@@ -110,6 +110,9 @@
 		}
 		.icon-gears {
 			font-size: rem(350px);
+		}
+		.col-lg-7 {
+			padding-left: 0;
 		}
 	}
 	.bg-guides {
