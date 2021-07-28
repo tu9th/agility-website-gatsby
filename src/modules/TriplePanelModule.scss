@@ -9,6 +9,8 @@
   margin-bottom: 22px;
 }
 .mod-three-columns {
+  padding-top: 80px;
+  background: linear-gradient(-180deg, rgb(233, 240, 245) 0%, rgb(255, 255, 255) 100%);
   .mod-content-center {
     margin-bottom: 32px;
   }
@@ -132,6 +134,9 @@
   }
 }
 @media (min-width: 1200px){
+  .mod-three-columns {
+    padding-top: 100px;
+  }
   .cta-3col {
     margin-top: 10px;
   }

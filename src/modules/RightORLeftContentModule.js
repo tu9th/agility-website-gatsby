@@ -217,7 +217,7 @@ const RightOrLeftContent = ({ item }) => {
 		<React.Fragment>
 			<section className={classSection} ref={bannerRef}>
 				<div className="container">
-					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} hero-text align-items-lg-center h1-big`}>
+					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} align-items-lg-center h1-big`}>
 						<div className={classAniImg}>
 							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
