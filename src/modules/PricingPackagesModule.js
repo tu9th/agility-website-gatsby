@@ -469,7 +469,7 @@ class PricingPackagesModule2 extends React.Component {
 			return (
 				<div className="item-price-catelogy" key={index}>
 					<div className="trigger-catelogy" >
-						<h3>
+						<h3 className="h4">
 							{category && category}
 						</h3>
 						<span className="icomoon icon-keyboard_arrow_right"></span>
