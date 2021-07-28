@@ -220,7 +220,7 @@ const RightOrLeftContent = ({ item }) => {
 					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} hero-text align-items-lg-center h1-big`}>
 						<div className={classAniImg}>
 							<div className={`wrap-ani-home ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
-								<ImgRender img={imgModule} isHomePage={isHomePage} page={page} />
+								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
 						</div>
 						<div className="col-md-6 large-paragraph last-mb-none anima-left">
