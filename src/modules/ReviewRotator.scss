@@ -30,15 +30,16 @@
     right: auto;
     border-width: 12px 15px;
   }
-  & > img {
+  img {
     margin-bottom: 18px;
     max-width: 111px;
   }
   h4 {
-    font-size: rem(18);
+    font-size: rem(17);
     font-style: italic;
     line-height: 1.5;
     letter-spacing: -0.14px;
+    font-weight: $fw-regular;
   }
   .show-less {
     display: inline-block;
@@ -81,6 +82,7 @@
   h6 {
     color: $color-4c;
     margin-bottom: 0;
+    font-size: rem(13);
   }
   p {
     font-size: rem(14);
