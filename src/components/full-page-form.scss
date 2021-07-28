@@ -226,7 +226,8 @@
           display: block;
           margin-bottom: 6px;
           font-size: rem(15);
-          font-family: $mlBold;
+          // font-family: $mlBold;
+          font-weight: $fw-bold;
           color: rgba(76, 104, 132, .65);
           position: absolute;
           top: 15px;
@@ -256,7 +257,8 @@
           padding-left: 16px;
           padding-right: 16px;
           font-size: rem(15);
-          font-family: $mlBold;
+          // font-family: $mlBold;
+          font-weight: $fw-bold;
           color: $color-17;
           z-index: 2;
           border: none;
