@@ -5,7 +5,11 @@
 	padding-bottom: 80px;
 	padding-top: 45px;
 	.stater-col {
-		padding: 0 35px;
+		padding: 0 22px;
+	}
+	.row {
+		margin-left: -22px;
+		margin-right: -22px;
 	}
 }
 .starter-card {
@@ -33,6 +37,9 @@
 		height: 1px;
 		background-color: $color-c9;
 	}
+	p {
+		color: $color-4c;
+	}
 }
 .starter-logo {
 	padding: 15px 24px 20px;
@@ -47,6 +54,9 @@
 		color: $color-58;
 		border: 0;
 		margin: 0;
+		&::after {
+			margin-left: 54px;
+		}
 	}
 }
 .stater-col {
@@ -79,9 +89,9 @@
 	padding-bottom: 50px;
 	// margin: 0 auto;
 }
-.row.row-custom {
-	margin: 0 -35px;
-}
+// .row.row-custom {
+// 	margin: 0 -35px;
+// }
 // .ios .black-starters:before {
 // 	top: -2px;
 // }
@@ -94,28 +104,38 @@
 	}
 	.stater-col {
 		// padding: 0 25px;
-		margin-bottom: 50px;
+		margin-bottom: 48px;
 		&:nth-last-child(1),
 		&:nth-last-child(2) {
 			margin-bottom: 0;
 		}
 	}
-	.row-custom {
-		max-width: 771px;
+	// .row-custom {
+	// 	max-width: 771px;
+	// }
+	.starter-head {
+		padding-bottom: 85px;
+		h5 {
+			max-width: 357px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: left;
+			margin-bottom: 24px;
+		}
 	}
 }
-@media (min-width: 992px) {
-	.row.row-custom {
-		margin: 0 auto;
-	}
-}
+// @media (min-width: 992px) {
+// 	.row.row-custom {
+// 		margin: 0 auto;
+// 	}
+// }
 @media (min-width: 1200px) {
-	.row-custom {
-		max-width: 1105px;
-	}
+	// .row-custom {
+	// 	max-width: 1105px;
+	// }
 	.getting-starter {
 		padding-top: 50px;
-		padding-bottom: 100px;
+		padding-bottom: 150px;
 	}
 	.starter-thumb {
 		padding-bottom: 85.2%;
