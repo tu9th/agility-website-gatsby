@@ -373,7 +373,7 @@ class NewGlobalHeader extends Component {
 							</button>
 						</form>
 					</div>
-					<a href={primaryButton.href} target={primaryButton.target} className="text-decoration-none btn btn-outline-primary 12 btn-menu">{primaryButton.text}</a>
+					{/* <a href={primaryButton.href} target={primaryButton.target} className="text-decoration-none btn btn-outline-primary 12 btn-menu">{primaryButton.text}</a> */}
 					<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
 					{contactButton?.href && contactButton?.text &&
 						<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
@@ -400,7 +400,7 @@ class NewGlobalHeader extends Component {
 									<div className="col-7">
 										<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(item.marketingBanner)} />
 									</div>
-									<div className="col-5 text-right">
+									<div className="col-5 text-right d-flex align-items-center justify-content-end">
 										<Link to="/" className="d-inline-block flash-btn">Sign In</Link>
 										<Link to="/" className="d-inline-block flash-btn">Documentation</Link>
 									</div>

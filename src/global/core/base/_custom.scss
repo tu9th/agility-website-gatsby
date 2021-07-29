@@ -107,10 +107,10 @@ html.hide-loader {
 // }
 
 .d-none{
-   display: none;
+   display: none !important;
 }
 .d-block{
-  display: block;
+  display: block !important;
 }
 .text-white {
   @extend %color-white;
@@ -269,6 +269,8 @@ form  button[type='submit'] {
   transition: all .35s, opacity 0s;
   overflow: hidden;
   min-height: 48px;
+  font-size: rem(14);
+  line-height: 1.857;
   &.hidden-mess {
     min-height: 0;
     max-height: 0;
@@ -277,14 +279,19 @@ form  button[type='submit'] {
     padding: 11px 0 9px;
   // }
   p {
-    font-size: rem(16);
     // color: $color-17;
     .link-line {
+      font-size: rem(14);
       margin-left: 17px;
       display: inline-block;
       text-decoration: none;
+      color: $color-ff;
       &::before {
+        display: none;
         background-color: $white;
+      }
+      &:hover {
+        color: $white;
       }
     }
   }
