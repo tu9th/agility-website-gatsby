@@ -153,4 +153,16 @@
       }
     }
   }
+  .page-developers {
+    .internal-wrap {
+      transform: translateY(51px);
+      img {
+        width: 103%;
+        max-width: 103%;
+      }
+    }
+    h1 {
+      margin-bottom: 22px;
+    }
+  }
 }

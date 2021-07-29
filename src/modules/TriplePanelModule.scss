@@ -10,9 +10,11 @@
 }
 .mod-three-columns {
   padding-top: 80px;
-  background: linear-gradient(-180deg, rgb(233, 240, 245) 0%, rgb(255, 255, 255) 100%);
   .mod-content-center {
     margin-bottom: 32px;
+  }
+  &:not(.dark-mode) {
+    background: linear-gradient(-180deg, rgb(233, 240, 245) 0%, rgb(255, 255, 255) 100%);
   }
 }
 .item-3col {
@@ -68,7 +70,7 @@
     .max-w-940 {
       margin-bottom: 40px;
       h2 {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
     }
     .row {
@@ -83,16 +85,16 @@
   }
   .box-3col {
     background-color: #e4ebf2;
-    padding: 35px 30px;
+    padding: 35px 30px 40px;
     border-bottom: 3px solid $color-58;
     height: 100%;
     img {
       width: 60px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
   }
   .cta-3col  {
-    margin-top: 35px;
+    margin-top: 25px;
   }
   .img-3col {
     width: 60px;
@@ -121,10 +123,15 @@
   .page-new-persona-developer,
   .page-developers {
     .mod-three-columns {
-      padding: 105px 0;
+      padding: 105px 0 85px;
     }
     .cta-3col {
       margin-bottom: 22px;
+    }
+  }
+  .content-3col {
+    h4 {
+      margin-bottom: 13px;
     }
   }
 }

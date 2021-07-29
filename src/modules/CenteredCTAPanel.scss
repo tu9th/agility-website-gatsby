@@ -30,7 +30,7 @@
   }
 }
 .three-dash-line {
-  line-height: 1;
+  line-height: 1.2;
   margin-bottom: 13px;
   span {
     width: 3px;
@@ -97,9 +97,9 @@
 }
 @media (min-width: 768px){
   .mod-cta {
-    padding-bottom: 65px;
+    padding-bottom: 82px;
     &:nth-last-child(2) .container::before {
-      bottom: -65px;
+      bottom: -82px;
     }
   }
 }
@@ -114,6 +114,18 @@
   .dark-mode {
     &.mod-cta {
       padding: 120px 0 95px;
+    }
+  }
+}
+@media (min-width: 1501px){
+  .page-developers {
+    .mod-cta {
+      .three-dash-line {
+        margin-bottom: 4px;
+      }
+      .btn-white {
+        margin-top: 5px;
+      }
     }
   }
 }

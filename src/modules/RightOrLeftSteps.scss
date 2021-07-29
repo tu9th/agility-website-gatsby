@@ -3,15 +3,15 @@
 .step {
   text-transform: uppercase;
   // font-family: 'Muli-Bold', sans-serif;;
-  font-weight: $fw-bold;
+  font-weight: $fw-semi-bold;
   font-size: rem(13);
-  letter-spacing: .65px;
+  letter-spacing: 1.08px;
   line-height: 26px;
   border-radius: 16px;
   min-width: 85px;
   text-align: center;
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 36px;
   padding: 2px 0;
   color: #fff;
   background-color: #6d06ff;
@@ -72,12 +72,12 @@
 .title-framework {
   margin-bottom: 45px;
   h2 {
-    margin-bottom: 15px;
+    margin-bottom: 17px;
   }
 }
 .img-step {
   z-index: 1;
-  max-height: 350px;
+  max-height: 370px;
   max-width: calc(100% + 30px);
 }
 .style-right {
@@ -93,6 +93,11 @@
 }
 .content-step {
 	margin-bottom: 30px;
+  h3,
+  .h3 {
+    letter-spacing: 0;
+    margin-bottom: 14px;
+  }
 }
 .mod-framework {
   padding-bottom: 50px;
@@ -167,7 +172,7 @@
 		width: 221px;
 	}
 	.item-step {
-    padding: 20px 10px 20px 30px;
+    padding: 33px 10px 20px 30px;
 		&::before {
 			width: 80%;
 			height: 100%;
@@ -225,7 +230,7 @@
 }
 @media (min-width: 1200px) {
   .title-framework {
-    margin-bottom: 55px;
+    margin-bottom: 52px;
   }
 	// .item-step {
 	// 	padding-left: 95px;
