@@ -89,6 +89,10 @@
 	max-width: 880px;
 	padding-bottom: 50px;
 	// margin: 0 auto;
+	ul,
+	ol {
+		text-align: left;
+	}
 }
 // .row.row-custom {
 // 	margin: 0 -35px;
