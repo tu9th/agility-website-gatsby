@@ -101,7 +101,7 @@
   letter-spacing: -0.46px;
   margin-bottom: 24px;
   font-weight: 600;
-  color: $color-17;
+  color: $color-2a;
   span:not(.pr-month) {
     // line-height: 0.97;
     letter-spacing: 0px;
@@ -190,13 +190,13 @@
   letter-spacing: 0px !important;
   font-style: italic;
   line-height: 2.083;
-  padding: 2px 5px;
+  padding: 2px 5px 3px;
   position: relative;
   top: -3px;
   margin-left: 6px;
   color: $color-58;
   // font-family: $mlSemi;
-  font-weight: $fw-semi-bold;
+  font-weight: $fw-regular;
   .icomoon {
     margin-right: 5px;
     font-size: rem(10);
