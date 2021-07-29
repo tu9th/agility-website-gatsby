@@ -155,9 +155,14 @@
   }
   .page-developers {
     .internal-wrap {
+      transform: translateY(51px);
       img {
-        transform: translateY(51px);
+        width: 103%;
+        max-width: 103%;
       }
+    }
+    h1 {
+      margin-bottom: 22px;
     }
   }
 }

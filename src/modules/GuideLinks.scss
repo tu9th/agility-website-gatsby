@@ -28,7 +28,7 @@
 .col-content-guide {
 	margin-bottom: 30px;
 	img {
-		margin-bottom: 23px;
+		margin-bottom: 16px;
 	}
 }
 .item-guides {
@@ -88,7 +88,7 @@
 		padding: 25px;
 	}
 	.item-guides {
-		padding: 22px 50px 22px 20px;
+		padding: 21px 50px 22px 20px;
 		.icon-right {
 			right: 23px;
 			top: 24px;
@@ -113,6 +113,19 @@
 		}
 		.col-lg-7 {
 			padding-left: 0;
+		}
+		h2 {
+			margin-bottom: 14px;
+		}
+		.col-content-guide {
+			p {
+				&:not(:last-child) {
+					margin-bottom: 26px;
+				}
+				> a {
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 	.bg-guides {
