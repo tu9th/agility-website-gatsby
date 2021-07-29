@@ -917,3 +917,11 @@
     }
   }
 }
+
+@media screen and (max-width: 374px) {
+  .wrap-togger-price {
+    .sale-text {
+      white-space: normal;
+    }
+  }
+}
