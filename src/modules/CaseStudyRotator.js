@@ -11,7 +11,6 @@ import Helpers from '../global/javascript/Helpers'
 import ResponsiveImage from '../components/responsive-image';
 import { animationElementInnerComponent } from '../global/javascript/animation'
 
-
 const CaseStudyRotator = ({ item }) => {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
@@ -26,8 +25,8 @@ const CaseStudyRotator = ({ item }) => {
     const postUrl = '/resources/case-studies/' + customField.uRL
     return (
       <div className="item-casetudy text-white" key={caseStudy.contentID}>
-        <LazyBackground className="bg-casestudi bg bg-center d-flex align-items-center" src={caseStudy.customFields.image.url + '?w=800&q=60'} >  {/* style={{ backgroundImage: `url('${caseStudy.customFields.image.url}')` }} */}
-          <div className="content-case last-mb-none h3-big ps-rv">
+        <LazyBackground className="bg-casestudi bg bg-center d-table w-100" src={caseStudy.customFields.image.url + '?w=800&q=60'} >  {/* style={{ backgroundImage: `url('${caseStudy.customFields.image.url}')` }} */}
+          <div className="content-case d-table-cell w-100 align-middle last-mb-none h3-big ps-rv">
             { titleCaseStudy &&
               <h3>{titleCaseStudy}</h3>
             }
