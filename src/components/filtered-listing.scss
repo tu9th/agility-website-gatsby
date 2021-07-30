@@ -1,4 +1,5 @@
 @import "../global/_variables.scss";
+@import "../global//setting";
 
 .filtered-listing {
 	margin-bottom: 40px;
@@ -110,15 +111,15 @@
 
 						&.active {
 							&:before {
-								background-color: #4600a8;
-								border: 1px solid #4600a8;
+								background-color: $color-58;
+								border: 1px solid $color-58;
 							}
 						}
 
 						&:hover,
 						&:focus {
 							&:before {
-								border: 1px solid #4600a8;
+								border: 1px solid $color-58;
 							}
 						}
 					}
