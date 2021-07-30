@@ -1,6 +1,6 @@
 @import '../global/setting';
 .main-menu-ul {
-  padding: 1.5em 0;
+  padding: 22px 0 1.5em 2px;
 
   .row>ul,
   .menu-child {
@@ -12,17 +12,20 @@
 
     // text-transform: uppercase;
     >a:not(.btn-menu) {
-      padding: 15px 0;
+      padding: 12px 0;
+      // font-weight: $fw-semi-bold;
     }
   }
 
   li {
     margin: 0;
     position: relative;
-    color: $color-2a;
+    // color: $color-2a;
+    color: $color-17;
     // font-family: $mlBold;
     // font-weight: $fw-bold;
     line-height: 1.5;
+    font-size: rem(15);
 
     a:not(.btn-menu) {
       display: block;
@@ -56,9 +59,9 @@
   }
 
   ul {
-    li {
-      color: $gray-900;
-    }
+    // li {
+    //   color: $gray-900;
+    // }
 
     a {
       padding: 10px 15px;
@@ -143,7 +146,7 @@
 }
 
 .nav-item-arrows {
-  @include position(absolute, 13px, -7px, null, null, 1);
+  @include position(absolute, -1px, -10px, null, null, 1);
   color: inherit;
   font-size: rem(6);
   padding: 10px;
@@ -239,7 +242,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    padding-left: 0;
+    // padding-left: 0;
     margin-bottom: 0;
     list-style: none;
   }
@@ -254,6 +257,7 @@
     >li {
       >a:not(.btn-menu):not(.link-search) {
         padding: 15px 10px;
+        font-weight: $fw-semi-bold;
       }
 
       &:hover {
@@ -277,13 +281,13 @@
   }
   .has-sub {
     li {
-      font-size: rem(15);
+      // font-size: rem(14);
       line-height: 1.73;
       transition: all .35s;
-      &:hover,
-      &.active {
-        background-color: #e9f0f5;
-      }
+      // &:hover,
+      // &.active {
+      //   background-color: #e9f0f5;
+      // }
       a {
         padding: 8px 20px;
         transition: all;
@@ -304,7 +308,7 @@
         font-size: rem(6);
         transform: translateY(-50%) scale(-1);
         transition: all .25s;
-        top: 50%;
+        top: 49%;
         right: 5px;
       }
 
@@ -323,11 +327,14 @@
     background-color: $white;
     transform: translateY(-7px) translateX(-50%);
     left: 50%;
-    border-top: 2px solid #5800d4 !important;
+    // border-top: 2px solid #5800d4 !important;
     width: auto;
     min-width: 190px;
-    box-shadow: 0 9px 20px -8px rgba(85, 63, 164, 0.25);
+    // box-shadow: 0 9px 20px -8px rgba(85, 63, 164, 0.25);
     padding: 4px 4px 4px;
+    border-radius: 2px;
+    border: 1px solid rgb(233, 240, 245);
+    box-shadow: 6px 4px 23px -2px rgba(23, 10, 41, 0.3);
     .menu-child {
       display: block;
     }
@@ -339,25 +346,39 @@
 }
 
 @media (min-width: 1200px)  {
-  .main-menu-ul>li {
-    >a:not(.btn-menu):not(.link-search) {
-      padding: 15px 26px;
+  .main-menu {
+    > .container {
+      padding: 0;
     }
-    .btn-menu {
-      margin-left: 24px;
-      &:last-child {
-        margin-left: 33px;
+  }
+  .main-menu-ul {
+    li {
+      font-size: rem(14);
+    }
+    >li {
+      &.has-sub {
+        margin-right: 12px;
       }
-    }
-    .link-search {
-      margin-left: 30px;
-      &:hover {
-        background-color: #f6fbff;
-        background-image: linear-gradient(to bottom, #f6fbff, #e9f0f5);
+      >a:not(.btn-menu):not(.link-search) {
+        padding: 15px 18px;
+      }
+      .btn-menu {
+        margin-left: 24px;
+        &:last-child {
+          margin-left: 33px;
+        }
+      }
+      .link-search {
+        margin-left: 30px;
+        &:hover {
+          background-color: #f6fbff;
+          background-image: linear-gradient(to bottom, #f6fbff, #e9f0f5);
+        }
       }
     }
   }
 }
+
 @media (max-width: 1199px) {
   .link-search {
     margin-bottom: 15px;
@@ -367,9 +388,18 @@
     margin-top: 0;
   }
   .main-menu-ul {
+    li {
+      line-height: 24px;
+    }
     > li {
-      &.has-sub > a {
-        padding-bottom: 10px;
+      &.has-sub
+      {
+        &.active {
+          margin-bottom: 16px;
+          > a {
+            padding-bottom: 7px;
+          }
+        }
       }
     }
     .has-sub {
@@ -385,6 +415,12 @@
           }
         }
       }
+    }
+  }
+  .dropdown-menu {
+    ul li a {
+      padding: 12px 26px;
+      line-height: 1.06;
     }
   }
 }

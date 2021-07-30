@@ -1,6 +1,6 @@
 @import '../global/setting';
 .mess-review {
-  border-radius: 10px;
+  border-radius: 6px;
   border: 2px solid $color-e9;
   position: relative;
   padding: 25px;
@@ -101,6 +101,9 @@
   }
 }
 .content-review {
+  font-size: rem(14);
+  color: $color-4c;
+  line-height: 1.71;
   &:not(.smaller) {
     display: -webkit-box;
     -webkit-box-orient: vertical;

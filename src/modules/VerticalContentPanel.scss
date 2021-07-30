@@ -63,6 +63,16 @@
   opacity: 1;
   width: 90%;
 }
+.box-content {
+  font-size: rem(15);
+  line-height: 1.67;
+}
+// .tab-active {
+//   .box-content {
+//     font-size: rem(14);
+//     line-height: 25px;
+//   }
+// }
 .ie {
   .item-image-ic {
     img {
@@ -222,6 +232,7 @@
     margin-bottom: 12px;
     .box-content {
       padding: 25px 30px;
+      color: $color-4c;
     }
     &.flex-md-row-reverse {
       .box-content {
@@ -234,6 +245,7 @@
       }
       .box-content {
         background-color: rgba(233, 240, 245, .5);
+        color: $color-2a;
         &::after {
           height: 100%;
         }

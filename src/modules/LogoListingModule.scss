@@ -5,21 +5,21 @@
     text-transform: uppercase;
     color: $color-58;
     // font-family: $mlBold;
-    font-weight: $fw-bold;
+    // font-weight: $fw-bold;
     display: inline-block;
     position: relative;
     &::before,
     &::after {
       content: '';
-      @include position(absolute,$top: 50%);
+      @include position(absolute,$top: calc(50% - 3px));
       @include sizeEx(100vw,1px);
       background-color: rgba(76,104,132,.15);
     }
     &::before {
-      left: calc(-100vw - 20px);
+      left: calc(-100vw - 40px);
     }
     &::after {
-      right: calc(-100vw - 20px);
+      right: calc(-100vw - 40px);
     }
   }
 }
@@ -37,5 +37,11 @@
   .slick-track {
     display: flex;
     align-items: center;
+  }
+}
+
+@media (min-width: 1501px) {
+  .logo-item {
+    padding: 0 20px;
   }
 }

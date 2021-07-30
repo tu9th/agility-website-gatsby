@@ -14,17 +14,19 @@
   z-index: 10;
   display: none;
   li {
-    font-size: rem(16);
+    font-size: rem(15);
     // font-family: $mlBold;
     font-weight: $fw-bold;
     color: $color-2a;
+    letter-spacing: -0.15px;
   }
 }
 .text-seclected {
   display: block;
-  font-size: rem(16);
+  font-size: rem(15);
   // font-family: $mlBold;
   font-weight: $fw-bold;
+  letter-spacing: -0.15px;
 }
 .mod-feature-table {
   background-color: rgba(233,240,245,.5);
@@ -87,12 +89,12 @@
       }
   }
   tr {
-    background-color: $white;
+    background-color: $color-e9f;
     &:nth-child(odd) {
-      background-color: $color-f4;
+      background-color: $white;
     }
     &:last-child {
-      background-color: $color-df;
+      background-color: $color-c9;
     }
     &:not(.last-tr) td:first-child {
       color: $color-2a;
@@ -143,6 +145,7 @@
     position: relative;
   }
   td {
+    font-weight: $fw-bold;
     &:first-child {
       text-transform: uppercase;
     }
@@ -166,7 +169,7 @@
 }
 .feat-text {
   font-weight: 600;
-  color: $color-75;
+  color: $color-2a;
   display: inline-block;
   padding: 2px 0;
 }
@@ -181,10 +184,10 @@
 .list-select.list-unstyled {
   border-top: 2px solid $color-75;
   background-color: $white;
-  box-shadow: 0 9px 20px -8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 30px -8px rgba(85, 63, 164, 0.25);
   padding: 15px 20px;
   li {
-    color: $color-4c;
+    // color: $color-4c;
     &:hover {
       color: $color-58;
     }
@@ -236,7 +239,7 @@
   .feature-table {
     border: 1px solid $white;
     width: 100%;
-    font-size: rem(16);
+    font-size: rem(15);
     th,
     td {
       border-right: 1px solid $white;
@@ -245,7 +248,8 @@
       &:first-child {
         font-size: rem(24);
         line-height: 1.29;
-        letter-spacing: -0.46px;
+        letter-spacing: 0;
+        font-weight: $fw-semi-bold;
       }
     }
   }
