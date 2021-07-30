@@ -397,10 +397,10 @@ class NewGlobalHeader extends Component {
 							<div className="container last-mb-none">
 								<div className="close-message" onClick={this.hiddenMessage}></div>
 								<div className="row">
-									<div className="col-7">
+									<div className="col-7 col-xl-8">
 										<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(item.marketingBanner)} />
 									</div>
-									<div className="col-5 text-right d-flex align-items-center justify-content-end">
+									<div className="col-5 col-xl-4 text-right d-flex align-items-center justify-content-end">
 										<Link to="/" className="d-inline-block flash-btn">Sign In</Link>
 										<Link to="/" className="d-inline-block flash-btn">Documentation</Link>
 									</div>
