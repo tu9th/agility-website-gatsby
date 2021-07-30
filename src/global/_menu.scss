@@ -365,7 +365,7 @@
       .btn-menu {
         margin-left: 24px;
         &:last-child {
-          margin-left: 33px;
+          margin-left: 13px;
         }
       }
       .link-search {
@@ -373,6 +373,17 @@
         &:hover {
           background-color: #f6fbff;
           background-image: linear-gradient(to bottom, #f6fbff, #e9f0f5);
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1501px)  {
+  .main-menu-ul {
+    >li {
+      .btn-menu {
+        &:last-child {
+          margin-left: 33px;
         }
       }
     }
