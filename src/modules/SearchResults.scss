@@ -47,6 +47,13 @@
     }
   }
 }
+.ie {
+  .SearchResults {
+    .search-input {
+      height: 54px;
+    }
+  }
+}
 .search-btn {
   margin-top: 45px;
 }
@@ -68,9 +75,9 @@
 }
 .clear-input {
   position: absolute;
-  top: 12px;
+  top: 13px;
   right: 54px;
-  font-size: 12px;
+  font-size: 10px;
   padding: 10px;
   cursor: pointer;
   opacity: 0;
@@ -114,6 +121,11 @@
   padding-bottom: 23px;
   h3 {
     letter-spacing: 0;
+    a {
+      &:hover {
+        color: $color-58;
+      }
+    }
   }
   &:last-child {
     border: none;
@@ -124,10 +136,10 @@
     // font-weight: $fw-bold;
     // font-size: rem(17);
     a {
-      text-decoration: underline;
+      text-decoration: none;
       word-break: break-word;
       &:hover {
-        text-decoration: none;
+        text-decoration: underline;
       }
     }
   }
