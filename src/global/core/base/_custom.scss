@@ -107,10 +107,10 @@ html.hide-loader {
 // }
 
 .d-none{
-   display: none !important;
+   display: none;
 }
 .d-block{
-  display: block !important;
+  display: block;
 }
 .text-white {
   @extend %color-white;
