@@ -248,6 +248,14 @@
   }
 }
 @media (min-width: 1200px)  {
+
+  .window-os {
+    .has-sub {
+      > a::after {
+        top: calc(50% - 1px);
+      }
+    }
+  }
   .navbar-expand-xl .navbar-nav .dropdown-menu {
     position: absolute;
   }
@@ -308,7 +316,7 @@
         font-size: rem(6);
         transform: translateY(-50%) scale(-1);
         transition: all .25s;
-        top: 49%;
+        top: 50%;
         right: 5px;
       }
 
