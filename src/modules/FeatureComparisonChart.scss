@@ -89,12 +89,12 @@
       }
   }
   tr {
-    background-color: $color-e9f;
+    background-color: rgba($color: $color-e9f, $alpha: 0.5);
     &:nth-child(odd) {
       background-color: $white;
     }
     &:last-child {
-      background-color: $color-c9;
+      background-color: rgba($color: $color-c9, $alpha: 0.6);;
     }
     &:not(.last-tr) td:first-child {
       color: $color-2a;
