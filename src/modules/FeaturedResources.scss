@@ -11,16 +11,16 @@
     max-width: 1008px;
     display: block;
     margin: 0 auto 20px;
-    // font-size: 30px;
+    font-size: 30px;
     // line-height: 1.56;
     // font-family: "Muli-bold", sans-serif;
     // font-weight: $fw-bold;
     // color: #2a3846;
     text-align: center;
 
-    // @media (max-width: 767px) {
-    //   font-size: 30px;
-    // }
+    @media (max-width: 767px) {
+      font-size: 30px;
+    }
   }
 
   p.intro {

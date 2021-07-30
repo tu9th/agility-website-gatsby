@@ -16,6 +16,9 @@
   // &:not(.dark-mode) {
   //   background: linear-gradient(-180deg, rgb(233, 240, 245) 0%, rgb(255, 255, 255) 100%);
   // }
+  > .container {
+    margin-bottom: 45px;
+  }
 }
 .item-3col {
   margin-bottom: 55px;
