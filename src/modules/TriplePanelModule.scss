@@ -48,7 +48,7 @@
       height: 304px;
     }
     .box-3col {
-      background-color: $color-c9;
+      background-color: rgb(42, 56, 70);
     }
     .btn-yellow {
       color: #fff;
@@ -143,10 +143,6 @@
   .cta-3col {
     margin-top: 10px;
   }
-  .box-3col {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
 @media (min-width: 1500px) {
   .page-new-persona-marketer,
@@ -156,9 +152,5 @@
     .mod-three-columns .container:not(.max-w-940) {
       max-width: 1150px;
     }
-  }
-  .box-3col {
-    padding-left: 35px;
-    padding-right: 35px;
   }
 }

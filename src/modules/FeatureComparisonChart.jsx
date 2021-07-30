@@ -287,7 +287,7 @@ const FeatureComparisonChart = ({ item, dataQuery }) => {
             )
           } else {
             return (
-              <td key={idx}><span className="icomoon icon-check feat-check"></span></td>
+              <td key={idx}><span className="icomoon icon-check-bg"><span className="path1"></span><span className="path2"></span></span></td>
             )
           }
         } else {
@@ -297,7 +297,7 @@ const FeatureComparisonChart = ({ item, dataQuery }) => {
             )
           } else {
             return (
-              <td key={idx}><span className="feat-check feat-no-support"></span></td>
+              <td key={idx}><span>-</span></td>
             )
           }
         }

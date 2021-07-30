@@ -109,9 +109,10 @@
 	}
 	.stater-col {
 		// padding: 0 25px;
+		margin-bottom: 0;
 		margin-top: 48px;
-		&:nth-last-child(1),
-		&:nth-last-child(2) {
+		&:nth-child(1),
+		&:nth-child(2) {
 			margin-top: 0;
 		}
 	}
@@ -152,7 +153,7 @@
 	// 	padding-bottom: 40px;
 	// }
 	.stater-col {
-		&:nth-last-child(3) {
+		&:nth-child(3) {
 			margin-top: 0;
 		}
 	}

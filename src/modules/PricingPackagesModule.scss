@@ -672,12 +672,9 @@
       padding: 17px 15px 15px 15px;
       &:first-child {
         padding-left: 12px;
-        // font-family: $mlBold;
-        font-weight: $fw-bold;
+        font-weight: $fw-semi-bold;
         .content-catelogy {
-          // font-family: $ml;
           font-weight: $fw-regular;
-          // margin-left: 4px;
         }
       }
     }
