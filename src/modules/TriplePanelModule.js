@@ -100,7 +100,7 @@ const TriplePanelModule = ({ item, tripePanels }) => {
 				<h2>{heading}</h2>
 			}
 			{ des &&
-				<div dangerouslySetInnerHTML={renderHTML(des)} />
+				<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(des)} />
 			}
 		</div>
 		<div className="container small-paragraph animation">
