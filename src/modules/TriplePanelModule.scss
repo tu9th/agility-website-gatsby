@@ -16,7 +16,7 @@
   // &:not(.dark-mode) {
   //   background: linear-gradient(-180deg, rgb(233, 240, 245) 0%, rgb(255, 255, 255) 100%);
   // }
-  > .container {
+  .there-col-head {
     margin-bottom: 45px;
   }
 }
@@ -54,7 +54,8 @@
       height: 304px;
     }
     .box-3col {
-      background-color: rgb(42, 56, 70);     
+      background-color: rgb(42, 56, 70);   
+      color: $white;
     }
     .btn-yellow {
       color: #fff;
@@ -95,7 +96,6 @@
     padding: 35px 30px 40px;
     border-bottom: 3px solid $color-75;
     height: 100%;
-    color: $white;
     img {
       width: 60px;
       margin-bottom: 24px;
@@ -165,7 +165,7 @@
     }
   }
   .mod-three-columns {
-    > .container {
+    .there-col-head {
       margin-bottom: 65px;
     }
   }

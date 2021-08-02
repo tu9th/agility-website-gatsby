@@ -219,7 +219,7 @@ const RightOrLeftContent = ({ item }) => {
 				<div className="container">
 					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} align-items-lg-center h1-big`}>
 						<div className={classAniImg}>
-							<div className={`wrap-ani-home text-right ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
+							<div className={`wrap-ani-home text-center ${textSide === 'right' ? 'text-md-left' : 'text-md-right'} ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
 						</div>
@@ -227,7 +227,7 @@ const RightOrLeftContent = ({ item }) => {
 							{breadcrumb && <h5>{breadcrumb}</h5>}
 							<h1>{heading}</h1>
 							{des &&
-								<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(des)}></div>
+								<div dangerouslySetInnerHTML={renderHTML(des)}></div>
 							}
 							{(btn1 || btn2) &&
 								<p className={`wrap-btn ${isHomePage ? '' : 'internal-btn'}`}>

@@ -95,7 +95,7 @@ const TriplePanelModule = ({ item, tripePanels }) => {
 	return (
 	<React.Fragment>
 		<section className={classSection} ref={ thisModuleRef }>
-		<div className="container last-mb-none max-w-940 text-center animation anima-bottom">
+		<div className="container there-col-head last-mb-none max-w-940 text-center animation anima-bottom">
 			{ heading &&
 				<h2>{heading}</h2>
 			}
