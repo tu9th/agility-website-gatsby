@@ -16,10 +16,10 @@
       background-color: rgba(76,104,132,.15);
     }
     &::before {
-      left: calc(-100vw - 40px);
+      left: calc(-100vw - 20px);
     }
     &::after {
-      right: calc(-100vw - 40px);
+      right: calc(-100vw - 20px);
     }
   }
 }
@@ -40,6 +40,18 @@
   }
 }
 
+@media (min-width: 768px) {
+  .LogoListingModule-heading {
+    h5 {
+      &::before {
+        left: calc(-100vw - 40px);
+      }
+      &::after {
+        right: calc(-100vw - 40px);
+      }
+    }
+  }
+}
 @media (min-width: 1501px) {
   .logo-item {
     padding: 0 20px;

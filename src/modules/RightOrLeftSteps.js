@@ -46,7 +46,7 @@ const RightOrLeftSteps = ({ item }) => {
 						</div>
 					}
 					<div className={classTextSlide}>
-						<div className="col-md-6 content-step ps-rv last-mb-none">
+						<div className="col-md-6 content-step ps-rv last-mb-none small-paragraph">
 							{ step &&
 								<span className="step">{step}</span>
 							}

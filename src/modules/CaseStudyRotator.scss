@@ -109,7 +109,7 @@
 }
 
 .bg-casestudi {
-  height: 394px;
+  min-height: 334px;
   padding: 30px 0;
   position: relative;
 
@@ -149,7 +149,7 @@
 
 .box-slider-center {
   .slick-list {
-    min-height: 394px;
+    // min-height: 394px;
     transition: height .3s;
   }
 }

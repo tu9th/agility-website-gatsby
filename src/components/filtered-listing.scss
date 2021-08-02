@@ -252,6 +252,12 @@
 	}
 }
 
+
+@media screen and (max-width: 360px) {
+	.filtered-listing .listing-wrapper .listing-left {
+		min-width: auto;
+	}
+}
 /* ----------------------------- */
 /* Css for window OS - fix font  */
 .window-os {
