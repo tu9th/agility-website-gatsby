@@ -23,6 +23,9 @@
 .item-3col {
   margin-bottom: 55px;
 }
+.box-3col {
+  color: $color-4c;
+}
 
 .page-new-persona-marketer,
 .page-content-managers {
@@ -92,7 +95,7 @@
     padding: 35px 30px 40px;
     border-bottom: 3px solid $color-75;
     height: 100%;
-    color: $color-4c;
+    color: $white;
     img {
       width: 60px;
       margin-bottom: 24px;
