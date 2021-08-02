@@ -223,11 +223,11 @@ const RightOrLeftContent = ({ item }) => {
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
 						</div>
-						<div className="col-md-6 large-paragraph last-mb-none anima-left">
+						<div className="col-md-6 banner-col-text large-paragraph anima-left">
 							{breadcrumb && <h5>{breadcrumb}</h5>}
 							<h1>{heading}</h1>
 							{des &&
-								<div dangerouslySetInnerHTML={renderHTML(des)}></div>
+								<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(des)}></div>
 							}
 							{(btn1 || btn2) &&
 								<p className={`wrap-btn ${isHomePage ? '' : 'internal-btn'}`}>

@@ -15,7 +15,7 @@ const RightOrLeftSteps = ({ item }) => {
 	const textSide = fields.textSide
 	const imgURL = fields.image && fields.image.url.length > 0 ? fields.image.url : null
 	const classSection = `module mod-framework RightOrLeftSteps animation ${fields.darkMode && fields.darkMode === 'true' ? ' dark-mode style-back text-white bg-17': ''}`
-	const classTextSlide = `item-step row ps-rv align-items-center justify-content-space-betwwen anima-bottom delay-2 ${textSide === 'right' ? 'style-right' : ''}`
+	const classTextSlide = `item-step row ps-rv align-items-center justify-content-between anima-bottom delay-2 ${textSide === 'right' ? 'style-right' : ''}`
 
 	const thisModuleRef = useRef(null)
 	/* animation module */
@@ -46,7 +46,7 @@ const RightOrLeftSteps = ({ item }) => {
 						</div>
 					}
 					<div className={classTextSlide}>
-						<div className="col-md-6 content-step ps-rv last-mb-none small-paragraph">
+						<div className="col-md-6 content-step ps-rv last-mb-none">
 							{ step &&
 								<span className="step">{step}</span>
 							}

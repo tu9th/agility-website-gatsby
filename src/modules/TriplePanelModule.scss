@@ -51,7 +51,7 @@
       height: 304px;
     }
     .box-3col {
-      background-color: rgb(42, 56, 70);
+      background-color: rgb(42, 56, 70);     
     }
     .btn-yellow {
       color: #fff;
@@ -88,10 +88,11 @@
     margin-bottom: 25px;
   }
   .box-3col {
-    background-color: #e4ebf2;
+    background-color: rgba($color-c9, .5);
     padding: 35px 30px 40px;
     border-bottom: 3px solid $color-75;
     height: 100%;
+    color: $color-4c;
     img {
       width: 60px;
       margin-bottom: 24px;

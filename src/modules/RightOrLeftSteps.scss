@@ -78,18 +78,6 @@
 .img-step {
   z-index: 1;
   max-height: 370px;
-  max-width: calc(100% + 30px);
-}
-.style-right {
-  .img-step {
-    margin-left: -30px;
-  }
-}
-.step-img {
-  margin-left: -20px;
-  margin-right: -25px;
-  // min-height: 350px;
-  width: auto !important;
 }
 .content-step {
 	margin-bottom: 30px;
@@ -156,15 +144,15 @@
   }
   .img-step {
     max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .step-img {
     margin-left: 0;
     margin-right: 0;
+    width: 100%;
   } 
-  .style-right .img-step {
-    margin-left: 0;
-    
-  }
 }
 @media (min-width: 768px) {
   .bg-right-step,
@@ -172,13 +160,16 @@
 		width: 221px;
 	}
 	.item-step {
-    padding: 33px 10px 20px 30px;
+    padding: 33px 0 20px 30px;
+    background-color: rebeccapurple;
 		&::before {
 			width: 80%;
 			height: 100%;
 			background: linear-gradient(90deg, rgb(233, 240, 245) 0%, rgb(255, 255, 255) 100%);
 		}
 		&.style-right {
+      padding-left: 0;
+      padding-right: 30px;
 			&::before {
 				left: auto;
 				right: 0;
@@ -186,7 +177,6 @@
       }
       .step-img {
         margin-right: 0;
-        margin-left: -40px;
       }
     }
     .content-step {
@@ -198,7 +188,7 @@
       text-align: right;
       display: inline-block;
       flex: 0 0 auto;
-      margin: 0 -40px 0 0;
+      margin: 0 -15px 0 0;
     }
   }
   .style-back {
@@ -206,8 +196,18 @@
 			background: linear-gradient(-90deg, rgb(23, 27, 32) 0%, rgb(42, 56, 70) 100%);
 		}
 	}
+  .img-step {
+    max-width: calc(100% + 30px);
+    margin-left: -30px;
+  }
   .step-img {
     height: 342px;
+    width: auto !important;
+  }
+  .style-right {
+    .img-step {
+      margin-left: -15px;
+    }
   }
 }
 @media (min-width: 992px) {
@@ -246,12 +246,13 @@
   }
   .img-step {
     max-width: calc(100% + 60px);
+    margin-left: -60px;
   }
-  .style-right {
-    .img-step {
-      margin-left: -60px;
-    }
-  }
+  // .style-right {
+  //   .img-step {
+  //     margin-left: -60px;
+  //   }
+  // }
 }
 @media (min-width: 1500px) {
   .item-step {
