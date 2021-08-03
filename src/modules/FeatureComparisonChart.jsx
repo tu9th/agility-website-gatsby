@@ -225,6 +225,22 @@ const FeatureComparisonChart = ({ item, dataQuery }) => {
     }
   })
 
+  /* click document to close active Box */
+  useEffect(() => {
+    const clickToCloseActiveBox = (e) => {
+      const target = e.target
+      if (!target.classList.contains('box-select') && !target.closest('.box-select')) {
+        setActive(false)
+        setActiveMB(false)
+      }
+    }
+    document.addEventListener('click', clickToCloseActiveBox)
+
+    return () => {
+      document.removeEventListener('click', clickToCloseActiveBox)
+    }
+  }, [])
+
   /* animation module */
 	useEffect(() => {
 		const scrollEventFunc = () => {
