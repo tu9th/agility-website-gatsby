@@ -570,7 +570,7 @@ class PricingPackagesModule2 extends React.Component {
 					</div>
 				</div>
 
-				<div className="wrap-price-catelogy">
+				<div className="wrap-price-catelogy last-mb-none">
 					{listCategory && listCategory.length > 0 &&
 						listCategory
 					}

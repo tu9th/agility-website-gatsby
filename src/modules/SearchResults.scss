@@ -52,6 +52,12 @@
     .search-input {
       height: 54px;
     }
+    button {
+      img {
+        position: relative;
+        left: 1px;
+      }
+    }
   }
 }
 .search-btn {
