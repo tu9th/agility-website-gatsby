@@ -32,6 +32,11 @@ export default props => (
 							target
 							text
 						}
+						marketingBannerButton {
+							href
+							target
+							text
+						}
 						stickyLogo {
 							url
 						}
@@ -283,6 +288,7 @@ class NewGlobalHeader extends Component {
 		const menuGetstart = this.props.item.customFields.secondaryButton;
 		const primaryButton = this.props.item.customFields.primaryButton;
 		const contactButton = this.props.item.customFields.contactus;
+		const marketingBannerButton = this.props.item.customFields.marketingBannerButton;
 		const isOpenMenuText = 'is-open-menu';
 		const renderMenu = (menu, level) => {
 			const links = []
@@ -401,8 +407,8 @@ class NewGlobalHeader extends Component {
 										<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(item.marketingBanner)} />
 									</div>
 									<div className="col-5 col-xl-4 text-right d-flex align-items-center justify-content-end">
-										<Link to="/" className="d-inline-block flash-btn">Sign In</Link>
-										<Link to="/" className="d-inline-block flash-btn">Documentation</Link>
+										<a className="d-inline-block flash-btn" href={primaryButton.href} target={primaryButton.target}>{primaryButton.text}</a>
+										<a className="d-inline-block flash-btn" href={marketingBannerButton.href} target={marketingBannerButton.target}>{marketingBannerButton.text}</a>
 									</div>
 								</div>
 							</div>
@@ -431,8 +437,8 @@ class NewGlobalHeader extends Component {
 								{renderMenu(this.props.menu, 0)}
 
 								<div className="box-mess-mb ps-rv text-white text-center d-xl-none">
-									<Link to="/" className="d-block">Documentation</Link>
-									<Link to="/" className="d-block">Sign In</Link>
+									<a className="d-inline-block flash-btn" href={primaryButton.href} target={primaryButton.target}>{primaryButton.text}</a>
+									<a className="d-inline-block flash-btn" href={marketingBannerButton.href} target={marketingBannerButton.target}>{marketingBannerButton.text}</a>
 								</div>
 							</div>
 						</div>
