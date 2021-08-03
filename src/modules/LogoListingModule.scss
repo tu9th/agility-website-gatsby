@@ -16,10 +16,10 @@
       background-color: rgba(76,104,132,.15);
     }
     &::before {
-      left: calc(-100vw - 20px);
+      left: calc(-100vw - 15px);
     }
     &::after {
-      right: calc(-100vw - 20px);
+      right: calc(-100vw - 15px);
     }
   }
 }

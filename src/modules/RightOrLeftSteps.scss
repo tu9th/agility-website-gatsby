@@ -268,6 +268,10 @@
 @media (min-width: 1500px) {
   .item-step {
     padding-left: 95px;
-    padding-right: 95px;
+    padding-right: 0;
+    &.style-right {
+      padding-left: 0;
+      padding-right: 95px;
+    }
   }
 }
