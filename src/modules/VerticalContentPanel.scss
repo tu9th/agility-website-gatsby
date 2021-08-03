@@ -206,7 +206,7 @@
   }
   .title-i-c {
     max-width: 880px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     // height: 115px;
     // .box-title {
     //   position: absolute;
@@ -215,6 +215,9 @@
     //   max-width: 100%;
     //   left: 50%;
     // }
+    h2 {
+      margin-bottom: 12px;
+    }
   }
   .box-content {
     transition: background-color .35s;
@@ -231,12 +234,12 @@
     cursor: pointer;
     margin-bottom: 12px;
     .box-content {
-      padding: 25px 30px;
+      padding: 25px 30px 22px 40px;
       color: $color-4c;
     }
     &.flex-md-row-reverse {
       .box-content {
-        padding-left: 30px;
+        padding-left: 40px;
       }
     }
     &.tab-active {
