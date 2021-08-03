@@ -157,7 +157,9 @@
 @media (min-width: 768px) {
   .dark-mode {
     .item-step {
-      padding: 13px 0 10px 30px;
+      // padding: 13px 0 10px 30px;
+      padding-top: 13px;
+      padding-bottom: 10px;
     }
   }
   .bg-right-step,
@@ -226,7 +228,7 @@
   }
   .item-step {
     min-height: 390px;
-    padding-left: 50px;
+    // padding-left: 50px;
   }
   .step-img {
     height: 350px;

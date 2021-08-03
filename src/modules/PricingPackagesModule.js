@@ -420,7 +420,7 @@ class PricingPackagesModule2 extends React.Component {
 
 		/* set Width sale Text */
 		const textSaleElm = this.textSaleRef.current.querySelector('span')
-		const w = textSaleElm ? textSaleElm.offsetWidth + 2 : 0
+		const w = textSaleElm ? textSaleElm.offsetWidth + 5 : 0
 		this.setState({ widthSaleText: w })
 
 		window.addEventListener('scroll', this.eventScrollFunc)
@@ -439,7 +439,7 @@ class PricingPackagesModule2 extends React.Component {
 		/* set Width sale Text Month or Year */
 		if (prevProps.textSale !== this.props.textSale || prevProps.textSaleYearly !== this.props.textSaleYearly || prevState.isMonthly !== this.state.isMonthly) {
 			const textSaleElm = this.textSaleRef.current.querySelector('span')
-			const w = textSaleElm ? textSaleElm.offsetWidth + 2 : 0;
+			const w = textSaleElm ? textSaleElm.offsetWidth + 5 : 0;
 			this.setState({ widthSaleText: w });
 		}
 	}
