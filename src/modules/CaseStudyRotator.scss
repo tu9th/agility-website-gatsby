@@ -280,18 +280,25 @@
       margin: 0 auto;
     }
     .slick-arrow {
-      top: calc(50% - 10px);
+      top: calc(50% - 4px);
     }
     .slick-prev {
-      left: -75px;
+      left: -78px;
     }
     .slick-next {
-      right: -75px;
+      right: -78px;
     }
   }
 
   .content-case {
-    padding: 0 112px;
+    padding: 8px 112px 0;
+    h3 {
+      margin-bottom: 7px;
+    }
+    p {
+      max-width: 541px;
+      margin-bottom: 20px;
+    }
   }
   .bg-casestudi {
     padding-top: 50px;
