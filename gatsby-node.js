@@ -71,8 +71,14 @@ exports.createSchemaCustomization = ({ actions }) => {
 		}
     type agilityGlobalHeaderCustomFields implements Node {
       contactus: agilityGlobalHeaderCustomFieldsContactus
+			marketingBannerButton: agilityGlobalHeaderCustomFieldsMarketingButton
 		}
 		type agilityGlobalHeaderCustomFieldsContactus {
+			href: String,
+			target: String,
+			text:String
+		}
+		type agilityGlobalHeaderCustomFieldsMarketingButton {
 			href: String,
 			target: String,
 			text:String

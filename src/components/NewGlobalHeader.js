@@ -408,7 +408,7 @@ class NewGlobalHeader extends Component {
 									</div>
 									<div className="col-5 col-xl-4 text-right d-flex align-items-center justify-content-end">
 										<a className="d-inline-block flash-btn" href={primaryButton.href} target={primaryButton.target}>{primaryButton.text}</a>
-										<a className="d-inline-block flash-btn" href={marketingBannerButton.href} target={marketingBannerButton.target}>{marketingBannerButton.text}</a>
+										<a className="d-inline-block flash-btn" href={marketingBannerButton?.href} target={marketingBannerButton?.target}>{marketingBannerButton?.text}</a>
 									</div>
 								</div>
 							</div>
@@ -437,8 +437,8 @@ class NewGlobalHeader extends Component {
 								{renderMenu(this.props.menu, 0)}
 
 								<div className="box-mess-mb ps-rv text-white text-center d-xl-none">
-									<a className="d-inline-block flash-btn" href={primaryButton.href} target={primaryButton.target}>{primaryButton.text}</a>
-									<a className="d-inline-block flash-btn" href={marketingBannerButton.href} target={marketingBannerButton.target}>{marketingBannerButton.text}</a>
+									<a className="d-inline-block flash-btn" href={primaryButton?.href} target={primaryButton?.target}>{primaryButton?.text}</a>
+									<a className="d-inline-block flash-btn" href={marketingBannerButton?.href} target={marketingBannerButton?.target}>{marketingBannerButton?.text}</a>
 								</div>
 							</div>
 						</div>
