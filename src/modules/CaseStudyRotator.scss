@@ -106,10 +106,11 @@
     }
   }
   .slick-arrow {
-    top: calc(50% - 10px);
-    &::before {
-      color: $color-58;
-    }
+    display: none !important;
+    // top: calc(50% - 10px);
+    // &::before {
+    //   color: $color-58;
+    // }
   }
   .slick-next {
     right: -45px;
