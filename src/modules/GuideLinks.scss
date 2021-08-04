@@ -28,7 +28,7 @@
 .col-content-guide {
 	margin-bottom: 30px;
 	img {
-		margin-bottom: 16px;
+		margin-bottom: 20px;
 	}
 }
 .item-guides {
@@ -115,7 +115,7 @@
 			padding-left: 0;
 		}
 		h2 {
-			margin-bottom: 14px;
+			margin-bottom: 9px;
 		}
 		.col-content-guide {
 			p {
@@ -134,6 +134,7 @@
 }
 @media (min-width: 1501px) {
   .mod-user-guides {
+		padding-top: 195px;
     .container:not(.max-w-940) {
       max-width: 1150px;
     }

@@ -32,20 +32,21 @@ const LogoListingModule = ({ item }) => {
 		)
 	})
 
-	const initLogo = () => {
-		let inter
-		const section = document.getElementsByClassName('LogoListingModule')[0]
-		inter = setInterval(() => {
-			if(section.classList.contains('set-animation') && section.querySelectorAll('.slick-list').length) {
-				clearInterval(inter)
-				section.querySelectorAll('.slick-list')[0].style.height = 'auto'
+	// const initLogo = () => {
+	// 	console.log('init logo');
+	// 	let inter
+	// 	const section = document.getElementsByClassName('LogoListingModule')[0]
+	// 	inter = setInterval(() => {
+	// 		if(section.classList.contains('set-animation') && section.querySelectorAll('.slick-list').length) {
+	// 			clearInterval(inter)
+	// 			section.querySelectorAll('.slick-list')[0].style.height = 'auto'
 
-			}
-		}, 5);
-	}
-	useEffect(() => {
-		initLogo()
-  });
+	// 		}
+	// 	}, 5);
+	// }
+	// useEffect(() => {
+	// 	initLogo()
+  // });
 	const settings = {
 		dots: true,
 		infinite: true,
@@ -54,7 +55,7 @@ const LogoListingModule = ({ item }) => {
 		rows: 1,
 		slidesToShow: 6,
     slidesToScroll: 6,
-		adaptiveHeight: true,
+		adaptiveHeight: false,
     respondTo: 'slider',
     responsive: [{
       breakpoint: 1199,
