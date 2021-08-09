@@ -461,11 +461,11 @@ class NewGlobalHeader extends Component {
 				/* active parent menu when sub menu is active */
 				let isSubMenuActive = false
 				subMenu.find(item => {
-					if (item.customFields?.uRL?.href.indexOf(this.state.activeMenu) !== -1) {
+					if (item.customFields?.uRL?.href === this.state.activeMenu) {
 						isSubMenuActive = true
 					}
 				})
-				const isActive = (this.state.activeMenu.indexOf(url?.href) !== -1 || isSubMenuActive ? 'active' : '')
+				const isActive = (this.state.activeMenu === url?.href || isSubMenuActive ? 'active' : '')
 				return (
 					<li key={menuItem.id}
 					className={`d-xl-flex align-items-center ${isActive} ${subMenu?.length ? 'has-sub' : ''} ${(this.state.menuLv2Opening === menuItem.id ? 'is-open-child' : '')} `}
@@ -533,7 +533,7 @@ class NewGlobalHeader extends Component {
 							<ul className="list-inline">
 								{subMenu.map((subMenuItem, index) => {
 									const url = subMenuItem.customFields?.uRL
-									const isActive = (this.state.activeMenu.indexOf(url?.href) !== -1 ? 'active' : '')
+									const isActive = this.state.activeMenu === url?.href ? 'active' : ''
 									return (
 										<li key={`child-${index}`} className={`d-xl-flex align-items-center ${isActive}`}>
 											{url?.href.indexOf("://") !== -1 ?
