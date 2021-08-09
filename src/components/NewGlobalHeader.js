@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, graphql, StaticQuery, navigate } from 'gatsby'
-import Lazyload from 'react-lazyload'
+import Lazyload, { forceCheck } from 'react-lazyload'
 import { renderHTML } from '../agility/utils'
 import Hamburger from './Newhamburger.jsx'
 import Helpers from '../global/javascript/Helpers'
@@ -55,23 +55,76 @@ export default props => (
 							}
 						}
 					}
+					menuStructure {
+						id
+						customFields {
+							subNavigation {
+								referencename
+							}
+							linkorSpotlight
+							megaTitle
+							megaContent {
+								referencename
+							}
+							title
+							uRL {
+								href
+								target
+								text
+							}
+						}
+						subNavigation {
+							customFields {
+								description
+								title
+								uRL {
+									href
+									target
+									text
+								}
+							}
+						}
+						megaContent {
+							customFields {
+								linkorSpotlight
+								title
+								description
+								uRL {
+									href
+									target
+									text
+								}
+								imageorIcon {
+									url
+									width
+									height
+								}
+							}
+						}
+					}
 				}
 				agilitynestedsitemap {
 					internal {
 						content
 					}
 				}
+
+				
 			}
 		`}
 		render={queryData => {
+
+			const navigationTopLevel = queryData.agilityGlobalHeader?.menuStructure
 			const nestedSitemapJSON = queryData.agilitynestedsitemap.internal.content
 			const nestSitemap = JSON.parse(nestedSitemapJSON).nodes
 			const viewModel = {
 				item: queryData.agilityGlobalHeader,
 				menu: nestSitemap.filter(node => {
 					return node.visible.menu
-				})
+				}),
+				menu2: navigationTopLevel
 			}
+
 			return (
 				<NewGlobalHeader {...viewModel} />
 			)
@@ -125,8 +178,6 @@ class NewGlobalHeader extends Component {
 		}
 
 		this.updateHeighHeaderBackup()
-		// this.setState({ pinHeader: true })
-		// this.setHeightFakeHeader()
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -134,6 +185,12 @@ class NewGlobalHeader extends Component {
 		if (prevState.webinar !== this.state.webinar) {
 			this.updateHeighHeaderBackup()
 			this.updatePinHeader()
+		}
+
+		if (prevState.openMenu !== this.state.openMenu || prevState.menuLv2Opening !== this.state.menuLv2Opening) {
+			setTimeout(() => {
+				forceCheck()
+			}, 300)
 		}
 	}
 
@@ -154,7 +211,9 @@ class NewGlobalHeader extends Component {
 	}
 
 	updatePinHeader() {
-		this.setState({ pinHeader: true })
+		if (!this.state.pinHeader) {
+			this.setState({ pinHeader: true })
+		}
 		this.setHeightFakeHeader()
 	}
 
@@ -175,13 +234,17 @@ class NewGlobalHeader extends Component {
 	stickyHeader() {
 		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
 		if (winScroll > 1) {
-			this.setState({
-				sticky: true
-			})
+			if (!this.state.sticky) {
+				this.setState({
+					sticky: true
+				})
+			}
 		} else {
-			this.setState({
-				sticky: false
-			})
+			if (this.state.sticky) {
+				this.setState({
+					sticky: false
+				})
+			}
 		}
 	}
 	_handleActiveMenu(menuItem) {
@@ -195,8 +258,6 @@ class NewGlobalHeader extends Component {
 				openMenu: !this.state.openMenu
 			})
 			this.updatePinHeader()
-
-			// this.removeClassOpenMenuOnHtml()
 		}
 	}
 	removeClassOpenMenuOnHtml() {
@@ -390,12 +451,171 @@ class NewGlobalHeader extends Component {
 			return <ul className={level === 0 ? className : 'list-inline'}>{links}</ul>;
 		};
 
+		const renderMenu2 = (menu) => {
+			const levelOneList = menu.map((menuItem) => {
+				const subMenu = menuItem?.subNavigation
+				const url = menuItem?.customFields?.uRL
+				const isActive = (this.state.activeMenu.indexOf(url?.href) !== -1 ? 'active' : '')
+				return (
+					<li key={menuItem.id}
+					className={`d-xl-flex align-items-center ${isActive} ${subMenu?.length ? 'has-sub' : ''} ${(this.state.menuLv2Opening === menuItem.id ? 'is-open-child' : '')} `}
+					onClick={ !subMenu?.length ? this._handleActiveMenu.bind(this, url?.href) : () => {} }
+					data-page-id={menuItem.id}>
+						{url.href.indexOf("://") !== -1 ?
+							<a href={url.href} target={url.target} onClick={(e) => this.openMenuLv1(e)}>{url.text}</a>
+							:
+							<Link to={url.href} target={url.target} onClick={(e) => this.openMenuLv1(e)}>{url.text}</Link>
+						}
+
+						{/* sub navigation */}
+						{subMenu.length ? renderSubMenu(menuItem) : ''}
+					</li>
+				)
+			})
+
+			/* search layout */
+			const btnMenu = <li className="d-xl-flex align-items-center box-search-header" key="btnMenu">
+				<div className="group-search">
+					<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center dectect-open">
+						<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" width="25" height="25" alt="search" /></Lazyload>
+					</button>
+					<form onSubmit={event => {
+						event.preventDefault()
+						const valSearch = document.querySelectorAll('#search-page-header')[0]
+						if (valSearch && valSearch.value.trim().length > 0) {
+							navigate(`/search?s=${valSearch.value}`)
+						} else {
+							valSearch.value = ''
+						}
+					}}>
+						<label htmlFor="search-page-header" className="sr-only">Search...</label>
+						<input name="s" id="search-page-header" type="text" className="aniamtion-input dectect-open" placeholder="Search.."></input>
+						<span className="bind-text"></span>
+						<button className="submit-search d-flex align-items-center justify-content-center" type="submit">
+							<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" alt="search" /></Lazyload>
+						</button>
+					</form>
+				</div>
+				<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
+				{contactButton?.href && contactButton?.text &&
+					<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
+				}
+			</li>
+
+			levelOneList.push(btnMenu)
+			return levelOneList
+		}
+
+		const renderSubMenu = (menuItem) => {
+			const subMenu = menuItem?.subNavigation
+			const megaContent = menuItem?.megaContent
+			const megaTitle = menuItem?.customFields?.megaTitle
+			const linkOrSpotlight = menuItem?.customFields?.linkorSpotlight
+			const hasMegaMenuContent = megaContent?.length
+			
+			return (
+				<>
+					<div className="nav-item-arrows arrows-lv1 d-xl-none" onClick={(e) => this.clickNavArrowLv1(e)}>
+						<i className="icomoon icon-down-menu" aria-hidden="true"></i>
+					</div>
+					<div className={`dropdown-menu main-menu-dropdown ${hasMegaMenuContent ? 'has-mega-content' : ''}`}>
+						<div className={`dr-navi-col`}>
+							<ul className="list-inline">
+								{subMenu.map((subMenuItem, index) => {
+									const url = subMenuItem.customFields?.uRL
+									const isActive = (this.state.activeMenu.indexOf(url?.href) !== -1 ? 'active' : '')
+									return (
+										<li key={`child-${index}`} className={`d-xl-flex align-items-center ${isActive}`}>
+											{url?.href.indexOf("://") !== -1 ?
+												<a href={url?.href} target={url?.target}>{url?.text}</a>
+												:
+												<Link to={url?.href} target={url?.target}>{url?.text}</Link>
+											}
+										</li>
+									)
+								})}
+							</ul>
+						</div>
+						{hasMegaMenuContent &&
+							<div className="dr-navi-col">
+								{megaMenuContent(megaContent, megaTitle, linkOrSpotlight)}
+							</div>
+						}
+					</div>
+				</>
+
+			)
+		}
+
+		const megaMenuContent = (megaContent, megaTitle, linkOrSpotlight) => {
+			console.log(`megaContent`, megaContent, megaTitle)
+			const isSpotlight = linkOrSpotlight === 'Spotlight' // Spotlight - Link
+
+			const renderMegaContent = megaContent.map((content, index) => {
+				const customFields = content.customFields
+				const url = customFields?.uRL
+				const image = { ...customFields?.imageorIcon, alt: customFields?.title }
+				return (
+					<div key={'mega-' + index} className={`mega-content-item ps-rv last-mb-none ${isSpotlight ? 'is-spotlight' : 'is-link'}`}>
+						{url &&
+							<Link to={url?.href} target={url?.target} className="ps-as" />
+						}
+						{/* is Spotlight Type */}
+						{isSpotlight &&
+							<>
+								{image &&
+									<div className="spotlight-thumb">
+										{/* <ResponsiveImage img={image} /> */}
+										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={megaTitle} /></Lazyload>
+									</div>
+								}
+								{customFields?.title &&
+									<h6>{customFields?.title}</h6>
+								}
+							</>
+						}
+						{/* is Link Type */}
+						{!isSpotlight &&
+							<>
+								{image &&
+									<div className="mega-link-logo">
+										{/* <ResponsiveImage img={image} /> */}
+										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={megaTitle} /></Lazyload>
+									</div>
+								}
+								{(customFields?.title || customFields?.description) &&
+									<div className="flex-grow-1 last-mb-none">
+										{customFields?.title &&
+											<h6>{customFields?.title}</h6>
+										}
+										{customFields?.description &&
+											<p>{customFields?.description}</p>
+										}
+									</div>
+								}
+							</>
+						}
+
+					</div>
+				)
+			})
+
+			return (
+				<div className="mega-content last-mb-none">
+					{megaTitle &&
+						<h5>{megaTitle}</h5>
+					}
+					{renderMegaContent}
+				</div>
+			)
+		}
+
 		const item = this.props.item.customFields;
-		const classHeader = `module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`;
+		// const classHeader = `module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`;
 		const classMainMenu = `navbar-collapse main-menu menu-header-right ${this.state.openMenu === true ? isOpenMenuText : ''}`
 		return (
 			<React.Fragment>
-				<header id="header" className={classHeader} data-module="header" ref={reference => (this.header = reference)}>
+				<header id="header" className={`module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`} ref={reference => (this.header = reference)}>
 					{/* <a className="skip-link text-center d-block w-100 bg-black text-white" href="javascript:;">
 						<span>Skip to content</span></a> */}
 					{(item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' &&
@@ -434,7 +654,10 @@ class NewGlobalHeader extends Component {
 						</div>
 						<div className={classMainMenu} id="main-menu" data-module="menu">
 							<div className={`container`}>
-								{renderMenu(this.props.menu, 0)}
+								<ul className="main-menu-ul navbar-nav mx-auto justify-content-end list-inline dectect-open">
+									{renderMenu2(this.props.menu2)}
+								</ul>
+								{/* {renderMenu(this.props.menu, 0)} */}
 
 								<div className="box-mess-mb ps-rv text-white text-center d-xl-none">
 									<a className="d-inline-block flash-btn" href={primaryButton?.href} target={primaryButton?.target}>{primaryButton?.text}</a>
@@ -448,5 +671,3 @@ class NewGlobalHeader extends Component {
 		);
 	}
 }
-
-

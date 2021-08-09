@@ -18,18 +18,15 @@
     position: fixed;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
     // background-color: rgba(255,255,255,.95);
-    .main-menu {
-      animation: pinheader 0.35s;
-    }
+    // .main-menu {
+    //   animation: pinheader 0.35s;
+    // }
     // .btn-menu {
     //   display: none;
     // }
     .btn-menu-v2 {
       display: block;
     }
-    // .btn-pin {
-    //   display: block;
-    // }
     .navbar {
       padding: 7px 20px;
     }
@@ -342,6 +339,7 @@
   .header {
     .navbar {
       padding: 20px 20px;
+      transition: all .35s;
     }
     &.pin-header {
       .navbar {
