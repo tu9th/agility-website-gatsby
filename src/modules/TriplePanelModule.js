@@ -62,7 +62,7 @@ const TriplePanelModule = ({ item, tripePanels }) => {
 			<div className="col-md-4 item-3col anima-bottom delay-4" key={idx}>
 				<div className='box-3col'>
 					{ customField.graphic && customField.graphic.url &&
-						<div className="img-3col d-flex align-items-center justify-content-center">
+						<div className="img-3col d-flex align-items-center">
 							<LazyLoad offset={ Helpers.lazyOffset }>
 								<img src={customField.graphic.url} alt={customField.graphic.label} />
 							</LazyLoad>

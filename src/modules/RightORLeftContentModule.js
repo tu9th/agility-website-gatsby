@@ -84,7 +84,7 @@ const RightOrLeftContent = ({ item }) => {
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
 
-	let classAniImg = 'col-md-6 col-right-lr'
+	let classAniImg = 'col-md-6 col-lg-7 col-right-lr'
 	let imgModule
 	if (item.customFields.graphic && item.customFields.graphic.url) {
 		imgModule = item.customFields.graphic
@@ -223,7 +223,7 @@ const RightOrLeftContent = ({ item }) => {
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
 						</div>
-						<div className="col-md-6 banner-col-text large-paragraph anima-left">
+						<div className="col-md-6 col-lg-5 banner-col-text large-paragraph anima-left">
 							{breadcrumb && <h5>{breadcrumb}</h5>}
 							<h1>{heading}</h1>
 							{des &&

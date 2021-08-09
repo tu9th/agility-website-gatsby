@@ -102,7 +102,7 @@ const LogoListingModule = ({ item }) => {
 						}
 					</div>
 					{ logos.length > 0 &&
-					<div className="slider-lazy list-logos-slide anima-bottom">
+					<div className={`slider-lazy list-logos-slide anima-bottom ${!heading ? 'has-no-heading' : ''}`}>
 							<Slider {...settings}>
 								{listLogos}
 							</Slider>

@@ -105,7 +105,7 @@ h5,
   line-height: 1.385;
   letter-spacing: 1px;
   color: $color-4c;
-  // text-transform: uppercase;
+  text-transform: uppercase;
   font-weight: $fw-semi-bold;
 }
 h6,
@@ -114,10 +114,13 @@ h6,
   letter-spacing: 1px;
   // font-family: $mlBold;
   font-weight: $fw-semi-bold;
-  // text-transform: uppercase;
+  text-transform: uppercase;
   margin-bottom: 5px;
 }
-
+.large-paragraph {
+  font-size: rem(17);
+  line-height: 1.47;
+}
 .small-paragraph {
   font-size: rem(15);
   // line-height: 1.73;
@@ -135,16 +138,18 @@ h6,
     margin-bottom: 13px;
   }
 }
+.h5-uppercase {
+  text-transform: uppercase;
+}
 p{
   margin-bottom: 27px;
 }
-.large-paragraph {
-  font-size: rem(17);
-  line-height: 1.47;
-}
+
 blockquote {
   font-size: rem(17);
   line-height: 1.59;
+  font-style: italic;
+  letter-spacing: 0;
 }
 // @include media-breakpoint-down(xl) {
 //   .hero-text {

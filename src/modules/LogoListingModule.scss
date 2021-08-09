@@ -23,14 +23,32 @@
     }
   }
 }
+
+.list-logos-slide {
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(76,104,132,.15);
+  &.has-no-heading {
+    border-top: 1px solid rgba(76,104,132,.15);
+    padding-top: 10px;
+  }
+}
 .logo-item {
   padding: 0 10px;
-  display: block
+  display: block;
+  text-align: center;
+  .gatsby-image-wrapper {
+    max-width: 175px;
+    vertical-align: middle;
+    img {
+      max-height: 100px;
+    }
+  }
 }
 .LogoListingModule {
-  .slick-list {
-    border-bottom: 1px solid rgba(76,104,132,.15);
-  }
+  // .slick-list {
+  //   border-bottom: 1px solid rgba(76,104,132,.15);
+  // }
   // .slick-list {
   //   min-height: 140px;
   // }
@@ -51,10 +69,18 @@
       }
     }
   }
+  .logo-item {
+    padding: 0 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .list-logos-slide {
+    margin-bottom: 0;
+  }
 }
 @media (min-width: 1501px) {
   .logo-item {
-    padding: 0 20px;
+    padding: 0 30px;
   }
   // .slick-list {
   //   min-height: 140px;
