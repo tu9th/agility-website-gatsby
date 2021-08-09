@@ -454,9 +454,18 @@ class NewGlobalHeader extends Component {
 		const renderMenu2 = (menu) => {
 			const levelOneList = menu.map((menuItem) => {
 				const subMenu = menuItem?.subNavigation
+				console.log(`subMenu`, subMenu)
+
 				const url = menuItem?.customFields?.uRL
-				const isActive = (this.state.activeMenu.indexOf(url?.href) !== -1 ? 'active' : '')
-				console.log(`menuItem`, menuItem)
+				
+				/* active parent menu when sub menu is active */
+				let isSubMenuActive = false
+				subMenu.find(item => {
+					if (item.customFields?.uRL?.href.indexOf(this.state.activeMenu) !== -1) {
+						isSubMenuActive = true
+					}
+				})
+				const isActive = (this.state.activeMenu.indexOf(url?.href) !== -1 || isSubMenuActive ? 'active' : '')
 				return (
 					<li key={menuItem.id}
 					className={`d-xl-flex align-items-center ${isActive} ${subMenu?.length ? 'has-sub' : ''} ${(this.state.menuLv2Opening === menuItem.id ? 'is-open-child' : '')} `}
