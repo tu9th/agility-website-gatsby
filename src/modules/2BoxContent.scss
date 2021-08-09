@@ -33,18 +33,18 @@
     z-index: 1;
     &:hover {
       box-shadow: 0 0 6px 0px rgba(85,63,164,0.37);
-      &:after {
-        box-shadow: 0 0 6px 0px $color-46;
-      }
+      // &:after {
+      //   box-shadow: 0 0 6px 0px $color-46;
+      // }
     }
-    &:after {
-      content: "";
-      @include position(absolute,null,0,0,0,-2);
-      height: 200px;
-      background-color: $white;
-      box-shadow: 0 0 0 -8px rgba(85, 63, 164, .25);
-      transition: all .35s;
-    }
+    // &:after {
+    //   content: "";
+    //   @include position(absolute,null,0,0,0,-2);
+    //   height: 200px;
+    //   background-color: $white;
+    //   box-shadow: 0 0 0 -8px rgba(85, 63, 164, .25);
+    //   transition: all .35s;
+    // }
     &::before {
       content: "";
       @include position(absolute,0,0,0,0,-1);
