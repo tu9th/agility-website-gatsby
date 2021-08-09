@@ -74,6 +74,7 @@ export default props => (
 							}
 						}
 						subNavigation {
+							id
 							customFields {
 								description
 								title
@@ -103,25 +104,13 @@ export default props => (
 						}
 					}
 				}
-				agilitynestedsitemap {
-					internal {
-						content
-					}
-				}
-
-				
 			}
 		`}
 		render={queryData => {
 
 			const navigationTopLevel = queryData.agilityGlobalHeader?.menuStructure
-			const nestedSitemapJSON = queryData.agilitynestedsitemap.internal.content
-			const nestSitemap = JSON.parse(nestedSitemapJSON).nodes
 			const viewModel = {
 				item: queryData.agilityGlobalHeader,
-				menu: nestSitemap.filter(node => {
-					return node.visible.menu
-				}),
 				menu2: navigationTopLevel
 			}
 
@@ -160,7 +149,6 @@ class NewGlobalHeader extends Component {
 	}
 	componentDidMount() {
 		this.mainNode = document.querySelector('.main-content')
-		this.setState({ activeMenu: window.location.pathname })
 		this.setState({ webinar: Helpers.getCookie('WebinarHidden') })
 		this.setState({ flag: true })
 		this.inputLine()
@@ -169,6 +157,58 @@ class NewGlobalHeader extends Component {
 		this.clickAwebinar()
 		window.addEventListener('scroll', this.scrollWindow);
 		window.addEventListener('resize', this.resizeWindow);
+
+		/* init active navigation item */
+		let matchedNavId = null
+		const pathname = window.location.pathname
+		const menus = this.props.menu2
+
+		/* Check level 1 */
+		menus.map(item => {
+			if (item.customFields?.uRL?.href === pathname || pathname.indexOf(item.customFields?.uRL?.href) !== -1) {
+				matchedNavId = item.id
+			}
+			return item
+		})
+		/* Check level 2 after done level 1 */
+		menus.map(item => {
+			item.subNavigation.map(subItem => {
+				if (subItem.customFields?.uRL?.href === pathname || pathname.indexOf(subItem.customFields?.uRL?.href) !== -1) {
+					matchedNavId = subItem.id
+				}
+				return subItem
+			})
+			return item
+		})
+		this.setState({ activeMenu: matchedNavId })
+
+		/* START hover on Nav Item level 1, smooth when move from lv1 to sub item dropdown-box */
+		let timeO = null
+		const isHoveringTxt = 'is-hovering'
+		const listNavLv1 = this.header.querySelectorAll('.main-menu-ul > li.has-sub > a')
+		/* create fake element */
+		const lv1Before = document.createElement('div');
+		lv1Before.classList.add('lv1-before');
+		const lv1After = document.createElement('div');
+		lv1After.classList.add('lv1-after');
+		/* event mouse enter and mouse leave on nav lv1 */
+		[...listNavLv1].map(nav => {
+			nav.addEventListener('mouseenter', (event) => {
+				clearTimeout(timeO)
+				document.querySelector(`.${isHoveringTxt}`)?.classList.remove(isHoveringTxt);
+				nav.parentNode.classList.add(isHoveringTxt)
+				nav.parentNode.appendChild(lv1Before)
+				nav.parentNode.appendChild(lv1After)
+			})
+			nav.addEventListener('mouseleave', (event) => {
+				timeO = setTimeout(() => {
+					document.querySelector(`.${isHoveringTxt}`).classList.remove(isHoveringTxt)
+				}, 250);
+			})
+			return nav
+		})
+		/* END hover on Nav Item level 1 */
+
 
 		if (navigator.platform.indexOf('Mac') > -1) {
 			document.querySelector('html').classList.add('mac-os')
@@ -247,8 +287,8 @@ class NewGlobalHeader extends Component {
 			}
 		}
 	}
-	_handleActiveMenu(menuItem) {
-		this.setState({ activeMenu: menuItem })
+	_handleActiveMenu(menuId) {
+		this.setState({ activeMenu: menuId })
 	}
 	showMenuMobile() {
 		const w = window.innerWidth || document.documentElement.offsetWidth
@@ -351,126 +391,124 @@ class NewGlobalHeader extends Component {
 		const contactButton = this.props.item.customFields.contactus;
 		const marketingBannerButton = this.props.item.customFields.marketingBannerButton;
 		const isOpenMenuText = 'is-open-menu';
-		const renderMenu = (menu, level) => {
-			const links = []
-			if (!menu || !menu.length || menu.length === 0) {
-				return null
-			}
-			const itemClassName = 'h-menu-li'
-			menu.forEach((item) => {
-				// console.log(item)
-				if (!item.visible.menu) {
-					return
-				}
-				let path = item.path;
-				const path2 = item.path;
-				let target = item.target
-				if (item.redirect) {
-					path = item.redirect.url.replace('~/', '/')
-					target = item.redirect.target
-				}
-				const isActive = (this.state.activeMenu.indexOf(path2) !== -1 ? 'active' : '')
-				if (level > 1) {
-					return null
-				}
-				const subLinks = renderMenu(item.children, level + 1);
-				if (subLinks === null || subLinks.length < 0) {
-					//no sub menu
-					links.push(<li className={`${isActive} d-xl-flex align-items-center`} key={item.pageID} onClick={this._handleActiveMenu.bind(this, path)}>
-						{path.indexOf('://') !== -1 ? <a href={path} target={target}>{item.menuText}</a> : <Link to={path} target={target}>{item.menuText}</Link>}
-					</li>)
-				} else {
-					//has a sub menu
-					let li = null;
-					if (!item.isFolder) {
-						//regular item...
-						li = <li className={isActive + ' has-sub  d-xl-flex align-items-center ' + (parseInt(this.state.menuLv2Opening) === item.pageID ? 'is-open-child' : '')} data-page-id={item.pageID} key={item.pageID}>
-							{path.indexOf("://") !== -1 ?
-								<a href={path} target={target} onClick={(e) => this.openMenuLv1(e)}>{item.menuText}</a>
-								:
-								<Link to={path} target={target} onClick={(e) => this.openMenuLv1(e)}>{item.menuText}</Link>
-							}
-							<div className="nav-item-arrows arrows-lv1 d-xl-none" onClick={(e) => this.clickNavArrowLv1(e)}>
-								<i className="icomoon icon-down-menu" aria-hidden="true"></i>
-							</div>
-							<div className="dropdown-menu main-menu-dropdown rounded-0">
-								{subLinks}
-							</div>
-						</li>;
-					} else {
-						//folder
-						li = <li className={itemClassName + ' has-children'} key={item.pageID}><span>{item.menuText}</span>
-							<span className="sub-menu-icon">
-								<Lazyload offset={Helpers.lazyOffset}>
-									<img src="https://static.agilitycms.com/layout/img/ico/down.svg" alt="Expand/Collapse" loading="lazy" />
-								</Lazyload>
-							</span>
-							<div className="sub-menu-inner">
-								{subLinks}
-							</div>
-						</li>;
-					}
-					links.push(li);
-				}
-			});
-			if (links.length === 0) {
-				return null
-			}
-			const className = 'main-menu-ul navbar-nav mx-auto justify-content-end list-inline dectect-open';
-			if (level === 0) {
-				const btnMenu = <li className="d-xl-flex align-items-center box-search-header" key="btnMenu">
-					<div className="group-search">
-						<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center dectect-open">
-							<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" width="25" height="25" alt="search" /></Lazyload>
-						</button>
-						<form onSubmit={event => {
-							event.preventDefault()
-							const valSearch = document.querySelectorAll('#search-page-header')[0]
-							if (valSearch && valSearch.value.trim().length > 0) {
-								navigate(`/search?s=${valSearch.value}`)
-							} else {
-								valSearch.value = ''
-							}
-						}}>
-							<label htmlFor="search-page-header" className="sr-only">Search...</label>
-							<input name="s" id="search-page-header" type="text" className="aniamtion-input dectect-open" placeholder="Search.."></input>
-							<span className="bind-text"></span>
-							<button className="submit-search d-flex align-items-center justify-content-center" type="submit">
-								<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" alt="search" /></Lazyload>
-							</button>
-						</form>
-					</div>
-					{/* <a href={primaryButton.href} target={primaryButton.target} className="text-decoration-none btn btn-outline-primary 12 btn-menu">{primaryButton.text}</a> */}
-					<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
-					{contactButton?.href && contactButton?.text &&
-						<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
-					}
-				</li>
-				links.push(btnMenu)
-			}
-			return <ul className={level === 0 ? className : 'list-inline'}>{links}</ul>;
-		};
+		// const renderMenu = (menu, level) => {
+		// 	const links = []
+		// 	if (!menu || !menu.length || menu.length === 0) {
+		// 		return null
+		// 	}
+		// 	const itemClassName = 'h-menu-li'
+		// 	menu.forEach((item) => {
+		// 		// console.log(item)
+		// 		if (!item.visible.menu) {
+		// 			return
+		// 		}
+		// 		let path = item.path;
+		// 		const path2 = item.path;
+		// 		let target = item.target
+		// 		if (item.redirect) {
+		// 			path = item.redirect.url.replace('~/', '/')
+		// 			target = item.redirect.target
+		// 		}
+		// 		const isActive = (this.state.activeMenu.indexOf(path2) !== -1 ? 'active' : '')
+		// 		if (level > 1) {
+		// 			return null
+		// 		}
+		// 		const subLinks = renderMenu(item.children, level + 1);
+		// 		if (subLinks === null || subLinks.length < 0) {
+		// 			//no sub menu
+		// 			links.push(<li className={`${isActive} d-xl-flex align-items-center`} key={item.pageID} onClick={this._handleActiveMenu.bind(this, path)}>
+		// 				{path.indexOf('://') !== -1 ? <a href={path} target={target}>{item.menuText}</a> : <Link to={path} target={target}>{item.menuText}</Link>}
+		// 			</li>)
+		// 		} else {
+		// 			//has a sub menu
+		// 			let li = null;
+		// 			if (!item.isFolder) {
+		// 				//regular item...
+		// 				li = <li className={isActive + ' has-sub  d-xl-flex align-items-center ' + (parseInt(this.state.menuLv2Opening) === item.pageID ? 'is-open-child' : '')} data-page-id={item.pageID} key={item.pageID}>
+		// 					{path.indexOf("://") !== -1 ?
+		// 						<a href={path} target={target} onClick={(e) => this.openMenuLv1(e)}>{item.menuText}</a>
+		// 						:
+		// 						<Link to={path} target={target} onClick={(e) => this.openMenuLv1(e)}>{item.menuText}</Link>
+		// 					}
+		// 					<div className="nav-item-arrows arrows-lv1 d-xl-none" onClick={(e) => this.clickNavArrowLv1(e)}>
+		// 						<i className="icomoon icon-down-menu" aria-hidden="true"></i>
+		// 					</div>
+		// 					<div className="dropdown-menu main-menu-dropdown rounded-0">
+		// 						{subLinks}
+		// 					</div>
+		// 				</li>;
+		// 			} else {
+		// 				//folder
+		// 				li = <li className={itemClassName + ' has-children'} key={item.pageID}><span>{item.menuText}</span>
+		// 					<span className="sub-menu-icon">
+		// 						<Lazyload offset={Helpers.lazyOffset}>
+		// 							<img src="https://static.agilitycms.com/layout/img/ico/down.svg" alt="Expand/Collapse" loading="lazy" />
+		// 						</Lazyload>
+		// 					</span>
+		// 					<div className="sub-menu-inner">
+		// 						{subLinks}
+		// 					</div>
+		// 				</li>;
+		// 			}
+		// 			links.push(li);
+		// 		}
+		// 	});
+		// 	if (links.length === 0) {
+		// 		return null
+		// 	}
+		// 	const className = 'main-menu-ul navbar-nav mx-auto justify-content-end list-inline dectect-open';
+		// 	if (level === 0) {
+		// 		const btnMenu = <li className="d-xl-flex align-items-center box-search-header" key="btnMenu">
+		// 			<div className="group-search">
+		// 				<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center dectect-open">
+		// 					<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" width="25" height="25" alt="search" /></Lazyload>
+		// 				</button>
+		// 				<form onSubmit={event => {
+		// 					event.preventDefault()
+		// 					const valSearch = document.querySelectorAll('#search-page-header')[0]
+		// 					if (valSearch && valSearch.value.trim().length > 0) {
+		// 						navigate(`/search?s=${valSearch.value}`)
+		// 					} else {
+		// 						valSearch.value = ''
+		// 					}
+		// 				}}>
+		// 					<label htmlFor="search-page-header" className="sr-only">Search...</label>
+		// 					<input name="s" id="search-page-header" type="text" className="aniamtion-input dectect-open" placeholder="Search.."></input>
+		// 					<span className="bind-text"></span>
+		// 					<button className="submit-search d-flex align-items-center justify-content-center" type="submit">
+		// 						<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" alt="search" /></Lazyload>
+		// 					</button>
+		// 				</form>
+		// 			</div>
+		// 			{/* <a href={primaryButton.href} target={primaryButton.target} className="text-decoration-none btn btn-outline-primary 12 btn-menu">{primaryButton.text}</a> */}
+		// 			<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
+		// 			{contactButton?.href && contactButton?.text &&
+		// 				<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
+		// 			}
+		// 		</li>
+		// 		links.push(btnMenu)
+		// 	}
+		// 	return <ul className={level === 0 ? className : 'list-inline'}>{links}</ul>;
+		// };
 
 		const renderMenu2 = (menu) => {
 			const levelOneList = menu.map((menuItem) => {
 				const subMenu = menuItem?.subNavigation
-				console.log(`subMenu`, subMenu)
-
 				const url = menuItem?.customFields?.uRL
-				
+
 				/* active parent menu when sub menu is active */
 				let isSubMenuActive = false
 				subMenu.find(item => {
-					if (item.customFields?.uRL?.href === this.state.activeMenu) {
+					if (item.id === this.state.activeMenu) {
 						isSubMenuActive = true
 					}
 				})
-				const isActive = (this.state.activeMenu === url?.href || isSubMenuActive ? 'active' : '')
+				const isActive = (this.state.activeMenu === menuItem.id || isSubMenuActive ? 'active' : '')
 				return (
 					<li key={menuItem.id}
-					className={`d-xl-flex align-items-center ${isActive} ${subMenu?.length ? 'has-sub' : ''} ${(this.state.menuLv2Opening === menuItem.id ? 'is-open-child' : '')} `}
-					onClick={ !subMenu?.length ? this._handleActiveMenu.bind(this, url?.href) : () => {} }
-					data-page-id={menuItem.id}>
+						className={`d-xl-flex align-items-center ${isActive} ${subMenu?.length ? 'has-sub' : ''} ${(this.state.menuLv2Opening === menuItem.id ? 'is-open-child' : '')} `}
+						onClick={!subMenu?.length ? this._handleActiveMenu.bind(this, menuItem.id) : () => { }}
+						data-page-id={menuItem.id}>
 						{url.href.indexOf("://") !== -1 ?
 							<a href={url.href} target={url.target} onClick={(e) => this.openMenuLv1(e)}>{menuItem.customFields?.title || url.text}</a>
 							:
@@ -533,7 +571,7 @@ class NewGlobalHeader extends Component {
 							<ul className="list-inline">
 								{subMenu.map((subMenuItem, index) => {
 									const url = subMenuItem.customFields?.uRL
-									const isActive = this.state.activeMenu === url?.href ? 'active' : ''
+									const isActive = this.state.activeMenu === subMenuItem.id ? 'active' : ''
 									return (
 										<li key={`child-${index}`} className={`d-xl-flex align-items-center ${isActive}`}>
 											{url?.href.indexOf("://") !== -1 ?
@@ -558,7 +596,6 @@ class NewGlobalHeader extends Component {
 		}
 
 		const megaMenuContent = (megaContent, megaTitle, linkOrSpotlight) => {
-			console.log(`megaContent`, megaContent, megaTitle)
 			const isSpotlight = linkOrSpotlight === 'Spotlight' // Spotlight - Link
 
 			const renderMegaContent = megaContent.map((content, index) => {
@@ -619,13 +656,10 @@ class NewGlobalHeader extends Component {
 		}
 
 		const item = this.props.item.customFields;
-		// const classHeader = `module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`;
 		const classMainMenu = `navbar-collapse main-menu menu-header-right ${this.state.openMenu === true ? isOpenMenuText : ''}`
 		return (
 			<React.Fragment>
 				<header id="header" className={`module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`} ref={reference => (this.header = reference)}>
-					{/* <a className="skip-link text-center d-block w-100 bg-black text-white" href="javascript:;">
-						<span>Skip to content</span></a> */}
 					{(item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' &&
 						<div className={`box-message text-white d-none d-xl-block`} ref={this.boxMessage}>
 							<div className="container last-mb-none">
@@ -665,7 +699,6 @@ class NewGlobalHeader extends Component {
 								<ul className="main-menu-ul navbar-nav mx-auto justify-content-end list-inline dectect-open">
 									{renderMenu2(this.props.menu2)}
 								</ul>
-								{/* {renderMenu(this.props.menu, 0)} */}
 
 								<div className="box-mess-mb ps-rv text-white text-center d-xl-none">
 									<a className="d-inline-block flash-btn" href={primaryButton?.href} target={primaryButton?.target}>{primaryButton?.text}</a>

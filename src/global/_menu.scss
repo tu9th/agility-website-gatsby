@@ -446,23 +446,28 @@
     >li {
       &.has-sub {
         margin-right: 12px;
-        // &::before,
-        // &::after {
-        //   content: '';
-        //   position: absolute;
-        //   top: 23px;
-        //   right: 50%;
-        //   height: 40px;
-        //   width: 100px;
-        //   background-color: #c9d8e6;
-        //   transform: rotate(-5deg);
-        //   z-index: -1;
-        // }
-        // &::after {
-        //   right: auto;
-        //   left: 50%;
-        //   transform: rotate(5deg);
-        // }
+        &.is-hovering {
+          z-index: 20;
+        .lv1-before,
+        .lv1-after {
+          content: '';
+          position: absolute;
+          top: 20px;
+          right: 50%;
+          height: 40px;
+          width: 300px;
+          // background-color: #c9d8e6;
+          transform: rotate(-5deg);
+          transform-origin: top right;
+          z-index: -1;
+        }
+        .lv1-after {
+          transform-origin: top left;
+          right: auto;
+          left: 50%;
+          transform: rotate(5deg);
+        }
+        }
       }
       &:hover {
         .main-menu-dropdown {
