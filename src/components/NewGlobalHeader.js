@@ -566,8 +566,7 @@ class NewGlobalHeader extends Component {
 							<>
 								{image &&
 									<div className="spotlight-thumb">
-										{/* <ResponsiveImage img={image} /> */}
-										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={megaTitle} /></Lazyload>
+										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={customFields?.title || customFields?.description} /></Lazyload>
 									</div>
 								}
 								{customFields?.title &&
@@ -580,8 +579,7 @@ class NewGlobalHeader extends Component {
 							<>
 								{image &&
 									<div className="mega-link-logo">
-										{/* <ResponsiveImage img={image} /> */}
-										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={megaTitle} /></Lazyload>
+										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={customFields?.title || customFields?.description} /></Lazyload>
 									</div>
 								}
 								{(customFields?.title || customFields?.description) &&
