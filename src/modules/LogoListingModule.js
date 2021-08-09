@@ -1,15 +1,15 @@
-import { Link } from 'gatsby';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import Lazyload from 'react-lazyload'
 import './LogoListingModule.scss'
 import '../global/core/lib/_slick-theme.scss'
 import * as ArrayUtils from '../utils/array-utils.js';
 import Spacing from './Spacing'
-import Helpers from '../global/javascript/Helpers'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 import { AgilityImage }  from "@agility/gatsby-image-agilitycms"
 const LogoListingModule = ({ item }) => {
+
+	const [spaceBottom, setSpaceBottom] = useState(false)
+
 	const heading = item.customFields.title
 	const logos = item.customFields.logos
 	const classSection = `module LogoListingModule animation  ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white': ''}`
@@ -78,6 +78,24 @@ const LogoListingModule = ({ item }) => {
     }]
   };
 
+	const checkHasDots = () => {
+		if (thisModuleRef.current.querySelector('.slick-dots')) {
+			setSpaceBottom(false)
+		} else {
+			setSpaceBottom(true)
+		}
+	}
+
+	useEffect(() => {
+		checkHasDots()
+
+		window.addEventListener('resize', checkHasDots)
+
+		return () => {
+			window.removeEventListener('resize', checkHasDots)
+		}
+	}, [])
+
 	/* animation module */
 	const thisModuleRef = useRef(null)
 	useEffect(() => {
@@ -102,7 +120,9 @@ const LogoListingModule = ({ item }) => {
 						}
 					</div>
 					{ logos.length > 0 &&
-					<div className={`slider-lazy list-logos-slide anima-bottom ${!heading ? 'has-no-heading' : ''}`}>
+					<div className={`slider-lazy list-logos-slide anima-bottom ${!heading ? 'has-no-heading' : ''}`}
+						style={{ marginBottom: spaceBottom ? '0' : '' }}
+					>
 							<Slider {...settings}>
 								{listLogos}
 							</Slider>
