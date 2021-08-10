@@ -202,7 +202,7 @@ class NewGlobalHeader extends Component {
 			})
 			nav.addEventListener('mouseleave', (event) => {
 				timeO = setTimeout(() => {
-					document.querySelector(`.${isHoveringTxt}`).classList.remove(isHoveringTxt)
+					document.querySelector(`.${isHoveringTxt}`)?.classList.remove(isHoveringTxt)
 				}, 250);
 			})
 			return nav
