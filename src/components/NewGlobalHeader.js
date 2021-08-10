@@ -87,7 +87,6 @@ export default props => (
 						}
 						megaContent {
 							customFields {
-								linkorSpotlight
 								title
 								description
 								uRL {
