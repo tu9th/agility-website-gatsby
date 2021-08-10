@@ -191,33 +191,7 @@
     list-style: none;
   }
 }
-/* mega menu style  */
-.mega-link-logo {
-  max-width: 34px;
-  flex: 0 0 34px;
-  margin-right: 16px;
-}
-.spotlight-thumb {
-  margin-bottom: 8px;
-}
-.mega-content-item {
-  font-size: rem(12);
-  line-height: 1.42;
-  margin-bottom: 24px;
-  &.is-link {
-    display: flex;
-  }
-  &:hover {
-    h6 {
-      color: $color-58;
-    }
-  }
-  h6 {
-    color: $color-17;
-    letter-spacing: 0;
-    text-transform: none;
-  }
-}
+
 @media (max-width: 1199px)  {
   // .main-menu-ul {
   //   li:hover:not(.active):not(.is-open-child) {
@@ -535,7 +509,7 @@
 
     &.has-mega-content {
       display: flex;
-      padding: 33px;
+      padding: 40px 33px;
       min-width: 600px;
       // overflow: hidden;
       .dr-navi-col {
@@ -557,13 +531,13 @@
   .mega-content {
     position: relative;
     padding-left: 34px;
-    padding-top: 12px;
+    padding-top: 8px;
     height: 100%;
     &::before {
       content: '';
       position: absolute;
-      top: -33px;
-      bottom: -33px;
+      top: -40px;
+      bottom: -40px;
       right: -33px;
       left: 0;
       z-index: -1;
@@ -575,39 +549,40 @@
       line-height: 1.8;
       letter-spacing: 0.5px;
       font-weight: $fw-semi-bold;
-      margin-bottom: 10px;
+      margin-bottom: 13px;
       text-transform: uppercase;
     }
     h6 {
       line-height: 1.57;
     }
   }
-  // .mega-link-logo {
-  //   max-width: 30px;
-  //   flex: 0 0 30px;
-  //   margin-right: 16px;
-  // }
-  // .spotlight-thumb {
-  //   margin-bottom: 8px;
-  // }
-  // .mega-content-item {
-  //   font-size: rem(12);
-  //   line-height: 1.42;
-  //   margin-bottom: 24px;
-  //   &.is-link {
-  //     display: flex;
-  //   }
-  //   &:hover {
-  //     h6 {
-  //       color: $color-58;
-  //     }
-  //   }
-  //   h6 {
-  //     color: $color-17;
-  //     letter-spacing: 0;
-  //     text-transform: none;
-  //   }
-  // }
+  /* mega menu style  */
+  .mega-link-logo {
+    max-width: 34px;
+    flex: 0 0 34px;
+    margin-right: 10px;
+  }
+  .spotlight-thumb {
+    margin-bottom: 8px;
+  }
+  .mega-content-item {
+    font-size: rem(12);
+    line-height: 1.42;
+    margin-bottom: 24px;
+    &.is-link {
+      display: flex;
+    }
+    &:hover {
+      h6 {
+        color: $color-58;
+      }
+    }
+    h6 {
+      color: $color-17;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+  }
 }
 @media (min-width: 1501px)  {
   .main-menu-ul {
