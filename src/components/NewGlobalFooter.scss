@@ -225,20 +225,20 @@
       }
 
       input[type="email"]::-webkit-input-placeholder {
-        color: rgba($color: $color-2a, $alpha: 0.6) !important;
+        color: rgba(42, 56, 70, 0.6) !important;
         // opacity: .6;
       }
 
       input[type="email"]:-ms-input-placeholder {
-        color: rgba($color: $color-2a, $alpha: 0.6) !important;
+        color: rgba(42, 56, 70, 0.6) !important;
       }
 
       input[type="email"]::-moz-placeholder {
-        color: rgba($color: $color-2a, $alpha: 0.6) !important;
+        color: rgba(42, 56, 70, 0.6) !important;
       }
 
       input[type="email"]:-moz-placeholder {
-        color: rgba($color: $color-2a, $alpha: 0.6) !important;
+        color: rgba(42, 56, 70, 0.6) !important;
       }
       [type="submit"] {
         margin: -3px 0 0;
