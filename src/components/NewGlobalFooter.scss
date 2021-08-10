@@ -232,14 +232,15 @@
       input[type="email"]:-ms-input-placeholder {
         color: rgba(42, 56, 70, 0.6) !important;
       }
-
       input[type="email"]::-moz-placeholder {
-        color: rgba(42, 56, 70, 0.6) !important;
+        color: rgba(42, 56, 70) !important;
+        opacity: 0.6;
+      }
+      input[type="email"]:-moz-placeholder {
+        color: rgba(42, 56, 70) !important;
+        opacity: 0.6;
       }
 
-      input[type="email"]:-moz-placeholder {
-        color: rgba(42, 56, 70, 0.6) !important;
-      }
       [type="submit"] {
         margin: -3px 0 0;
         width: 100%;
