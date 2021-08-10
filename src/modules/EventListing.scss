@@ -82,7 +82,7 @@
 			margin-bottom: 15px;
 			border-radius: 4px;
 			span {
-			  padding: 13px 10px 8px 12px;
+			  padding: 13px 10px 8px 0;
 			  font-weight: $fw-bold;
 			  font-size: 14px;
 			  color: $greyColor;
@@ -91,6 +91,8 @@
 			  background-size: 17px;
         img {
           display: inline-block;
+          margin-right: 12px;
+          margin-top: -2px;
         }
 			  // &.date {
 				// // background-image: url('https://static.agilitycms.com/layout/img/ico/calendar-check-gray.svg');
