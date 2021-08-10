@@ -157,6 +157,7 @@ class NewGlobalHeader extends Component {
 		this.clickAwebinar()
 		window.addEventListener('scroll', this.scrollWindow);
 		window.addEventListener('resize', this.resizeWindow);
+		document.addEventListener('click', this.hiddenSeach)
 
 		/* init active navigation item */
 		let matchedNavId = null
@@ -237,6 +238,7 @@ class NewGlobalHeader extends Component {
 	componentWillUnmount() {
 		window.removeEventListener('resize', this.resizeWindow)
 		window.removeEventListener('scroll', this.scrollWindow)
+		document.removeEventListener('click', this.hiddenSeach)
 	}
 
 	/* resize Window */
@@ -366,13 +368,13 @@ class NewGlobalHeader extends Component {
 			}
 		})
 	}
-	hiddenSeach() {
-		document.addEventListener('click', (event) => {
-			const group = document.querySelectorAll('.group-search')[0]
-			if (group.classList.contains('open') && event.target.classList.length && !event.target.classList.contains('dectect-open')) {
-				group.classList.remove('open')
-			}
-		})
+	hiddenSeach(event) {
+		const group = document.querySelectorAll('.group-search')[0]
+		if (group.classList.contains('open')
+			&& (!event.target.classList.contains('group-search')
+				&& !event.target.closest('.group-search'))) {
+			group.classList.remove('open')
+		}
 	}
 	showSearch() {
 		const searchFrame = document.querySelectorAll('.group-search')[0];
@@ -391,105 +393,6 @@ class NewGlobalHeader extends Component {
 		const contactButton = this.props.item.customFields.contactus;
 		const marketingBannerButton = this.props.item.customFields.marketingBannerButton;
 		const isOpenMenuText = 'is-open-menu';
-		// const renderMenu = (menu, level) => {
-		// 	const links = []
-		// 	if (!menu || !menu.length || menu.length === 0) {
-		// 		return null
-		// 	}
-		// 	const itemClassName = 'h-menu-li'
-		// 	menu.forEach((item) => {
-		// 		// console.log(item)
-		// 		if (!item.visible.menu) {
-		// 			return
-		// 		}
-		// 		let path = item.path;
-		// 		const path2 = item.path;
-		// 		let target = item.target
-		// 		if (item.redirect) {
-		// 			path = item.redirect.url.replace('~/', '/')
-		// 			target = item.redirect.target
-		// 		}
-		// 		const isActive = (this.state.activeMenu.indexOf(path2) !== -1 ? 'active' : '')
-		// 		if (level > 1) {
-		// 			return null
-		// 		}
-		// 		const subLinks = renderMenu(item.children, level + 1);
-		// 		if (subLinks === null || subLinks.length < 0) {
-		// 			//no sub menu
-		// 			links.push(<li className={`${isActive} d-xl-flex align-items-center`} key={item.pageID} onClick={this._handleActiveMenu.bind(this, path)}>
-		// 				{path.indexOf('://') !== -1 ? <a href={path} target={target}>{item.menuText}</a> : <Link to={path} target={target}>{item.menuText}</Link>}
-		// 			</li>)
-		// 		} else {
-		// 			//has a sub menu
-		// 			let li = null;
-		// 			if (!item.isFolder) {
-		// 				//regular item...
-		// 				li = <li className={isActive + ' has-sub  d-xl-flex align-items-center ' + (parseInt(this.state.menuLv2Opening) === item.pageID ? 'is-open-child' : '')} data-page-id={item.pageID} key={item.pageID}>
-		// 					{path.indexOf("://") !== -1 ?
-		// 						<a href={path} target={target} onClick={(e) => this.openMenuLv1(e)}>{item.menuText}</a>
-		// 						:
-		// 						<Link to={path} target={target} onClick={(e) => this.openMenuLv1(e)}>{item.menuText}</Link>
-		// 					}
-		// 					<div className="nav-item-arrows arrows-lv1 d-xl-none" onClick={(e) => this.clickNavArrowLv1(e)}>
-		// 						<i className="icomoon icon-down-menu" aria-hidden="true"></i>
-		// 					</div>
-		// 					<div className="dropdown-menu main-menu-dropdown rounded-0">
-		// 						{subLinks}
-		// 					</div>
-		// 				</li>;
-		// 			} else {
-		// 				//folder
-		// 				li = <li className={itemClassName + ' has-children'} key={item.pageID}><span>{item.menuText}</span>
-		// 					<span className="sub-menu-icon">
-		// 						<Lazyload offset={Helpers.lazyOffset}>
-		// 							<img src="https://static.agilitycms.com/layout/img/ico/down.svg" alt="Expand/Collapse" loading="lazy" />
-		// 						</Lazyload>
-		// 					</span>
-		// 					<div className="sub-menu-inner">
-		// 						{subLinks}
-		// 					</div>
-		// 				</li>;
-		// 			}
-		// 			links.push(li);
-		// 		}
-		// 	});
-		// 	if (links.length === 0) {
-		// 		return null
-		// 	}
-		// 	const className = 'main-menu-ul navbar-nav mx-auto justify-content-end list-inline dectect-open';
-		// 	if (level === 0) {
-		// 		const btnMenu = <li className="d-xl-flex align-items-center box-search-header" key="btnMenu">
-		// 			<div className="group-search">
-		// 				<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center dectect-open">
-		// 					<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" width="25" height="25" alt="search" /></Lazyload>
-		// 				</button>
-		// 				<form onSubmit={event => {
-		// 					event.preventDefault()
-		// 					const valSearch = document.querySelectorAll('#search-page-header')[0]
-		// 					if (valSearch && valSearch.value.trim().length > 0) {
-		// 						navigate(`/search?s=${valSearch.value}`)
-		// 					} else {
-		// 						valSearch.value = ''
-		// 					}
-		// 				}}>
-		// 					<label htmlFor="search-page-header" className="sr-only">Search...</label>
-		// 					<input name="s" id="search-page-header" type="text" className="aniamtion-input dectect-open" placeholder="Search.."></input>
-		// 					<span className="bind-text"></span>
-		// 					<button className="submit-search d-flex align-items-center justify-content-center" type="submit">
-		// 						<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" alt="search" /></Lazyload>
-		// 					</button>
-		// 				</form>
-		// 			</div>
-		// 			{/* <a href={primaryButton.href} target={primaryButton.target} className="text-decoration-none btn btn-outline-primary 12 btn-menu">{primaryButton.text}</a> */}
-		// 			<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
-		// 			{contactButton?.href && contactButton?.text &&
-		// 				<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
-		// 			}
-		// 		</li>
-		// 		links.push(btnMenu)
-		// 	}
-		// 	return <ul className={level === 0 ? className : 'list-inline'}>{links}</ul>;
-		// };
 
 		const renderMenu2 = (menu) => {
 			const levelOneList = menu.map((menuItem) => {
@@ -524,8 +427,8 @@ class NewGlobalHeader extends Component {
 			/* search layout */
 			const btnMenu = <li className="d-xl-flex align-items-center box-search-header" key="btnMenu">
 				<div className="group-search">
-					<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center dectect-open">
-						<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" width="25" height="25" alt="search" /></Lazyload>
+					<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center ">
+						<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy " width="25" height="25" alt="search" /></Lazyload>
 					</button>
 					<form onSubmit={event => {
 						event.preventDefault()
@@ -537,10 +440,10 @@ class NewGlobalHeader extends Component {
 						}
 					}}>
 						<label htmlFor="search-page-header" className="sr-only">Search...</label>
-						<input name="s" id="search-page-header" type="text" className="aniamtion-input dectect-open" placeholder="Search.."></input>
+						<input name="s" id="search-page-header" type="text" className="aniamtion-input " placeholder="Search.."></input>
 						<span className="bind-text"></span>
 						<button className="submit-search d-flex align-items-center justify-content-center" type="submit">
-							<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy dectect-open" alt="search" /></Lazyload>
+							<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy " alt="search" /></Lazyload>
 						</button>
 					</form>
 				</div>
@@ -696,7 +599,7 @@ class NewGlobalHeader extends Component {
 						</div>
 						<div className={classMainMenu} id="main-menu" data-module="menu">
 							<div className={`container`}>
-								<ul className="main-menu-ul navbar-nav mx-auto justify-content-end list-inline dectect-open">
+								<ul className="main-menu-ul navbar-nav mx-auto justify-content-end list-inline ">
 									{renderMenu2(this.props.menu2)}
 								</ul>
 
