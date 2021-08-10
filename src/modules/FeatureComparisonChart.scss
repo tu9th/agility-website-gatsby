@@ -409,6 +409,8 @@
     font-size: rem(16);
     .icomoon {
       font-weight: inherit;
+      position: relative;
+      top: 1px;
     }
     a {
       color: $color-58;
