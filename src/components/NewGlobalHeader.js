@@ -412,9 +412,9 @@ class NewGlobalHeader extends Component {
 						onClick={!subMenu?.length ? this._handleActiveMenu.bind(this, menuItem.id) : () => { }}
 						data-page-id={menuItem.id}>
 						{url.href.indexOf("://") !== -1 ?
-							<a href={url.href} target={url.target} onClick={(e) => this.openMenuLv1(e)}>{menuItem.customFields?.title || url.text}</a>
+							<a href={url.href} target={url.target} onClick={subMenu?.length ? (e) => this.openMenuLv1(e) : () => {}}>{menuItem.customFields?.title || url.text}</a>
 							:
-							<Link to={url.href} target={url.target} onClick={(e) => this.openMenuLv1(e)}>{menuItem.customFields?.title || url.text}</Link>
+							<Link to={url.href} target={url.target} onClick={subMenu?.length ? (e) => this.openMenuLv1(e) : () => {}}>{menuItem.customFields?.title || url.text}</Link>
 						}
 
 						{/* sub navigation */}
