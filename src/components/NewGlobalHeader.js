@@ -506,7 +506,7 @@ class NewGlobalHeader extends Component {
 				const url = customFields?.uRL
 				const image = { ...customFields?.imageorIcon, alt: customFields?.title }
 				return (
-					<div key={'mega-' + index} className={`mega-content-item ps-rv last-mb-none ${isSpotlight ? 'is-spotlight' : 'is-link'}`}>
+					<div key={'mega-' + index} className={`mega-content-item ps-rv last-mb-none`}>
 						{url &&
 							<Link to={url?.href} target={url?.target} className="ps-as" />
 						}
@@ -549,7 +549,7 @@ class NewGlobalHeader extends Component {
 			})
 
 			return (
-				<div className="mega-content last-mb-none">
+				<div className={`mega-content last-mb-none ${isSpotlight ? 'is-spotlight' : 'is-link'}`}>
 					{megaTitle &&
 						<h5>{megaTitle}</h5>
 					}

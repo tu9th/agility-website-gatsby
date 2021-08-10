@@ -533,6 +533,16 @@
     padding-left: 34px;
     padding-top: 8px;
     height: 100%;
+    &.is-link {
+      .mega-content-item {
+        display: flex;
+      }
+    }
+    &.is-spotlight {
+      h5 {
+        margin-bottom: 8px;
+      }
+    }
     &::before {
       content: '';
       position: absolute;
@@ -563,15 +573,13 @@
     margin-right: 10px;
   }
   .spotlight-thumb {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    margin-right: -4px;
   }
   .mega-content-item {
     font-size: rem(12);
     line-height: 1.42;
     margin-bottom: 24px;
-    &.is-link {
-      display: flex;
-    }
     &:hover {
       h6 {
         color: $color-58;
