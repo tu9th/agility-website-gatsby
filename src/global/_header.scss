@@ -338,7 +338,7 @@
 @media (min-width: 1200px) {
   .header {
     .navbar {
-      padding: 20px 20px;
+      padding: 12px 20px;
       transition: all .35s;
     }
     &.pin-header {
@@ -346,9 +346,6 @@
         padding: 12px 20px;
       }
     }
-    // .navbar {
-    //   padding: 0 15px;
-    // }
   }
   .header-logo {
     // max-width: 180px;
