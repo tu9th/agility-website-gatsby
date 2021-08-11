@@ -412,9 +412,9 @@ class NewGlobalHeader extends Component {
 						onClick={!subMenu?.length ? this._handleActiveMenu.bind(this, menuItem.id) : () => { }}
 						data-page-id={menuItem.id}>
 						{url.href.indexOf("://") !== -1 ?
-							<a href={url.href} target={url.target} onClick={subMenu?.length ? (e) => this.openMenuLv1(e) : () => {}}>{menuItem.customFields?.title || url.text}</a>
+							<a href={url.href} target={url.target} onClick={subMenu?.length ? (e) => this.openMenuLv1(e) : () => { }}>{menuItem.customFields?.title || url.text}</a>
 							:
-							<Link to={url.href} target={url.target} onClick={subMenu?.length ? (e) => this.openMenuLv1(e) : () => {}}>{menuItem.customFields?.title || url.text}</Link>
+							<Link to={url.href} target={url.target} onClick={subMenu?.length ? (e) => this.openMenuLv1(e) : () => { }}>{menuItem.customFields?.title || url.text}</Link>
 						}
 
 						{/* sub navigation */}
@@ -563,9 +563,9 @@ class NewGlobalHeader extends Component {
 			<React.Fragment>
 				<header id="header" className={`module header ${this.state.sticky === true ? 'pin-header' : 'unpin-header'}  ${this.state.openMenu === true ? isOpenMenuText : ''} ${this.state.pinHeader === true ? 'pos-fixed' : ''}`} ref={reference => (this.header = reference)}>
 					{(item.hideMarketingBanner !== 'true') && item.marketingBanner && item.marketingBanner.length > 0 && this.state.webinar !== 'true' &&
-						<div className={`box-message text-white d-none d-xl-block`} ref={this.boxMessage}>
+						<div className={`box-message text-white d-none d-xl-flex align-items-center`} ref={this.boxMessage}>
 							<div className="container last-mb-none">
-								<div className="close-message" onClick={this.hiddenMessage}></div>
+								{/* <div className="close-message d-none" onClick={this.hiddenMessage}></div> */}
 								<div className="row">
 									<div className="col-7 col-xl-8">
 										<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(item.marketingBanner)} />
@@ -603,8 +603,8 @@ class NewGlobalHeader extends Component {
 								</ul>
 
 								<div className="box-mess-mb ps-rv text-white text-center d-xl-none">
-									<a className="d-inline-block flash-btn" href={primaryButton?.href} target={primaryButton?.target}>{primaryButton?.text}</a>
-									<a className="d-inline-block flash-btn" href={marketingBannerButton?.href} target={marketingBannerButton?.target}>{marketingBannerButton?.text}</a>
+									<a className="d-block flash-btn" href={marketingBannerButton?.href} target={marketingBannerButton?.target}>{marketingBannerButton?.text}</a>
+									<a className="d-block flash-btn" href={primaryButton?.href} target={primaryButton?.target}>{primaryButton?.text}</a>
 								</div>
 							</div>
 						</div>

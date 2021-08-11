@@ -286,6 +286,7 @@ form  button[type='submit'] {
       display: inline-block;
       text-decoration: none;
       color: $color-ff;
+      font-weight: $fw-semi-bold;
       &::before {
         display: none;
         background-color: $white;
