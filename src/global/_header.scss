@@ -303,7 +303,7 @@
     }
     &::after {
       content: "";
-      @include position(absolute, 0, -40px, 0, -40px, -1);
+      @include position(absolute, 0, -240px, 0, -240px, -1);
       background-color: $color-46;
       transition: all 0.35s;
     }

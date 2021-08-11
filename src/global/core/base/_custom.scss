@@ -268,7 +268,7 @@ form  button[type='submit'] {
   background-color: $color-46;
   transition: all .35s, opacity 0s;
   overflow: hidden;
-  min-height: 48px;
+  // min-height: 48px;
   font-size: rem(14);
   line-height: 1.857;
   &.hidden-mess {
@@ -276,7 +276,7 @@ form  button[type='submit'] {
     max-height: 0;
   }
   // .container {
-    padding: 11px 0 9px;
+    padding: 13px 0 10px;
   // }
   p {
     // color: $color-17;
@@ -431,6 +431,11 @@ input {
 //     padding-top: 105px;
 //   }
 // }
+.mac-os {
+  .box-message {
+    padding: 12px 0 11px
+  }
+}
 
 @include media-breakpoint-up(md) {
   .wrap-video {

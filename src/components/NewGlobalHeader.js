@@ -348,12 +348,12 @@ class NewGlobalHeader extends Component {
 	inputLine() {
 		const input = document.querySelectorAll('#search-page-header')[0]
 		const line = document.querySelectorAll('.bind-text')[0]
-		input.addEventListener('keyup', function () {
+		input?.addEventListener('keyup', function () {
 			line.textContent = input.value
 			if (input.value === '') {
-				line.classList.remove('change-text')
+				line?.classList.remove('change-text')
 			} else {
-				line.classList.add('change-text')
+				line?.classList.add('change-text')
 			}
 		});
 	}
@@ -369,15 +369,15 @@ class NewGlobalHeader extends Component {
 	}
 	hiddenSeach(event) {
 		const group = document.querySelectorAll('.group-search')[0]
-		if (group.classList.contains('open')
+		if (group?.classList.contains('open')
 			&& (!event.target.classList.contains('group-search')
 				&& !event.target.closest('.group-search'))) {
-			group.classList.remove('open')
+			group?.classList.remove('open')
 		}
 	}
 	showSearch() {
 		const searchFrame = document.querySelectorAll('.group-search')[0];
-		searchFrame.classList.add('open')
+		searchFrame?.classList.add('open')
 		document.getElementById('search-page-header').focus()
 	}
 	hiddenMessage() {
@@ -425,7 +425,7 @@ class NewGlobalHeader extends Component {
 
 			/* search layout */
 			const btnMenu = <li className="d-xl-flex align-items-center box-search-header" key="btnMenu">
-				<div className="group-search">
+				{/* <div className="group-search">
 					<button onClick={this.showSearch} className="open-search link-search d-flex align-items-center justify-content-center ">
 						<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy " width="25" height="25" alt="search" /></Lazyload>
 					</button>
@@ -445,7 +445,7 @@ class NewGlobalHeader extends Component {
 							<Lazyload offset={Helpers.lazyOffset}><img src={'/images/search.svg'} className="lazy " alt="search" /></Lazyload>
 						</button>
 					</form>
-				</div>
+				</div> */}
 				<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
 				{contactButton?.href && contactButton?.text &&
 					<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
