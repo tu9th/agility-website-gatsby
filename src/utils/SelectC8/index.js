@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import ColoredScrollbars from '../../modules/mod-our-process/coloredScrollbars'
+// import ColoredScrollbars from '../../modules/mod-our-process/coloredScrollbars'
 import './select-c8.scss'
-const RenderSelectC8 = ({ data, onChange, multipleSelect = false }, ref) => {
+const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, ref) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [selectedOption, setSelectedOption] = useState(null)
   const [options, setOptions] = useState({})
@@ -84,7 +84,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false }, ref) => {
   }
 
   return (
-    <div className={'form-group form-select-c8 ' + data.class} ref={ref}>
+    <div className={'form-group form-select-c8 ' + className} ref={ref}>
       <div
         className={`dropdown shadow-none dropdown-select-c8 border-0 no-bg h-auto p-0 ps-rv ${showDropdown ? 'show' : ''}`}
       >
@@ -93,7 +93,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false }, ref) => {
           onClick={(e) => {
             toggleDropdown(e)
           }}
-          href="javascript:;"
+          href="null"
           role="button"
           data-toggle="dropdown"
           aria-haspopup="true"
@@ -126,10 +126,10 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false }, ref) => {
         <div
           className={`dropdown-menu dropdown-menu-c8 text-reset w-100 p-0 m-0 ${showDropdown ? 'show' : ''}`}
         >
-          <ColoredScrollbars
+          {/* <ColoredScrollbars
             autoHeight
             autoHeightMin={0}
-            autoHeightMax={250}>
+            autoHeightMax={250}> */}
             <ul className="list-inline m-0">
 
               {optionKeys.map((optionKey, idx) => {
@@ -160,7 +160,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false }, ref) => {
                 )
               })}
             </ul>
-          </ColoredScrollbars>
+          {/* </ColoredScrollbars> */}
         </div>
       </div>
     </div>

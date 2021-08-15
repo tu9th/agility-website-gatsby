@@ -50,8 +50,8 @@ const CaseStudyRotator = ({ item }) => {
       return (
         <div className="item-logo-feature d-inline-flex align-items-center justify-content-center" key={'logo-' + caseStudy.contentID}>
           <Lazyload offset={Helpers.lazyOffset}>
-            {/* <img src={customField.customerLogo.url} alt={customField.customerLogo.label}></img> */}
-            <ResponsiveImage img={customField.customerLogo} />
+            <img src={customField.customerLogo.url} alt={customField.customerLogo.label}></img>
+            {/* <ResponsiveImage img={customField.customerLogo} /> */}
           </Lazyload>
         </div>
       )

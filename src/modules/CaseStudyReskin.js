@@ -1,64 +1,97 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './CaseStudyReskin.scss'
 import LazyBackground from '../utils/LazyBackground'
 import { Link } from 'gatsby'
+import { AgilityImage } from "@agility/gatsby-image-agilitycms"
+import LazyLoad from 'react-lazyload'
+import Helpers from '../global/javascript/Helpers'
+import SelectC8 from '../utils/SelectC8'
 
-const CaseStudyReskin = () => {
+const CaseStudyReskin = ({ item, posts = [] }) => {
 
-  const fake = {
-    url: {
-      href: `?#`
-    },
-    image: {
-      href: `https://static.agilitycms.com/case-studies/images/hockey_20200516223809_0.jpg?w=800&q=60`
-    },
-    content: {
-      headline: `Visit Orlando: 20% increase in revenue with agile Headless Commerce`,
-      body: `Visit Orlando is the official tourism association for Orlando, the most-visited destination in the United States with over 1000 participating companies.`
+  /* list clean Posts */
+  const tmpAbovePosts = posts.slice(0, 8);
+  const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
+
+  /* init state */
+  const [abovePosts, setAbovePosts] = useState(tmpAbovePosts)
+  const [belowPosts, setBelowPosts] = useState(tmpBelowPosts)
+
+  const [isMobile, setIsMobile] = useState(false)
+  console.log(`props Case`, abovePosts, belowPosts)
+
+  useEffect(() => {
+    if (window.innerWidth < 992) {
+      setIsMobile(true)
     }
+  }, [])
+
+  const renderPosts = (posts, specialOnLeft = false) => {
+    return posts.map((post, index) => {
+
+      /* Mobile => each 5 items, show 1 special item on index 5 */
+      if (isMobile) {
+        if (index !== 0 && index % 4 === 0) {
+          return (
+            <div key={index} className="col-md-6 col-lg-4 case-col">
+              < PostSpecialItem post={post} />
+            </div>)
+        } else {
+          return (
+            <div key={index} className="col-md-6 col-lg-4 case-col">
+              < PostItem post={post} />
+            </div>)
+        }
+      } else {
+        /* Desktop => each 5 items, item 4 and 5 is special */
+        if (index === 0 || (index % 5 !== 3 && index % 5 !== 4)) {
+          return (
+            <div key={index} className="col-md-6 col-lg-4 case-col">
+              < PostItem post={post} />
+            </div>)
+        }
+
+        if (index % 5 === 3) {
+          return (
+            <div key={index} className={`col-md-6 col-lg-${!specialOnLeft ? '8' : '4'} case-col`}>
+              < PostSpecialItem post={post} longBox={!specialOnLeft} />
+            </div>)
+        }
+        if (index % 5 === 4) {
+          return (
+            <div key={index} className={`col-md-6 col-lg-${specialOnLeft ? '8' : '4'} case-col`}>
+              < PostSpecialItem post={post} longBox={specialOnLeft} />
+            </div>)
+        }
+      }
+    })
   }
-  const posts = []
 
-  for (let i = 0; i < 10; i++) {
-    let tpm = JSON.parse(JSON.stringify(fake));
-    tpm.content.headline += ' post ' + i
-    posts.push(tpm)
+  const industries = {
+    options: { 1: 'All Industries', 2: 'b', 3: 'c' },
+    selectedOption: [1],
   }
-
-
-  const renderPosts = posts.map((post, index) => {
-    let result
-    switch (index) {
-      case 3:
-        result = <div key={index} className="col-md-6 col-lg-8 case-col">
-          < PostSpecialItem post={post} longBox={true} />
-        </div>
-        break;
-      case 4:
-        result = <div key={index} className="col-md-6 col-lg-4 case-col">
-          < PostSpecialItem post={post} />
-        </div>
-        break;
-
-      default:
-        result = <div key={index} className="col-md-6 col-lg-4 case-col">
-          < PostItem post={post} />
-        </div>
-        break;
-    }
-
-    return result
-  })
 
   return (
     <>
       <section>
         <div className="container">
           <div className="case-filter-box">
-
+            {/* <div className="row">
+              <div className="col-md-6"> */}
+                <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
+              {/* </div>
+              <div className="col-md-6"> */}
+                <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
+              {/* </div> */}
+            {/* </div> */}
           </div>
           <div className="row">
-            {renderPosts}
+            {renderPosts(abovePosts)}
+          </div>
+          <div className="space-100"></div>
+          <div className="row">
+            {renderPosts(belowPosts, true)}
           </div>
         </div>
       </section>
@@ -71,44 +104,51 @@ export default CaseStudyReskin
 
 
 const PostItem = ({ post }) => {
-
-  const thumbUrl = post?.image?.href
-  const link = post?.url?.href
-  const title = post?.content?.headline
-  const body = post?.content?.body
+  // console.log(`post`, post)
+  const thumbUrl = post?.customFields?.postImage?.url
+  const link = post?.url
+  const title = post?.customFields?.title
+  const body = post?.customFields?.excerpt
   return (
     <div className="case-box h-100 transition-25">
       <div className="case-thumb ps-rv overflow-hidden">
         <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />
       </div>
-      <div className="case-content">
-        <h3 className="">{title}</h3>
-        <div dangerouslySetInnerHTML={{ __html: body }}></div>
-        <Link to={link} className="link-line link-purple">Read More</Link>
+      <div className="case-content small-paragraph">
+        <h3>{title}</h3>
+        <p>{body}</p>
+        {link &&
+          <Link to={link} className="link-line link-purple">Read More</Link>
+        }
       </div>
     </div>
   )
 }
 const PostSpecialItem = ({ post, longBox = false }) => {
 
-  const thumbUrl = post?.image?.href
-  const link = post?.url?.href
-  const title = post?.content?.headline
-  const body = post?.content?.body
+  const thumbUrl = post?.customFields?.postImage?.url
+  const link = post?.url
+  const title = post?.customFields?.title
+  const body = post?.customFields?.excerpt
+  const logo = post?.customFields?.logo
   const longBoxClass = longBox ? 'long-box' : 'bg-6d'
   return (
     <div className={`case-spe-box h-100 transition-25 ps-rv ${longBoxClass}`}>
       {longBox &&
         <LazyBackground className={`transition-25 ps-as bg`} src={thumbUrl} />
       }
-      <div className="case-content d-table ps-rv h-100">
+      <div className="case-content d-table ps-rv h-100 small-paragraph">
         <div className="d-table-cell ps-rv align-middle">
           <div className="case-logo">
-            <img src="https://static.agilitycms.com/logos/1200px-hockey_canada.svg_20190621181917_0.png" />
+            <LazyLoad offset={Helpers.lazyOffset}>
+              <img src={logo.url} alt={logo.label || title} loading="lazy" />
+            </LazyLoad>
           </div>
-          <h3 className="">{title}</h3>
-          <div dangerouslySetInnerHTML={{ __html: body }}></div>
-          <Link to={link} className={`mb-0 btn ${longBox ? 'btn-yellow' : 'btn-outline-white'}`}>Read More</Link>
+          <h3>{title}</h3>
+          <p>{body}</p>
+          {link &&
+            <Link to={link} className={`mb-0 btn ${longBox ? 'btn-yellow' : 'btn-outline-white'}`}>Read More</Link>
+          }
         </div>
       </div>
     </div>

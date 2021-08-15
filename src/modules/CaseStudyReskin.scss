@@ -13,6 +13,7 @@
 }
 
 .case-box {
+  color: $color-4c;  
   border: 1px solid rgba(201, 216, 230, 0.5);
   .bg {
     z-index: 1;
@@ -27,7 +28,6 @@
 .case-content {
   padding: 40px 35px;
   a {
-    margin-top: 25px;
     display: inline-block;
   }
 }
