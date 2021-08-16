@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
@@ -9,9 +9,11 @@ import "./RichTextArea.scss"
 
 const CaseStudyDetails = (props) => {
 
-	console.log(`props Detail`, props)
 
 	let caseStudy = props.dynamicPageItem?.customFields;
+	console.log(`props Detail`, caseStudy)
+
+	let link = '/resources/case-studies/' + caseStudy.uRL
 
 	const renderTags = (tags) => {
 		return tags.map((tag, index) => {
@@ -54,7 +56,7 @@ const CaseStudyDetails = (props) => {
 								<div>
 									{caseStudy?.quote &&
 										<>
-											<CaseStudySocialShare {...props} />
+											<CaseStudySocialShare link={link} title={caseStudy.title} />
 											<div className="cs-quote">
 												<span className="icomoon icon-quote"></span>
 												<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
@@ -67,7 +69,7 @@ const CaseStudyDetails = (props) => {
 					</div>
 				</div>
 
-						<CaseStudyGallery />
+				<CaseStudyGallery />
 
 				<div className="container">
 					<div className="d-lg-flex flex-grow">
@@ -93,58 +95,35 @@ export default CaseStudyDetails
 
 
 
-const CaseStudySocialShare = (props) => {
+const CaseStudySocialShare = ({ link, title }) => {
 
-	const query = useStaticQuery(graphql`
-	query CaseStudySocialSharing {
-		allAgilitySocialFollowLink {
-			nodes {
-			properties {
-				referenceName
-				itemOrder
-				}
-			languageCode
-			contentID
-			customFields {
-				followURL {
-					href
-					text
-					}
-					logo {
-					label
-					url
-					}
-					title
-				}
-			}
+	// console.log(`query`, links)
+	const domain = 'https://agilitycms.com'
+
+	const links = [1, 2, 3, 4]
+	useEffect(() => {
+
+		return () => {
+
 		}
-	}`)
-
-	// let links = query.allAgilitySocialFollowLink.nodes.filter(link => {
-	// 	return link.properties.referenceName === props.item.customFields.socialFollowLinks.referencename;
-	// });
-	let links = query.allAgilitySocialFollowLink.nodes
-	console.log(`query`, links)
-
-
+	}, [])
 
 	return (
 		<>
 			<div className="cs-d-social d-none d-lg-block">
 				<h5>Share Case Study</h5>
 				<div className="d-lg-flex flex-wrap">
-					{links && links.length > 0 &&
-						links.map((link, index) => {
-							const title = link.title
-							const logo = link.customFields?.logo
-							const followURL = link.customFields?.followURL
-							return (
-								<a key={index} href={followURL?.href} target="_blank" className="d-flex align-items-center justify-content-center">
-									<img src={logo?.url} alt={title || logo?.label} />
-								</a>
-							)
-						})
-					}
+
+					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-facebook"></span>
+					</a>
+					<a href={`https://twitter.com/intent/tweet/?text=abcd&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-twitter"></span>
+					</a>
+					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-linkedin2"></span>
+					</a>
+
 				</div>
 			</div>
 		</>
@@ -153,41 +132,41 @@ const CaseStudySocialShare = (props) => {
 
 const CaseStudyGallery = () => {
 
-  const fakeImg = {
-    "label": "TRY AGILITY CMS",
-    "url": "https://static.agilitycms.com/Attachments/NewItems/cta-bottom-blog-free_20210624203045_0.jpg",
-    "target": null,
-    "filesize": 57769,
-    "pixelHeight": "300",
-    "pixelWidth": "975",
-    "height": 300,
-    "width": 975
-  }
+	const fakeImg = {
+		"label": "TRY AGILITY CMS",
+		"url": "https://static.agilitycms.com/Attachments/NewItems/cta-bottom-blog-free_20210624203045_0.jpg",
+		"target": null,
+		"filesize": 57769,
+		"pixelHeight": "300",
+		"pixelWidth": "975",
+		"height": 300,
+		"width": 975
+	}
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 650,
-    arrows: true,
-    rows: 1,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-  }
-  const galleries = [1, 2, 3].map((i, index) => {
-    return (
-      <div key={index} className="gal-item">
-        <ResponsiveImage img={fakeImg} />
-      </div>
-    )
-  });
-  return (
-    <>
-      <section className="case-d-gallery">
-        <Slider {...settings} className="gal-slider">
-          {galleries}
-        </Slider>
-      </section>
-    </>
-  )
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 650,
+		arrows: true,
+		rows: 1,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		adaptiveHeight: true,
+	}
+	const galleries = [1, 2, 3].map((i, index) => {
+		return (
+			<div key={index} className="gal-item">
+				<ResponsiveImage img={fakeImg} />
+			</div>
+		)
+	});
+	return (
+		<>
+			<section className="case-d-gallery">
+				<Slider {...settings} className="gal-slider">
+					{galleries}
+				</Slider>
+			</section>
+		</>
+	)
 }

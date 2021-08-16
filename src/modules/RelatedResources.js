@@ -1,48 +1,14 @@
 import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link } from 'gatsby'
+import Spacing from './Spacing'
 import LazyBackground from '../utils/LazyBackground'
 import './RelatedResources.scss'
 
-const RelatedResources = (props) => {
+const RelatedResources = ({ item }) => {
 
-  const headline = props?.item?.customFields?.title
-  const query = useStaticQuery(graphql`
-  query RelatedResources {
-    allAgilityResource(sort: {order: DESC, fields: customFields___date}, limit: 3) {
-      edges {
-        node {
-          customFields {
-            title
-            uRL
-            image {
-              url
-              height
-              width
-            }
-            date(formatString: "D/M/yyyy")
-          }
-        }
-      }
-    }
-  }`)
-  const resources = query.allAgilityResource?.edges
-
-  const ResourcesItem = ({ resource }) => {
-    const data = resource?.node?.customFields
-    const imgUrl = data?.image?.url
-    return (
-      <div className="relate-re-box">
-        <div className="overflow-hidden">
-          <LazyBackground className="relate-re-thumb transition-25 bg" src={imgUrl} />
-          <Link to={'/link'} className=" ps-as"><span className="sr-only">{'title'}</span></Link>
-        </div>
-        <div className="relate-re-cont">
-          <h3>{data?.title}</h3>
-          <Link to="#" className="link-line line-purple">Readmore</Link>
-        </div>
-      </div>
-    )
-  }
+  // console.log(`props Related`, item)
+  const headline = item?.customFields?.title
+  const resources = item?.customFields?.relatedResources
 
   return (
     <>
@@ -60,8 +26,28 @@ const RelatedResources = (props) => {
           </div>
         </div>
       </section>
+      <Spacing item={item} />
     </>
   )
 }
 
 export default RelatedResources
+
+
+const ResourcesItem = ({ resource }) => {
+  const data = resource?.customFields
+  const imgUrl = data?.image
+  const link = `/resources/${data?.resourceTypeName.toLowerCase().trim().replace(' ', '-')}/${data?.uRL}`
+  return (
+    <div className="relate-re-box">
+      <div className="overflow-hidden">
+        <LazyBackground className="relate-re-thumb transition-25 bg" src={imgUrl?.url} />
+        <Link to={link} className=" ps-as"><span className="sr-only">{data?.title || imgUrl?.label}</span></Link>
+      </div>
+      <div className="relate-re-cont">
+        <h3>{data?.title}</h3>
+        <Link to={link} className="link-line line-purple">Readmore</Link>
+      </div>
+    </div>
+  )
+}
