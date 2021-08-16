@@ -18,7 +18,7 @@ const CaseStudyDetails = (props) => {
 	const renderTags = (tags) => {
 		return tags.map((tag, index) => {
 			return (
-				<span key={index} className="d-inline-block cs-tag"><a href={'#'} target="_self">{tag.customFields?.title}</a></span>
+				<span key={index} className="d-inline-block cs-tag"><a href={'#'} target="_self">{tag?.customFields?.title}</a></span>
 			)
 		})
 	}
@@ -43,13 +43,13 @@ const CaseStudyDetails = (props) => {
 								<div className="small-paragraph">
 									<h4>Industry</h4>
 									<p>
-										{renderTags(caseStudy?.caseStudyIndustry)}
+										{caseStudy?.caseStudyIndustry && caseStudy?.caseStudyIndustry.length > 0 && renderTags(caseStudy?.caseStudyIndustry)}
 									</p>
 								</div>
 								<div className="small-paragraph">
 									<h4>Challenges</h4>
 									<p>
-										{renderTags(caseStudy?.caseStudyChallenge)}
+										{caseStudy?.caseStudyChallenge && caseStudy?.caseStudyChallenge.length > 0 && renderTags(caseStudy?.caseStudyChallenge)}
 									</p>
 								</div>
 
@@ -100,7 +100,6 @@ const CaseStudySocialShare = ({ link, title }) => {
 	// console.log(`query`, links)
 	const domain = 'https://agilitycms.com'
 
-	const links = [1, 2, 3, 4]
 	useEffect(() => {
 
 		return () => {
