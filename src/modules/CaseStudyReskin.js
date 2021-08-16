@@ -7,6 +7,9 @@ import LazyLoad from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 import SelectC8 from '../utils/SelectC8'
 
+import Spacing from './Spacing'
+import SingleTestimonialPanel from './SingleTestimonialPanel'
+
 const CaseStudyReskin = ({ item, posts = [] }) => {
 
   /* list clean Posts */
@@ -18,7 +21,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   const [belowPosts, setBelowPosts] = useState(tmpBelowPosts)
 
   const [isMobile, setIsMobile] = useState(false)
-  console.log(`props Case`, abovePosts, belowPosts)
+  // console.log(`props Case`, item)
 
   useEffect(() => {
     if (window.innerWidth < 992) {
@@ -77,25 +80,22 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       <section>
         <div className="container">
           <div className="case-filter-box">
-            {/* <div className="row">
-              <div className="col-md-6"> */}
             <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
-            {/* </div>
-              <div className="col-md-6"> */}
             <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
-            {/* </div> */}
-            {/* </div> */}
           </div>
           <div className="row">
             {renderPosts(abovePosts)}
           </div>
-          <div className="space-100"></div>
+        </div>
+        <div className="space-100"></div>
+        <SingleTestimonialPanel item={item} />
+        <div className="container">
           <div className="row">
             {renderPosts(belowPosts, true)}
           </div>
         </div>
       </section>
-      <div className="space-100"></div>
+      <Spacing item={item}/>
     </>
   )
 }

@@ -168,16 +168,6 @@
 
 /* *********************************** */
 /* CSS for New Skin */
-.author-info {
-  font-size: rem(14);
-  line-height: 1.43;
-
-  h6 {
-    font-size: rem(12);
-    color: $color-58;
-    margin-bottom: 5px;
-  }
-}
 
 .cs-tag {
   display: inline-block;
@@ -212,6 +202,31 @@
     img {
       max-width: 14px;
       max-height: 14px;
+    }
+  }
+}
+
+.cs-quote {
+  background: rgb(255, 255, 255);
+  border-radius: 6px;
+  border: 1px solid $color-75;
+  padding: 32px;
+  margin-top: 35px;
+  font-size: rem(14);
+  line-height: 1.43;
+  .icomoon {
+    font-size: rem(30);
+    color: $color-75;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  blockquote {
+    +p {
+      font-size: rem(12);
+      color: $color-58;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-weight: $fw-semi-bold;
     }
   }
 }
