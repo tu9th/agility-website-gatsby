@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
+import Slider from 'react-slick'
+import ResponsiveImage from '../components/responsive-image'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
 
@@ -11,6 +13,14 @@ const CaseStudyDetails = (props) => {
 
 	let caseStudy = props.dynamicPageItem?.customFields;
 
+	const renderTags = (tags) => {
+		return tags.map((tag, index) => {
+			return (
+				<span key={index} className="d-inline-block cs-tag"><a href={'#'} target="_self">{tag.customFields?.title}</a></span>
+			)
+		})
+	}
+
 	return (
 		<>
 			<section className="p-w new-case-study-details">
@@ -19,7 +29,7 @@ const CaseStudyDetails = (props) => {
 						<div className="cs-detail-cont-left beauty-ul">
 							<div className="cs-detail-inner">
 								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.rightContentCopy)}></div>
-								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.textblob)} />
+								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)} />
 							</div>
 						</div>
 						{
@@ -31,14 +41,13 @@ const CaseStudyDetails = (props) => {
 								<div className="small-paragraph">
 									<h4>Industry</h4>
 									<p>
-										<span className="d-inline-block cs-tag"><a href={'#'} target="_self">{'Travel & Hospitality'}</a></span>
+										{renderTags(caseStudy?.caseStudyIndustry)}
 									</p>
 								</div>
 								<div className="small-paragraph">
 									<h4>Challenges</h4>
 									<p>
-										<span className="d-inline-block cs-tag"><a href={'#'} target="_self">Ecommerce</a></span>
-										<span className="d-inline-block cs-tag"><a href={'#'} target="_self">Omnichannel Content</a></span>
+										{renderTags(caseStudy?.caseStudyChallenge)}
 									</p>
 								</div>
 
@@ -46,10 +55,9 @@ const CaseStudyDetails = (props) => {
 									{caseStudy?.quote &&
 										<>
 											<CaseStudySocialShare {...props} />
-											<blockquote>{caseStudy.quote}</blockquote>
-											<div className="author-info">
-												<h6>Shawn Hart</h6>
-												<p>Director of Web Development & Enterprise Applications Visit Orlando</p>
+											<div className="cs-quote">
+												<span className="icomoon icon-quote"></span>
+												<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 											</div>
 										</>
 									}
@@ -57,8 +65,23 @@ const CaseStudyDetails = (props) => {
 							</div>
 						}
 					</div>
-					{caseStudy.cTA && <CallToAction item={caseStudy.cTA} />}
 				</div>
+
+						<CaseStudyGallery />
+
+				<div className="container">
+					<div className="d-lg-flex flex-grow">
+						<div className="cs-detail-cont-left beauty-ul">
+							<div className="cs-detail-inner">
+								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.bottomContent)} />
+							</div>
+						</div>
+						<div className="cs-detail-cont-right" />
+					</div>
+				</div>
+
+				{/* {caseStudy.cTA && <CallToAction item={caseStudy.cTA} />} */}
+
 			</section>
 
 		</>
@@ -126,4 +149,45 @@ const CaseStudySocialShare = (props) => {
 			</div>
 		</>
 	)
+}
+
+const CaseStudyGallery = () => {
+
+  const fakeImg = {
+    "label": "TRY AGILITY CMS",
+    "url": "https://static.agilitycms.com/Attachments/NewItems/cta-bottom-blog-free_20210624203045_0.jpg",
+    "target": null,
+    "filesize": 57769,
+    "pixelHeight": "300",
+    "pixelWidth": "975",
+    "height": 300,
+    "width": 975
+  }
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 650,
+    arrows: true,
+    rows: 1,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+  }
+  const galleries = [1, 2, 3].map((i, index) => {
+    return (
+      <div key={index} className="gal-item">
+        <ResponsiveImage img={fakeImg} />
+      </div>
+    )
+  });
+  return (
+    <>
+      <section className="case-d-gallery">
+        <Slider {...settings} className="gal-slider">
+          {galleries}
+        </Slider>
+      </section>
+    </>
+  )
 }
