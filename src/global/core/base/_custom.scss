@@ -429,6 +429,26 @@ input {
   // font-family: $mlBold, sans-serif;
   font-weight: $fw-bold;
 }
+.beauty-ul ul {
+  padding-left: 40px;
+  color: $color-4c;
+  font-size: rem(15);
+  line-height: 1.667;
+  list-style-type: none !important;
+  li {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: -25px;
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: $color-4c;
+    }
+  }
+}
 // @include media-breakpoint-up(sm) {
 //   .main-content {
 //     padding-top: 105px;

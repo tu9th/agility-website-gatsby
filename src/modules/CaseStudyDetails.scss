@@ -5,117 +5,122 @@
   padding-bottom: 50px;
   position: relative;
 
-.metrics-wrapper {
-	width: 100%;
-  .metrics-listing {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+  .metrics-wrapper {
+    width: 100%;
 
-    padding-left: 104px;
-    padding-right: 104px;
-    margin-bottom: 94px;
+    .metrics-listing {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
 
-    @media (max-width: 991px) {
-      padding-left: 0;
-      padding-right: 0;
-    }
+      padding-left: 104px;
+      padding-right: 104px;
+      margin-bottom: 94px;
 
-    @media (max-width: 767px) {
-      margin-bottom: 30px;
-      margin-left: -16px;
-      margin-right: -16px;
-      flex-wrap: wrap;
-    }
-
-    &.jc-sb {
-      @media (max-width: 360px) {
-        justify-content: center;
-        -webkit-box-pack: center;
-        -moz-box-pack: center;
-        -ms-flex-pack: center;
+      @media (max-width: 991px) {
+        padding-left: 0;
+        padding-right: 0;
       }
-    }
-
-    .metrics-item {
-      width: 175px;
-      text-align: center;
 
       @media (max-width: 767px) {
-        margin-bottom: 32px;
-        padding-left: 16px;
-        padding-right: 16px;
-        width: 50%;
-        -webkit-box: 0 0 50%;
-        -moz-box: 0 0 50%;
-        -webkit-flex: 0 0 50%;
-        -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
+        margin-bottom: 30px;
+        margin-left: -16px;
+        margin-right: -16px;
+        flex-wrap: wrap;
       }
 
-      @media (max-width: 360px) {
-        padding: 0;
-        width: 175px;
-        -webkit-box: 0 0 auto;
-        -moz-box: 0 0 auto;
-        -webkit-flex: 0 0 auto;
-        -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-      }
-
-      .h4 {
-        font-size: 30px;
-        // font-family: "Muli-Bold", sans-serif;
-        font-weight: $fw-bold;
-
-        span {
-          font-size: 20px;
-          // font-family: "Muli-Bold", sans-serif;
-          font-weight: $fw-bold;
+      &.jc-sb {
+        @media (max-width: 360px) {
+          justify-content: center;
+          -webkit-box-pack: center;
+          -moz-box-pack: center;
+          -ms-flex-pack: center;
         }
       }
 
-      span {
-        font-size: 16px;
-        // font-family: "Muli-Bold", sans-serif;
-        font-weight: $fw-bold;
-      }
+      .metrics-item {
+        width: 175px;
+        text-align: center;
 
-      hr {
-        margin-top: 15px;
-        margin-bottom: 17px;
-        border: none;
-		height: 1px;
-		background-color: #818181;
+        @media (max-width: 767px) {
+          margin-bottom: 32px;
+          padding-left: 16px;
+          padding-right: 16px;
+          width: 50%;
+          -webkit-box: 0 0 50%;
+          -moz-box: 0 0 50%;
+          -webkit-flex: 0 0 50%;
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+        }
+
+        @media (max-width: 360px) {
+          padding: 0;
+          width: 175px;
+          -webkit-box: 0 0 auto;
+          -moz-box: 0 0 auto;
+          -webkit-flex: 0 0 auto;
+          -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+        }
+
+        .h4 {
+          font-size: 30px;
+          // font-family: "Muli-Bold", sans-serif;
+          font-weight: $fw-bold;
+
+          span {
+            font-size: 20px;
+            // font-family: "Muli-Bold", sans-serif;
+            font-weight: $fw-bold;
+          }
+        }
+
+        span {
+          font-size: 16px;
+          // font-family: "Muli-Bold", sans-serif;
+          font-weight: $fw-bold;
+        }
+
+        hr {
+          margin-top: 15px;
+          margin-bottom: 17px;
+          border: none;
+          height: 1px;
+          background-color: #818181;
+        }
       }
     }
   }
-}
-.case-study-details-container {
-	  display:flex;
-	  flex-direction: row;
+
+  .case-study-details-container {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
+
     img {
       height: auto;
     }
-    .case-study-left {
-		flex-basis: 65%;
-		margin-right: 20px;
 
-		.rich-text {
-			margin-top: 0;
-		}
-  }
+    .case-study-left {
+      flex-basis: 65%;
+      margin-right: 20px;
+
+      .rich-text {
+        margin-top: 0;
+      }
+    }
 
     .case-study-right {
-		flex-basis: 30%;
-		flex-shrink: 1;
+      flex-basis: 30%;
+      flex-shrink: 1;
 
 
       .rich-text {
-		  margin-top: 0;
+        margin-top: 0;
+
         .h3 {
           padding-left: 30px;
 
@@ -147,14 +152,99 @@
           color: #484b4d;
         }
       }
-	}
+    }
 
-	@media (max-width: $tablet-width) {
-		display: block;
+    @media (max-width: $tablet-width) {
+      display: block;
 
-		.case-study-left {
-			margin: 0 0 20px;
-		}
-	}
+      .case-study-left {
+        margin: 0 0 20px;
+      }
+    }
+  }
+}
+
+
+
+/* *********************************** */
+/* CSS for New Skin */
+.author-info {
+  font-size: rem(14);
+  line-height: 1.43;
+
+  h6 {
+    font-size: rem(12);
+    color: $color-58;
+    margin-bottom: 5px;
+  }
+}
+
+.cs-tag {
+  display: inline-block;
+  background: rgba(201, 216, 230, 0.25);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-right: 16px;
+
+  a {
+    color: $color-4c;
+
+    &:hover {
+      color: $color-58;
+    }
+  }
+}
+
+.cs-d-social {
+  a {
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    background-color: $color-e9;
+    color: $color-6d;
+    margin-right: 15px;
+
+    &:hover {
+      background-color: $color-6d;
+      color: $white;
+    }
+
+    img {
+      max-width: 14px;
+      max-height: 14px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .cs-detail-cont-left {
+    flex-grow: 1;
+    max-width: calc(100% - 350px);
+    padding-right: 60px;
+  }
+
+  .cs-detail-cont-right {
+    flex: 0 0 350px;
+    max-width: 350px;
+  }
+
+  .cs-detail-inner {
+    max-width: 768px;
+
+    iframe {
+      max-width: 100%;
+    }
+  }
+}
+
+@media (min-width: 1501px) {
+  .cs-detail-cont-left {
+    flex-grow: 1;
+    max-width: calc(100% - 425px);
+  }
+
+  .cs-detail-cont-right {
+    flex: 0 0 425px;
+    max-width: 425px;
   }
 }

@@ -79,11 +79,11 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
           <div className="case-filter-box">
             {/* <div className="row">
               <div className="col-md-6"> */}
-                <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
-              {/* </div>
+            <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
+            {/* </div>
               <div className="col-md-6"> */}
-                <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
-              {/* </div> */}
+            <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
+            {/* </div> */}
             {/* </div> */}
           </div>
           <div className="row">
@@ -113,6 +113,7 @@ const PostItem = ({ post }) => {
     <div className="case-box h-100 transition-25">
       <div className="case-thumb ps-rv overflow-hidden">
         <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />
+        <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
       </div>
       <div className="case-content small-paragraph">
         <h3>{title}</h3>

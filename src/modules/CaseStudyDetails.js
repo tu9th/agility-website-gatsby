@@ -1,105 +1,129 @@
 import React from 'react';
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
 
-export default props => (
-	<StaticQuery
-		query={graphql`
-		query KeyValuePairCaseStudyQuery {
-			allAgilityKeyValuePair(sort: {fields: properties___itemOrder}) {
-				nodes {
-					contentID
-					languageCode
-					properties {
-						referenceName
-						itemOrder
+const CaseStudyDetails = (props) => {
+
+	console.log(`props Detail`, props)
+
+	let caseStudy = props.dynamicPageItem?.customFields;
+
+	return (
+		<>
+			<section className="p-w new-case-study-details">
+				<div className="container">
+					<div className="d-lg-flex flex-grow">
+						<div className="cs-detail-cont-left beauty-ul">
+							<div className="cs-detail-inner">
+								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.rightContentCopy)}></div>
+								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.textblob)} />
+							</div>
+						</div>
+						{
+							<div className="cs-detail-cont-right">
+								<div className="small-paragraph">
+									<h4>Webiste</h4>
+									<p><a href={caseStudy?.website} target="_blank">{caseStudy?.website}</a></p>
+								</div>
+								<div className="small-paragraph">
+									<h4>Industry</h4>
+									<p>
+										<span className="d-inline-block cs-tag"><a href={'#'} target="_self">{'Travel & Hospitality'}</a></span>
+									</p>
+								</div>
+								<div className="small-paragraph">
+									<h4>Challenges</h4>
+									<p>
+										<span className="d-inline-block cs-tag"><a href={'#'} target="_self">Ecommerce</a></span>
+										<span className="d-inline-block cs-tag"><a href={'#'} target="_self">Omnichannel Content</a></span>
+									</p>
+								</div>
+
+								<div>
+									{caseStudy?.quote &&
+										<>
+											<CaseStudySocialShare {...props} />
+											<blockquote>{caseStudy.quote}</blockquote>
+											<div className="author-info">
+												<h6>Shawn Hart</h6>
+												<p>Director of Web Development & Enterprise Applications Visit Orlando</p>
+											</div>
+										</>
+									}
+								</div>
+							</div>
+						}
+					</div>
+					{caseStudy.cTA && <CallToAction item={caseStudy.cTA} />}
+				</div>
+			</section>
+
+		</>
+
+	);
+}
+
+export default CaseStudyDetails
+
+
+
+const CaseStudySocialShare = (props) => {
+
+	const query = useStaticQuery(graphql`
+	query CaseStudySocialSharing {
+		allAgilitySocialFollowLink {
+			nodes {
+			properties {
+				referenceName
+				itemOrder
+				}
+			languageCode
+			contentID
+			customFields {
+				followURL {
+					href
+					text
 					}
-					customFields {
-						key
-						value
+					logo {
+					label
+					url
 					}
+					title
 				}
 			}
 		}
-		`}
-		render={queryData => {
+	}`)
 
-			const metricsReferenceName = props.dynamicPageItem.customFields.metrics.referencename;
-
-			//filter out only those logos that we want...
-			let metrics = queryData.allAgilityKeyValuePair.nodes.filter(m => {
-				return m.properties.referenceName === metricsReferenceName;
-			});
+	// let links = query.allAgilitySocialFollowLink.nodes.filter(link => {
+	// 	return link.properties.referenceName === props.item.customFields.socialFollowLinks.referencename;
+	// });
+	let links = query.allAgilitySocialFollowLink.nodes
+	console.log(`query`, links)
 
 
-			const viewModel = {
-				dynamicPageItem: props.dynamicPageItem,
-				item: props.item,
-				metrics: metrics
-			}
-			return (
-				<CaseStudyDetails {...viewModel} />
-			);
-		}}
-	/>
-)
 
-const CaseStudyDetails = ({ item, dynamicPageItem, metrics }) => {
-
-	let caseStudy = dynamicPageItem.customFields;
-	let bgColor = caseStudy.brandBGColor;
-
-         let metricsOutput = metrics.map(function (m) {
-
-			const mItem = m.customFields;
-			const key = item.contentID + "-" + m.contentID;
-            return (
-                <div className="metrics-item" style={{ color: bgColor }} key={key}>
-
-                    <h4 className="h4" dangerouslySetInnerHTML={renderHTML(mItem.value)}></h4>
-                    <hr style={{ backgroundColor: bgColor }} />
-                    <span>{mItem.key}</span>
-                </div>
-            );
-		});
-
-
-        return (
-            <section className="p-w case-study-details">
-                <div className="container-my">
-					{ metricsOutput && metricsOutput.length > 0 &&
-						<div className="metrics-wrapper">
-							<div className="metrics-listing">
-								{metricsOutput}
-							</div>
-						</div>
+	return (
+		<>
+			<div className="cs-d-social d-none d-lg-block">
+				<h5>Share Case Study</h5>
+				<div className="d-lg-flex flex-wrap">
+					{links && links.length > 0 &&
+						links.map((link, index) => {
+							const title = link.title
+							const logo = link.customFields?.logo
+							const followURL = link.customFields?.followURL
+							return (
+								<a key={index} href={followURL?.href} target="_blank" className="d-flex align-items-center justify-content-center">
+									<img src={logo?.url} alt={title || logo?.label} />
+								</a>
+							)
+						})
 					}
-					<div className="case-study-details-container">
-
-						<div className="case-study-left">
-							<div className="rich-text" dangerouslySetInnerHTML={renderHTML(caseStudy.textblob )}></div>
-						</div>
-
-
-                        {
-                            (caseStudy.rightContentCopy || caseStudy.quote) &&
-
-                                <div className="case-study-right">
-                                    <div className="rich-text" dangerouslySetInnerHTML={renderHTML(caseStudy.rightContentCopy )}></div>
-                                    {caseStudy.quote && <div className="color-text"><p>{caseStudy.quote}</p></div> }
-                                </div>
-                        }
-
-                    </div>
-
-					{ caseStudy.cTA && <CallToAction item={caseStudy.cTA} /> }
-                </div>
-            </section>
-
-
-        );
+				</div>
+			</div>
+		</>
+	)
 }
-

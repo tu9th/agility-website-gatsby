@@ -24,9 +24,10 @@ const CaseStudyRotator = ({ item }) => {
     const titleCaseStudy = customField.title
     const postUrl = '/resources/case-studies/' + customField.uRL
     return (
-      <div className="item-casetudy text-white" key={caseStudy.contentID}>
-        <LazyBackground className="bg-casestudi d-flex align-items-center bg bg-center" src={caseStudy.customFields.image.url + '?w=800&q=60'} >  {/* style={{ backgroundImage: `url('${caseStudy.customFields.image.url}')` }} */}
-          <div className="content-case last-mb-none h3-big ps-rv">
+      <div className="item-casetudy text-white overflow-hidden ps-rv" key={caseStudy.contentID}>
+          <LazyBackground className=" ps-as bg bg-center i-case-thumb transition-25" src={caseStudy.customFields.image.url + '?w=800&q=60'} />
+        <div className="bg-casestudi d-flex align-items-center">
+          <div className="content-case last-mb-none ps-rv small-paragraph">
             {titleCaseStudy &&
               <h3>{titleCaseStudy}</h3>
             }
@@ -40,7 +41,7 @@ const CaseStudyRotator = ({ item }) => {
           {ctaBtnText &&
             <Link to={postUrl} className="ps-as"><span className="sr-only">{ctaBtnText}</span></Link>
           }
-        </LazyBackground>
+        </div>
       </div>
     )
   })
@@ -49,10 +50,10 @@ const CaseStudyRotator = ({ item }) => {
     if (customField.customerLogo.url) {
       return (
         <div className="item-logo-feature d-inline-flex align-items-center justify-content-center" key={'logo-' + caseStudy.contentID}>
-          <Lazyload offset={Helpers.lazyOffset}>
-            <img src={customField.customerLogo.url} alt={customField.customerLogo.label}></img>
-            {/* <ResponsiveImage img={customField.customerLogo} /> */}
-          </Lazyload>
+          {/* <Lazyload offset={Helpers.lazyOffset}> */}
+          {/* <img src={customField.customerLogo.url} alt={customField.customerLogo.label}></img> */}
+          <ResponsiveImage img={customField.customerLogo} />
+          {/* </Lazyload> */}
         </div>
       )
     }
@@ -61,6 +62,8 @@ const CaseStudyRotator = ({ item }) => {
   const settings = {
     dots: false,
     infinite: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
     speed: 350,
     arrows: true,
     centerPadding: '0',
@@ -139,7 +142,7 @@ const CaseStudyRotator = ({ item }) => {
         }
         {listLogo.length > 0 &&
           <div className="container anima-bottom delay-6">
-            <div className={`text-center list-logo-feature ${ listLogo?.length <= 3 ? 'three-item' : ''}`}>
+            <div className={`text-center list-logo-feature ${listLogo?.length <= 3 ? 'three-item' : ''}`}>
               <Slider
                 {...logosSettings}
                 className="center"

@@ -1,0 +1,17 @@
+@import '../global/setting';
+
+.relate-re-box {
+  &:hover {
+    .relate-re-thumb {
+      transform: scale3d(1.03, 1.03, 1);
+    }
+  }
+}
+.relate-re-thumb {
+  height: 224px;
+}
+.relate-re-cont {
+  padding: 35px 25px 40px;
+}
+
+

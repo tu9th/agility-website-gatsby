@@ -327,7 +327,7 @@ const CaseStudy = (props) => {
         <CaseStudyGallery />
 
         <CaseStudyRotator item={caseStudyRotator} />
-        <CaseStudyRelatedResources />
+        {/* <CaseStudyRelatedResources /> */}
 
       </main>
       <NewGlobalFooter />
@@ -390,19 +390,6 @@ const CaseStudyBanner = ({ }) => {
   )
 }
 
-
-const CaseStudySocialShare = () => {
-
-
-  return (
-    <>
-      <section className="cs-d-social">
-
-      </section>
-    </>
-  )
-}
-
 const CaseStudyGallery = () => {
 
   const fakeImg = {
@@ -444,43 +431,43 @@ const CaseStudyGallery = () => {
   )
 }
 
-const CaseStudyRelatedResources = () => {
+// const CaseStudyRelatedResources = () => {
 
 
-  const resources = [1, 2, 3];
+//   const resources = [1, 2, 3];
 
-  const ResourcesItem = ({ resource }) => {
+//   const ResourcesItem = ({ resource }) => {
 
-    const imgUrl = `https://static.agilitycms.com/case-studies/images/hockey_20200516223809_0.jpg?w=800&q=60`
-    return (
-      <div className="relate-re-box">
-        <div className="overflow-hidden">
-          <LazyBackground className="relate-re-thumb transition-25 bg" src={imgUrl} />
-        </div>
-        <div className="relate-re-cont">
-          <h3>Building an Ecommerce Website with Agility</h3>
-          <Link to="#" className="link-line line-purple">Readmore</Link>
-        </div>
-      </div>
-    )
-  }
+//     const imgUrl = `https://static.agilitycms.com/case-studies/images/hockey_20200516223809_0.jpg?w=800&q=60`
+//     return (
+//       <div className="relate-re-box">
+//         <div className="overflow-hidden">
+//           <LazyBackground className="relate-re-thumb transition-25 bg" src={imgUrl} />
+//         </div>
+//         <div className="relate-re-cont">
+//           <h3>Building an Ecommerce Website with Agility</h3>
+//           <Link to="#" className="link-line line-purple">Readmore</Link>
+//         </div>
+//       </div>
+//     )
+//   }
 
-  return (
-    <>
-      <section className="related-resources">
-        <div className="container">
-          <div className="text-center">
-            <h2>View Related Resources</h2>
-          </div>
-          <div className="row">
-            {resources.map((res, index) => {
-              return <div key={index} className="col-md-6 col-lg-4">
-                <ResourcesItem />
-              </div>
-            })}
-          </div>
-        </div>
-      </section>
-    </>
-  )
-}
+//   return (
+//     <>
+//       <section className="related-resources">
+//         <div className="container">
+//           <div className="text-center">
+//             <h2>View Related Resources</h2>
+//           </div>
+//           <div className="row">
+//             {resources.map((res, index) => {
+//               return <div key={index} className="col-md-6 col-lg-4">
+//                 <ResourcesItem />
+//               </div>
+//             })}
+//           </div>
+//         </div>
+//       </section>
+//     </>
+//   )
+// }
