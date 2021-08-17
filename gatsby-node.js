@@ -109,3 +109,13 @@ exports.createSchemaCustomization = ({ actions }) => {
   `
 	createTypes(typeDefs)
 }
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+			fallback: {
+        util: require.resolve("util/")
+      }
+    },
+  })
+}

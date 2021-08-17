@@ -6,6 +6,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "gatsby clean && gatsby build",
+		"clean": "gatsby clean",
 		"develop": "gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx}",
 		"start": "npm run develop",
@@ -13,6 +14,7 @@
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
 	},
 	"dependencies": {
+		"@agility/content-fetch": "^1.1.1",
 		"@agility/gatsby-image-agilitycms": "^1.0.6",
 		"@agility/gatsby-source-agilitycms": "^3.0.1",
 		"@loadable/component": "^5.15.0",
@@ -57,7 +59,8 @@
 		"slick-carousel": "^1.8.1",
 		"smoothscroll-polyfill": "^0.4.4",
 		"styled-components": "^5.1.1",
-		"truncate-html": "^1.0.2"
+		"truncate-html": "^1.0.2",
+		"util": "^0.12.4"
 	},
 	"devDependencies": {
 		"prettier": "^1.18.2"
