@@ -102,6 +102,10 @@ exports.createSchemaCustomization = ({ actions }) => {
 			target: String,
 			text:String
 		}
+		type agilityCaseStudyCustomFields {
+			caseStudyIndustry_TextField: String
+			caseStudyChallenge_TextField: String
+		}
   `
 	createTypes(typeDefs)
 }
