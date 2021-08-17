@@ -131,27 +131,24 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       /* get text of Category */
       const currentInd = industries[indKey]
       const currentCha = challenges[chaKey]
-      console.log(`currentInd`, currentInd, currentCha)
       let tmpPosts = posts.filter(post => {
-        console.log('post.customFiel:', post.customFields?.caseStudyIndustries_TextField);
         /* just challeges */
         if (!currentInd) {
-          if (post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
-            console.log('1');
+          if (post.customFields?.caseStudyChallenges_TextField
+            && post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
             return post
           }
         }
         /* just industries */
         if (!currentCha) {
-          if (post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1) {
-            console.log('2');
+          if (post.customFields?.caseStudyIndustries_TextField
+            && post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1) {
             return post
           }
         }
         /* both */
-        if (post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1
-          && post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
-            console.log('3333');
+        if (post.customFields?.caseStudyIndustries_TextField && post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1
+          && post.customFields?.caseStudyChallenges_TextField && post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
           return post
         }
       })
