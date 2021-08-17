@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './CaseStudyReskin.scss'
 import LazyBackground from '../utils/LazyBackground'
-import { Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 import LazyLoad from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
@@ -12,6 +12,62 @@ import SingleTestimonialPanel from './SingleTestimonialPanel'
 
 const CaseStudyReskin = ({ item, posts = [] }) => {
 
+  const ref = useRef(false)
+
+  const categoryQuery = useStaticQuery(graphql`
+    query IndustriesAndChallenges {
+      allAgilityCaseStudyIndustry {
+        edges {
+          node {
+            customFields {
+              title
+            }
+            contentID
+          }
+        }
+      }
+      allAgilityCaseStudyChallenge {
+        edges {
+          node {
+            customFields {
+              title
+            }
+            contentID
+          }
+        }
+      }
+    }
+  `)
+
+  const industries = {};
+  categoryQuery?.allAgilityCaseStudyIndustry?.edges?.map(item => {
+    if (item.node?.customFields?.title && item.node?.contentID) {
+      industries[item.node?.contentID] = item.node?.customFields?.title
+    }
+    return item
+  })
+  const challenges = {};
+  categoryQuery?.allAgilityCaseStudyChallenge?.edges?.map(item => {
+    if (item.node?.customFields?.title && item.node?.contentID) {
+      challenges[item.node?.contentID] = item.node?.customFields?.title
+    }
+    return item?.node
+  })
+
+  /* options for select filter */
+  const tmpIndustriesOpts = {
+    name: 'industries',
+    options: { ...industries, 1: 'All Industries' },
+    selectedOption: [1],
+  }
+  const tmpChallengesOpts = {
+    name: 'challenges',
+    options: { ...challenges, 1: 'All Challenges' },
+    selectedOption: [1],
+  }
+
+  // console.log(`categoryQuery`, posts, industries, challengesOpts)
+
   /* list clean Posts */
   const tmpAbovePosts = posts.slice(0, 8);
   const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
@@ -19,15 +75,94 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   /* init state */
   const [abovePosts, setAbovePosts] = useState(tmpAbovePosts)
   const [belowPosts, setBelowPosts] = useState(tmpBelowPosts)
+  const [industriesOpts, setIndustriesOpts] = useState(tmpIndustriesOpts)
+  const [challengesOpts, setChallengesOpts] = useState(tmpChallengesOpts)
+
+  const timeORef = useRef(null)
 
   const [isMobile, setIsMobile] = useState(false)
   // console.log(`props Case`, item)
 
   useEffect(() => {
-    if (window.innerWidth < 992) {
-      setIsMobile(true)
+    const checkIsMobile = () => {
+      clearTimeout(timeORef.current)
+      timeORef.current = setTimeout(() => {
+        if (window.innerWidth < 992) {
+          setIsMobile(true)
+        } else {
+          setIsMobile(false)
+        }
+      }, 300)
+    }
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+    return () => {
+      window.removeEventListener('resize', checkIsMobile)
     }
   }, [])
+
+  useEffect(() => {
+    if (industriesOpts.selectedOption[0] === 1 && challengesOpts.selectedOption[0] === 1) {
+      if (isMobile) {
+        const tmpAbovePosts = posts.slice(0, 5);
+        const tmpBelowPosts = posts.length > 5 ? posts.slice(5, posts.length) : [];
+        setAbovePosts(tmpAbovePosts)
+        setBelowPosts(tmpBelowPosts)
+      } else {
+        const tmpAbovePosts = posts.slice(0, 8);
+        const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
+        setAbovePosts(tmpAbovePosts)
+        setBelowPosts(tmpBelowPosts)
+      }
+    }
+  }, [isMobile])
+
+  /* chekc update filter options */
+  useEffect(() => {
+    const indKey = industriesOpts.selectedOption[0]
+    const chaKey = challengesOpts.selectedOption[0]
+    if (indKey === 1 && chaKey === 1) {
+      const tmpAbovePosts = posts.slice(0, 8);
+      const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
+
+      setAbovePosts(tmpAbovePosts)
+      setBelowPosts(tmpBelowPosts)
+    } else {
+      /* get text of Category */
+      const currentInd = industries[indKey]
+      const currentCha = challenges[chaKey]
+      let tmpPosts = posts.filter(post => {
+        /* just challeges */
+        if (!currentInd) {
+          if (currentCha === post.customFields?.caseStudyChallenge_TextField) {
+            return post
+          }
+        }
+        /* just industries */
+        if (!currentCha) {
+          if (currentInd === post.customFields?.caseStudyIndustry_TextField) {
+            return post
+          }
+        }
+        /* both */
+        if (currentInd === post.customFields?.caseStudyIndustry_TextField && currentCha === post.customFields?.caseStudyChallenge_TextField) {
+          return post
+        }
+      })
+
+      setBelowPosts([])
+      setAbovePosts(tmpPosts)
+    }
+  }, [industriesOpts, challengesOpts])
+
+  const onChangeFilter = ({ name, value }) => {
+    if (name === 'industries') {
+      setIndustriesOpts({ ...industriesOpts, selectedOption: value })
+    }
+    if (name === 'challenges') {
+      setChallengesOpts({ ...challengesOpts, selectedOption: value })
+    }
+  }
 
   const renderPosts = (posts, specialOnLeft = false) => {
     return posts.map((post, index) => {
@@ -70,18 +205,13 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     })
   }
 
-  const industries = {
-    options: { 1: 'All Industries', 2: 'b', 3: 'c' },
-    selectedOption: [1],
-  }
-
   return (
     <>
       <section>
         <div className="container">
           <div className="case-filter-box">
-            <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
-            <SelectC8 className="d-inline-block" data={industries} onChange={() => { console.log(`change`) }} />
+            <SelectC8 className="d-inline-block" data={industriesOpts} onChange={onChangeFilter} />
+            <SelectC8 className="d-inline-block" data={challengesOpts} onChange={onChangeFilter} />
           </div>
           <div className="row">
             {renderPosts(abovePosts)}
@@ -95,7 +225,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
           </div>
         </div>
       </section>
-      <Spacing item={item}/>
+      <Spacing item={item} />
     </>
   )
 }

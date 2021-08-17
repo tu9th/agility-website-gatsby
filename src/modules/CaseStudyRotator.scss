@@ -132,7 +132,8 @@
 .bg-casestudi {
   min-height: 394px;
   // max-width: 425px;
-  padding: 30px 35px;
+  // padding: 30px 35px;
+  padding: 30px 65px;
   position: relative;
 
   &::before {
@@ -250,6 +251,7 @@
 
   .bg-casestudi {
     max-width: 425px;
+    padding: 30px 35px;
     &::before {
       opacity: 0;
     }

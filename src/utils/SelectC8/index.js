@@ -50,7 +50,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
       setSelectedOption(optionKey)
       if (onChange) {
         optionChoose.name = data.name
-        optionChoose.value = optionKey
+        optionChoose.value = [optionKey]
       }
     } else {
       /* select multiple option */
@@ -79,7 +79,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
       optionChoose.name = data.name
       optionChoose.value = selectedArray
     }
-
+    console.log(`optionChoose`, optionChoose)
     onChange(optionChoose)
   }
 
@@ -120,7 +120,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
             }
           </span>
           <span className="caret-c8">
-            <span className="icomoon icon-arrow-02"></span>
+            <span className="icomoon icon-down-menu"></span>
           </span>
         </a>
         <div
