@@ -88,6 +88,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
   const halfPost = isMobile ? 5 : 8
 
+
   useEffect(() => {
     const checkIsMobile = () => {
       clearTimeout(timeORef.current)
@@ -99,7 +100,22 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         }
       }, 100)
     }
+
+    const loadFilterOpts = () => {
+      const search = window.location.search.substring(1)
+      let params = search.split('&')
+      params = params.map(p => {
+        return (p.split('='))
+      })
+      console.log(params, search);
+
+      if (params.length) {
+        setIndustriesOpts({...industriesOpts, selectedOption: [params[0][1]]})
+        setChallengesOpts({...challengesOpts, selectedOption: [params[1][1]]})
+      }
+    }
     checkIsMobile()
+    loadFilterOpts()
     window.addEventListener('resize', checkIsMobile)
     return () => {
       window.removeEventListener('resize', checkIsMobile)
@@ -107,7 +123,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   }, [])
 
 
-  /*  */
+  /* calc post per page when has updated */
   const handlePostsPerPage = () => {
     const min = halfPost * 2 * pagingIndex
     const max = halfPost * 2 * (pagingIndex + 1)
@@ -120,17 +136,22 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   useEffect(() => {
     handlePostsPerPage()
   }, [halfPost, pagingIndex, postsList])
+  /* -------------------- */
 
   /* chekc update filter options */
   useEffect(() => {
+
     /* reset paging when filter */
     setPagingIndex(0);
 
     const indKey = industriesOpts.selectedOption[0]
     const chaKey = challengesOpts.selectedOption[0]
-
+    let slug = ''
+    let url = window.location.href
+    url = url.substring(0, url.indexOf('?'))
     if (indKey === 1 && chaKey === 1) {
       setPostsList(posts)
+      window.history.pushState({}, '', url)
     } else {
       /* get text of Category */
       const currentInd = industries[indKey]
@@ -153,10 +174,14 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         /* both */
         if (post.customFields?.caseStudyIndustries_TextField && post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1
           && post.customFields?.caseStudyChallenges_TextField && post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
+
           return post
         }
       })
 
+      slug = `?industry=${indKey}&challenge=${chaKey}`
+      /*  */
+      window.history.pushState({}, '', url + slug)
       setPostsList(tmpPosts)
     }
   }, [industriesOpts, challengesOpts])
@@ -170,6 +195,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     }
   }
 
+
+  /* Pagination actions */
   const actionFwd = () => {
     const max = Math.ceil(postsList.length / (halfPost * 2))
     setPagingIndex(max - 1)
@@ -189,7 +216,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     }
   }
 
-  const renderPagingList = () => {
+  const handlePagingList = () => {
     const max = Math.ceil(postsList.length / (halfPost * 2))
     const tmp = []
     if (max < 3) {
@@ -211,8 +238,10 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   }
 
   useEffect(() => {
-    renderPagingList()
+    handlePagingList()
   }, [pagingIndex, postsList])
+  /* --------------------------- */
+
 
   const renderPosts = (posts, specialOnLeft = false) => {
     return posts.map((post, index) => {
