@@ -110,8 +110,12 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       console.log(params, search);
 
       if (params.length) {
-        setIndustriesOpts({...industriesOpts, selectedOption: [params[0][1]]})
-        setChallengesOpts({...challengesOpts, selectedOption: [params[1][1]]})
+        if (params[0] && params[0][1]) {
+          setIndustriesOpts({...industriesOpts, selectedOption: [params[0][1]]})
+        }
+        if (params[1] && params[1][1]) {
+          setChallengesOpts({...challengesOpts, selectedOption: [params[1][1]]})
+        }
       }
     }
     checkIsMobile()
