@@ -60,12 +60,12 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 								<LazyBackground className="case-ban-bg d-lg-none h-100 bg" src={caseStudy?.image?.url} />
 								{metrics && metrics.length > 0 &&
 									<div className="ps-rv cs-feature cs-metrics">
-										<div className="row">
+										<div className="row last-mb-none">
 											{metrics.map((metric, index) => {
 												const key = metric.customFields?.key
 												const value = metric.customFields?.value
 												return (
-													<div key={index} className="col col-lg-4">
+													<div key={index} className="metric-col col-lg-4">
 														<div className="cs-f-item small-paragraph last-mb-none">
 															<h2 className="mb-0 text-white">{value}</h2>
 															<p>{key}</p>

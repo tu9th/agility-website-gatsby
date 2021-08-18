@@ -36,7 +36,7 @@ const CaseStudyDetails = (props) => {
 						</div>
 						<div className="cs-detail-cont-right">
 							<div className="small-paragraph">
-								<h4>Webiste</h4>
+								<h4>Website</h4>
 								<p><a href={caseStudy?.website} target="_blank">{caseStudy?.website}</a></p>
 							</div>
 							<div className="small-paragraph">
@@ -46,7 +46,7 @@ const CaseStudyDetails = (props) => {
 								</p>
 							</div>
 							<div className="small-paragraph">
-								<h4>Challenges</h4>
+								<h4>Challenge</h4>
 								<p>
 									{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 && renderTags(caseStudy?.caseStudyChallenges)}
 								</p>
