@@ -248,109 +248,6 @@
     list-style: none;
   }
 }
-@media (min-width: 1200px)  {
-
-  // .window-os {
-  //   .has-sub {
-  //     > a::after {
-  //       top: calc(50% - 1px);
-  //     }
-  //   }
-  // }
-  // .navbar-expand-xl .navbar-nav .dropdown-menu {
-  //   position: absolute;
-  // }
-  // .main-menu-ul {
-  //   // padding: 0;
-
-  //   // >li {
-  //   //   >a:not(.btn-menu):not(.link-search) {
-  //   //     padding: 15px 10px;
-  //   //     font-weight: $fw-semi-bold;
-  //   //   }
-
-  //   //   &:hover {
-  //   //     .main-menu-dropdown {
-  //   //       display: block;
-  //   //     }
-  //   //   }
-  //   //   .btn-menu {
-  //   //     margin-left: 15px;
-  //   //   }
-  //   // }
-
-  //   // .mega-dropdown {
-  //   //   position: static;
-  //   // }
-  // }
-  // .link-search {
-  //   border-radius: 50%;
-  //   margin: 0 17px;
-  //   transition: background-color .35s;
-  // }
-  // .has-sub {
-  //   li {
-  //     // font-size: rem(14);
-  //     line-height: 1.73;
-  //     transition: all .35s;
-  //     // &:hover,
-  //     // &.active {
-  //     //   background-color: #e9f0f5;
-  //     // }
-  //     a {
-  //       padding: 8px 20px;
-  //       transition: all;
-  //     }
-  //   }
-  //   > a {
-  //     position: relative;
-  //     &::after {
-  //       content: '\e916';
-  //       font-family: 'icomoon' !important;
-  //       speak: none;
-  //       font-style: normal;
-  //       font-weight: normal;
-  //       font-variant: normal;
-  //       text-transform: none;
-  //       line-height: 1;
-  //       position: absolute;
-  //       font-size: rem(6);
-  //       transform: translateY(-50%) scale(-1);
-  //       transition: all .25s;
-  //       top: 50%;
-  //       right: 2px;
-  //     }
-
-  //   }
-  //   &:hover {
-  //     > a {
-  //       &::after {
-  //         transform: translateY(-50%) scale(1);
-  //       }
-  //     }
-
-  //   }
-  // }
-  // .main-menu-dropdown {
-  //   margin: 0;
-  //   background-color: $white;
-  //   transform: translateY(-7px) translateX(-50%);
-  //   left: 50%;
-  //   width: auto;
-  //   min-width: 190px;
-  //   padding: 4px 4px 4px;
-  //   border-radius: 2px;
-  //   border: 1px solid rgb(233, 240, 245);
-  //   box-shadow: 6px 4px 23px -2px rgba(23, 10, 41, 0.3);
-  //   .menu-child {
-  //     display: block;
-  //   }
-  // }
-
-  // .navbar {
-  //   position: static;
-  // }
-}
 
 @media (min-width: 1200px)  {
   .window-os {
@@ -635,6 +532,7 @@
     .has-sub {
       &.is-open-child {
         color: $color-58;
+        margin-bottom: 16px;
       }
       .dropdown-menu {
         li {

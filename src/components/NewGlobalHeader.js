@@ -448,7 +448,7 @@ class NewGlobalHeader extends Component {
 				</div> */}
 				<a target={menuGetstart.target} href={menuGetstart.href} className="text-decoration-none btn btn-outline-primary pin btn-menu btn-pin ">{menuGetstart.text}</a>
 				{contactButton?.href && contactButton?.text &&
-					<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2  ">{contactButton.text}</a>
+					<a target={contactButton.target} href={contactButton.href} className="text-decoration-none btn btn-primary btn-menu btn-menu-v2 d-md-none d-xl-block">{contactButton.text}</a>
 				}
 			</li>
 
