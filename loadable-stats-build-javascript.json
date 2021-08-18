@@ -1,16 +1,14 @@
 {
-  "hash": "1328661a4bd1017d26a8",
+  "hash": "a6ab134dcacaf0249513",
   "publicPath": "/",
-  "outputPath": "D:\\workSpace\\agilitycms-03-2021",
+  "outputPath": "C:\\Users\\toan.nguyen.FKMAGENCY\\Documents\\9thwonder\\AgilityReskin",
   "assetsByChunkName": {
     "polyfill": [
-      "polyfill.js",
-      "polyfill.621183865c1d598f7721.hot-update.js"
+      "polyfill.js"
     ],
     "commons": [
       "commons.css",
-      "commons.js",
-      "commons.621183865c1d598f7721.hot-update.js"
+      "commons.js"
     ],
     "component---cache-dev-404-page-js": [
       "component---cache-dev-404-page-js.js"
@@ -23,9 +21,6 @@
     ],
     "component---src-pages-casestudy-detail-reskin-js": [
       "component---src-pages-casestudy-detail-reskin-js.js"
-    ],
-    "component---src-pages-casestudy-reskin-js": [
-      "component---src-pages-casestudy-reskin-js.js"
     ],
     "2BoxContent": [
       "2BoxContent.js"
@@ -278,8 +273,8 @@
     {
       "type": "assets by status",
       "cached": true,
-      "filteredChildren": 99,
-      "size": 20217004
+      "filteredChildren": 93,
+      "size": 19948247
     }
   ],
   "namedChunkGroups": {
@@ -291,9 +286,6 @@
       "assets": [
         {
           "name": "polyfill.js"
-        },
-        {
-          "name": "polyfill.621183865c1d598f7721.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -318,9 +310,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -382,9 +371,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "component---src-agility-page-js.js"
         }
       ],
@@ -413,41 +399,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "component---src-pages-casestudy-detail-reskin-js.js"
-        }
-      ],
-      "filteredAssets": 0,
-      "assetsSize": null,
-      "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 0,
-      "children": {},
-      "childAssets": {}
-    },
-    "component---src-pages-casestudy-reskin-js": {
-      "name": "component---src-pages-casestudy-reskin-js",
-      "chunks": [
-        "framework",
-        "commons",
-        "component---src-pages-casestudy-reskin-js"
-      ],
-      "assets": [
-        {
-          "name": "framework.js"
-        },
-        {
-          "name": "commons.css"
-        },
-        {
-          "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
-          "name": "component---src-pages-casestudy-reskin-js.js"
         }
       ],
       "filteredAssets": 0,
@@ -473,9 +425,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "2BoxContent.js"
@@ -506,9 +455,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "BestofBothWorldsModule.js"
         }
       ],
@@ -535,9 +481,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "CTABlocks.js"
@@ -568,9 +511,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "Callout.js"
         }
       ],
@@ -597,9 +537,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "CaseStudyContentPanel.js"
@@ -630,9 +567,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "CaseStudyDetails.js"
         }
       ],
@@ -661,9 +595,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "CaseStudyListing.js"
         }
       ],
@@ -690,9 +621,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "CaseStudyRotator.js"
@@ -740,9 +668,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "CenteredContentPanel.js"
         }
       ],
@@ -769,9 +694,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "CenteredCTAPanel.js"
@@ -802,9 +724,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "ContentPanel.js"
         }
       ],
@@ -831,9 +750,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "ContentPanelForm.js"
@@ -864,9 +780,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "EventDetails.js"
         }
       ],
@@ -893,9 +806,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "EventListing.js"
@@ -926,9 +836,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "Faqs.js"
         }
       ],
@@ -955,9 +862,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "FeatureBlocks.js"
@@ -988,9 +892,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "FeatureBlocksWithText.js"
         }
       ],
@@ -1019,9 +920,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "FeatureComparisonChart.js"
         }
       ],
@@ -1048,9 +946,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "FeatureList.js"
@@ -1098,9 +993,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "FeaturedCaseStudies.js"
         }
       ],
@@ -1127,9 +1019,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "FeaturedPlanCTA.js"
@@ -1160,9 +1049,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "FeaturedResources.js"
         }
       ],
@@ -1189,9 +1075,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "G2CrowdReviewListing.js"
@@ -1222,9 +1105,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "GartnerPeerInsightsBar.js"
         }
       ],
@@ -1251,9 +1131,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "GatedDownload.js"
@@ -1284,9 +1161,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "GettingStarted.js"
         }
       ],
@@ -1313,9 +1187,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "GuideLinks.js"
@@ -1346,9 +1217,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "InfoBox.js"
         }
       ],
@@ -1375,9 +1243,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "JobListing.js"
@@ -1408,9 +1273,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "LandingPageHeader.js"
         }
       ],
@@ -1437,9 +1299,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "LandingPageHeaderForm.js"
@@ -1470,9 +1329,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "LatestPosts.js"
         }
       ],
@@ -1499,9 +1355,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "LatestResources.js"
@@ -1532,9 +1385,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "RelatedResources.js"
         }
       ],
@@ -1561,9 +1411,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "LogoListing.js"
@@ -1594,9 +1441,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "LogoListingModule.js"
         }
       ],
@@ -1623,9 +1467,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "MostViewedArticles.js"
@@ -1656,9 +1497,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "NewIntegrationModule.js"
         }
       ],
@@ -1685,9 +1523,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PartnerContentPanel.js"
@@ -1718,9 +1553,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PartnerDetails.js"
         }
       ],
@@ -1747,9 +1579,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PartnerListing.js"
@@ -1780,9 +1609,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PartnerLogoListing.js"
         }
       ],
@@ -1809,9 +1635,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PeopleListing.js"
@@ -1842,9 +1665,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PlanDetailsTable.js"
         }
       ],
@@ -1871,9 +1691,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PlanFeaturesCTA.js"
@@ -1904,9 +1721,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PodcastContentPanel.js"
         }
       ],
@@ -1933,9 +1747,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PodcastDetail.js"
@@ -1983,9 +1794,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PostDetails.js"
         }
       ],
@@ -2012,9 +1820,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PostListing.js"
@@ -2045,9 +1850,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PricingPackagesModule.js"
         }
       ],
@@ -2074,9 +1876,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "PricingPlans.js"
@@ -2107,9 +1906,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "PricingTable.js"
         }
       ],
@@ -2136,9 +1932,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "ResourceDetails.js"
@@ -2169,9 +1962,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "ReviewRotator.js"
         }
       ],
@@ -2198,9 +1988,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "RichTextArea.js"
@@ -2231,9 +2018,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "RightLeftContent.js"
         }
       ],
@@ -2260,9 +2044,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "RightORLeftContentModule.js"
@@ -2293,9 +2074,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "RightOrLeftCaseStudyTestimonial.js"
         }
       ],
@@ -2322,9 +2100,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "RightOrLeftSteps.js"
@@ -2355,9 +2130,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "SearchResults.js"
         }
       ],
@@ -2384,9 +2156,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "SectionBreadcrumbModule.js"
@@ -2417,9 +2186,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "Share.js"
         }
       ],
@@ -2446,9 +2212,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "SingleTestimonialPanel.js"
@@ -2496,9 +2259,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "StarterTemplateDetails.js"
         }
       ],
@@ -2525,9 +2285,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "StarterTemplateListing.js"
@@ -2558,9 +2315,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "StayInTouch.js"
         }
       ],
@@ -2587,9 +2341,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "SubmissionForm.js"
@@ -2620,9 +2371,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "SubscribedThankYou.js"
         }
       ],
@@ -2649,9 +2397,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "TabPanels.js"
@@ -2682,9 +2427,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "TestDrive.js"
         }
       ],
@@ -2711,9 +2453,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "Testimonials.js"
@@ -2744,9 +2483,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "TestimonialsLogos.js"
         }
       ],
@@ -2773,9 +2509,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "TriplePanelComparisonModule.js"
@@ -2806,9 +2539,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "TriplePanelModule.js"
         }
       ],
@@ -2835,9 +2565,6 @@
         },
         {
           "name": "commons.js"
-        },
-        {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
         },
         {
           "name": "TwoPanelFeatureComparison.js"
@@ -2868,9 +2595,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "VerticalContentPanel.js"
         }
       ],
@@ -2899,9 +2623,6 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.621183865c1d598f7721.hot-update.js"
-        },
-        {
           "name": "VideoPlayerModule.js"
         }
       ],
@@ -2918,16 +2639,14 @@
     {
       "id": "polyfill",
       "files": [
-        "polyfill.js",
-        "polyfill.621183865c1d598f7721.hot-update.js"
+        "polyfill.js"
       ]
     },
     {
       "id": "commons",
       "files": [
         "commons.css",
-        "commons.js",
-        "commons.621183865c1d598f7721.hot-update.js"
+        "commons.js"
       ]
     },
     {
@@ -2943,21 +2662,15 @@
       ]
     },
     {
-      "id": "node_modules_gatsby-plugin-image_dist_lazy-hydrate-6a6da979_js",
+      "id": "node_modules_gatsby-plugin-image_dist_lazy-hydrate-99f9d741_js",
       "files": [
-        "node_modules_gatsby-plugin-image_dist_lazy-hydrate-6a6da979_js.js"
+        "node_modules_gatsby-plugin-image_dist_lazy-hydrate-99f9d741_js.js"
       ]
     },
     {
       "id": "node_modules_gatsby-plugin-image_dist_intersection-observer-6b794dd8_js",
       "files": [
         "node_modules_gatsby-plugin-image_dist_intersection-observer-6b794dd8_js.js"
-      ]
-    },
-    {
-      "id": "node_modules_web-vitals_base_js",
-      "files": [
-        "node_modules_web-vitals_base_js.js"
       ]
     },
     {
@@ -2982,12 +2695,6 @@
       "id": "component---src-pages-casestudy-detail-reskin-js",
       "files": [
         "component---src-pages-casestudy-detail-reskin-js.js"
-      ]
-    },
-    {
-      "id": "component---src-pages-casestudy-reskin-js",
-      "files": [
-        "component---src-pages-casestudy-reskin-js.js"
       ]
     },
     {

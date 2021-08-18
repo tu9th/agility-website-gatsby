@@ -9,25 +9,6 @@
 // import './src/assets/styles/global.scss'
 // import './src/assets/javascripts/app'
 const AnimationScrollPage = require('./src/global/javascript/animation').default
-const agility = require('@agility/content-fetch')
-const handle = () => {
-  try {
-    const api = agility.getApi({
-      guid: '80dc0987-be84-4405-a572-aba199832f68',
-      apiKey: 'defaultPreview.6ddcb15cfad15bc5b0df1da3cd019f5dc009d1e9a11fa83c2cbdb7886c687dba',
-      isPreview: true
-    });
-    api.getGallery({
-      galleryID: 3
-    })
-    .then(function(gallery) {
-      console.log(gallery);
-    })
-  } catch(err) {
-    console.log('err', err)
-  }
-}
-handle()
 // exports.onRouteUpdate = () => {
 //   AnimationScrollPage()
 // }
