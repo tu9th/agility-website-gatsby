@@ -27,45 +27,43 @@ const CaseStudyDetails = (props) => {
 		<>
 			<section className="p-w new-case-study-details">
 				<div className="container">
-					<div className="d-lg-flex flex-grow">
+					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left beauty-ul">
 							<div className="cs-detail-inner">
-								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.rightContentCopy)}></div>
+								{/* <div dangerouslySetInnerHTML={renderHTML(caseStudy?.rightContentCopy)}></div> */}
 								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)} />
 							</div>
 						</div>
-						{
-							<div className="cs-detail-cont-right">
-								<div className="small-paragraph">
-									<h4>Webiste</h4>
-									<p><a href={caseStudy?.website} target="_blank">{caseStudy?.website}</a></p>
-								</div>
-								<div className="small-paragraph">
-									<h4>Industry</h4>
-									<p>
-										{caseStudy?.caseStudyIndustries && caseStudy?.caseStudyIndustries.length > 0 && renderTags(caseStudy?.caseStudyIndustries)}
-									</p>
-								</div>
-								<div className="small-paragraph">
-									<h4>Challenges</h4>
-									<p>
-										{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 && renderTags(caseStudy?.caseStudyChallenges)}
-									</p>
-								</div>
-
-								<div>
-									{caseStudy?.quote &&
-										<>
-											<CaseStudySocialShare link={link} title={caseStudy.title} />
-											<div className="cs-quote">
-												<span className="icomoon icon-quote"></span>
-												<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
-											</div>
-										</>
-									}
-								</div>
+						<div className="cs-detail-cont-right">
+							<div className="small-paragraph">
+								<h4>Webiste</h4>
+								<p><a href={caseStudy?.website} target="_blank">{caseStudy?.website}</a></p>
 							</div>
-						}
+							<div className="small-paragraph">
+								<h4>Industry</h4>
+								<p>
+									{caseStudy?.caseStudyIndustries && caseStudy?.caseStudyIndustries.length > 0 && renderTags(caseStudy?.caseStudyIndustries)}
+								</p>
+							</div>
+							<div className="small-paragraph">
+								<h4>Challenges</h4>
+								<p>
+									{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 && renderTags(caseStudy?.caseStudyChallenges)}
+								</p>
+							</div>
+
+							<div>
+								{caseStudy?.quote &&
+									<div className="d-none d-lg-block">
+										<CaseStudySocialShare link={link} title={caseStudy.title} />
+										<div className="cs-quote">
+											<span className="icomoon icon-quote"></span>
+											<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
+										</div>
+									</div>
+								}
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -78,8 +76,17 @@ const CaseStudyDetails = (props) => {
 								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.bottomContent)} />
 							</div>
 						</div>
-						<div className="cs-detail-cont-right" />
+						<div className="cs-detail-cont-right fake" />
 					</div>
+					{caseStudy?.quote &&
+						<div className="d-lg-none">
+							<CaseStudySocialShare link={link} title={caseStudy.title} />
+							<div className="cs-quote">
+								<span className="icomoon icon-quote"></span>
+								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
+							</div>
+						</div>
+					}
 				</div>
 
 				{/* {caseStudy.cTA && <CallToAction item={caseStudy.cTA} />} */}
@@ -109,9 +116,9 @@ const CaseStudySocialShare = ({ link, title }) => {
 
 	return (
 		<>
-			<div className="cs-d-social d-none d-lg-block">
+			<div className="cs-d-social">
 				<h5>Share Case Study</h5>
-				<div className="d-lg-flex flex-wrap">
+				<div className="soc-box d-flex flex-wrap">
 
 					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-facebook"></span>

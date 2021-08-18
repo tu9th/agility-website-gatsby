@@ -3,6 +3,7 @@ import React from 'react';
 // import { renderHTML } from '../agility/utils'
 // import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 import LazyBackground from '../utils/LazyBackground'
+import Spacing from './Spacing'
 import "./CaseStudyContentPanel.scss"
 
 const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
@@ -53,7 +54,7 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 								<div className={`d-table w-100 ${metrics.length ? '' : 'h-100'}`}>
 									<div className="d-table-cell align-middle last-mb-none">
 										<h1>{caseStudy.title}</h1>
-										<p>{caseStudy.contentPanelCopy}</p>
+										<p>{caseStudy.excerpt}</p>
 									</div>
 								</div>
 								<LazyBackground className="case-ban-bg d-lg-none h-100 bg" src={caseStudy?.image?.url} />
@@ -85,7 +86,7 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 					</div>
 				</div>
 			</section>
-			<div className="space-100"></div>
+			<Spacing item={item}/>
 		</>
 
 		// <section className="p-w case-study-content-panel" style={{ backgroundColor: bgColor }}>
