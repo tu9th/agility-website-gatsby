@@ -9,10 +9,9 @@ import SelectC8 from '../utils/SelectC8'
 
 import Spacing from './Spacing'
 import SingleTestimonialPanel from './SingleTestimonialPanel'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 const CaseStudyReskin = ({ item, posts = [] }) => {
-
-  const ref = useRef(false)
 
   const categoryQuery = useStaticQuery(graphql`
     query IndustriesAndChallenges {
@@ -70,63 +69,92 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
   /* list clean Posts */
   const tmpAbovePosts = posts.slice(0, 8);
-  const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
+  const tmpBelowPosts = posts.slice(8, 16);
 
   /* init state */
   const [abovePosts, setAbovePosts] = useState(tmpAbovePosts)
   const [belowPosts, setBelowPosts] = useState(tmpBelowPosts)
   const [industriesOpts, setIndustriesOpts] = useState(tmpIndustriesOpts)
   const [challengesOpts, setChallengesOpts] = useState(tmpChallengesOpts)
+  const [postsList, setPostsList] = useState(posts)
+
+  const [pagingIndex, setPagingIndex] = useState(0)
+  const [btnPagingList, setBtnPagingList] = useState([])
 
   const timeORef = useRef(null)
 
   const [isMobile, setIsMobile] = useState(false)
-  // console.log(`props Case`, item)
+
+  const halfPost = isMobile ? 5 : 8
+
 
   useEffect(() => {
     const checkIsMobile = () => {
       clearTimeout(timeORef.current)
       timeORef.current = setTimeout(() => {
-        if (window.innerWidth < 992) {
+        if (window.innerWidth < 768) {
           setIsMobile(true)
         } else {
           setIsMobile(false)
         }
-      }, 300)
+      }, 100)
+    }
+
+    const loadFilterOpts = () => {
+      const search = window.location.search.substring(1)
+      let params = search.split('&')
+      params = params.map(p => {
+        return (p.split('='))
+      })
+      console.log(params, search);
+
+      if (params.length) {
+        if (params[0] && params[0][1]) {
+          setIndustriesOpts({ ...industriesOpts, selectedOption: [params[0][1]] })
+        }
+        if (params[1] && params[1][1]) {
+          setChallengesOpts({ ...challengesOpts, selectedOption: [params[1][1]] })
+        }
+      }
     }
     checkIsMobile()
+    loadFilterOpts()
     window.addEventListener('resize', checkIsMobile)
     return () => {
       window.removeEventListener('resize', checkIsMobile)
     }
   }, [])
 
+
+  /* calc post per page when has updated */
+  const handlePostsPerPage = () => {
+    const min = halfPost * 2 * pagingIndex
+    const max = halfPost * 2 * (pagingIndex + 1)
+    const tmpAbovePosts = postsList.slice(min, max - halfPost);
+    const tmpBelowPosts = postsList.slice(min + halfPost, max);
+    setAbovePosts(tmpAbovePosts)
+    setBelowPosts(tmpBelowPosts)
+  }
+
   useEffect(() => {
-    if (industriesOpts.selectedOption[0] === 1 && challengesOpts.selectedOption[0] === 1) {
-      if (isMobile) {
-        const tmpAbovePosts = posts.slice(0, 5);
-        const tmpBelowPosts = posts.length > 5 ? posts.slice(5, posts.length) : [];
-        setAbovePosts(tmpAbovePosts)
-        setBelowPosts(tmpBelowPosts)
-      } else {
-        const tmpAbovePosts = posts.slice(0, 8);
-        const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
-        setAbovePosts(tmpAbovePosts)
-        setBelowPosts(tmpBelowPosts)
-      }
-    }
-  }, [isMobile])
+    handlePostsPerPage()
+  }, [halfPost, pagingIndex, postsList])
+  /* -------------------- */
 
   /* chekc update filter options */
   useEffect(() => {
+
+    /* reset paging when filter */
+    setPagingIndex(0);
+
     const indKey = industriesOpts.selectedOption[0]
     const chaKey = challengesOpts.selectedOption[0]
+    let slug = ''
+    let url = window.location.href
+    url = url.substring(0, url.indexOf('?'))
     if (indKey === 1 && chaKey === 1) {
-      const tmpAbovePosts = posts.slice(0, 8);
-      const tmpBelowPosts = posts.length > 8 ? posts.slice(8, posts.length) : [];
-
-      setAbovePosts(tmpAbovePosts)
-      setBelowPosts(tmpBelowPosts)
+      setPostsList(posts)
+      window.history.pushState({}, '', url)
     } else {
       /* get text of Category */
       const currentInd = industries[indKey]
@@ -134,24 +162,30 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       let tmpPosts = posts.filter(post => {
         /* just challeges */
         if (!currentInd) {
-          if (currentCha === post.customFields?.caseStudyChallenge_TextField) {
+          if (post.customFields?.caseStudyChallenges_TextField
+            && post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
             return post
           }
         }
         /* just industries */
         if (!currentCha) {
-          if (currentInd === post.customFields?.caseStudyIndustry_TextField) {
+          if (post.customFields?.caseStudyIndustries_TextField
+            && post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1) {
             return post
           }
         }
         /* both */
-        if (currentInd === post.customFields?.caseStudyIndustry_TextField && currentCha === post.customFields?.caseStudyChallenge_TextField) {
+        if (post.customFields?.caseStudyIndustries_TextField && post.customFields?.caseStudyIndustries_TextField?.indexOf(currentInd) !== -1
+          && post.customFields?.caseStudyChallenges_TextField && post.customFields?.caseStudyChallenges_TextField?.indexOf(currentCha) !== -1) {
+
           return post
         }
       })
 
-      setBelowPosts([])
-      setAbovePosts(tmpPosts)
+      slug = `?industry=${indKey}&challenge=${chaKey}`
+      /*  */
+      window.history.pushState({}, '', url + slug)
+      setPostsList(tmpPosts)
     }
   }, [industriesOpts, challengesOpts])
 
@@ -163,6 +197,67 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       setChallengesOpts({ ...challengesOpts, selectedOption: value })
     }
   }
+
+
+  /* Pagination actions */
+  const actionFwd = () => {
+    const max = Math.ceil(postsList.length / (halfPost * 2))
+    setPagingIndex(max - 1)
+  }
+  const actionBwd = () => {
+    setPagingIndex(0)
+  }
+  const actionNextPage = () => {
+    const max = Math.ceil(postsList.length / (halfPost * 2))
+    if (pagingIndex < max) {
+      setPagingIndex(pagingIndex + 1)
+    }
+  }
+  const actionPrevPage = () => {
+    if (pagingIndex > 0) {
+      setPagingIndex(pagingIndex - 1)
+    }
+  }
+
+  const handlePagingList = () => {
+    const max = Math.ceil(postsList.length / (halfPost * 2))
+    const tmp = []
+    if (max < 3) {
+      for (let i = 0; i < max; i++) {
+        tmp.push(i)
+      }
+    } else {
+      if (pagingIndex === 0) {
+        tmp = [1, 2, 3]
+      } else
+        if (pagingIndex === max) {
+          tmp = [max - 2, max - 1, max]
+        } else {
+          tmp = [pagingIndex - 1, pagingIndex, pagingIndex + 1]
+        }
+    }
+
+    setBtnPagingList(tmp)
+  }
+
+  useEffect(() => {
+    handlePagingList()
+  }, [pagingIndex, postsList])
+  /* --------------------------- */
+
+  const thisModuleRef = useRef(null)
+  /* animation module */
+  useEffect(() => {
+    const scrollEventFunc = () => {
+      animationElementInnerComponent(thisModuleRef.current)
+    }
+    animationElementInnerComponent(thisModuleRef.current)
+    window.addEventListener('scroll', scrollEventFunc)
+
+    return () => {
+      window.removeEventListener('scroll', scrollEventFunc)
+    }
+  }, [])
 
   const renderPosts = (posts, specialOnLeft = false) => {
     return posts.map((post, index) => {
@@ -207,8 +302,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
   return (
     <>
-      <section>
-        <div className="container">
+      <section ref={thisModuleRef} className="animation">
+        <div className="container anima-bottom">
           <div className="case-filter-box">
             <SelectC8 className="d-inline-block" data={industriesOpts} onChange={onChangeFilter} />
             <SelectC8 className="d-inline-block" data={challengesOpts} onChange={onChangeFilter} />
@@ -219,10 +314,36 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         </div>
         <div className="space-100"></div>
         <SingleTestimonialPanel item={item} />
-        <div className="container">
+        <div className="container anima-bottom delay-2">
           <div className="row">
             {renderPosts(belowPosts, true)}
           </div>
+        </div>
+        <div className="container">
+          {btnPagingList.length > 1 &&
+            <div className="">
+              <ul className="pagination">
+                <li className={`style-prev style-double ${pagingIndex <= 0 ? 'disable-paging' : ''}`} onClick={() => { actionBwd() }}>
+                  <span className="icomoon icon-arrow"></span>
+                </li>
+                <li className={`style-prev ${pagingIndex <= 0 ? 'disable-paging' : ''}`} onClick={() => { actionPrevPage() }}>
+                  <span className="icomoon icon-arrow"></span>
+                </li>
+                {btnPagingList.map((index) => {
+                  return (
+                    <li key={index} className={pagingIndex === index ? 'active' : ''} onClick={() => { setPagingIndex(index) }}>{index + 1}</li>
+                  )
+                })}
+                <li className={`page-next ${pagingIndex >= postsList.length / (halfPost * 2) - 1 ? 'disable-paging' : ''}`} onClick={() => { actionNextPage() }}>
+                  <span className="icomoon icon-arrow"></span>
+                </li>
+                <li className={`style-double ${pagingIndex >= postsList.length / (halfPost * 2) - 1 ? 'disable-paging' : ''}`} onClick={() => { actionFwd() }}>
+                  <span className="icomoon icon-arrow"></span>
+                </li>
+              </ul>
+            </div>
+          }
+
         </div>
       </section>
       <Spacing item={item} />
@@ -234,7 +355,6 @@ export default CaseStudyReskin
 
 
 const PostItem = ({ post }) => {
-  // console.log(`post`, post)
   const thumbUrl = post?.customFields?.postImage?.url
   const link = post?.url
   const title = post?.customFields?.title

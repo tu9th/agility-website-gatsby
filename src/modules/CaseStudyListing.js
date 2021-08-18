@@ -35,8 +35,8 @@ export default props => (
 							height
 							width
 						}
-						caseStudyIndustry_TextField
-						caseStudyChallenge_TextField
+						caseStudyIndustries_TextField
+						caseStudyChallenges_TextField
 					}
 				}
 			}
