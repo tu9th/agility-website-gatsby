@@ -4,6 +4,7 @@ import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
 import Slider from 'react-slick'
 import ResponsiveImage from '../components/responsive-image'
+import LazyLoad from 'react-lazyload'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
 
@@ -30,27 +31,34 @@ const CaseStudyDetails = (props) => {
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left beauty-ul">
 							<div className="cs-detail-inner">
-								{/* <div dangerouslySetInnerHTML={renderHTML(caseStudy?.rightContentCopy)}></div> */}
 								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)} />
 							</div>
 						</div>
 						<div className="cs-detail-cont-right">
-							<div className="small-paragraph">
-								<h4>Website</h4>
-								<p><a href={caseStudy?.website} target="_blank">{caseStudy?.website}</a></p>
-							</div>
-							<div className="small-paragraph">
-								<h4>Industry</h4>
-								<p>
-									{caseStudy?.caseStudyIndustries && caseStudy?.caseStudyIndustries.length > 0 && renderTags(caseStudy?.caseStudyIndustries)}
-								</p>
-							</div>
-							<div className="small-paragraph">
-								<h4>Challenge</h4>
-								<p>
-									{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 && renderTags(caseStudy?.caseStudyChallenges)}
-								</p>
-							</div>
+							{caseStudy?.website?.href &&
+								<div className="small-paragraph cs-website">
+									<h4>Website</h4>
+									<p><a href={caseStudy?.website?.href} target={caseStudy?.website?.target || '_blank'}>{caseStudy?.website?.text || caseStudy?.website?.href}</a></p>
+								</div>
+							}
+
+							{caseStudy?.caseStudyIndustries && caseStudy?.caseStudyIndustries.length > 0 &&
+								<div className="small-paragraph">
+									<h4>Industries</h4>
+									<p>
+										{renderTags(caseStudy?.caseStudyIndustries)}
+									</p>
+								</div>
+							}
+
+							{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 &&
+								<div className="small-paragraph">
+									<h4>Challenges</h4>
+									<p>
+										{renderTags(caseStudy?.caseStudyChallenges)}
+									</p>
+								</div>
+							}
 
 							<div>
 								{caseStudy?.quote &&
@@ -67,7 +75,7 @@ const CaseStudyDetails = (props) => {
 					</div>
 				</div>
 
-				<CaseStudyGallery />
+				<CaseStudyGallery galleryId={caseStudy?.gallery?.galleryid} title={caseStudy.title} />
 
 				<div className="container">
 					<div className="d-lg-flex flex-grow">
@@ -119,34 +127,50 @@ const CaseStudySocialShare = ({ link, title }) => {
 			<div className="cs-d-social">
 				<h5>Share Case Study</h5>
 				<div className="soc-box d-flex flex-wrap">
-
-					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
-						<span className="icomoon icon-facebook"></span>
+					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-linkedin2"></span>
 					</a>
 					<a href={`https://twitter.com/intent/tweet/?text=abcd&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-twitter"></span>
 					</a>
-					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
-						<span className="icomoon icon-linkedin2"></span>
+					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-facebook"></span>
 					</a>
-
 				</div>
 			</div>
 		</>
 	)
 }
 
-const CaseStudyGallery = () => {
+const CaseStudyGallery = ({ galleryId, title }) => {
 
-	const fakeImg = {
-		"label": "TRY AGILITY CMS",
-		"url": "https://static.agilitycms.com/Attachments/NewItems/cta-bottom-blog-free_20210624203045_0.jpg",
-		"target": null,
-		"filesize": 57769,
-		"pixelHeight": "300",
-		"pixelWidth": "975",
-		"height": 300,
-		"width": 975
+	const query = useStaticQuery(graphql`
+	query Media {
+		allAgilityCaseStudy {
+			edges {
+				node {
+					customFields {
+						media {
+							url
+						}
+						gallery {
+							galleryid
+						}
+					}
+				}
+			}
+		}
+	}`)
+	const mediaLists = query.allAgilityCaseStudy?.edges
+	const founded = mediaLists?.filter(i => {
+		if (i.node?.customFields?.gallery?.galleryid === galleryId) {
+			return i.node.customFields
+		}
+	})
+
+	let listMedia = []
+	if (founded && founded.length > 0) {
+		listMedia = founded[0].node.customFields.media
 	}
 
 	const settings = {
@@ -159,19 +183,26 @@ const CaseStudyGallery = () => {
 		slidesToScroll: 1,
 		adaptiveHeight: true,
 	}
-	const galleries = [1, 2, 3].map((i, index) => {
+	const galleries = listMedia?.map((i, index) => {
 		return (
 			<div key={index} className="gal-item">
-				<ResponsiveImage img={fakeImg} />
+				{/* <ResponsiveImage img={i.url} /> */}
+				{/* <LazyLoad><img src={i.url} alt="ab" /></LazyLoad> */}
+				<img src={i.url} alt={title} />
 			</div>
+
 		)
 	});
+
 	return (
 		<>
 			<section className="case-d-gallery">
-				<Slider {...settings} className="gal-slider">
-					{galleries}
-				</Slider>
+				{listMedia && listMedia.length > 0 &&
+					<Slider {...settings} className="gal-slider">
+						{galleries}
+					</Slider>
+				}
+
 			</section>
 		</>
 	)
