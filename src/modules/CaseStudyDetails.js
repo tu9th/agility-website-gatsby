@@ -43,13 +43,13 @@ const CaseStudyDetails = (props) => {
 								<div className="small-paragraph">
 									<h4>Industry</h4>
 									<p>
-										{caseStudy?.caseStudyIndustry && caseStudy?.caseStudyIndustry.length > 0 && renderTags(caseStudy?.caseStudyIndustry)}
+										{caseStudy?.caseStudyIndustries && caseStudy?.caseStudyIndustries.length > 0 && renderTags(caseStudy?.caseStudyIndustries)}
 									</p>
 								</div>
 								<div className="small-paragraph">
 									<h4>Challenges</h4>
 									<p>
-										{caseStudy?.caseStudyChallenge && caseStudy?.caseStudyChallenge.length > 0 && renderTags(caseStudy?.caseStudyChallenge)}
+										{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 && renderTags(caseStudy?.caseStudyChallenges)}
 									</p>
 								</div>
 

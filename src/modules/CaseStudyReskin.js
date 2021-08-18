@@ -9,10 +9,9 @@ import SelectC8 from '../utils/SelectC8'
 
 import Spacing from './Spacing'
 import SingleTestimonialPanel from './SingleTestimonialPanel'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 const CaseStudyReskin = ({ item, posts = [] }) => {
-
-  const ref = useRef(false)
 
   const categoryQuery = useStaticQuery(graphql`
     query IndustriesAndChallenges {
@@ -111,10 +110,10 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
       if (params.length) {
         if (params[0] && params[0][1]) {
-          setIndustriesOpts({...industriesOpts, selectedOption: [params[0][1]]})
+          setIndustriesOpts({ ...industriesOpts, selectedOption: [params[0][1]] })
         }
         if (params[1] && params[1][1]) {
-          setChallengesOpts({...challengesOpts, selectedOption: [params[1][1]]})
+          setChallengesOpts({ ...challengesOpts, selectedOption: [params[1][1]] })
         }
       }
     }
@@ -246,6 +245,19 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   }, [pagingIndex, postsList])
   /* --------------------------- */
 
+  const thisModuleRef = useRef(null)
+  /* animation module */
+  useEffect(() => {
+    const scrollEventFunc = () => {
+      animationElementInnerComponent(thisModuleRef.current)
+    }
+    animationElementInnerComponent(thisModuleRef.current)
+    window.addEventListener('scroll', scrollEventFunc)
+
+    return () => {
+      window.removeEventListener('scroll', scrollEventFunc)
+    }
+  }, [])
 
   const renderPosts = (posts, specialOnLeft = false) => {
     return posts.map((post, index) => {
@@ -290,8 +302,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
   return (
     <>
-      <section>
-        <div className="container">
+      <section ref={thisModuleRef} className="animation">
+        <div className="container anima-bottom">
           <div className="case-filter-box">
             <SelectC8 className="d-inline-block" data={industriesOpts} onChange={onChangeFilter} />
             <SelectC8 className="d-inline-block" data={challengesOpts} onChange={onChangeFilter} />
@@ -302,7 +314,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         </div>
         <div className="space-100"></div>
         <SingleTestimonialPanel item={item} />
-        <div className="container">
+        <div className="container anima-bottom delay-2">
           <div className="row">
             {renderPosts(belowPosts, true)}
           </div>
