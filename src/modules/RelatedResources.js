@@ -18,7 +18,7 @@ const RelatedResources = ({ item }) => {
             <h2>{headline}</h2>
           </div>
           <div className="row">
-            {resources.map((res, index) => {
+            {resources?.map((res, index) => {
               return <div key={index} className="col-md-6 col-lg-4">
                 <ResourcesItem resource={res} />
               </div>
