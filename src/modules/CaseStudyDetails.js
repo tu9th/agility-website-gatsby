@@ -15,7 +15,7 @@ const CaseStudyDetails = (props) => {
 
 
 	let caseStudy = props.dynamicPageItem?.customFields;
-	// console.log(`props Detail`, props)
+	console.log(`props Detail`, props)
 
 	let link = '/resources/case-studies/' + caseStudy.uRL
 
@@ -53,7 +53,9 @@ const CaseStudyDetails = (props) => {
 				<div className="container">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left beauty-ul">
-							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}>
+							{/* <div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}> */}
+							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.contentPanelCopy.concat(caseStudy?.topContent))}>
+							{/* </div> */}
 							</div>
 						</div>
 						<div className="cs-detail-cont-right">
@@ -122,10 +124,10 @@ const CaseStudyDetails = (props) => {
 				{/* {caseStudy.cTA && <CallToAction item={caseStudy.cTA} />} */}
 
 			</section>
+			<Spacing item={props.item}/>
 
 			<CaseStudyRotator item={{ customFields: roratorItems }} />
 			<RelatedResources item={{ customFields: relatedItems }} />
-			<Spacing item={props.item}/>
 		</>
 
 	);
