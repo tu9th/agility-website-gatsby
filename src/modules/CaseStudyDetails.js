@@ -3,9 +3,10 @@ import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
 import Slider from 'react-slick'
-import ResponsiveImage from '../components/responsive-image'
+// import ResponsiveImage from '../components/responsive-image'
 import CaseStudyRotator from './CaseStudyRotator';
 import RelatedResources from './RelatedResources';
+import Spacing from './Spacing'
 import LazyLoad from 'react-lazyload'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
@@ -123,6 +124,7 @@ const CaseStudyDetails = (props) => {
 
 			<CaseStudyRotator item={{ customFields: roratorItems }} />
 			<RelatedResources item={{ customFields: relatedItems }} />
+			<Spacing item={props.item}/>
 		</>
 
 	);
