@@ -30,8 +30,7 @@ const CaseStudyDetails = (props) => {
 				<div className="container">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left beauty-ul">
-							<div className="cs-detail-inner">
-								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)} />
+							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}>
 							</div>
 						</div>
 						<div className="cs-detail-cont-right">

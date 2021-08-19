@@ -168,6 +168,10 @@
 
 /* *********************************** */
 /* CSS for New Skin */
+.case-d-gallery {
+  padding: 1px 0;
+  margin: 40px 0;
+}
 
 .cs-tag {
   display: inline-block;
@@ -223,13 +227,19 @@
   }
 
   blockquote {
-    +p {
+    +p,
+    +h6 {
       font-size: rem(12);
       color: $color-58;
       margin-bottom: 5px;
       text-transform: uppercase;
       font-weight: $fw-semi-bold;
     }
+  }
+}
+.cs-detail-inner {
+  iframe {
+    max-width: 100%;
   }
 }
 
@@ -247,14 +257,13 @@
 
   .cs-detail-inner {
     max-width: 768px;
-
-    iframe {
-      max-width: 100%;
-    }
   }
 }
 
 @media (min-width: 1501px) {
+  .case-d-gallery {
+    margin: 120px 0 85px;
+  }
   .cs-detail-cont-left {
     flex-grow: 1;
     max-width: calc(100% - 425px);
@@ -317,6 +326,70 @@
       &:last-child {
         margin-right: 0;
       }
+    }
+  }
+}
+
+/* gallery */
+.gal-slider {
+  padding: 65px 0 70px;
+  margin-bottom: 50px;
+  background-color: rgba(201, 216, 230, 0.25);
+  .slick-prev {
+    left: 20px;
+    &:hover {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+  .slick-next {
+    right: 20px;
+    &:hover {
+      transform: translateY(-50%);
+    }
+  }
+  .slick-arrow {
+    transition: all .25s;
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    &::before {
+      color: $color-17;
+      left: 5px;
+    }
+    &:hover {
+      background-color: $white;
+    }
+  }
+  .slick-list {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 30px -8px rgba(201, 216, 230, 0.5);
+    transition: height .25s;
+  }
+}
+
+@media (max-width:767px) {
+  .gal-slider {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 100px;
+
+    .slick-arrow {
+      top: calc(100% - 60px);
+    }
+
+    .slick-prev {
+      left: calc(50% - 50px);
+    }
+    .slick-next {
+      right: calc(50% - 60px);
+    }
+    .slick-dots {
+      width: calc(100% - 40px);
+      left: 20px;
     }
   }
 }

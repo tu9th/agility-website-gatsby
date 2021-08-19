@@ -4,7 +4,7 @@ import LazyBackground from '../utils/LazyBackground'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 import LazyLoad from 'react-lazyload'
-import Helpers from '../global/javascript/Helpers'
+import Helpers, { addUrlParam, removeURLParam } from '../global/javascript/Helpers'
 import SelectC8 from '../utils/SelectC8'
 
 import Spacing from './Spacing'
@@ -65,6 +65,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     selectedOption: [1],
   }
 
+  // console.log(`posts`, posts)
   // console.log(`categoryQuery`, posts, industries, challengesOpts)
 
   /* list clean Posts */
@@ -82,12 +83,13 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   const [btnPagingList, setBtnPagingList] = useState([])
 
   const timeORef = useRef(null)
+  const firstLoadRef = useRef(true)
 
   const [isMobile, setIsMobile] = useState(false)
 
   const halfPost = isMobile ? 5 : 8
 
-
+  /* check first load component */
   useEffect(() => {
     const checkIsMobile = () => {
       clearTimeout(timeORef.current)
@@ -108,13 +110,32 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       })
       console.log(params, search);
 
+      const findFilterIdBySlug = (list = {}, slug = '') => {
+        let result = 1
+        const values = Object.values(list)
+        const keys = Object.keys(list)
+        console.log(`object`, values, keys)
+        values.filter((item, index) => {
+          if (item.toLowerCase().replace(' ', '-') === slug) {
+            result = keys[index]
+          }
+          return item
+        })
+        return result
+      }
+
       if (params.length) {
-        if (params[0] && params[0][1]) {
-          setIndustriesOpts({ ...industriesOpts, selectedOption: [params[0][1]] })
-        }
-        if (params[1] && params[1][1]) {
-          setChallengesOpts({ ...challengesOpts, selectedOption: [params[1][1]] })
-        }
+        params.map(p => {
+          if (p[0] === 'industry') {
+            setIndustriesOpts({ ...industriesOpts, selectedOption: [findFilterIdBySlug(industries, p[1])] })
+          }
+          if (p[0] === 'challenge') {
+            setChallengesOpts({ ...challengesOpts, selectedOption: [findFilterIdBySlug(challenges, p[1])] })
+          }
+          if (p[0] === 'page') {
+            setPagingIndex(p[1] - 1)
+          }
+        })
       }
     }
     checkIsMobile()
@@ -132,8 +153,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     const max = halfPost * 2 * (pagingIndex + 1)
     const tmpAbovePosts = postsList.slice(min, max - halfPost);
     const tmpBelowPosts = postsList.slice(min + halfPost, max);
-    setAbovePosts(tmpAbovePosts)
-    setBelowPosts(tmpBelowPosts)
+    setAbovePosts([...tmpAbovePosts])
+    setBelowPosts([...tmpBelowPosts])
   }
 
   useEffect(() => {
@@ -144,17 +165,16 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   /* chekc update filter options */
   useEffect(() => {
 
-    /* reset paging when filter */
-    setPagingIndex(0);
-
     const indKey = industriesOpts.selectedOption[0]
     const chaKey = challengesOpts.selectedOption[0]
     let slug = ''
     let url = window.location.href
     url = url.substring(0, url.indexOf('?'))
     if (indKey === 1 && chaKey === 1) {
-      setPostsList(posts)
-      window.history.pushState({}, '', url)
+      setPostsList([...posts])
+      window.history.pushState({}, '', removeURLParam('industry'))
+      window.history.pushState({}, '', removeURLParam('challenge'))
+      // window.history.pushState({}, '', url)
     } else {
       /* get text of Category */
       const currentInd = industries[indKey]
@@ -181,15 +201,43 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
           return post
         }
       })
+      /* update URL with filter params */
+      if (currentInd) {
+        const url = addUrlParam('industry', currentInd.toLowerCase().replace(' ', '-'))
+        window.history.pushState({}, '', url)
+      } else {
+        window.history.pushState({}, '', removeURLParam('industry'))
+      }
 
-      slug = `?industry=${indKey}&challenge=${chaKey}`
-      /*  */
-      window.history.pushState({}, '', url + slug)
-      setPostsList(tmpPosts)
+      if (currentCha) {
+        const url = addUrlParam('challenge', currentCha.toLowerCase().replace(' ', '-'))
+        window.history.pushState({}, '', url)
+      } else {
+        window.history.pushState({}, '', removeURLParam('challenge'))
+      }
+
+      console.log(`tmpPosts`, tmpPosts)
+      setPostsList([...tmpPosts])
     }
   }, [industriesOpts, challengesOpts])
 
+  /* update URL with pagination */
+  useEffect(() => {
+    let url = ''
+    if (pagingIndex === 0) {
+      url = removeURLParam('page')
+    } else {
+      url = addUrlParam('page', pagingIndex + 1)
+    }
+    window.history.pushState({}, '', url)
+    if (!firstLoadRef.current) {
+      scrollTopModule()
+    }
+  }, [pagingIndex])
+
   const onChangeFilter = ({ name, value }) => {
+    /* reset paging when filter */
+    setPagingIndex(0);
     if (name === 'industries') {
       setIndustriesOpts({ ...industriesOpts, selectedOption: value })
     }
@@ -221,17 +269,17 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
   const handlePagingList = () => {
     const max = Math.ceil(postsList.length / (halfPost * 2))
-    const tmp = []
+    let tmp = []
     if (max < 3) {
       for (let i = 0; i < max; i++) {
         tmp.push(i)
       }
     } else {
       if (pagingIndex === 0) {
-        tmp = [1, 2, 3]
+        tmp = [0, 1, 2]
       } else
-        if (pagingIndex === max) {
-          tmp = [max - 2, max - 1, max]
+        if (pagingIndex === max - 1) {
+          tmp = [max - 3, max - 2, max - 1]
         } else {
           tmp = [pagingIndex - 1, pagingIndex, pagingIndex + 1]
         }
@@ -242,10 +290,19 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 
   useEffect(() => {
     handlePagingList()
+
   }, [pagingIndex, postsList])
   /* --------------------------- */
 
   const thisModuleRef = useRef(null)
+
+  const scrollTopModule = () => {
+    setTimeout(() => {
+      let header = document.querySelectorAll('#header')[0].offsetHeight
+      Helpers.animateScrollTop(thisModuleRef.current.offsetTop - header - 20, 350)
+    }, 100)
+  }
+
   /* animation module */
   useEffect(() => {
     const scrollEventFunc = () => {
@@ -254,14 +311,17 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     animationElementInnerComponent(thisModuleRef.current)
     window.addEventListener('scroll', scrollEventFunc)
 
+    /* update ref first Load */
+    firstLoadRef.current = false
     return () => {
       window.removeEventListener('scroll', scrollEventFunc)
     }
   }, [])
 
-  const renderPosts = (posts, specialOnLeft = false) => {
-    return posts.map((post, index) => {
 
+  const renderPosts = (posts, longBoxOnLeft = false) => {
+    return posts.map((post, index) => {
+      const isPurpleBackground = post.customFields?.isPurpleBackground === 'true' ? true : false
       /* Mobile => each 5 items, show 1 special item on index 5 */
       if (isMobile) {
         if (index !== 0 && index % 4 === 0) {
@@ -277,25 +337,29 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         }
       } else {
         /* Desktop => each 5 items, item 4 and 5 is special */
-        if (index === 0 || (index % 5 !== 3 && index % 5 !== 4)) {
-          return (
-            <div key={index} className="col-md-6 col-lg-4 case-col">
-              < PostItem post={post} />
-            </div>)
-        }
 
-        if (index % 5 === 3) {
+        if (index % 5 === 3 && longBoxOnLeft) {
           return (
-            <div key={index} className={`col-md-6 col-lg-${!specialOnLeft ? '8' : '4'} case-col`}>
-              < PostSpecialItem post={post} longBox={!specialOnLeft} />
+            <div key={index} className={`col-md-6 col-lg-8 case-col`}>
+              < PostSpecialItem post={post} longBox={true} isSpecial={isPurpleBackground} />
             </div>)
         }
-        if (index % 5 === 4) {
+        if (index % 5 === 4 && !longBoxOnLeft) {
           return (
-            <div key={index} className={`col-md-6 col-lg-${specialOnLeft ? '8' : '4'} case-col`}>
-              < PostSpecialItem post={post} longBox={specialOnLeft} />
+            <div key={index} className={`col-md-6 col-lg-8 case-col`}>
+              < PostSpecialItem post={post} longBox={true} isSpecial={isPurpleBackground} />
             </div>)
         }
+        if (isPurpleBackground) {
+          return (
+            <div key={index} className={`col-md-6 col-lg-4 case-col`}>
+              < PostSpecialItem post={post} isSpecial={isPurpleBackground} />
+            </div>)
+        }
+        return (
+          <div key={index} className="col-md-6 col-lg-4 case-col">
+            < PostItem post={post} />
+          </div>)
       }
     })
   }
@@ -303,20 +367,20 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   return (
     <>
       <section ref={thisModuleRef} className="animation">
-        <div className="container anima-bottom">
+        <div className="container anima-bottom delay-2">
           <div className="case-filter-box">
             <SelectC8 className="d-inline-block" data={industriesOpts} onChange={onChangeFilter} />
             <SelectC8 className="d-inline-block" data={challengesOpts} onChange={onChangeFilter} />
           </div>
           <div className="row">
-            {renderPosts(abovePosts)}
+            {renderPosts(abovePosts, true)}
           </div>
         </div>
         <div className="space-100"></div>
         <SingleTestimonialPanel item={item} />
         <div className="container anima-bottom delay-2">
           <div className="row">
-            {renderPosts(belowPosts, true)}
+            {renderPosts(belowPosts, false)}
           </div>
         </div>
         <div className="container">
@@ -366,7 +430,7 @@ const PostItem = ({ post }) => {
         <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
       </div>
       <div className="case-content small-paragraph">
-        <h3>{title}</h3>
+        <h3>{title} {post.contentID}</h3>
         <p>{body}</p>
         {link &&
           <Link to={link} className="link-line link-purple">Read More</Link>
@@ -375,14 +439,20 @@ const PostItem = ({ post }) => {
     </div>
   )
 }
-const PostSpecialItem = ({ post, longBox = false }) => {
+const PostSpecialItem = ({ post, longBox = false, isSpecial = false }) => {
 
   const thumbUrl = post?.customFields?.postImage?.url
   const link = post?.url
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt
-  const logo = post?.customFields?.logo
-  const longBoxClass = longBox ? 'long-box' : 'bg-6d'
+  const logo = post?.customFields?.customerWhiteLogo || post?.customFields?.logo
+  let longBoxClass = ''
+  if (isSpecial) {
+    longBoxClass += 'bg-6d is-special'
+  } else {
+    longBoxClass = longBox ? 'long-box' : ''
+
+  }
   return (
     <div className={`case-spe-box h-100 transition-25 ps-rv ${longBoxClass}`}>
       {longBox &&

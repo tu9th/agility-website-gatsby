@@ -37,6 +37,16 @@ export default props => (
 						}
 						caseStudyIndustries_TextField
 						caseStudyChallenges_TextField
+						customerWhiteLogo {
+							filesize
+							height
+							label
+							pixelHeight
+							pixelWidth
+							url
+							width
+						}
+						isPurpleBackground
 					}
 				}
 			}
