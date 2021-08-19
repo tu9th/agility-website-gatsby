@@ -12,8 +12,8 @@ const RelatedResources = ({ item }) => {
 
   return (
     <>
-      <section className="related-resources">
-        <div className="container">
+      <section className="related-resources ps-rv">
+        <div className="container ps-rv">
           <div className="text-center">
             <h2>{headline}</h2>
           </div>

@@ -15,10 +15,10 @@ const CaseStudyRotator = ({ item }) => {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const fields = item.customFields
-  const ctaBtnText = fields.cTAbuttonText
-  const title = fields.title
+  const ctaBtnText = fields?.cTAbuttonText
+  const title = fields?.title
   const classSection = `module mod-feature-casestudy CaseStudyRotator animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode' : ''}`
-  const caseStudies = fields.caseStudies.map((caseStudy) => {
+  const caseStudies = fields?.caseStudies.map((caseStudy) => {
     const customField = caseStudy.customFields
     const excerpt = StringUtils.stripHtml(customField.excerpt, 200)
     const titleCaseStudy = customField.title
@@ -45,7 +45,7 @@ const CaseStudyRotator = ({ item }) => {
       </div>
     )
   })
-  const listLogo = fields.caseStudies.map(caseStudy => {
+  const listLogo = fields?.caseStudies.map(caseStudy => {
     const customField = caseStudy.customFields
     if (customField.customerLogo.url) {
       return (

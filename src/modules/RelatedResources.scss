@@ -1,5 +1,21 @@
 @import '../global/setting';
 
+.related-resources {
+  .container {
+    padding-top: 70px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 1px;
+      background-color: $color-e9;
+    }
+  }
+}
+
 .relate-re-box {
   &:hover {
     .relate-re-thumb {
@@ -7,11 +23,19 @@
     }
   }
 }
+
 .relate-re-thumb {
   height: 224px;
 }
+
 .relate-re-cont {
   padding: 35px 25px 40px;
 }
 
-
+@media (min-width: 1501px) {
+  .related-resources {
+    .container {
+      padding-top: 110px;
+    }
+  }
+}

@@ -4,6 +4,8 @@ import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
 import Slider from 'react-slick'
 import ResponsiveImage from '../components/responsive-image'
+import CaseStudyRotator from './CaseStudyRotator';
+import RelatedResources from './RelatedResources';
 import LazyLoad from 'react-lazyload'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
@@ -12,10 +14,29 @@ const CaseStudyDetails = (props) => {
 
 
 	let caseStudy = props.dynamicPageItem?.customFields;
-	console.log(`props Detail`, caseStudy)
+	// console.log(`props Detail`, props)
 
 	let link = '/resources/case-studies/' + caseStudy.uRL
 
+	/* case studies rorator data */
+	const roratorItems = {}
+	roratorItems.cTAbuttonText = caseStudy?.rotatorCTAbuttonText
+	roratorItems.title = caseStudy?.rotatorTitle
+	roratorItems.caseStudies = caseStudy?.rotatorCaseStudies
+	roratorItems.darkMode = caseStudy?.rotatorDarkMode
+	roratorItems.mobileSpace = caseStudy?.rotatorMobileSpace
+	roratorItems.desktopSpace = caseStudy?.rotatorDesktopSpace
+	
+	/* case studies related resources data */
+	const relatedItems = {}
+	// relatedItems.cTAbuttonText = caseStudy?.relatedResourcesCTAbuttonText
+	relatedItems.title = caseStudy?.relatedResourcesTitle
+	relatedItems.relatedResources = caseStudy?.relatedResources
+	relatedItems.darkMode = caseStudy?.relatedResourcesDarkMode
+	relatedItems.mobileSpace = caseStudy?.relatedResourcesMobileSpace
+	relatedItems.desktopSpace = caseStudy?.relatedResourcesDesktopSpace
+
+	console.log(`roratorItems`, roratorItems)
 	const renderTags = (tags) => {
 		return tags.map((tag, index) => {
 			return (
@@ -100,6 +121,8 @@ const CaseStudyDetails = (props) => {
 
 			</section>
 
+			<CaseStudyRotator item={{ customFields: roratorItems }} />
+			<RelatedResources item={{ customFields: relatedItems }} />
 		</>
 
 	);
