@@ -172,6 +172,15 @@
   padding: 1px 0;
   margin: 40px 0;
 }
+.cs-website {
+  a {
+    text-decoration: underline;
+    &:hover {
+      color: $color-58;
+      text-decoration: none;
+    }
+  }
+}
 
 .cs-tag {
   display: inline-block;

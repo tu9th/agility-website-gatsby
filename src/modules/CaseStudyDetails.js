@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { graphql, StaticQuery, useStaticQuery } from "gatsby"
+import { graphql, StaticQuery, useStaticQuery, Link } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import CallToAction from "../components/call-to-action.jsx"
 import Slider from 'react-slick'
@@ -37,11 +37,12 @@ const CaseStudyDetails = (props) => {
 	relatedItems.mobileSpace = caseStudy?.relatedResourcesMobileSpace
 	relatedItems.desktopSpace = caseStudy?.relatedResourcesDesktopSpace
 
-	console.log(`roratorItems`, roratorItems)
-	const renderTags = (tags) => {
+	// console.log(`roratorItems`, roratorItems)
+	const renderTags = (tags, type) => {
 		return tags.map((tag, index) => {
+			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(' ', '-')}`
 			return (
-				<span key={index} className="d-inline-block cs-tag"><a href={'#'} target="_self">{tag?.customFields?.title}</a></span>
+				<span key={index} className="d-inline-block cs-tag"><Link to={link} target="_self">{tag?.customFields?.title}</Link></span>
 			)
 		})
 	}
@@ -67,7 +68,7 @@ const CaseStudyDetails = (props) => {
 								<div className="small-paragraph">
 									<h4>Industries</h4>
 									<p>
-										{renderTags(caseStudy?.caseStudyIndustries)}
+										{renderTags(caseStudy?.caseStudyIndustries, 'industry')}
 									</p>
 								</div>
 							}
@@ -76,7 +77,7 @@ const CaseStudyDetails = (props) => {
 								<div className="small-paragraph">
 									<h4>Challenges</h4>
 									<p>
-										{renderTags(caseStudy?.caseStudyChallenges)}
+										{renderTags(caseStudy?.caseStudyChallenges, 'challenge')}
 									</p>
 								</div>
 							}
