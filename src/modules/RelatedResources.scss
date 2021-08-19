@@ -2,7 +2,7 @@
 
 .related-resources {
   .container {
-    padding-top: 70px;
+    padding-top: 75px;
 
     &::before {
       content: '';
@@ -17,6 +17,7 @@
 }
 
 .relate-re-box {
+  border: 1px solid $color-c9;
   &:hover {
     .relate-re-thumb {
       transform: scale3d(1.03, 1.03, 1);
@@ -25,17 +26,43 @@
 }
 
 .relate-re-thumb {
-  height: 224px;
+  height: 200px;
 }
 
 .relate-re-cont {
-  padding: 35px 25px 40px;
+  padding: 29px 17px 27px;
 }
 
+@media (min-width: 992px) {
+  .relate-re-thumb {
+    height: 224px;
+  }
+}
 @media (min-width: 1501px) {
   .related-resources {
-    .container {
-      padding-top: 110px;
+    h2 {
+      margin-bottom: 36px;
     }
+    .container {
+      padding-top: 128px;
+    }
+  }
+  .relate-re-cont {
+    padding: 35px 25px 40px;
+  }
+}
+
+@media (max-width: 991px) {
+  .relate-re-box {
+    margin-bottom: 40px;
+    h3 {
+      font-size: rem(19);
+      line-height: 1.37;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .relate-re-box {
+    margin-bottom: 40px;
   }
 }

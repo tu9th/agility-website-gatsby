@@ -37,7 +37,7 @@ const CenteredContentPanel = ({ item }) => {
 					<h1>{heading}</h1>
 				}
 				{ des &&
-					<div dangerouslySetInnerHTML={renderHTML(des)} />
+					<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(des)} />
 				}
 				{ (btn1 || btn2) &&
 					<p>

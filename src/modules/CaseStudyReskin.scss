@@ -5,74 +5,97 @@
   &::before {
     content: '';
     display: block;
-    padding-bottom: 64.94%;
+    padding-bottom: 295px;
   }
 }
+
 .case-col {
-  margin-top: 60px;
+  margin-top: 40px;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .case-box {
-  color: $color-4c;  
+  color: $color-4c;
   border: 1px solid rgba(201, 216, 230, 0.5);
+
   .bg {
     z-index: 1;
   }
+
   &:hover {
     box-shadow: 0 5px 30px -8px rgba(201, 216, 230, 0.5);
+
     .bg {
       transform: scale3d(1.03, 1.03, 1);
     }
   }
 }
+
 .case-content {
-  padding: 40px 35px;
+  padding: 28px 20px;
 
   p {
     margin-bottom: 18px;
   }
+
   a {
     display: inline-block;
   }
 }
+
 .case-logo {
   max-width: 111px;
   margin-bottom: 30px;
+
   img {
     max-height: 60px;
   }
 }
+
 .case-spe-box {
   color: $white;
+
   // background-color: $color-e9;
   .case-content {
     padding: 40px 35px;
-    > * {
+
+    >* {
       z-index: 2;
     }
+
     * {
       color: inherit;
     }
   }
+
   .btn {
     margin-bottom: 0;
   }
+
   .btn-outline-white {
     background-color: transparent;
   }
+
   &.long-box {
     overflow: hidden;
+
     &:hover {
       .bg {
         transform: scale3d(1.03, 1.03, 1);
       }
     }
+
     .bg {
       z-index: 1;
     }
+
     .case-content {
       max-width: 425px;
       z-index: 2;
+
       &::before {
         content: '';
         position: absolute;
@@ -86,10 +109,61 @@
   }
 }
 
+.cs-above {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .case-col {
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  }
+  .case-filter-box {
+    margin-bottom: 73px;
+    .dropdown-menu-c8 {
+      position: absolute !important;
+    }
+  }
+  .cs-above {
+    margin-bottom: 100px;
+  }
+}
+@media (min-width: 992px) {
+  .case-col {
+    &:nth-child(3) {
+      margin-top: 0;
+    }
+  }
+  .case-thumb {
+    &::before {
+      padding-bottom: 64.94%;
+    }
+  }
+}
 @media (min-width: 1501px) {
+  .case-col {
+    margin-top: 60px;
+  }
+  .case-content {
+    padding: 40px 35px 32px;
+  }
   .case-spe-box {
     .d-table-cell {
       height: 352px;
+    }
+  }
+  .cs-above {
+    margin-bottom: 244px;
+  }
+}
+
+@media (max-width: 767px) {
+  .case-content {
+    h3 {
+      font-size: rem(19);
+      line-height: 1.37;
+      margin-bottom: 7px;
     }
   }
 }

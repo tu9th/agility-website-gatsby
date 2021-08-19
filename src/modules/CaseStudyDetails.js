@@ -119,14 +119,14 @@ const CaseStudyDetails = (props) => {
 						</div>
 						<div className="cs-detail-cont-right">
 							{caseStudy?.website?.href &&
-								<div className="small-paragraph cs-website">
+								<div className="small-paragraph cs-website last-mb-none">
 									<h4>Website</h4>
 									<p><a href={caseStudy?.website?.href} target={caseStudy?.website?.target || '_blank'}>{caseStudy?.website?.text || caseStudy?.website?.href}</a></p>
 								</div>
 							}
 
 							{caseStudy?.caseStudyIndustries && caseStudy?.caseStudyIndustries.length > 0 &&
-								<div className="small-paragraph">
+								<div className="small-paragraph cs-tag-wrap last-mb-none">
 									<h4>Industries</h4>
 									<p>
 										{renderTags(caseStudy?.caseStudyIndustries, 'industry')}
@@ -135,7 +135,7 @@ const CaseStudyDetails = (props) => {
 							}
 
 							{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 &&
-								<div className="small-paragraph">
+								<div className="small-paragraph cs-tag-wrap last-mb-none">
 									<h4>Challenges</h4>
 									<p>
 										{renderTags(caseStudy?.caseStudyChallenges, 'challenge')}
@@ -149,7 +149,7 @@ const CaseStudyDetails = (props) => {
 									{caseStudy?.quote &&
 										<div className="cs-quote">
 											<span className="icomoon icon-quote"></span>
-											<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
+											<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 										</div>
 									}
 								</div>
@@ -171,13 +171,13 @@ const CaseStudyDetails = (props) => {
 					</div>
 
 					<div className="d-lg-none">
-						<CaseStudySocialShare link={link} title={caseStudy.title} />
 						{caseStudy?.quote &&
 							<div className="cs-quote">
 								<span className="icomoon icon-quote"></span>
-								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
+								<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 							</div>
 						}
+						<CaseStudySocialShare link={link} title={caseStudy.title} />
 					</div>
 				</div>
 

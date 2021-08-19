@@ -173,6 +173,7 @@
   margin: 40px 0;
 }
 .cs-website {
+  margin-bottom: 20px;
   a {
     text-decoration: underline;
     &:hover {
@@ -181,12 +182,24 @@
     }
   }
 }
+.cs-tag-wrap {
+  margin-bottom: 25px;
+  h4 {
+    margin-bottom: 5px;
+  }
+}
 
+.window-os {
+  .cs-tag {
+    padding-top: 5px;
+    padding-bottom: 2px;
+  }
+}
 .cs-tag {
   display: inline-block;
   background: rgba(201, 216, 230, 0.25);
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 3px 13px;
   margin-right: 16px;
 
   a {
@@ -223,7 +236,7 @@
   background: rgb(255, 255, 255);
   border-radius: 6px;
   border: 1px solid $color-75;
-  padding: 32px;
+  padding: 32px 20px;
   margin-top: 35px;
   font-size: rem(14);
   line-height: 1.43;
@@ -232,7 +245,7 @@
     font-size: rem(30);
     color: $color-75;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   blockquote {
@@ -267,8 +280,25 @@
   .cs-detail-inner {
     max-width: 768px;
   }
+  .cs-d-social {
+    margin-top: 68px;
+    h5 {
+      margin-bottom: 8px;
+    }
+    a {
+      font-size: rem(14);
+      margin-right: 12px;
+    }
+  }
 }
 
+@media (min-width: 1200px) {
+  .cs-tag-wrap {
+    h4 {
+      margin-bottom: 5px;
+    }
+  }
+}
 @media (min-width: 1501px) {
   .case-d-gallery {
     margin: 120px 0 85px;
@@ -279,8 +309,21 @@
   }
 
   .cs-detail-cont-right {
-    flex: 0 0 425px;
-    max-width: 425px;
+    flex: 0 0 432px;
+    max-width: 432px;
+  }
+  .cs-website {
+    margin-bottom: 27px;
+  }
+  .cs-tag-wrap {
+    margin-bottom: 32px;
+  }
+  .cs-quote {
+    .icomoon {
+      margin-bottom: 16px;
+    }
+    margin-top: 65px;
+    padding: 32px;
   }
 }
 
@@ -299,7 +342,7 @@
     max-width: 100%;
     order: 1;
     margin-bottom: 30px;
-    padding: 30px 0 10px;
+    padding: 34px 0 10px;
     > * {
       position: relative;
       z-index: 1;
@@ -320,10 +363,13 @@
     }
   }
   .cs-quote {
-    margin-bottom: 70px;
+    margin-bottom: 38px;
   }
   .cs-d-social {
     text-align: center;
+    h5 {
+      margin-bottom: 10px;
+    }
     .soc-box {
       justify-content: center;
     }

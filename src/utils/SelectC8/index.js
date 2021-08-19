@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-// import ColoredScrollbars from '../../modules/mod-our-process/coloredScrollbars'
+import ColoredScrollbars from '../coloredScrollbars'
 import './select-c8.scss'
 const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, ref) => {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -126,10 +126,10 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
         <div
           className={`dropdown-menu dropdown-menu-c8 text-reset w-100 p-0 m-0 ${showDropdown ? 'show' : ''}`}
         >
-          {/* <ColoredScrollbars
+          <ColoredScrollbars
             autoHeight
             autoHeightMin={0}
-            autoHeightMax={250}> */}
+            autoHeightMax={200}>
             <ul className="list-inline m-0">
 
               {optionKeys.map((optionKey, idx) => {
@@ -149,7 +149,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
                 ) : (
                   <li
                     key={idx}
-                    className={`${selectedOption === optionKey ? 'active' : ''}`}
+                    className={`${selectedOption[0] === optionKey ? 'active' : ''}`}
                     data-value={optionKey}
                     onClick={() => {
                       changeSelectedOption(optionKey)
@@ -160,7 +160,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
                 )
               })}
             </ul>
-          {/* </ColoredScrollbars> */}
+          </ColoredScrollbars>
         </div>
       </div>
     </div>

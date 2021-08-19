@@ -324,10 +324,10 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       const isPurpleBackground = post.customFields?.isPurpleBackground === 'true' ? true : false
       /* Mobile => each 5 items, show 1 special item on index 5 */
       if (isMobile) {
-        if (index !== 0 && index % 4 === 0) {
+        if (isPurpleBackground) {
           return (
-            <div key={index} className="col-md-6 col-lg-4 case-col">
-              < PostSpecialItem post={post} />
+            <div key={index} className="col-md-6 col-lg-4 case-col" >
+              < PostSpecialItem post={post} isSpecial={isPurpleBackground} />
             </div>)
         } else {
           return (
@@ -367,8 +367,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   return (
     <>
       <section ref={thisModuleRef} className="animation">
-        <div className="container anima-bottom delay-2">
-          <div className="case-filter-box">
+        <div className="container anima-bottom delay-2 cs-above">
+          <div className="case-filter-box small-paragraph">
             <SelectC8 className="d-inline-block" data={industriesOpts} onChange={onChangeFilter} />
             <SelectC8 className="d-inline-block" data={challengesOpts} onChange={onChangeFilter} />
           </div>
@@ -376,7 +376,6 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
             {renderPosts(abovePosts, true)}
           </div>
         </div>
-        <div className="space-100"></div>
         <SingleTestimonialPanel item={item} />
         <div className="container anima-bottom delay-2">
           <div className="row">
