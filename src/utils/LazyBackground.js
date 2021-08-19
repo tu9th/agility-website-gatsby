@@ -1,14 +1,5 @@
 import React from 'react';
 
-function elementInViewport(el) {
-	const rect = el.getBoundingClientRect();
-
-	return (
-		rect.top >= -500
-		&& rect.left >= -1000
-		&& rect.top <= ((window.innerHeight || document.documentElement.clientHeight) + 500)
-	)
-}
 
 export default class LazyImage extends React.Component {
 	// constructor(props) {
@@ -119,6 +110,15 @@ export default class LazyImage extends React.Component {
 					this.setState({
 						loaded: true,
 						dynamicSrc: src
+					});
+				}
+			}
+			/* load img full origin width if cant load modify img above */
+			imgLoader.onerror = () => {
+				if (this.bgElm) {
+					this.setState({
+						loaded: true,
+						dynamicSrc: this.props.src
 					});
 				}
 			}
