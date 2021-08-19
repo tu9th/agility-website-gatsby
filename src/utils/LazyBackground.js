@@ -100,7 +100,7 @@ export default class LazyImage extends React.Component {
 			let w = this.bgElm.offsetWidth;
 			const imgLoader = new Image();
 			let src = this.props.src
-			if (src.indexOf("?") === -1) {
+			if (src?.indexOf("?") === -1) {
 				src = `${src}?w=${w}`
 			}
 			imgLoader.src = src;
@@ -129,7 +129,7 @@ export default class LazyImage extends React.Component {
 
 		//use a blurry version of the image...
 		let baseImage = this.state.dynamicSrc; //this.props.src
-		if (baseImage.indexOf("?") > 2 && !this.state.loaded) {
+		if (baseImage && baseImage.indexOf("?") > 2 && !this.state.loaded) {
 			baseImage = baseImage.substring(0, baseImage.lastIndexOf("?"))
 		}
 

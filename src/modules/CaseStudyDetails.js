@@ -14,6 +14,68 @@ import "./RichTextArea.scss"
 const CaseStudyDetails = (props) => {
 
 
+	const query = useStaticQuery(graphql`
+		query CustomRelatedResources {
+			allAgilityCaseStudy {
+				edges {
+					node {
+						customFields {
+							media {
+								url
+							}
+							gallery {
+								galleryid
+							}
+						}
+					}
+				}
+			}
+			allAgilityResource(
+				filter: {customFields: {resourceTypeName: {eq: "Webinar"}}}
+				limit: 10
+			) {
+				edges {
+					node {
+						customFields {
+							resourceTypeID
+							title
+							resourceTypeName
+							image {
+								url
+								label
+							}
+							uRL
+						}
+					}
+				}
+			}
+			allAgilityBlogPost(
+				sort: {order: DESC, fields: properties___itemOrder}
+				limit: 10
+				filter: {customFields: {categoriesTitle: {eq: "Blog"}}}
+			) {
+				edges {
+					node {
+						customFields {
+							title
+							postImage {
+								url
+								label
+							}
+							categoriesTitle
+							uRL
+						}
+					}
+				}
+			}
+		}
+	`)
+
+	const mediaLists = query?.allAgilityCaseStudy?.edges
+	const relatedRes = query?.allAgilityResource?.edges
+	const relatedBlog = query?.allAgilityBlogPost?.edges
+	console.log(`query`, query)
+
 	let caseStudy = props.dynamicPageItem?.customFields;
 	console.log(`props Detail`, props)
 
@@ -27,11 +89,11 @@ const CaseStudyDetails = (props) => {
 	roratorItems.darkMode = caseStudy?.rotatorDarkMode
 	roratorItems.mobileSpace = caseStudy?.rotatorMobileSpace
 	roratorItems.desktopSpace = caseStudy?.rotatorDesktopSpace
-	
+
 	/* case studies related resources data */
 	const relatedItems = {}
 	// relatedItems.cTAbuttonText = caseStudy?.relatedResourcesCTAbuttonText
-	relatedItems.title = caseStudy?.relatedResourcesTitle
+	relatedItems.title = caseStudy?.relatedResourcesTitle || 'View Related Resources'
 	relatedItems.relatedResources = caseStudy?.relatedResources
 	relatedItems.darkMode = caseStudy?.relatedResourcesDarkMode
 	relatedItems.mobileSpace = caseStudy?.relatedResourcesMobileSpace
@@ -53,10 +115,7 @@ const CaseStudyDetails = (props) => {
 				<div className="container">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left beauty-ul">
-							{/* <div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}> */}
-							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.contentPanelCopy.concat(caseStudy?.topContent))}>
-							{/* </div> */}
-							</div>
+							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}></div>
 						</div>
 						<div className="cs-detail-cont-right">
 							{caseStudy?.website?.href &&
@@ -85,21 +144,21 @@ const CaseStudyDetails = (props) => {
 							}
 
 							<div>
-								{caseStudy?.quote &&
-									<div className="d-none d-lg-block">
-										<CaseStudySocialShare link={link} title={caseStudy.title} />
+								<div className="d-none d-lg-block">
+									<CaseStudySocialShare link={link} title={caseStudy.title} />
+									{caseStudy?.quote &&
 										<div className="cs-quote">
 											<span className="icomoon icon-quote"></span>
 											<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 										</div>
-									</div>
-								}
+									}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<CaseStudyGallery galleryId={caseStudy?.gallery?.galleryid} title={caseStudy.title} />
+				<CaseStudyGallery dataList={mediaLists} galleryId={caseStudy?.gallery?.galleryid} title={caseStudy.title} />
 
 				<div className="container">
 					<div className="d-lg-flex flex-grow">
@@ -110,24 +169,27 @@ const CaseStudyDetails = (props) => {
 						</div>
 						<div className="cs-detail-cont-right fake" />
 					</div>
-					{caseStudy?.quote &&
-						<div className="d-lg-none">
-							<CaseStudySocialShare link={link} title={caseStudy.title} />
+
+					<div className="d-lg-none">
+						<CaseStudySocialShare link={link} title={caseStudy.title} />
+						{caseStudy?.quote &&
 							<div className="cs-quote">
 								<span className="icomoon icon-quote"></span>
 								<div dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 							</div>
-						</div>
-					}
+						}
+					</div>
 				</div>
 
 				{/* {caseStudy.cTA && <CallToAction item={caseStudy.cTA} />} */}
 
 			</section>
-			<Spacing item={props.item}/>
+			<Spacing item={props.item} />
 
 			<CaseStudyRotator item={{ customFields: roratorItems }} />
-			<RelatedResources item={{ customFields: relatedItems }} />
+			{/* <RelatedResources item={{ customFields: relatedItems }} /> */}
+			<CaseStudyRelatedResource resources={relatedRes} blogs={relatedBlog} item={{ customFields: relatedItems }} />
+
 		</>
 
 	);
@@ -169,26 +231,27 @@ const CaseStudySocialShare = ({ link, title }) => {
 	)
 }
 
-const CaseStudyGallery = ({ galleryId, title }) => {
+const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 
-	const query = useStaticQuery(graphql`
-	query Media {
-		allAgilityCaseStudy {
-			edges {
-				node {
-					customFields {
-						media {
-							url
-						}
-						gallery {
-							galleryid
-						}
-					}
-				}
-			}
-		}
-	}`)
-	const mediaLists = query.allAgilityCaseStudy?.edges
+	// const query = useStaticQuery(graphql`
+	// query Media {
+	// 	allAgilityCaseStudy {
+	// 		edges {
+	// 			node {
+	// 				customFields {
+	// 					media {
+	// 						url
+	// 					}
+	// 					gallery {
+	// 						galleryid
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }`)
+	const query = {}
+	const mediaLists = dataList // query?.allAgilityCaseStudy?.edges
 	const founded = mediaLists?.filter(i => {
 		if (i.node?.customFields?.gallery?.galleryid === galleryId) {
 			return i.node.customFields
@@ -232,5 +295,34 @@ const CaseStudyGallery = ({ galleryId, title }) => {
 
 			</section>
 		</>
+	)
+}
+
+const CaseStudyRelatedResource = ({ resources, blogs, item }) => {
+
+	if (!item.customFields?.relatedResources?.length) {
+		resources = resources.map(res => {
+			return res.node
+		})
+		blogs = blogs.map(blog => {
+			blog.node.customFields.image = blog.node?.customFields?.postImage
+			blog.node.customFields.resourceTypeName = blog.node?.customFields?.categoriesTitle
+			return blog.node
+		})
+
+		resources.push(...blogs)
+
+		resources = resources.filter(res => {
+			if (res?.customFields?.image) {
+				return res
+			}
+		})
+		item.customFields.relatedResources = resources.slice(0, 3)
+	}
+
+
+	console.log(`resources`, resources, blogs, item)
+	return (
+		<RelatedResources item={item} />
 	)
 }
