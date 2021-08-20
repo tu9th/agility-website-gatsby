@@ -221,7 +221,8 @@
       content: '';
       @include position(absolute, 0, null, 0, null, 4);
       opacity: .93;
-      background-image: linear-gradient(to bottom, #e9f0f5, #f6fbff);
+      // background-image: linear-gradient(to bottom, #e9f0f5, #f6fbff);
+      background-color: rgba(255, 255, 255, 0.9);
       width: 69px;
     }
 

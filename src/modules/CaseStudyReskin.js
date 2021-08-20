@@ -116,7 +116,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         const keys = Object.keys(list)
         console.log(`object`, values, keys)
         values.filter((item, index) => {
-          if (item.toLowerCase().replace(' ', '-') === slug) {
+          if (item.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-') === slug) {
             result = keys[index]
           }
           return item
@@ -203,14 +203,14 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       })
       /* update URL with filter params */
       if (currentInd) {
-        const url = addUrlParam('industry', currentInd.toLowerCase().replace(' ', '-'))
+        const url = addUrlParam('industry', currentInd.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-'))
         window.history.pushState({}, '', url)
       } else {
         window.history.pushState({}, '', removeURLParam('industry'))
       }
 
       if (currentCha) {
-        const url = addUrlParam('challenge', currentCha.toLowerCase().replace(' ', '-'))
+        const url = addUrlParam('challenge', currentCha.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-'))
         window.history.pushState({}, '', url)
       } else {
         window.history.pushState({}, '', removeURLParam('challenge'))
@@ -423,10 +423,9 @@ const PostItem = ({ post }) => {
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt
   return (
-    <div className="case-box h-100 transition-25">
+    <div className="case-box h-100 transition-25 ps-rv">
       <div className="case-thumb ps-rv overflow-hidden">
         <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />
-        <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
       </div>
       <div className="case-content small-paragraph">
         <h3>{title} {post.contentID}</h3>
@@ -435,6 +434,7 @@ const PostItem = ({ post }) => {
           <Link to={link} className="link-line link-purple">Read More</Link>
         }
       </div>
+      <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
     </div>
   )
 }
@@ -450,7 +450,6 @@ const PostSpecialItem = ({ post, longBox = false, isSpecial = false }) => {
     longBoxClass += 'bg-6d is-special'
   } else {
     longBoxClass = longBox ? 'long-box' : ''
-
   }
   return (
     <div className={`case-spe-box h-100 transition-25 ps-rv ${longBoxClass}`}>
@@ -471,6 +470,9 @@ const PostSpecialItem = ({ post, longBox = false, isSpecial = false }) => {
           }
         </div>
       </div>
+      {longBox &&
+        <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
+      }
     </div>
   )
 }
