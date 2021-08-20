@@ -38,16 +38,22 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     }
   `)
 
+  let allTagsText = '';
+  posts.map(post => {
+    allTagsText += `${post?.customFields?.caseStudyChallenges_TextField},${post?.customFields?.caseStudyIndustries_TextField},`
+
+    return post
+  })
   const industries = {};
-  categoryQuery?.allAgilityCaseStudyIndustry?.edges?.map(item => {
-    if (item.node?.customFields?.title && item.node?.contentID) {
+  categoryQuery?.allAgilityCaseStudyIndustry?.edges?.filter(item => {
+    if (item.node?.customFields?.title && item.node?.contentID && allTagsText?.indexOf(item.node?.customFields?.title) !== -1) {
       industries[item.node?.contentID] = item.node?.customFields?.title
     }
     return item
   })
   const challenges = {};
   categoryQuery?.allAgilityCaseStudyChallenge?.edges?.map(item => {
-    if (item.node?.customFields?.title && item.node?.contentID) {
+    if (item.node?.customFields?.title && item.node?.contentID && allTagsText?.indexOf(item.node?.customFields?.title) !== -1) {
       challenges[item.node?.contentID] = item.node?.customFields?.title
     }
     return item?.node
@@ -66,7 +72,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   }
 
   // console.log(`posts`, posts)
-  // console.log(`categoryQuery`, posts, industries, challengesOpts)
+  // console.log(`categoryQuery`, industries, allTagsText)
 
   /* list clean Posts */
   const tmpAbovePosts = posts.slice(0, 8);
@@ -470,9 +476,9 @@ const PostSpecialItem = ({ post, longBox = false, isSpecial = false }) => {
           }
         </div>
       </div>
-      {longBox &&
+      {/* {longBox && */}
         <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
-      }
+      {/* } */}
     </div>
   )
 }

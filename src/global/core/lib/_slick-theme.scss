@@ -220,10 +220,9 @@
     &::before {
       color:  $color-17;
     }
-    &:hover,
-    &:focus {
+    &:hover {
       &::before {
-        color:  $color-17;
+        color:  $color-58;
       }
     }
   }

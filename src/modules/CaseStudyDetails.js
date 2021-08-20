@@ -102,7 +102,7 @@ const CaseStudyDetails = (props) => {
 	// console.log(`roratorItems`, roratorItems)
 	const renderTags = (tags, type) => {
 		return tags.map((tag, index) => {
-			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(' ', '-')}`
+			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-')}`
 			return (
 				<span key={index} className="d-inline-block cs-tag"><Link to={link} target="_self">{tag?.customFields?.title}</Link></span>
 			)
