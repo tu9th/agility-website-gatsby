@@ -153,6 +153,8 @@
 .content-case {
   // padding: 0 63px;
   transition: all .35s;
+  font-size: rem(17);
+  line-height: 1.647;
 
   // z-index: 2;
   a {
@@ -270,9 +272,11 @@
   }
 }
 
-@media (min-width: 991px) {
+@media (min-width: 992px) {
   .content-case {
     // padding: 0 48px;
+    font-size: 0.9375rem;
+    line-height: 1.667;
   }
 
   .box-slider-center {

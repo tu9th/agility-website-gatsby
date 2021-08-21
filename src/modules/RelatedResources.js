@@ -14,9 +14,11 @@ const RelatedResources = ({ item }) => {
     <>
       <section className="related-resources ps-rv">
         <div className="container ps-rv">
-          <div className="text-center">
-            <h2>{headline}</h2>
-          </div>
+          {headline &&
+            <div className="text-center">
+              <h4 className="h2">{headline}</h4>
+            </div>
+          }
           <div className="row">
             {resources?.map((res, index) => {
               return <div key={index} className="col-md-6 col-lg-4">
@@ -46,7 +48,7 @@ const ResourcesItem = ({ resource }) => {
       </div>
       <div className="relate-re-cont">
         <h3>{data?.title}</h3>
-        <Link to={link} className="link-line line-purple">Readmore</Link>
+        <Link to={link} className="link-line line-purple">Read More</Link>
       </div>
     </div>
   )

@@ -122,7 +122,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         const keys = Object.keys(list)
         console.log(`object`, values, keys)
         values.filter((item, index) => {
-          if (item.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-') === slug) {
+          if (item.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-') === slug) {
             result = keys[index]
           }
           return item
@@ -209,14 +209,14 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       })
       /* update URL with filter params */
       if (currentInd) {
-        const url = addUrlParam('industry', currentInd.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-'))
+        const url = addUrlParam('industry', currentInd.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-'))
         window.history.pushState({}, '', url)
       } else {
         window.history.pushState({}, '', removeURLParam('industry'))
       }
 
       if (currentCha) {
-        const url = addUrlParam('challenge', currentCha.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-'))
+        const url = addUrlParam('challenge', currentCha.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-'))
         window.history.pushState({}, '', url)
       } else {
         window.history.pushState({}, '', removeURLParam('challenge'))
@@ -423,6 +423,10 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
 export default CaseStudyReskin
 
 
+const trimText = (text) => {
+  let txt = text.split(' ')
+    return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
+}
 const PostItem = ({ post }) => {
   const thumbUrl = post?.customFields?.postImage?.url
   const link = post?.url
@@ -434,8 +438,8 @@ const PostItem = ({ post }) => {
         <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />
       </div>
       <div className="case-content small-paragraph">
-        <h3>{title} {post.contentID}</h3>
-        <p>{body}</p>
+        <h3>{title}</h3>
+        <p>{trimText(body)}</p>
         {link &&
           <Link to={link} className="link-line link-purple">Read More</Link>
         }
@@ -470,14 +474,14 @@ const PostSpecialItem = ({ post, longBox = false, isSpecial = false }) => {
             </LazyLoad>
           </div>
           <h3>{title}</h3>
-          <p>{body}</p>
+          <p>{trimText(body)}</p>
           {link &&
             <Link to={link} className={`mb-0 btn ${longBox ? 'btn-yellow' : 'btn-outline-white'}`}>Read More</Link>
           }
         </div>
       </div>
       {/* {longBox && */}
-        <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
+      <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
       {/* } */}
     </div>
   )

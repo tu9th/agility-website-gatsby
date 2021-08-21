@@ -57,7 +57,8 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 										<p>{caseStudy.excerpt}</p>
 									</div>
 								</div>
-								<LazyBackground className="case-ban-bg d-lg-none h-100 bg" src={caseStudy?.image?.url} />
+								<LazyBackground src={caseStudy?.image?.url}
+								className={`case-ban-bg d-lg-none h-100 bg ${!metrics?.length ? 'mb-0' : ''}`} />
 								{metrics && metrics.length > 0 &&
 									<div className="ps-rv cs-feature cs-metrics">
 										<div className="row last-mb-none">
@@ -67,7 +68,7 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 												return (
 													<div key={index} className="metric-col col-lg-4">
 														<div className="cs-f-item small-paragraph last-mb-none">
-															<h2 className="mb-0 text-white">{value}</h2>
+															<h4 className="mb-0 h2 font-semi-bold text-white">{value}</h4>
 															<p>{key}</p>
 														</div>
 													</div>

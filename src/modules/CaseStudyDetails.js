@@ -102,7 +102,7 @@ const CaseStudyDetails = (props) => {
 	// console.log(`roratorItems`, roratorItems)
 	const renderTags = (tags, type) => {
 		return tags.map((tag, index) => {
-			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g,'-').replace(/--+/g,'-')}`
+			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 			return (
 				<span key={index} className="d-inline-block cs-tag"><Link to={link} target="_self">{tag?.customFields?.title}</Link></span>
 			)
@@ -148,7 +148,7 @@ const CaseStudyDetails = (props) => {
 									<CaseStudySocialShare link={link} title={caseStudy.title} />
 									{caseStudy?.quote &&
 										<div className="cs-quote">
-											<span className="icomoon icon-quote"></span>
+											{/* <span className="icomoon icon-quote"></span> */}
 											<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 										</div>
 									}
@@ -173,7 +173,7 @@ const CaseStudyDetails = (props) => {
 					<div className="d-lg-none">
 						{caseStudy?.quote &&
 							<div className="cs-quote">
-								<span className="icomoon icon-quote"></span>
+								{/* <span className="icomoon icon-quote"></span> */}
 								<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
 							</div>
 						}
@@ -184,11 +184,11 @@ const CaseStudyDetails = (props) => {
 				{/* {caseStudy.cTA && <CallToAction item={caseStudy.cTA} />} */}
 
 			</section>
-			<Spacing item={props.item} />
 
 			<CaseStudyRotator item={{ customFields: roratorItems }} />
 			{/* <RelatedResources item={{ customFields: relatedItems }} /> */}
-			<CaseStudyRelatedResource resources={relatedRes} blogs={relatedBlog} item={{ customFields: relatedItems }} />
+			<CaseStudyRelatedResource resources={relatedRes} blogs={relatedBlog} item={{ customFields: relatedItems }} currentContentID={props.item?.contentID} />
+			<Spacing item={props.item} />
 
 		</>
 
@@ -233,23 +233,6 @@ const CaseStudySocialShare = ({ link, title }) => {
 
 const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 
-	// const query = useStaticQuery(graphql`
-	// query Media {
-	// 	allAgilityCaseStudy {
-	// 		edges {
-	// 			node {
-	// 				customFields {
-	// 					media {
-	// 						url
-	// 					}
-	// 					gallery {
-	// 						galleryid
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }`)
 	const query = {}
 	const mediaLists = dataList // query?.allAgilityCaseStudy?.edges
 	const founded = mediaLists?.filter(i => {
@@ -298,7 +281,7 @@ const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 	)
 }
 
-const CaseStudyRelatedResource = ({ resources, blogs, item }) => {
+const CaseStudyRelatedResource = ({ resources, blogs, item, currentContentID = null }) => {
 
 	if (!item.customFields?.relatedResources?.length) {
 		resources = resources.map(res => {
@@ -313,7 +296,7 @@ const CaseStudyRelatedResource = ({ resources, blogs, item }) => {
 		resources.push(...blogs)
 
 		resources = resources.filter(res => {
-			if (res?.customFields?.image) {
+			if (res?.customFields?.image && res?.customFields?.contentID !== currentContentID) {
 				return res
 			}
 		})
@@ -321,7 +304,7 @@ const CaseStudyRelatedResource = ({ resources, blogs, item }) => {
 	}
 
 
-	console.log(`resources`, resources, blogs, item)
+	// console.log(`resources`, resources, blogs, item)
 	return (
 		<RelatedResources item={item} />
 	)

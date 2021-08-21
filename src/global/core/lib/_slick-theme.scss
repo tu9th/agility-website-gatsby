@@ -180,7 +180,7 @@
         &::after {
           width: 12px;
           height: 12px;
-          background-color: $secondaryColor;
+          background-color: $color-58;
         }
       }
     }
@@ -209,7 +209,7 @@
       height: 8px;
       transform: translateY(-50%) translateX(-50%);
       border-radius: 50%;
-      border: 1px solid $secondaryColor;
+      border: 1px solid $color-75;
       transition: all .35s;
     }
 }

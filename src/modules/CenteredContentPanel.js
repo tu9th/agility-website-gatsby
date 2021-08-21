@@ -10,7 +10,7 @@ const CenteredContentPanel = ({ item }) => {
 	const des = item.customFields.description
 	const btn1 = item.customFields.cTA1
 	const btn2 = item.customFields.cTA2
-	const classSection = `CenteredContentPanel animation mod-intro hero-text ${item.customFields.darkMode && item.customFields.darkMode === 'true'  ? 'dark-mode': ''}`
+	const classSection = `CenteredContentPanel animation mod-intro hero-text beauty-ul ${item.customFields.darkMode && item.customFields.darkMode === 'true'  ? 'dark-mode': ''}`
 	
 	const thisModuleRef = useRef(null)
 	/* animation module */

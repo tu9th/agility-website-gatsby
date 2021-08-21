@@ -21,7 +21,9 @@
     display: none;
   }
 
-  // &:hover,
+  &:hover {
+    color: $color-58;
+  }
   // &[aria-expanded='true'] {
   //   color: rgba($color: $color-2a, $alpha: .75);
   //   //background-color: $link-color;
@@ -58,6 +60,7 @@
   top: 100%;
   overflow: hidden;
   font-weight: $fw-bold;
+  float: none !important;
   // position: absolute !important;
   &::before {
     display: none !important;

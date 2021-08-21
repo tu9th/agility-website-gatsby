@@ -43,10 +43,10 @@ const SingleTestimonialPanel = ({ item }) => {
 							}
 							<div className="sub-content ps-rv last-mb-none">
 								{ singeTestimonial.companyLogo && singeTestimonial.companyLogo.url &&
-									<LazyLoad offset={ Helpers.lazyOffset }><img className="lazy d-none d-md-block logo-desktop" src={singeTestimonial.companyLogo.url} alt={singeTestimonial.companyName} /></LazyLoad>
+									<LazyLoad offset={ Helpers.lazyOffset }><img className="lazy d-md-block logo-desktop" src={singeTestimonial.companyLogo.url} alt={singeTestimonial.companyName} /></LazyLoad>
 								}
 								{ singeTestimonial.title &&
-									<h6>{singeTestimonial.title}</h6>
+									<h6 className="font-bold">{singeTestimonial.title}</h6>
 								}
 								{ singeTestimonial.jobTitle &&
 									<p className="position">{singeTestimonial.jobTitle}</p>

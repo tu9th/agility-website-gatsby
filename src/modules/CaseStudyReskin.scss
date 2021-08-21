@@ -177,12 +177,13 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .case-content {
     h3 {
       font-size: rem(19);
       line-height: 1.37;
       margin-bottom: 7px;
+      font-weight: $fw-bold;
     }
   }
 }
