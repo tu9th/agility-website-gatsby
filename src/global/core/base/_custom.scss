@@ -563,6 +563,13 @@ ol {
     padding: 12px 0 11px
   }
 }
+.window-os {
+  .pagination {
+    li {
+      padding-top: 2px;
+    }
+  }
+}
 
 @include media-breakpoint-up(md) {
   .wrap-video {

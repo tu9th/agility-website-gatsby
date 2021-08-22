@@ -85,6 +85,9 @@ $translate: 100px;
   .d-md-block {
     display: block !important;
   }
+  .justify-content-md-start {
+    justify-content: flex-start !important;
+  }
   .flex-md-row-reverse {
     -webkit-box-orient: horizontal !important;
     -webkit-box-direction: reverse !important;

@@ -201,9 +201,9 @@ export default CaseStudyDetails
 
 const CaseStudySocialShare = ({ link, title }) => {
 
-	// console.log(`query`, links)
+	console.log(`query`, link)
+	const shareLink = link.charAt(0) === '/' ? link.replace('/', '') : link
 	const domain = 'https://agilitycms.com'
-
 	useEffect(() => {
 
 		return () => {
@@ -216,13 +216,13 @@ const CaseStudySocialShare = ({ link, title }) => {
 			<div className="cs-d-social">
 				<h5>Share Case Study</h5>
 				<div className="soc-box d-flex flex-wrap">
-					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-linkedin2"></span>
 					</a>
-					<a href={`https://twitter.com/intent/tweet/?text=abcd&url=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+					<a href={`https://twitter.com/intent/tweet/?url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-twitter"></span>
 					</a>
-					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + link}`} target="_blank" className="d-flex align-items-center justify-content-center">
+					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-facebook"></span>
 					</a>
 				</div>

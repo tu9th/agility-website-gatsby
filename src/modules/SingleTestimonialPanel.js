@@ -36,9 +36,7 @@ const SingleTestimonialPanel = ({ item }) => {
 						<div className="mess-tesi anima-bottom">
 							{ singeTestimonial.excerpt &&
 								<div className="quote-content last-mb-none">
-									<blockquote>
-										{singeTestimonial.excerpt}
-									</blockquote>
+									{singeTestimonial.excerpt}
 								</div>
 							}
 							<div className="sub-content ps-rv last-mb-none">
@@ -53,13 +51,13 @@ const SingleTestimonialPanel = ({ item }) => {
 								}
 							</div>
 						</div>
-						<div className="avatar-testi d-flex align-items-center justify-content-between anima-bottom delay-2">
+						<div className="avatar-testi d-flex align-items-center justify-content-center justify-content-md-start anima-bottom delay-2">
 							{ singeTestimonial.headshot && singeTestimonial.headshot.url &&
 								<LazyBackground className="avarta-img bg bg-center" src={singeTestimonial.headshot.url} alt={singeTestimonial.title}></LazyBackground>
 							}
-							{ singeTestimonial.companyLogo && singeTestimonial.companyLogo.url &&
+							{/* { singeTestimonial.companyLogo && singeTestimonial.companyLogo.url &&
 								<LazyLoad offset={ Helpers.lazyOffset }><img className="lazy d-md-none" src={singeTestimonial.companyLogo.url} alt={singeTestimonial.companyName} /></LazyLoad>
-							}
+							} */}
 						</div>
 						{ btnCta && btnCta.href &&
 							<div className="ps-rv anima-bottom delay-4">
