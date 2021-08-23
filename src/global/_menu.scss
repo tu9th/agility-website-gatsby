@@ -409,8 +409,10 @@
 
     &.has-mega-content {
       display: flex;
-      padding: 40px 33px;
-      min-width: 600px;
+      // padding: 40px 33px;
+      padding: 40px 33px 40px 13px;
+      // min-width: 600px;
+      min-width: 480px;
       // overflow: hidden;
       .dr-navi-col {
         flex: 0 0 50%;
@@ -494,6 +496,15 @@
   .ie {
     .main-menu-dropdown {
       border: none !important;
+    }
+  }
+}
+/* speical for menu dropdown */
+@media (min-width: 1320px)  {
+  .main-menu-dropdown {
+    &.has-mega-content {
+      min-width: 600px;
+      padding: 40px 33px;
     }
   }
 }
