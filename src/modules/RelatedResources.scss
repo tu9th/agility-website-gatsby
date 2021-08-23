@@ -15,7 +15,9 @@
     }
   }
 }
-
+.relate-col {
+  margin-bottom: 40px;
+}
 .relate-re-box {
   border: 1px solid $color-c9;
   &:hover {
@@ -34,6 +36,9 @@
 }
 
 @media (min-width: 992px) {
+  .relate-col {
+    margin-bottom: 0;
+  }
   .relate-re-thumb {
     height: 224px;
   }
@@ -53,16 +58,10 @@
 }
 
 @media (max-width: 991px) {
-  .relate-re-box {
-    margin-bottom: 40px;
+  .relate-col {
     h3 {
       font-size: rem(19);
       line-height: 1.37;
     }
-  }
-}
-@media (max-width: 767px) {
-  .relate-re-box {
-    margin-bottom: 40px;
   }
 }
