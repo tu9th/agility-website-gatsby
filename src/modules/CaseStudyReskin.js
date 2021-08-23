@@ -383,7 +383,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
           <div className="row">
             {abovePosts?.length > 0 ? renderPosts(abovePosts, true) :
               <div className="col last-mb-none">
-                <p className="text-center">There is no results match with your search.</p>
+                <h4 className="h3" style={{color: '#5800d4'}}>There is no results match with your search.</h4>
               </div>
             }
           </div>

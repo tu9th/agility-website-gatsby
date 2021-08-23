@@ -254,13 +254,17 @@ const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 	const settings = {
 		dots: true,
 		infinite: true,
-		speed: 650,
+		speed: 250,
 		arrows: true,
 		rows: 1,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		lazyLoad: 'ondemand'
+		// lazyLoad: 'ondemand',
+		beforeChange: (oldIndex, newIndex) => {
+			
+		}
+
 	}
 	const galleries = listMedia?.map((i, index) => {
 		return (

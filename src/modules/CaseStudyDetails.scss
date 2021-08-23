@@ -202,8 +202,8 @@
 
 .window-os {
   .cs-tag {
-    padding-top: 5px;
-    padding-bottom: 2px;
+    padding-top: 4.5px;
+    padding-bottom: 2.5px;
   }
 }
 
@@ -214,13 +214,11 @@
   padding: 3px 13px;
   margin-right: 16px;
   margin-bottom: 15px;
-
-  a {
-    color: $color-4c;
-
-    &:hover {
-      color: $color-58;
-    }
+  color: $color-4c;
+  transition: all .25s;
+  &:hover {
+    color: $color-58;
+    background: rgba(201, 216, 230, 0.15);
   }
 }
 

@@ -102,7 +102,7 @@
     margin: 0 0 -30px;
   }
 
-  .slick-slide:not(.slick-center) {
+  .slick-slide:not(.slick-current) {
     img {
       filter: grayscale(100%);
     }
@@ -184,7 +184,7 @@
 
 @media (min-width: 375px) {
   .list-logo-feature .slick-slide {
-    min-width: 110px;
+    min-width: 100px;
   }
 }
 
