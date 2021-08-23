@@ -114,13 +114,10 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       params = params.map(p => {
         return (p.split('='))
       })
-      console.log(params, search);
-
       const findFilterIdBySlug = (list = {}, slug = '') => {
         let result = 1
         const values = Object.values(list)
         const keys = Object.keys(list)
-        console.log(`object`, values, keys)
         values.filter((item, index) => {
           if (item.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-') === slug) {
             result = keys[index]
@@ -323,8 +320,6 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
       window.removeEventListener('scroll', scrollEventFunc)
     }
   }, [])
-
-  console.log(`postsList`, postsList)
 
 
   const renderPosts = (posts, longBoxOnLeft = false) => {

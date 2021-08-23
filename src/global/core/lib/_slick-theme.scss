@@ -110,7 +110,7 @@
   background: transparent;
   border: none;
   outline: none;
-  font-size: 40px;
+  font-size: 35px;
   padding: 12px;
   z-index: 2;
   text-decoration: none;
@@ -136,7 +136,7 @@
     cursor: default;
   }
   &::before {
-    content: "\e908";
+    content: "\e90a";
     font-family: icomoon!important;
     position: absolute;
     left: 0;

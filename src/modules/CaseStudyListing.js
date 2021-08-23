@@ -73,7 +73,6 @@ export default props => (
 				item: props.item,
 				posts: posts
 			}
-			console.log(`viewModel`, props)
 			return (
 				<ReusablePostListing {...viewModel} />
 			);

@@ -82,7 +82,12 @@
   max-width: 330px;
   margin: 0 auto;
   transform: translateY(-15px);
-
+  &.length-1 {
+    max-width: 110px;
+  }
+  &.length-2 {
+    max-width: 220px;
+  }
   &.three-item {
     .slick-list {
       overflow: visible;
@@ -239,7 +244,12 @@
 
   .list-logo-feature {
     max-width: 520px;
-
+    &.length-1 {
+      max-width: 175px;
+    }
+    &.length-2 {
+      max-width: 350px;
+    }
     .slick-slide {
       min-width: 173px;
     }

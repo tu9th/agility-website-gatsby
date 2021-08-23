@@ -45,6 +45,7 @@ const CaseStudyRotator = ({ item }) => {
       </div>
     )
   })
+
   let listLogo = fields?.caseStudies?.map(caseStudy => {
     const customField = caseStudy.customFields
     if (customField?.customerLogo?.url) {
@@ -66,8 +67,8 @@ const CaseStudyRotator = ({ item }) => {
     autoplaySpeed: 5000,
     speed: 350,
     arrows: true,
-    // centerPadding: '0',
-    // centerMode: true,
+    centerPadding: '0',
+    centerMode: true,
     rows: 1,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -98,17 +99,18 @@ const CaseStudyRotator = ({ item }) => {
     }]
   };
 
-  // listLogo = listLogo.slice(0, 2)
+  // listLogo = listLogo.slice(0, 1)
 
   const logosSettings = {
     // className: "center",
-    centerMode: listLogo?.length > 3,
-    infinite: listLogo?.length > 3,
+    // centerMode: listLogo?.length > 3,
+    centerMode: true,
+    infinite: true,
     centerPadding: "0",
-    slidesToShow: 3,
+    slidesToShow: listLogo?.length > 2 ? 3 : listLogo?.length,
     swipeToSlide: true,
     focusOnSelect: true,
-    speed: 500
+    speed: 350
   };
 
   const thisModuleRef = useRef(null)
@@ -145,7 +147,7 @@ const CaseStudyRotator = ({ item }) => {
         }
         {listLogo && listLogo.length > 0 &&
           <div className="container anima-bottom delay-6">
-            <div className={`text-center list-logo-feature ${listLogo?.length <= 3 ? 'three-item' : ''}`}>
+            <div className={`text-center list-logo-feature length-${listLogo?.length} ${listLogo?.length <= 3 ? 'three-item' : ''}`}>
               <Slider
                 {...logosSettings}
                 asNavFor={nav1} ref={c => setNav2(c)}

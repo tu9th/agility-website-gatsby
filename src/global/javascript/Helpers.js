@@ -91,7 +91,6 @@ export const removeURLParam = (key) => {
 		})
 		search = search.join('&')
 		search = search ? '?' + search : ''
-		console.log('search', search);
 
 		url = window.location.origin + window.location.pathname + search
 	}

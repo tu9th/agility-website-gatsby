@@ -16,6 +16,38 @@ const CaseStudyDetails = (props) => {
 
 	const query = useStaticQuery(graphql`
 		query CustomRelatedResources {
+			rotator: allAgilityCaseStudy(
+				filter: {properties: {referenceName: {eq: "casestudies"}}}
+				sort: {fields: properties___itemOrder}
+				limit: 4
+			) {
+				nodes {
+					properties {
+						itemOrder
+					}
+					contentID
+					languageCode
+					customFields {
+						excerpt
+						title
+						uRL
+						image {
+							url
+							label
+							filesize
+							height
+							width
+						}
+						customerLogo {
+							url
+							label
+							filesize
+							height
+							width
+						}
+					}
+				}
+			}
 			allAgilityCaseStudy {
 				edges {
 					node {
@@ -31,7 +63,7 @@ const CaseStudyDetails = (props) => {
 				}
 			}
 			allAgilityResource(
-				sort: {fields: properties___itemOrder, order: ASC}
+				sort: {fields: properties___itemOrder}
 				filter: {customFields: {resourceTypeName: {eq: "Webinar"}}}
 				limit: 10
 			) {
@@ -75,21 +107,25 @@ const CaseStudyDetails = (props) => {
 	const mediaLists = query?.allAgilityCaseStudy?.edges
 	const relatedRes = query?.allAgilityResource?.edges
 	const relatedBlog = query?.allAgilityBlogPost?.edges
-	console.log(`query`, query)
+	let alternativeRotator = query?.rotator?.nodes
 
 	let caseStudy = props.dynamicPageItem?.customFields;
-	console.log(`props Detail`, props)
 
 	let link = '/resources/case-studies/' + caseStudy.uRL
 
 	/* case studies rorator data */
+	alternativeRotator = alternativeRotator.filter(alt => {
+		if (alt.contentID !== props.item?.contentID) {
+			return alt
+		}
+	})
 	const roratorItems = {}
-	roratorItems.cTAbuttonText = caseStudy?.rotatorCTAbuttonText
+	roratorItems.cTAbuttonText = caseStudy?.rotatorCTAbuttonText || 'See how';
 	roratorItems.title = caseStudy?.rotatorTitle
-	roratorItems.caseStudies = caseStudy?.rotatorCaseStudies
+	roratorItems.caseStudies = caseStudy?.rotatorCaseStudies || alternativeRotator.slice(0, 3)
 	roratorItems.darkMode = caseStudy?.rotatorDarkMode
-	roratorItems.mobileSpace = caseStudy?.rotatorMobileSpace
-	roratorItems.desktopSpace = caseStudy?.rotatorDesktopSpace
+	roratorItems.mobileSpace = caseStudy?.rotatorMobileSpace || 80
+	roratorItems.desktopSpace = caseStudy?.rotatorDesktopSpace || 100
 
 	/* case studies related resources data */
 	const relatedItems = {}
@@ -97,10 +133,9 @@ const CaseStudyDetails = (props) => {
 	relatedItems.title = caseStudy?.relatedResourcesTitle || 'View Related Resources'
 	relatedItems.relatedResources = caseStudy?.relatedResources
 	relatedItems.darkMode = caseStudy?.relatedResourcesDarkMode
-	relatedItems.mobileSpace = caseStudy?.relatedResourcesMobileSpace
-	relatedItems.desktopSpace = caseStudy?.relatedResourcesDesktopSpace
+	// relatedItems.mobileSpace = caseStudy?.relatedResourcesMobileSpace || 80
+	// relatedItems.desktopSpace = caseStudy?.relatedResourcesDesktopSpace || 100
 
-	// console.log(`roratorItems`, roratorItems)
 	const renderTags = (tags, type) => {
 		return tags.map((tag, index) => {
 			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
@@ -190,7 +225,6 @@ const CaseStudyDetails = (props) => {
 			</section>
 
 			<CaseStudyRotator item={{ customFields: roratorItems }} />
-			{/* <RelatedResources item={{ customFields: relatedItems }} /> */}
 			<CaseStudyRelatedResource resources={relatedRes} blogs={relatedBlog} item={{ customFields: relatedItems }} currentContentID={props.item?.contentID} />
 			<Spacing item={props.item} />
 
@@ -205,7 +239,6 @@ export default CaseStudyDetails
 
 const CaseStudySocialShare = ({ link, title }) => {
 
-	console.log(`query`, link)
 	let shareLink = link.charAt(0) === '/' ? link.replace('/', '') : link
 	shareLink = shareLink.trim()
 	const domain = 'https://agilitycms.com'

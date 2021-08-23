@@ -9,8 +9,7 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 const SingleTestimonialPanel = ({ item }) => {
 	const fields = item.customFields
 	const btnCta = fields.cTAButton
-	const classSection = `SingleTestimonialPanel ${fields.darkMode && fields.darkMode === 'true' ? 'dark-mode bg-17 text-white': ''}`
-
+	const classSection = `SingleTestimonialPanel`
 	const thisModuleRef = useRef(null)
 	  /* animation module */
 		useEffect(() => {

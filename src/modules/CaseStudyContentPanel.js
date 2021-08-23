@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import { renderHTML } from '../agility/utils'
 // import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 import LazyBackground from '../utils/LazyBackground'
@@ -43,6 +43,17 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 	metrics = metrics.slice(0, 3)
 	// console.log(`caseStudy`, metrics)
 
+	const [hasUnder, setHasUnder] = useState(true)
+
+	useEffect(() => {
+		const cotentRight = document.querySelector('.cs-detail-cont-right')
+		if (cotentRight && hasUnder !== true) {
+			setHasUnder(true)
+		}
+		if (!cotentRight && hasUnder !== false) {
+			setHasUnder(false)
+		}
+	})
 
 	return (
 		<>
@@ -58,7 +69,7 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 									</div>
 								</div>
 								<LazyBackground src={caseStudy?.image?.url}
-								className={`case-ban-bg d-lg-none h-100 bg ${!metrics?.length ? 'mb-0' : ''}`} />
+									className={`case-ban-bg d-lg-none h-100 bg `} />
 								{metrics && metrics.length > 0 &&
 									<div className="ps-rv cs-feature cs-metrics">
 										<div className="row last-mb-none">
@@ -77,6 +88,9 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 										</div>
 									</div>
 								}
+								{metrics?.length === 0 && hasUnder &&
+									<div className="fake-metric ps-rv"></div>
+								}
 							</div>
 						</div>
 						<div className="col col-lg-6 col-cs">
@@ -87,7 +101,7 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 					</div>
 				</div>
 			</section>
-			<Spacing item={item}/>
+			<Spacing item={item} />
 		</>
 
 		// <section className="p-w case-study-content-panel" style={{ backgroundColor: bgColor }}>
