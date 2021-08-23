@@ -168,6 +168,9 @@
 
 /* *********************************** */
 /* CSS for New Skin */
+.new-case-study-details {
+  margin-bottom: 70px;
+}
 .case-d-gallery {
   padding: 1px 0;
   margin: 40px 0;
@@ -317,6 +320,9 @@
 }
 
 @media (min-width: 1501px) {
+  .new-case-study-details {
+    margin-bottom: 120px;
+  }
   .case-d-gallery {
     margin: 120px 0 85px;
   }
