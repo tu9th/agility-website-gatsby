@@ -38,6 +38,9 @@
     &.active {
       color: $color-58;
     }
+    &::before {
+      display: none;
+    }
   }
 }
 // //hack code

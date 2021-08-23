@@ -194,4 +194,8 @@
       font-weight: $fw-bold;
     }
   }
+  .case-box,
+  .case-spe-box {
+    box-shadow:  0 5px 30px -8px rgba(85, 63, 164, 0.25);
+  }
 }

@@ -432,7 +432,9 @@ input {
     position: relative;
     cursor: pointer;
     transition: all .35s;
-
+    &::before {
+      display: none;
+    }
     &.active {
       border-color: $color-58;
       color: $color-58;
@@ -505,12 +507,14 @@ input {
   font-weight: $fw-semi-bold;
 }
 
-.beauty-ul ul {
+.beauty-ul ul,
+ul {
   padding-left: 40px;
   color: $color-4c;
   font-size: rem(15);
   line-height: 1.667;
   list-style-type: none !important;
+  text-align: left;
 
   li {
     position: relative;
@@ -534,6 +538,7 @@ ol {
   font-size: rem(15);
   line-height: 1.667;
   list-style-type: none !important;
+  text-align: left;
   counter-reset: my;
 
   li {

@@ -8,6 +8,7 @@
 .item-casetudy {
   // color: $color-e9 !important;
   outline: none;
+  display: block !important;
 }
 
 .list-casestudy-slide {
@@ -80,7 +81,7 @@
 .list-logo-feature {
   max-width: 330px;
   margin: 0 auto;
-  transform: translateY(-10px);
+  transform: translateY(-15px);
 
   &.three-item {
     .slick-list {
@@ -154,7 +155,7 @@
   // padding: 0 63px;
   transition: all .35s;
   font-size: rem(17);
-  line-height: 1.647;
+  line-height: 1.765;
 
   // z-index: 2;
   a {
@@ -193,8 +194,47 @@
 //   }
 // }
 @media (min-width: 768px) {
+  .list-casestudy-slide {
+    width: 911px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    .slick-list {
+      overflow: visible;
+    }
+    &::after,
+    &::before {
+      content: '';
+      @include position(absolute, 0, null, 0, null, 4);
+      opacity: .93;
+      // background-image: linear-gradient(to bottom, #e9f0f5, #f6fbff);
+      background-color: rgba(255, 255, 255, 0.9);
+      width: 50vw;
+    }
+
+    &::before {
+      left: -50vw;
+    }
+
+    &::after {
+      right: -50vw;
+    }
+    .slick-prev {
+      left: -65px;
+    }
+    .slick-next {
+      right: -65px;
+    }
+  }
   .item-logo-feature {
     height: 114px;
+    padding: 15px;
+    img {
+      max-width: 130px;
+      width: auto;
+      max-height: 60px;
+    }
   }
 
   .list-logo-feature {
@@ -218,23 +258,23 @@
 
   .box-slider-center {
 
-    &::after,
-    &::before {
-      content: '';
-      @include position(absolute, 0, null, 0, null, 4);
-      opacity: .93;
-      // background-image: linear-gradient(to bottom, #e9f0f5, #f6fbff);
-      background-color: rgba(255, 255, 255, 0.9);
-      width: 69px;
-    }
+    // &::after,
+    // &::before {
+    //   content: '';
+    //   @include position(absolute, 0, null, 0, null, 4);
+    //   opacity: .93;
+    //   // background-image: linear-gradient(to bottom, #e9f0f5, #f6fbff);
+    //   background-color: rgba(255, 255, 255, 0.9);
+    //   width: 69px;
+    // }
 
-    &::before {
-      left: 0;
-    }
+    // &::before {
+    //   left: 0;
+    // }
 
-    &::after {
-      right: 0;
-    }
+    // &::after {
+    //   right: 0;
+    // }
   }
 
   .ie {
@@ -318,10 +358,10 @@
       overflow: visible;
     }
 
-    .list-casestudy-slide {
-      width: 46%;
-      margin: 0 auto;
-    }
+    // .list-casestudy-slide {
+    //   width: 46%;
+    //   margin: 0 auto;
+    // }
     .slick-arrow {
       top: calc(50% - 4px);
     }

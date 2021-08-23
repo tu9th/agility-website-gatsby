@@ -31,6 +31,7 @@ const CaseStudyDetails = (props) => {
 				}
 			}
 			allAgilityResource(
+				sort: {fields: properties___itemOrder, order: ASC}
 				filter: {customFields: {resourceTypeName: {eq: "Webinar"}}}
 				limit: 10
 			) {
@@ -50,7 +51,7 @@ const CaseStudyDetails = (props) => {
 				}
 			}
 			allAgilityBlogPost(
-				sort: {order: DESC, fields: properties___itemOrder}
+				sort: {order: ASC, fields: properties___itemOrder}
 				limit: 10
 				filter: {customFields: {categoriesTitle: {eq: "Blog"}}}
 			) {
@@ -104,7 +105,10 @@ const CaseStudyDetails = (props) => {
 		return tags.map((tag, index) => {
 			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 			return (
-				<span key={index} className="d-inline-block cs-tag"><Link to={link} target="_self">{tag?.customFields?.title}</Link></span>
+				<span key={index} className="d-inline-block cs-tag ps-rv">
+					{tag?.customFields?.title}
+					<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
+				</span>
 			)
 		})
 	}
@@ -202,7 +206,8 @@ export default CaseStudyDetails
 const CaseStudySocialShare = ({ link, title }) => {
 
 	console.log(`query`, link)
-	const shareLink = link.charAt(0) === '/' ? link.replace('/', '') : link
+	let shareLink = link.charAt(0) === '/' ? link.replace('/', '') : link
+	shareLink = shareLink.trim()
 	const domain = 'https://agilitycms.com'
 	useEffect(() => {
 
@@ -255,6 +260,7 @@ const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
+		lazyLoad: 'ondemand'
 	}
 	const galleries = listMedia?.map((i, index) => {
 		return (
@@ -269,9 +275,9 @@ const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 
 	return (
 		<>
-			<section className="case-d-gallery">
+			<section className={`case-d-gallery `} >
 				{listMedia && listMedia.length > 0 &&
-					<Slider {...settings} className="gal-slider">
+					<Slider {...settings} className={`gal-slider ${galleries?.length > 1 ? 'has-slide' : ''}`}>
 						{galleries}
 					</Slider>
 				}

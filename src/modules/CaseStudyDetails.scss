@@ -175,6 +175,9 @@
   padding: 1px 0;
   margin: 40px 0;
 }
+.gal-item {
+  display: block !important;
+}
 
 .cs-website {
   margin-bottom: 20px;
@@ -272,6 +275,9 @@
       text-transform: uppercase;
       font-weight: $fw-semi-bold;
     }
+    > *:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -307,6 +313,11 @@
     a {
       font-size: rem(14);
       margin-right: 12px;
+    }
+    .icon-linkedin2 {
+      font-size: rem(16);
+      position: relative;
+      top: -1px;
     }
   }
 }
@@ -382,9 +393,9 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      left: -100px;
-      right: -100px;
-      background-color: $color-e9;
+      left: -400px;
+      right: -400px;
+      background-color: rgba(233, 238, 241, 0.5);
       z-index: 0;
     }
 
@@ -414,10 +425,6 @@
       height: 40px;
       font-size: rem(22);
       margin: 0 10px;
-
-      &:last-child {
-        margin-right: 0;
-      }
     }
   }
 }
@@ -452,6 +459,7 @@
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.5);
     top: 48%;
+    transition: background 0.25s, all 0s;
 
     &::before {
       color: $color-17;
@@ -464,19 +472,33 @@
   }
 
   .slick-list {
-    max-width: 640px;
+    max-width: 540px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 5px 30px -8px rgba(201, 216, 230, 1);
     transition: height .25s;
+    border-radius: 4px;
   }
 }
+
+@media screen and (min-width: 1501px) {
+  .gal-slider {
+    .slick-list {
+      max-width: 640px;
+    }
+  }
+}
+
 
 @media (max-width:767px) {
   .gal-slider {
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
+    
+    &.has-slide {
+      padding-bottom: 100px;
+    }
 
     .slick-arrow {
       top: calc(100% - 60px);

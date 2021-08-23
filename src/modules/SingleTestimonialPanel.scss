@@ -116,7 +116,7 @@
   }
   .avarta-img {
     // @include sizeEx(130px);
-    margin-left: -135px;
+    margin-left: -75px;
   }
   .cta-testimonial {
     position: absolute;
@@ -128,6 +128,11 @@
   }
   .mess-tesi {
     margin-left: 0;
+  }
+}
+@media (min-width: 992px){
+  .avarta-img {
+    margin-left: -135px;
   }
 }
 @media (min-width: 1200px){
@@ -158,4 +163,13 @@
     bottom: 65px;
   }
 }
+
+@media screen and (max-width: 374px) {
+  .mess-tesi {
+    &::after {
+      left: 20px;
+    }
+  }
+}
+
 

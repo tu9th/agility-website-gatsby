@@ -46,7 +46,7 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 
 	return (
 		<>
-			<section className="">
+			<section className="case-panel">
 				<div className="container">
 					<div className="row">
 						<div className="col col-lg-6 col-cs-left ps-rv">

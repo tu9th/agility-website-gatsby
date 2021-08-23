@@ -41,7 +41,7 @@ const ResourcesItem = ({ resource }) => {
   const imgUrl = data?.image
   const link = `/resources/${data?.resourceTypeName.toLowerCase().trim().replace(' ', '-')}/${data?.uRL}`
   return (
-    <div className="relate-re-box h-100">
+    <div className="relate-re-box transition-25 h-100">
       <div className="overflow-hidden">
         <LazyBackground className="relate-re-thumb transition-25 bg" src={imgUrl?.url} />
         <Link to={link} className=" ps-as"><span className="sr-only">{data?.title || imgUrl?.label}</span></Link>

@@ -45,7 +45,7 @@ const CaseStudyRotator = ({ item }) => {
       </div>
     )
   })
-  const listLogo = fields?.caseStudies?.map(caseStudy => {
+  let listLogo = fields?.caseStudies?.map(caseStudy => {
     const customField = caseStudy.customFields
     if (customField?.customerLogo?.url) {
       return (
@@ -62,12 +62,12 @@ const CaseStudyRotator = ({ item }) => {
   const settings = {
     dots: false,
     infinite: true,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 5000,
     speed: 350,
     arrows: true,
-    centerPadding: '0',
-    centerMode: true,
+    // centerPadding: '0',
+    // centerMode: true,
     rows: 1,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -76,17 +76,17 @@ const CaseStudyRotator = ({ item }) => {
     responsive: [{
       breakpoint: 1500,
       settings: {
-        centerPadding: '305px'
+        // centerPadding: '305px'
       }
     }, {
       breakpoint: 1199,
       settings: {
-        centerPadding: '186px'
+        // centerPadding: '186px'
       }
     }, {
       breakpoint: 991,
       settings: {
-        centerPadding: '84px'
+        // centerPadding: '84px'
       }
     }, {
       breakpoint: 767,
@@ -98,10 +98,12 @@ const CaseStudyRotator = ({ item }) => {
     }]
   };
 
+  // listLogo = listLogo.slice(0, 2)
+
   const logosSettings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
+    // className: "center",
+    centerMode: listLogo?.length > 3,
+    infinite: listLogo?.length > 3,
     centerPadding: "0",
     slidesToShow: 3,
     swipeToSlide: true,
@@ -130,7 +132,7 @@ const CaseStudyRotator = ({ item }) => {
         {title &&
           <div className="container">
             <div className="title-f-casestudy text-center last-mb-none anima-bottom">
-              <h2>{title}</h2>
+              <h4 className="h2">{title}</h4>
             </div>
           </div>
         }
@@ -146,7 +148,6 @@ const CaseStudyRotator = ({ item }) => {
             <div className={`text-center list-logo-feature ${listLogo?.length <= 3 ? 'three-item' : ''}`}>
               <Slider
                 {...logosSettings}
-                className="center"
                 asNavFor={nav1} ref={c => setNav2(c)}
               >
                 {listLogo}

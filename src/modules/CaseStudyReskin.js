@@ -222,7 +222,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         window.history.pushState({}, '', removeURLParam('challenge'))
       }
 
-      console.log(`tmpPosts`, tmpPosts)
+      // console.log(`tmpPosts`, tmpPosts)
       setPostsList([...tmpPosts])
     }
   }, [industriesOpts, challengesOpts])
@@ -324,6 +324,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
     }
   }, [])
 
+  console.log(`postsList`, postsList)
+
 
   const renderPosts = (posts, longBoxOnLeft = false) => {
     return posts.map((post, index) => {
@@ -379,7 +381,11 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
             <SelectC8 className="d-inline-block" data={challengesOpts} onChange={onChangeFilter} />
           </div>
           <div className="row">
-            {renderPosts(abovePosts, true)}
+            {abovePosts?.length > 0 ? renderPosts(abovePosts, true) :
+              <div className="col last-mb-none">
+                <p className="text-center">There is no results match with your search.</p>
+              </div>
+            }
           </div>
         </div>
         <SingleTestimonialPanel item={item} />
@@ -388,8 +394,8 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
             {renderPosts(belowPosts, false)}
           </div>
         </div>
-        <div className="container">
-          {btnPagingList.length > 1 &&
+        <div className={`container ${postsList?.length > 0 ? '' : 'd-none'}`}>
+          {abovePosts?.length > 0 && btnPagingList.length > 1 &&
             <div className="">
               <ul className="pagination">
                 <li className={`style-prev style-double ${pagingIndex <= 0 ? 'disable-paging' : ''}`} onClick={() => { actionBwd() }}>
@@ -412,7 +418,6 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
               </ul>
             </div>
           }
-
         </div>
       </section>
       <Spacing item={item} />
@@ -425,7 +430,7 @@ export default CaseStudyReskin
 
 const trimText = (text) => {
   let txt = text.split(' ')
-    return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
+  return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
 }
 const PostItem = ({ post }) => {
   const thumbUrl = post?.customFields?.postImage?.url
