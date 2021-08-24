@@ -10,6 +10,7 @@ import Spacing from './Spacing'
 import Helpers from '../global/javascript/Helpers'
 import ResponsiveImage from '../components/responsive-image';
 import { animationElementInnerComponent } from '../global/javascript/animation'
+import { Helmet } from 'react-helmet';
 
 const CaseStudyRotator = ({ item }) => {
   const [nav1, setNav1] = useState();
@@ -18,13 +19,20 @@ const CaseStudyRotator = ({ item }) => {
   const ctaBtnText = fields?.cTAbuttonText
   const title = fields?.title
   const classSection = `module mod-feature-casestudy CaseStudyRotator animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode' : ''}`
-  const caseStudies = fields?.caseStudies?.map((caseStudy) => {
+  const caseStudies = fields?.caseStudies?.map((caseStudy, index) => {
     const customField = caseStudy.customFields
     const excerpt = StringUtils.stripHtml(customField.excerpt, 200)
     const titleCaseStudy = customField?.title
     const postUrl = '/resources/case-studies/' + customField.uRL
+
     return (
       <div className="item-casetudy text-white overflow-hidden ps-rv" key={caseStudy.contentID}>
+        {index === 1 &&
+          <Helmet>
+            <link rel="preload" as="image" href={caseStudy.customFields.image.url + '?w=800&q=60'} media="all" />
+          </Helmet>
+        }
+
         <LazyBackground className=" ps-as bg bg-center i-case-thumb transition-25" src={caseStudy.customFields.image.url + '?w=800&q=60'} />
         <div className="bg-casestudi d-flex align-items-center">
           <div className="content-case last-mb-none ps-rv">
@@ -50,17 +58,25 @@ const CaseStudyRotator = ({ item }) => {
   let listLogo = fields?.caseStudies?.map(caseStudy => {
     const customField = caseStudy.customFields
     if (customField?.customerLogo?.url) {
+
       return (
         <div className="item-logo-feature d-inline-flex align-items-center justify-content-center" key={'logo-' + caseStudy.contentID}>
-          {/* <Lazyload offset={Helpers.lazyOffset}> */}
-          {/* <img src={customField.customerLogo.url} alt={customField.customerLogo.label}></img> */}
-          <ResponsiveImage img={customField?.customerLogo} />
-          {/* </Lazyload> */}
+          <Lazyload offset={Helpers.lazyOffset}>
+            <img src={customField.customerLogo.url + '?w=200'} width="77" height="72" alt={customField.customerLogo.label}></img>
+            {/* <ResponsiveImage img={customField?.customerLogo} /> */}
+          </Lazyload>
         </div>
       )
     }
     return null
   })
+
+  const [isNotMobile, setIsNotMobile] = useState(false)
+  useEffect(() => {
+    const isNotMobile = window?.innerWidth < 767 ? false : true
+    setIsNotMobile(isNotMobile)
+  }, [])
+
   const settings = {
     dots: false,
     infinite: true,
@@ -69,7 +85,7 @@ const CaseStudyRotator = ({ item }) => {
     speed: 350,
     arrows: true,
     centerPadding: '0',
-    centerMode: true,
+    centerMode: isNotMobile,
     rows: 1,
     slidesToShow: 1,
     slidesToScroll: 1,
