@@ -6,6 +6,7 @@ import LazyBackground from '../utils/LazyBackground'
 import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 import "./CaseStudyContentPanel.scss"
+import Helmet from 'react-helmet'
 
 const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 
@@ -73,6 +74,11 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 
 	return (
 		<>
+			{caseStudy?.image?.url &&
+				<Helmet>
+					<link rel="preload" as="image" href={caseStudy?.image?.url + '?w=800&q=60'} media="all" />
+				</Helmet>
+			}
 			<section ref={thisModuleRef} className="case-panel animation">
 				<div className="container anima-bottom">
 					<div className="row">
