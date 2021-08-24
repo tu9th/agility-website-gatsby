@@ -27,7 +27,7 @@ const CaseStudyRotator = ({ item }) => {
 
     return (
       <div className="item-casetudy text-white overflow-hidden ps-rv" key={caseStudy.contentID}>
-        {index === 1 &&
+        {index === 0 &&
           <Helmet>
             <link rel="preload" as="image" href={caseStudy.customFields.image.url + '?w=800&q=60'} media="all" />
           </Helmet>
