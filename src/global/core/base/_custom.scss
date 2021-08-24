@@ -506,9 +506,11 @@ input {
 .font-semi-bold {
   font-weight: $fw-semi-bold;
 }
-
-.beauty-ul ul,
-ul {
+.content-ul ul {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.beauty-ul ul {
   padding-left: 40px;
   color: $color-4c;
   font-size: rem(15);

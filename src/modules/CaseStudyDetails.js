@@ -153,7 +153,7 @@ const CaseStudyDetails = (props) => {
 			<section className="p-w new-case-study-details">
 				<div className="container">
 					<div className="cs-detail-cont d-flex flex-grow">
-						<div className="cs-detail-cont-left beauty-ul">
+						<div className="cs-detail-cont-left content-ul beauty-ul">
 							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}></div>
 						</div>
 						<div className="cs-detail-cont-right">
