@@ -88,7 +88,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   const [pagingIndex, setPagingIndex] = useState(0)
   const [btnPagingList, setBtnPagingList] = useState([])
 
-  const timeORef = useRef(null)
+  // const timeORef = useRef(null)
   const firstLoadRef = useRef(true)
 
   const [isMobile, setIsMobile] = useState(false)
@@ -98,14 +98,14 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   /* check first load component */
   useEffect(() => {
     const checkIsMobile = () => {
-      clearTimeout(timeORef.current)
-      timeORef.current = setTimeout(() => {
+      // clearTimeout(timeORef.current)
+      // timeORef.current = setTimeout(() => {
         if (window.innerWidth < 768) {
           setIsMobile(true)
         } else {
           setIsMobile(false)
         }
-      }, 100)
+      // }, 100)
     }
 
     const loadFilterOpts = () => {
@@ -300,10 +300,10 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
   const thisModuleRef = useRef(null)
 
   const scrollTopModule = () => {
-    setTimeout(() => {
+    // setTimeout(() => {
       let header = document.querySelectorAll('#header')[0].offsetHeight
       Helpers.animateScrollTop(thisModuleRef.current.offsetTop - header - 20, 350)
-    }, 100)
+    // }, 100)
   }
 
   /* animation module */

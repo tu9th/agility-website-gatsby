@@ -39,7 +39,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
     setShowDropdown(!showDropdown)
     setTimeout(() => {
       showScroll()
-    })
+    }, 100)
   }
 
   const changeSelectedOption = optionKey => {

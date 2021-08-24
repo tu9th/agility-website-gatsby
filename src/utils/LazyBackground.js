@@ -70,7 +70,7 @@ export default class LazyImage extends React.Component {
 		)
 	}
 	componentDidMount() {
-		setTimeout(() => { this.handleScroll() }, 1);
+		this.handleScroll();
 		window.addEventListener('scroll', this.handleScroll);
 		window.addEventListener('resize', this.handleScroll);
 	}
