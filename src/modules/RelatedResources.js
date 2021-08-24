@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'gatsby'
 import Spacing from './Spacing'
 import LazyBackground from '../utils/LazyBackground'
 import './RelatedResources.scss'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 const RelatedResources = ({ item }) => {
 
@@ -10,10 +11,24 @@ const RelatedResources = ({ item }) => {
   const headline = item?.customFields?.title
   const resources = item?.customFields?.relatedResources
 
+  const thisModuleRef = useRef(null)
+  /* animation module */
+  useEffect(() => {
+    const scrollEventFunc = () => {
+      animationElementInnerComponent(thisModuleRef.current)
+    }
+    animationElementInnerComponent(thisModuleRef.current)
+    window.addEventListener('scroll', scrollEventFunc)
+
+    return () => {
+      window.removeEventListener('scroll', scrollEventFunc)
+    }
+  }, [])
+
   return (
     <>
-      <section className="related-resources ps-rv">
-        <div className="container ps-rv">
+      <section ref={thisModuleRef} className="related-resources ps-rv animation">
+        <div className="container ps-rv anima-bottom delay-2">
           {headline &&
             <div className="text-center">
               <h4 className="h2">{headline}</h4>

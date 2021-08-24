@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { graphql, StaticQuery, useStaticQuery, Link } from "gatsby"
 import { renderHTML } from '../agility/utils'
-import CallToAction from "../components/call-to-action.jsx"
+// import CallToAction from "../components/call-to-action.jsx"
 import Slider from 'react-slick'
 // import ResponsiveImage from '../components/responsive-image'
 import CaseStudyRotator from './CaseStudyRotator';
 import RelatedResources from './RelatedResources';
 import Spacing from './Spacing'
-import LazyLoad from 'react-lazyload'
+// import LazyLoad from 'react-lazyload'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
 
@@ -121,7 +122,7 @@ const CaseStudyDetails = (props) => {
 	})
 	const roratorItems = {}
 	roratorItems.cTAbuttonText = caseStudy?.rotatorCTAbuttonText || 'See how';
-	roratorItems.title = caseStudy?.rotatorTitle
+	roratorItems.title = caseStudy?.rotatorTitle || 'See Other Customer Success Stories'
 	roratorItems.caseStudies = caseStudy?.rotatorCaseStudies || alternativeRotator.slice(0, 3)
 	roratorItems.darkMode = caseStudy?.rotatorDarkMode
 	roratorItems.mobileSpace = caseStudy?.rotatorMobileSpace || 80
@@ -148,10 +149,25 @@ const CaseStudyDetails = (props) => {
 		})
 	}
 
+	
+  const thisModuleRef = useRef(null)
+  /* animation module */
+  useEffect(() => {
+    const scrollEventFunc = () => {
+      animationElementInnerComponent(thisModuleRef.current)
+    }
+    animationElementInnerComponent(thisModuleRef.current)
+    window.addEventListener('scroll', scrollEventFunc)
+
+    return () => {
+      window.removeEventListener('scroll', scrollEventFunc)
+    }
+  }, [])
+
 	return (
 		<>
-			<section className="p-w new-case-study-details">
-				<div className="container">
+			<section ref={thisModuleRef} className="p-w new-case-study-details animation">
+				<div className="container anima-bottom">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left content-ul beauty-ul">
 							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}></div>

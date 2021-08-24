@@ -1,9 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import { renderHTML } from '../agility/utils'
 // import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 import LazyBackground from '../utils/LazyBackground'
 import Spacing from './Spacing'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 import "./CaseStudyContentPanel.scss"
 
 const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
@@ -55,10 +56,25 @@ const CaseStudyContentPanel = ({ item, dynamicPageItem }) => {
 		}
 	})
 
+
+	const thisModuleRef = useRef(null)
+	/* animation module */
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
 		<>
-			<section className="case-panel">
-				<div className="container">
+			<section ref={thisModuleRef} className="case-panel animation">
+				<div className="container anima-bottom">
 					<div className="row">
 						<div className="col col-lg-6 col-cs-left ps-rv">
 							<div className="in-left d-flex flex-column h-100">

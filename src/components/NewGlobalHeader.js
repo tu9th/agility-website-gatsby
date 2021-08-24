@@ -514,7 +514,7 @@ class NewGlobalHeader extends Component {
 							<>
 								{image &&
 									<div className="spotlight-thumb">
-										<Lazyload offset={Helpers.lazyOffset}><img src={image.url} className="lazy" alt={customFields?.title || customFields?.description} /></Lazyload>
+										<Lazyload offset={Helpers.lazyOffset}><img src={image.url + '?w=236'} className="lazy" alt={customFields?.title || customFields?.description} /></Lazyload>
 									</div>
 								}
 								{customFields?.title &&

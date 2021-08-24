@@ -25,7 +25,7 @@ const CaseStudyRotator = ({ item }) => {
     const postUrl = '/resources/case-studies/' + customField.uRL
     return (
       <div className="item-casetudy text-white overflow-hidden ps-rv" key={caseStudy.contentID}>
-          <LazyBackground className=" ps-as bg bg-center i-case-thumb transition-25" src={caseStudy.customFields.image.url + '?w=800&q=60'} />
+        <LazyBackground className=" ps-as bg bg-center i-case-thumb transition-25" src={caseStudy.customFields.image.url + '?w=800&q=60'} />
         <div className="bg-casestudi d-flex align-items-center">
           <div className="content-case last-mb-none ps-rv">
             {titleCaseStudy &&
@@ -45,6 +45,7 @@ const CaseStudyRotator = ({ item }) => {
       </div>
     )
   })
+
 
   let listLogo = fields?.caseStudies?.map(caseStudy => {
     const customField = caseStudy.customFields
