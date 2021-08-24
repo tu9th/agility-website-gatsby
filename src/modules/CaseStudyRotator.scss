@@ -186,6 +186,14 @@
   }
 }
 
+.i-case-thumb {
+  .gatsby-image-wrapper {
+    // top: -50%;
+    display: block;
+    height: 100%;
+  }
+}
+
 
 @media (min-width: 375px) {
   .list-logo-feature .slick-slide {

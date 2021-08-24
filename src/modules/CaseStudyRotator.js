@@ -27,13 +27,10 @@ const CaseStudyRotator = ({ item }) => {
 
     return (
       <div className="item-casetudy text-white overflow-hidden ps-rv" key={caseStudy.contentID}>
-        {index === 0 &&
-          <Helmet>
-            <link rel="preload" as="image" href={caseStudy.customFields.image.url + '?w=800&q=60'} media="all" />
-          </Helmet>
-        }
+        <div className=" ps-as bg bg-center i-case-thumb transition-25">
+          <ResponsiveImage img={caseStudy.customFields.image} />
+        </div>
 
-        <LazyBackground className=" ps-as bg bg-center i-case-thumb transition-25" src={caseStudy.customFields.image.url + '?w=800&q=60'} />
         <div className="bg-casestudi d-flex align-items-center">
           <div className="content-case last-mb-none ps-rv">
             {titleCaseStudy &&
@@ -92,35 +89,15 @@ const CaseStudyRotator = ({ item }) => {
     adaptiveHeight: true,
     respondTo: 'slider',
     responsive: [{
-      breakpoint: 1500,
-      settings: {
-        // centerPadding: '305px'
-      }
-    }, {
-      breakpoint: 1199,
-      settings: {
-        // centerPadding: '186px'
-      }
-    }, {
-      breakpoint: 991,
-      settings: {
-        // centerPadding: '84px'
-      }
-    }, {
       breakpoint: 767,
       settings: {
         centerMode: false,
-        // centerPadding: '0px',
         speed: 300
       }
     }]
   };
 
-  // listLogo = listLogo.slice(0, 1)
-
   const logosSettings = {
-    // className: "center",
-    // centerMode: listLogo?.length > 3,
     centerMode: true,
     infinite: true,
     centerPadding: "0",

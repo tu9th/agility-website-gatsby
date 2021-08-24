@@ -287,7 +287,6 @@ const CaseStudySocialShare = ({ link, title }) => {
 
 const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 
-	const query = {}
 	const mediaLists = dataList // query?.allAgilityCaseStudy?.edges
 	const founded = mediaLists?.filter(i => {
 		if (i.node?.customFields?.gallery?.galleryid === galleryId) {
@@ -309,16 +308,11 @@ const CaseStudyGallery = ({ dataList, galleryId, title }) => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		// lazyLoad: 'ondemand',
-		beforeChange: (oldIndex, newIndex) => {
-			
-		}
-
 	}
 	const galleries = listMedia?.map((i, index) => {
 		return (
 			<div key={index} className="gal-item">
-				{/* <ResponsiveImage img={i.url} /> */}
+				{/* <ResponsiveImage img={i} /> */}
 				{/* <LazyLoad><img src={i.url} alt="ab" /></LazyLoad> */}
 				<img src={i.url} alt={title} />
 			</div>
@@ -362,8 +356,6 @@ const CaseStudyRelatedResource = ({ resources, blogs, item, currentContentID = n
 		item.customFields.relatedResources = resources.slice(0, 3)
 	}
 
-
-	// console.log(`resources`, resources, blogs, item)
 	return (
 		<RelatedResources item={item} />
 	)
