@@ -17,7 +17,6 @@ const ResponsiveImage = ({img, layout, breaks, className}) => {
 		}
 
 		//if this is an svg, just output it
-		console.log(image)
 		if (urlNoQuery.indexOf(".svg") !== -1) {
 			return <img src={urlNoQuery} alt={alt} className={className} loading="lazy" />
 		}
