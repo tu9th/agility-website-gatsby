@@ -170,7 +170,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     const heightEachItemIc = (serviceLeft.offsetHeight + $fakeHeight.offsetHeight) / lengthItemIc
     let positionTopEachItem = []
     for (let index = 0; index < lengthItemIc; index++) {
-      positionTopEachItem = [...positionTopEachItem, heightEachItemIc * index]
+      positionTopEachItem = [...positionTopEachItem, index === 0 ? 0 : (heightEachItemIc * index - 100)]
     }
     return positionTopEachItem
   }
@@ -286,34 +286,23 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     const classNameImg = `item-image-ic ${idx + 1 === active ? 'tab-active': ''}`
     if (customField.graphic && customField.graphic.url) {
 			if (isHomePage) {
-        if (positionContent === 'right') {
-          return (
-            <div className={classNameImg}  data-image={idx + 1} key={'image-' + idx}>
-              <Lazyload offset={ Helpers.lazyOffset }><img src='/images/familiar.png' className='layer-image' alt={customField.graphic.label}></img></Lazyload>
-              <Lazyload offset={ Helpers.lazyOffset }>
-			  		<ResponsiveImage img={customField.graphic} className='img-before'/>
-				  {/* <img src={customField.graphic.url} className='img-before' alt={customField.graphic.label}></img> */}
-				  </Lazyload>
-            </div>
-          )
-        } else {
-          return (
-            <div className={classNameImg}  data-image={idx + 1} key={'image-' + idx}>
-              <Lazyload offset={ Helpers.lazyOffset }><img src='/images/layer-content-image.png' className='layer-image' alt={customField.graphic.label}></img></Lazyload>
-              <Lazyload offset={ Helpers.lazyOffset }>
-			  		<ResponsiveImage img={customField.graphic} className='img-before' />
-				  {/* <img src={customField.graphic.url} className='img-before' alt={customField.graphic.label}></img> */}
-				</Lazyload>
-            </div>
-          )
-        }
-			} else {
         return (
-          <div className={classNameImg}  data-image={idx + 1} key={'image-' + idx}>
-            <Lazyload offset={ Helpers.lazyOffset }>
-				<ResponsiveImage img={customField.graphic} />
-				{/* <img src={customField.graphic.url} alt={customField.graphic.label}></img> */}
-			</Lazyload>
+          <div className={classNameImg} data-image={idx + 1} key={'image-' + idx}>
+            <Lazyload offset={Helpers.lazyOffset}>
+              <img src={positionContent === 'right' ? '/images/familiar.png' : '/images/layer-content-image.png'} className='layer-image' alt={customField.graphic.label}></img>
+            </Lazyload>
+            <Lazyload offset={Helpers.lazyOffset}>
+              <ResponsiveImage img={customField.graphic} className='img-before' />
+            </Lazyload>
+          </div>
+        )
+      } else {
+        return (
+          <div className={classNameImg} data-image={idx + 1} key={'image-' + idx}>
+            <Lazyload offset={Helpers.lazyOffset}>
+              <ResponsiveImage img={customField.graphic} />
+              {/* <img src={customField.graphic.url} alt={customField.graphic.label}></img> */}
+            </Lazyload>
           </div>
         )
       }
