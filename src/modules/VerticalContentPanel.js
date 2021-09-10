@@ -205,6 +205,12 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     }
   }
 
+  const activeTabHandler = (idx) => {
+    setActive(idx + 1)
+    setTimeout(() => {
+    forceCheck();
+  }, 50) }
+
   let isHomePage = false
 	if(typeof window !== `undefined`){
 		isHomePage = ['/new-home', '/new-home/', '/'].includes(window.location.pathname)
@@ -253,9 +259,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
       }
     }
     return (
-      <div className={className} data-content={idx + 1} key={idx} onClick={() => { setActive(idx + 1); setTimeout(() => {
-        forceCheck();
-      }, 50) }}>
+      <div className={className} data-content={idx + 1} key={idx} onClick={() => activeTabHandler(idx)}>
         <div className={classImg}>
           <ImageMobile></ImageMobile>
         </div>
