@@ -67,6 +67,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   const classPositionImage = `col-xl-6 d-none d-xl-flex list-image-ic delay-2 ${positionContent === 'right' ? '': ' '}`
   const lazyRef = useRef(null)
   const [active, setActive] = useState(1)
+  const [stickyStyle, setStickyStyle] = useState({})
   const initClass = (ele) => {
     const wH = window.innerHeight
     const header = document.querySelectorAll('.header')[0].offsetHeight
@@ -92,6 +93,11 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   useEffect(() => {
     const $this = lazyRef.current
     let flag = true
+
+    // #region Sticky won't work if any parent element have overflow is hidden || scroll || auto => remove overflow on body, html
+    document.body.style.setProperty('overflow', 'unset', 'important')
+    // #endregion
+
     setheight($this)
     initClass($this)
     if (lazyRef.current.classList.contains('is-full')) {
@@ -152,60 +158,102 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   }
   const caculatePin = ($this) => {
     let serviceLeft
-    let add = 0
-    if ($this.classList.contains('is-full')) {
-      serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
-      setUpCanBeReset($this.querySelectorAll('.fake-height')[0])
-    } else {
-      serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
-      add = $this.querySelectorAll('.title-i-c')[0].offsetHeight + 60
-      setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical ')[0])
-    }
-    const serviceRight = $this.querySelectorAll('.fake-height')[0]
     const doc = document.documentElement;
-    let offsetPin
-    let rootOffset
-    const header = document.querySelectorAll('#header')[0].offsetHeight
-    let trigger
-    let listOffset
-    if (window.innerWidth < 1200) {
-      resetPropertyPin(serviceLeft)
-      return false
-    }
-    rootOffset = $this.offsetTop + add
+    const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
+    const $fakeHeight = $this.querySelectorAll('.fake-height')[0]
+    console.log($this.querySelectorAll('.wrap-box-vertical'))
     scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
-    offsetPin = (window.innerHeight - document.querySelectorAll('#header')[0].offsetHeight - serviceLeft.offsetHeight) / 2
-    listOffset = rootOffset + serviceRight.offsetHeight - add
-    trigger = scrollTop + header + offsetPin
-    let item = $this.querySelectorAll('.fake-height .item-image-ic')
-    if(item) {
-      Array.from(item).forEach((elem,i) => {
-        if(elem.offsetParent) {
-          const oft = elem.offsetTop + elem.offsetParent.offsetTop
-          const middle =  scrollTop + header + (window.innerHeight - document.querySelectorAll('#header')[0].offsetHeight)/2
-          if (middle >= oft && middle <= oft + elem.offsetHeight) {
-            activetab($this,i)
-          }
-        }
+
+    if (topPosition !== stickyStyle.top) {
+      setStickyStyle({
+        top: topPosition
       })
     }
-    if (trigger > rootOffset) {
-      if (trigger + serviceLeft.offsetHeight < listOffset) {
-        serviceLeft.classList.remove(classPin2)
-        serviceLeft.classList.add(classPin)
-        serviceLeft.style.top = header + offsetPin + 'px'
-      } else {
-        serviceLeft.classList.add(classPin2)
-        serviceLeft.style.top = rootOffset - scrollTop + 'px'
-      }
-      if( serviceLeft.classList.contains('order-2')) {
-        serviceLeft.style.marginLeft = widthSerLeft  + 'px'
-      }
-      serviceLeft.style.width = widthSerLeft + 'px'
+
+    if ($this.classList.contains('is-full')) {
+      serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
     } else {
-      resetPropertyPin(serviceLeft)
+      serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
     }
-    return true
+    const lengthItemIc = $this.querySelectorAll('.item-ic').length
+    const heightEachItemIc = (serviceLeft.offsetHeight + $fakeHeight.offsetHeight) / lengthItemIc
+    let positionTopEachItem = []
+    for (let index = 0; index < lengthItemIc; index++) {
+      positionTopEachItem = [...positionTopEachItem, heightEachItemIc * index]
+    }
+    let tabActive = 0
+    const currentPosition = $this.getBoundingClientRect().top - 200
+    if (currentPosition > 0) tabActive = 0
+    else if (Math.abs(currentPosition) >= positionTopEachItem[positionTopEachItem.length - 1]) tabActive = positionTopEachItem.length - 1
+    else {
+      for (let index = 0; index < positionTopEachItem.length; index++) {
+        const item = positionTopEachItem[index]
+        const nextItem = positionTopEachItem[index + 1]
+        if (nextItem && item <= Math.abs(currentPosition) && Math.abs(currentPosition) <= nextItem) {
+          tabActive = index
+        }
+      }
+    }
+    const currentActiveTab = Number($this.querySelectorAll('.item-ic.tab-active')[0].getAttribute('data-content'))
+    if (currentActiveTab - 1 !== currentActiveTab) {
+      activetab($this, tabActive)
+    }
+
+    // let serviceLeft
+    // let add = 0
+    // if ($this.classList.contains('is-full')) {
+    //   serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
+    //   setUpCanBeReset($this.querySelectorAll('.fake-height')[0])
+    // } else {
+    //   serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
+    //   add = $this.querySelectorAll('.title-i-c')[0].offsetHeight + 60
+    //   setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical ')[0])
+    // }
+    // const serviceRight = $this.querySelectorAll('.fake-height')[0]
+    // const doc = document.documentElement;
+    // let offsetPin
+    // let rootOffset
+    // const header = document.querySelectorAll('#header')[0].offsetHeight
+    // let trigger
+    // let listOffset
+    // if (window.innerWidth < 1200) {
+    //   resetPropertyPin(serviceLeft)
+    //   return false
+    // }
+    // rootOffset = $this.offsetTop + add
+    // scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+    // offsetPin = (window.innerHeight - document.querySelectorAll('#header')[0].offsetHeight - serviceLeft.offsetHeight) / 2
+    // listOffset = rootOffset + serviceRight.offsetHeight - add
+    // trigger = scrollTop + header + offsetPin
+    // let item = $this.querySelectorAll('.fake-height .item-image-ic')
+    // if(item) {
+    //   Array.from(item).forEach((elem,i) => {
+    //     if(elem.offsetParent) {
+    //       const oft = elem.offsetTop + elem.offsetParent.offsetTop
+    //       const middle =  scrollTop + header + (window.innerHeight - document.querySelectorAll('#header')[0].offsetHeight)/2
+    //       if (middle >= oft && middle <= oft + elem.offsetHeight) {
+    //         activetab($this,i)
+    //       }
+    //     }
+    //   })
+    // }
+    // if (trigger > rootOffset) {
+    //   if (trigger + serviceLeft.offsetHeight < listOffset) {
+    //     serviceLeft.classList.remove(classPin2)
+    //     serviceLeft.classList.add(classPin)
+    //     serviceLeft.style.top = header + offsetPin + 'px'
+    //   } else {
+    //     serviceLeft.classList.add(classPin2)
+    //     serviceLeft.style.top = rootOffset - scrollTop + 'px'
+    //   }
+    //   if( serviceLeft.classList.contains('order-2')) {
+    //     serviceLeft.style.marginLeft = widthSerLeft  + 'px'
+    //   }
+    //   serviceLeft.style.width = widthSerLeft + 'px'
+    // } else {
+    //   resetPropertyPin(serviceLeft)
+    // }
+    // return true
   }
 
   const activetab = (ele,tab) => {
@@ -324,9 +372,9 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   })
 	return (
     <React.Fragment>
-      <section ref={ lazyRef } className={classSection} data-max={listPanelContent.length}>
-        <div className="container anima-bottom">
-          <div className='wrap-box-vertical'>
+      <section ref={ lazyRef } className={classSection} data-max={listPanelContent.length} >
+        <div className="container anima-bottom" >
+          <div className='wrap-box-vertical sticky' style={stickyStyle}>
           { title &&
             <div className="title-i-c text-center last-mb-none">
               <h2 dangerouslySetInnerHTML={renderHTML(title)}></h2>
