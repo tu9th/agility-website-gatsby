@@ -578,6 +578,10 @@ ol {
   }
 }
 
+.sticky {
+  position: sticky;
+  // position: inherit;
+}
 @include media-breakpoint-up(md) {
   .wrap-video {
     .icon-video {
