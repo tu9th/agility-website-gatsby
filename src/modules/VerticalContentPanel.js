@@ -156,18 +156,10 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   const setUpCanBeReset = (pinElement) => {
     widthSerLeft = pinElement.offsetWidth + 20
   }
-  const caculatePin = ($this) => {
-    let serviceLeft
-    const doc = document.documentElement;
-    const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
+  const calculateHeightEachItem = () => {
+    const $this = lazyRef.current
     const $fakeHeight = $this.querySelectorAll('.fake-height')[0]
-    scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
-
-    if (topPosition !== stickyStyle.top) {
-      setStickyStyle({
-        top: topPosition
-      })
-    }
+    let serviceLeft
 
     if ($this.classList.contains('is-full')) {
       serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
@@ -180,8 +172,23 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     for (let index = 0; index < lengthItemIc; index++) {
       positionTopEachItem = [...positionTopEachItem, heightEachItemIc * index]
     }
+    return positionTopEachItem
+  }
+
+  const caculatePin = ($this) => {
+    const doc = document.documentElement;
+    const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
+    let positionTopEachItem = calculateHeightEachItem()
     let tabActive = 0
     const currentPosition = $this.getBoundingClientRect().top - 200
+    scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+
+    if (topPosition !== stickyStyle.top) {
+      setStickyStyle({
+        top: topPosition
+      })
+    }
+
     if (currentPosition > 0) tabActive = 0
     else if (Math.abs(currentPosition) >= positionTopEachItem[positionTopEachItem.length - 1]) tabActive = positionTopEachItem.length - 1
     else {
@@ -193,23 +200,25 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
         }
       }
     }
-    activetab($this, tabActive)
+    activeTab(tabActive)
 
     return true
   }
 
-  const activetab = (ele,tab) => {
-    const currentActiveTab = Number(ele.querySelectorAll('.item-ic.tab-active')[0].getAttribute('data-content'))
-    if (currentActiveTab !== tab + 1) {
-      ele.querySelectorAll(`.item-ic[data-content="${ tab + 1 }"]`)[0].click()
-    }
+  const activeTab = (idx) => {
+    setActive(idx + 1)
+    setTimeout(() => {
+      forceCheck();
+    }, 50)
   }
 
   const activeTabHandler = (idx) => {
-    setActive(idx + 1)
-    setTimeout(() => {
-    forceCheck();
-  }, 50) }
+    const $this = lazyRef.current
+    const heightEachItem = calculateHeightEachItem()
+    const doc = document.documentElement;
+    scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+    Helpers.animateScrollTop(scrollTop + $this.getBoundingClientRect().top + heightEachItem[idx], 100)
+  }
 
   let isHomePage = false
 	if(typeof window !== `undefined`){
