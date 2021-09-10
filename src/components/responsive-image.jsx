@@ -1,5 +1,5 @@
 import React from 'react';
-import { AgilityImage } from "@agility/gatsby-image-agilitycms"
+// import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 
 
 const ResponsiveImage = ({img, layout, breaks, className}) => {
@@ -17,13 +17,14 @@ const ResponsiveImage = ({img, layout, breaks, className}) => {
 		}
 
 		//if this is an svg, just output it
+		console.log(image)
 		if (urlNoQuery.indexOf(".svg") !== -1) {
 			return <img src={urlNoQuery} alt={alt} className={className} loading="lazy" />
 		}
 
-		if (image.height && image.width) {
-			return <AgilityImage image={image} layout={layout} loading="lazy" />
-		}
+		// if (image.height && image.width) {
+		// 	return <AgilityImage image={image} layout={layout} loading="lazy" />
+		// }
 
 		let smallestSrc = url;
 		let smallestWidth = -1;

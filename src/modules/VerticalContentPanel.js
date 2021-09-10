@@ -170,7 +170,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     const heightEachItemIc = (serviceLeft.offsetHeight + $fakeHeight.offsetHeight) / lengthItemIc
     let positionTopEachItem = []
     for (let index = 0; index < lengthItemIc; index++) {
-      positionTopEachItem = [...positionTopEachItem, index === 0 ? 0 : (heightEachItemIc * index - 100)]
+      positionTopEachItem = [...positionTopEachItem, index === 0 ? 0 : (heightEachItemIc * index)]
     }
     return positionTopEachItem
   }
@@ -237,28 +237,26 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
           if (positionContent === 'right') {
             return (
               <React.Fragment>
-                <Lazyload offset={ Helpers.lazyOffset }><img src='/images/familiar.png' className='layer-image' alt={customField.graphic.label}></img></Lazyload>
-                <Lazyload offset={ Helpers.lazyOffset }>
-					<ResponsiveImage img={customField.graphic} className='img-before'/>
-					{/* <img src={customField.graphic.url} className='img-before' alt={customField.graphic.label}/>					 */}
-					</Lazyload>
+                <Lazyload offset={Helpers.lazyOffset}><img src='/images/familiar.png' className='layer-image' alt={customField.graphic.label}></img></Lazyload>
+                <Lazyload offset={Helpers.lazyOffset}>
+                  <ResponsiveImage img={customField.graphic} className='img-before' />
+                </Lazyload>
               </React.Fragment>
             )
           } else {
             return (
               <React.Fragment>
-                <Lazyload offset={ Helpers.lazyOffset }><img src='/images/layer-content-image.png' className='layer-image' alt={customField.graphic.label}></img></Lazyload>
-                <Lazyload offset={ Helpers.lazyOffset }>
-					<ResponsiveImage img={customField.graphic} className='img-before'/>
-					{/* <img src={customField.graphic.url} className='img-before' alt={customField.graphic.label}></img>  */}
-				</Lazyload>
+                <Lazyload offset={Helpers.lazyOffset}><img src='/images/layer-content-image.png' className='layer-image' alt={customField.graphic.label}></img></Lazyload>
+                <Lazyload offset={Helpers.lazyOffset}>
+                  <ResponsiveImage img={customField.graphic} className='img-before' />
+                </Lazyload>
               </React.Fragment>
             )
           }
         } else {
           return (
-            <Lazyload offset={ Helpers.lazyOffset }>
-				<ResponsiveImage img={customField.graphic} />
+            <Lazyload offset={Helpers.lazyOffset}>
+              <ResponsiveImage img={customField.graphic} />
 				{/* <img src={customField.graphic.url} alt={customField.graphic.label}></img> */}
 			</Lazyload>
           )
