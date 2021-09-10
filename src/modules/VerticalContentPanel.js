@@ -161,7 +161,6 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     const doc = document.documentElement;
     const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
     const $fakeHeight = $this.querySelectorAll('.fake-height')[0]
-    console.log($this.querySelectorAll('.wrap-box-vertical'))
     scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
 
     if (topPosition !== stickyStyle.top) {
@@ -194,70 +193,16 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
         }
       }
     }
-    const currentActiveTab = Number($this.querySelectorAll('.item-ic.tab-active')[0].getAttribute('data-content'))
-    if (currentActiveTab - 1 !== currentActiveTab) {
-      activetab($this, tabActive)
-    }
+    activetab($this, tabActive)
 
-    // let serviceLeft
-    // let add = 0
-    // if ($this.classList.contains('is-full')) {
-    //   serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
-    //   setUpCanBeReset($this.querySelectorAll('.fake-height')[0])
-    // } else {
-    //   serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
-    //   add = $this.querySelectorAll('.title-i-c')[0].offsetHeight + 60
-    //   setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical ')[0])
-    // }
-    // const serviceRight = $this.querySelectorAll('.fake-height')[0]
-    // const doc = document.documentElement;
-    // let offsetPin
-    // let rootOffset
-    // const header = document.querySelectorAll('#header')[0].offsetHeight
-    // let trigger
-    // let listOffset
-    // if (window.innerWidth < 1200) {
-    //   resetPropertyPin(serviceLeft)
-    //   return false
-    // }
-    // rootOffset = $this.offsetTop + add
-    // scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
-    // offsetPin = (window.innerHeight - document.querySelectorAll('#header')[0].offsetHeight - serviceLeft.offsetHeight) / 2
-    // listOffset = rootOffset + serviceRight.offsetHeight - add
-    // trigger = scrollTop + header + offsetPin
-    // let item = $this.querySelectorAll('.fake-height .item-image-ic')
-    // if(item) {
-    //   Array.from(item).forEach((elem,i) => {
-    //     if(elem.offsetParent) {
-    //       const oft = elem.offsetTop + elem.offsetParent.offsetTop
-    //       const middle =  scrollTop + header + (window.innerHeight - document.querySelectorAll('#header')[0].offsetHeight)/2
-    //       if (middle >= oft && middle <= oft + elem.offsetHeight) {
-    //         activetab($this,i)
-    //       }
-    //     }
-    //   })
-    // }
-    // if (trigger > rootOffset) {
-    //   if (trigger + serviceLeft.offsetHeight < listOffset) {
-    //     serviceLeft.classList.remove(classPin2)
-    //     serviceLeft.classList.add(classPin)
-    //     serviceLeft.style.top = header + offsetPin + 'px'
-    //   } else {
-    //     serviceLeft.classList.add(classPin2)
-    //     serviceLeft.style.top = rootOffset - scrollTop + 'px'
-    //   }
-    //   if( serviceLeft.classList.contains('order-2')) {
-    //     serviceLeft.style.marginLeft = widthSerLeft  + 'px'
-    //   }
-    //   serviceLeft.style.width = widthSerLeft + 'px'
-    // } else {
-    //   resetPropertyPin(serviceLeft)
-    // }
-    // return true
+    return true
   }
 
   const activetab = (ele,tab) => {
-    ele.querySelectorAll(`.item-ic[data-content="${ tab + 1 }"]`)[0].click()
+    const currentActiveTab = Number(ele.querySelectorAll('.item-ic.tab-active')[0].getAttribute('data-content'))
+    if (currentActiveTab !== tab + 1) {
+      ele.querySelectorAll(`.item-ic[data-content="${ tab + 1 }"]`)[0].click()
+    }
   }
 
   let isHomePage = false
