@@ -421,7 +421,7 @@
 @media screen and (max-width: 1023px) {
   .foter {
     .foter-menu {
-      width: 33.33%;
+      width: 50%;
     }
     .menu-social {
       margin: 0 14px 20px;
@@ -437,9 +437,9 @@
 }
 @media screen and (max-width: 767px) {
   .foter {
-    .foter-menu {
-      width: 50%;
-    }
+    // .foter-menu {
+    //   width: 50%;
+    // }
     .foter-subscribe {
       margin-bottom: 30px;
     }

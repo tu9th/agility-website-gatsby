@@ -229,7 +229,6 @@ class Footer extends React.Component {
 		let column1Links = this.props.item.column1Links.sort(sortFunc);
 		let column2Links = this.props.item.column2Links.sort(sortFunc);
 		let column3Links = this.props.item.column3Links.sort(sortFunc);
-		// console.log('column3Links', column3Links, this.props.item)
 		let followLinks = this.props.item.followLinks.sort(sortFunc);
 		let bottomLinks = this.props.item.bottomLinks.sort(sortFunc);
 
