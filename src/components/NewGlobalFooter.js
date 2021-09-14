@@ -340,7 +340,7 @@ class Footer extends React.Component {
 							<li className="foter-menu-li title"><span>{item.column3Title}</span></li>
 							{outputLinks(column3Links)}
 						</ul>
-						<ul className="foter-menu menu-information">
+						<ul className="foter-menu menu-fourth">
 							<li className="foter-menu-li title"><span>{item.column4Title}</span></li>
 							{outputLinks(column4Links)}
 						</ul>
