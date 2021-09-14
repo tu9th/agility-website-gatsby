@@ -229,8 +229,51 @@ class Footer extends React.Component {
 		let column1Links = this.props.item.column1Links.sort(sortFunc);
 		let column2Links = this.props.item.column2Links.sort(sortFunc);
 		let column3Links = this.props.item.column3Links.sort(sortFunc);
+		// console.log('column3Links', column3Links, this.props.item)
 		let followLinks = this.props.item.followLinks.sort(sortFunc);
 		let bottomLinks = this.props.item.bottomLinks.sort(sortFunc);
+
+		// #region Tmp data for fourth column
+		item.column4Title = 'Fourth Column'
+		let column4Links = [{
+			contentID: '1111',
+			'customFields': {
+				title: 'Link None',
+				uRL: {
+					href: '',
+					target: '_blank'
+				}
+			}
+		},{
+			contentID: '2222',
+			'customFields': {
+				title: 'Link None',
+				uRL: {
+					href: '',
+					target: '_blank'
+				}
+			}
+		},{
+			contentID: '3333',
+			'customFields': {
+				title: 'Link None',
+				uRL: {
+					href: '',
+					target: '_blank'
+				}
+			}
+		},{
+			contentID: '4444',
+			'customFields': {
+				title: 'Link None',
+				uRL: {
+					href: '',
+					target: '_blank'
+				}
+			}
+		}]
+		console.log('column3Links', column3Links)
+		// #endregion
 
 		const outputLinks = (lst) => {
 			let links = []
@@ -296,6 +339,10 @@ class Footer extends React.Component {
 						<ul className="foter-menu menu-information">
 							<li className="foter-menu-li title"><span>{item.column3Title}</span></li>
 							{outputLinks(column3Links)}
+						</ul>
+						<ul className="foter-menu menu-information">
+							<li className="foter-menu-li title"><span>{item.column4Title}</span></li>
+							{outputLinks(column4Links)}
 						</ul>
 
 						<div className={classSub}>{/*  remove class thanks-subs"> */}
