@@ -237,7 +237,7 @@ class Footer extends React.Component {
 		let column4Links = [{
 			contentID: '1111',
 			'customFields': {
-				title: 'Link None',
+				title: 'Link Name',
 				uRL: {
 					href: '',
 					target: '_blank'
@@ -246,7 +246,7 @@ class Footer extends React.Component {
 		},{
 			contentID: '2222',
 			'customFields': {
-				title: 'Link None',
+				title: 'Link Name',
 				uRL: {
 					href: '',
 					target: '_blank'
@@ -255,7 +255,7 @@ class Footer extends React.Component {
 		},{
 			contentID: '3333',
 			'customFields': {
-				title: 'Link None',
+				title: 'Link Name',
 				uRL: {
 					href: '',
 					target: '_blank'
@@ -264,7 +264,7 @@ class Footer extends React.Component {
 		},{
 			contentID: '4444',
 			'customFields': {
-				title: 'Link None',
+				title: 'Link Name',
 				uRL: {
 					href: '',
 					target: '_blank'
