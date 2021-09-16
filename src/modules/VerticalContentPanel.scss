@@ -241,7 +241,7 @@
         padding-left: 40px;
       }
     }
-    &.tab-active {
+    &.tab-active, &:hover {
       h4 {
         color: $color-58;
       }

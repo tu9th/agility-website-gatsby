@@ -92,33 +92,45 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
 
   useEffect(() => {
     const $this = lazyRef.current
-    let flag = true
+    let serviceLeft
 
-    // #region Sticky won't work if any parent element have overflow is hidden || scroll || auto => remove overflow on body, html
-    document.body.style.setProperty('overflow', 'unset', 'important')
-    // #endregion
-
-    setheight($this)
-    initClass($this)
-    if (lazyRef.current.classList.contains('is-full')) {
-      setUpCanBeReset($this.querySelectorAll('.fake-height')[0])
+    if ($this.classList.contains('is-full')) {
+      serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
     } else {
-      setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical')[0])
+      serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
     }
+    // let flag = true
+
+    // // #region Sticky won't work if any parent element have overflow is hidden || scroll || auto => remove overflow on body, html
+    // document.body.style.setProperty('overflow', 'unset', 'important')
+    // // #endregion
+
+    // setheight($this)
+    // initClass($this)
+    // if (lazyRef.current.classList.contains('is-full')) {
+    //   setUpCanBeReset($this.querySelectorAll('.fake-height')[0])
+    // } else {
+    //   setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical')[0])
+    // }
 
     const scrollWindow = () => {
-      caculatePin($this)
-      if (flag === true) {
-        setheight($this)
-        flag = false
-      }
+      // caculatePin($this)
+      // if (flag === true) {
+      //   setheight($this)
+      //   flag = false
+      // }
     }
     const resizeWindow = () => {
-      initClass($this)
-      setheight($this)
-      caculatePin($this)
+      serviceLeft.style.maxHeight = ''
+      if (window.innerWidth < 768) return
+      const list = $this.querySelectorAll('.list-content-ic')[0]
+      serviceLeft.style.maxHeight = list.offsetHeight + 'px'
+      // initClass($this)
+      // setheight($this)
+      // caculatePin($this)
     }
-    caculatePin($this)
+    // caculatePin($this)
+    resizeWindow()
     window.addEventListener('scroll',  scrollWindow)
     window.addEventListener('resize', resizeWindow)
 
@@ -153,72 +165,74 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     pinElement.style.top = 'auto'
   }
 
-  const setUpCanBeReset = (pinElement) => {
-    widthSerLeft = pinElement.offsetWidth + 20
-  }
-  const calculateHeightEachItem = () => {
-    const $this = lazyRef.current
-    const $fakeHeight = $this.querySelectorAll('.fake-height')[0]
-    let serviceLeft
+  // const setUpCanBeReset = (pinElement) => {
+  //   widthSerLeft = pinElement.offsetWidth + 20
+  // }
+  // const calculateHeightEachItem = () => {
+  //   const $this = lazyRef.current
+  //   const $fakeHeight = $this.querySelectorAll('.fake-height')[0]
+  //   let serviceLeft
 
-    if ($this.classList.contains('is-full')) {
-      serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
-    } else {
-      serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
-    }
-    const lengthItemIc = $this.querySelectorAll('.item-ic').length
-    const heightEachItemIc = (serviceLeft.offsetHeight + $fakeHeight.offsetHeight) / lengthItemIc
-    let positionTopEachItem = []
-    for (let index = 0; index < lengthItemIc; index++) {
-      positionTopEachItem = [...positionTopEachItem, index === 0 ? 0 : (heightEachItemIc * index)]
-    }
-    return positionTopEachItem
-  }
+  //   if ($this.classList.contains('is-full')) {
+  //     serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
+  //   } else {
+  //     serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
+  //   }
+  //   const lengthItemIc = $this.querySelectorAll('.item-ic').length
+  //   const heightEachItemIc = (serviceLeft.offsetHeight + $fakeHeight.offsetHeight) / lengthItemIc
+  //   let positionTopEachItem = []
+  //   for (let index = 0; index < lengthItemIc; index++) {
+  //     positionTopEachItem = [...positionTopEachItem, index === 0 ? 0 : (heightEachItemIc * index)]
+  //   }
+  //   return positionTopEachItem
+  // }
 
-  const caculatePin = ($this) => {
-    const doc = document.documentElement;
-    const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
-    let positionTopEachItem = calculateHeightEachItem()
-    let tabActive = 0
-    const currentPosition = $this.getBoundingClientRect().top - 200
-    scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+  // const caculatePin = ($this) => {
+  //   const doc = document.documentElement;
+  //   const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
+  //   let positionTopEachItem = calculateHeightEachItem()
+  //   let tabActive = 0
+  //   const currentPosition = $this.getBoundingClientRect().top - 200
+  //   scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
 
-    if (topPosition !== stickyStyle.top) {
-      setStickyStyle({
-        top: topPosition
-      })
-    }
+  //   if (topPosition !== stickyStyle.top) {
+  //     setStickyStyle({
+  //       top: topPosition
+  //     })
+  //   }
 
-    if (currentPosition > 0) tabActive = 0
-    else if (Math.abs(currentPosition) >= positionTopEachItem[positionTopEachItem.length - 1]) tabActive = positionTopEachItem.length - 1
-    else {
-      for (let index = 0; index < positionTopEachItem.length; index++) {
-        const item = positionTopEachItem[index]
-        const nextItem = positionTopEachItem[index + 1]
-        if (nextItem && item <= Math.abs(currentPosition) && Math.abs(currentPosition) <= nextItem) {
-          tabActive = index
-        }
-      }
-    }
-    activeTab(tabActive)
+  //   if (currentPosition > 0) tabActive = 0
+  //   else if (Math.abs(currentPosition) >= positionTopEachItem[positionTopEachItem.length - 1]) tabActive = positionTopEachItem.length - 1
+  //   else {
+  //     for (let index = 0; index < positionTopEachItem.length; index++) {
+  //       const item = positionTopEachItem[index]
+  //       const nextItem = positionTopEachItem[index + 1]
+  //       if (nextItem && item <= Math.abs(currentPosition) && Math.abs(currentPosition) <= nextItem) {
+  //         tabActive = index
+  //       }
+  //     }
+  //   }
+  //   activeTab(tabActive)
 
-    return true
-  }
+  //   return true
+  // }
 
-  const activeTab = (idx) => {
+  const activeTabHandler = (idx) => {
     setActive(idx + 1)
     setTimeout(() => {
       forceCheck();
     }, 50)
   }
 
-  const activeTabHandler = (idx) => {
-    const $this = lazyRef.current
-    const heightEachItem = calculateHeightEachItem()
-    const doc = document.documentElement;
-    scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
-    Helpers.animateScrollTop(scrollTop + $this.getBoundingClientRect().top + heightEachItem[idx], 100)
-  }
+  // const activeTabHandler = (idx) => {
+    // const $this = lazyRef.current
+    // const heightEachItem = calculateHeightEachItem()
+    // const doc = document.documentElement;
+    // scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+    // Helpers.animateScrollTop(scrollTop + $this.getBoundingClientRect().top + heightEachItem[idx], 100)
+    // console.log('Testtt')
+    // activeTab(idx)
+  // }
 
   let isHomePage = false
 	if(typeof window !== `undefined`){
@@ -266,7 +280,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
       }
     }
     return (
-      <div className={className} data-content={idx + 1} key={idx} onClick={() => activeTabHandler(idx)}>
+      <div className={className} data-content={idx + 1} key={idx} onMouseOver={() => activeTabHandler(idx)}>
         <div className={classImg}>
           <ImageMobile></ImageMobile>
         </div>
@@ -345,7 +359,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
             </div>
           }
           </div>
-          <div className='fake-height'>{itemfake}</div>
+          {/* <div className='fake-height'>{itemfake}</div> */}
         </div>
       </section>
     <Spacing item={item}/>
