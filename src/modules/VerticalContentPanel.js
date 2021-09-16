@@ -68,27 +68,27 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   const lazyRef = useRef(null)
   const [active, setActive] = useState(1)
   const [stickyStyle, setStickyStyle] = useState({})
-  const initClass = (ele) => {
-    const wH = window.innerHeight
-    const header = document.querySelectorAll('.header')[0].offsetHeight
-    const offset = wH - header
-    const calcHeight = ele.querySelectorAll('.title-i-c')[0].offsetHeight + 60 + ele.querySelectorAll('.wrap-lv2')[0].offsetHeight + 60
-    if (calcHeight < offset) {
-      ele.classList.add('is-full')
-      ele.classList.remove('is-lv2')
-    } else {
-      ele.classList.add('is-lv2')
-      ele.classList.remove('is-full')
-    }
-  }
-  const setheight = (ele) => {
-    const Fakeheight = ele.querySelectorAll('.fake-height')[0]
-    const title = ele.querySelectorAll('.title-i-c ')[0].offsetHeight
-    const item = ele.querySelectorAll('.list-image-ic .item-image-ic')
-    const list = ele.querySelectorAll('.list-content-ic')[0]
-    Fakeheight.style.height = title + item.length*list.offsetHeight*4/5 + 60 + 'px'
-    Fakeheight.style.paddingTop = title + 60 +'px'
-  }
+  // const initClass = (ele) => {
+  //   const wH = window.innerHeight
+  //   const header = document.querySelectorAll('.header')[0].offsetHeight
+  //   const offset = wH - header
+  //   const calcHeight = ele.querySelectorAll('.title-i-c')[0].offsetHeight + 60 + ele.querySelectorAll('.wrap-lv2')[0].offsetHeight + 60
+  //   if (calcHeight < offset) {
+  //     ele.classList.add('is-full')
+  //     ele.classList.remove('is-lv2')
+  //   } else {
+  //     ele.classList.add('is-lv2')
+  //     ele.classList.remove('is-full')
+  //   }
+  // }
+  // const setheight = (ele) => {
+  //   const Fakeheight = ele.querySelectorAll('.fake-height')[0]
+  //   const title = ele.querySelectorAll('.title-i-c ')[0].offsetHeight
+  //   const item = ele.querySelectorAll('.list-image-ic .item-image-ic')
+  //   const list = ele.querySelectorAll('.list-content-ic')[0]
+  //   Fakeheight.style.height = title + item.length*list.offsetHeight*4/5 + 60 + 'px'
+  //   Fakeheight.style.paddingTop = title + 60 +'px'
+  // }
 
   useEffect(() => {
     const $this = lazyRef.current
@@ -322,13 +322,13 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     return null
   })
 
-  const itemfake = listPanelContent.map((obj, idx) => {
-    const classNameImg = `item-image-ic ${idx + 1 === active ? 'tab-active': ''}`
-    return (
-      <div className={classNameImg}  data-image={idx + 1} key={'image-' + idx}>
-      </div>
-    )
-  })
+  // const itemfake = listPanelContent.map((obj, idx) => {
+  //   const classNameImg = `item-image-ic ${idx + 1 === active ? 'tab-active': ''}`
+  //   return (
+  //     <div className={classNameImg}  data-image={idx + 1} key={'image-' + idx}>
+  //     </div>
+  //   )
+  // })
 	return (
     <React.Fragment>
       <section ref={ lazyRef } className={classSection} data-max={listPanelContent.length} >
