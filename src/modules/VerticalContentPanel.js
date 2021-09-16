@@ -122,7 +122,7 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     }
     const resizeWindow = () => {
       serviceLeft.style.maxHeight = ''
-      if (window.innerWidth < 768) return
+      if (window.innerWidth < 1199) return
       const list = $this.querySelectorAll('.list-content-ic')[0]
       serviceLeft.style.maxHeight = list.offsetHeight + 'px'
       // initClass($this)
