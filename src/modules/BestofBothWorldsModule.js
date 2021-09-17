@@ -277,7 +277,7 @@ const BestofBothWorldsModule = ({ item }) => {
 			<section className={classSection} ref={thisModuleRef}>
 				<div className="container animation">
 					{titleVideo &&
-						<div className="text-center title-HIW last-mb-none anima-bottom delay-2">
+						<div className="text-center title-HIW last-mb-none anima-bottom delay-4">
 							<h5>{titleVideo}</h5>
 						</div>
 					}
