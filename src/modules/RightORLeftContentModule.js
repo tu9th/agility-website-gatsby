@@ -74,8 +74,6 @@ const ImgRender = React.memo(HasImg)
 
 
 const RightOrLeftContent = ({ item }) => {
-
-
 	const heading = item.customFields.title
 	const des = item.customFields.description
 	const breadcrumb = item.customFields.breadcrumb
@@ -87,7 +85,7 @@ const RightOrLeftContent = ({ item }) => {
 	const [isHomePage, setIsHomePage] = useState(false);
 	let checkIntegration
 
-	if (window.location.href.includes('test=integration')) {
+	if (document.location.href.includes('test=integration')) {
 		checkIntegration = <>
 			<IntegrationDetailSimilar />
 			<Spacing item={item} />
