@@ -83,22 +83,8 @@ const RightOrLeftContent = ({ item }) => {
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white' : ''}`
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
-	let checkIntegration
+	const [hasIntegration, setHasIntegration] = useState(false);
 
-	if (document.location.href.includes('test=integration')) {
-		checkIntegration = <>
-			<IntegrationDetailSimilar />
-			<Spacing item={item} />
-			<IntegrationDetailGuideLink />
-			<Spacing item={item} />
-			<IntegrationDetailContent />
-			<Spacing item={item} />
-			<IntegrationDetailBanner />
-			<Spacing item={item} />
-			<IntegrationListing />
-			<Spacing item={item} />
-		</>
-	}
 
 	let classAniImg = 'col-md-6 col-lg-7 col-right-lr'
 	let imgModule
@@ -117,7 +103,9 @@ const RightOrLeftContent = ({ item }) => {
 	/*  */
 	const detectHomePage = () => {
 		const detectHome = ['/new-home', '/new-home/', '/'].includes(window.location.pathname)
+		const detectIntegration = window.location.href.includes('test=integration')
 		setIsHomePage(detectHome)
+		setHasIntegration(detectIntegration)
 	}
 
 	const appenLottie = (callback = function () { }) => {
@@ -260,7 +248,18 @@ const RightOrLeftContent = ({ item }) => {
 				</div>
 			</section>
 			<Spacing item={item} />
-			{ checkIntegration }
+			{ hasIntegration && <>
+				<IntegrationDetailSimilar />
+				<Spacing item={item} />
+				<IntegrationDetailGuideLink />
+				<Spacing item={item} />
+				<IntegrationDetailContent />
+				<Spacing item={item} />
+				<IntegrationDetailBanner />
+				<Spacing item={item} />
+				<IntegrationListing />
+				<Spacing item={item} />
+			</> }
 		</React.Fragment>
 	);
 }
