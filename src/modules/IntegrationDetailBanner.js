@@ -4,6 +4,8 @@ import { renderHTML } from '../agility/utils'
 import './IntegrationDetailBanner.scss'
 import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
+import LazyLoad from 'react-lazyload'
+import Helpers from '../global/javascript/Helpers'
 
 
 const HasImg = ({ img, isHomePage, page }) => {
@@ -199,6 +201,9 @@ const IntegrationDetailBanner = ({ item }) => {
 							<div className='text-center text-md-left ps-rv img-banner d-flex justify-content-center align-items-center'>
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
+							<LazyLoad offset={ Helpers.lazyOffset } className="img-offset">
+								<img src='/images/integration-image.svg' alt='Agility CMS'></img>
+							</LazyLoad>
 						</div>
 					</div>
 				</div>

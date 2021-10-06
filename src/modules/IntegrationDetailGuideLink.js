@@ -89,7 +89,7 @@ const GuideLinks = ({ item, listGuideLinks }) => {
 	return (
 		<React.Fragment>
 			<section className={classSection} ref={ thisModuleRef }>
-				{/* <LazyLoad offset={ Helpers.lazyOffset }><img src="/images/computer.png" alt='Ready to dive in?' className='bg-guides'></img></LazyLoad> */}
+				<LazyLoad offset={ Helpers.lazyOffset }><img src="/images/user-guides.svg" alt='Ready to dive in?' className='bg-guides'></img></LazyLoad>
 				<span className="icomoon icon-gears"></span>
 				<div className="container">
 					<div className="row align-items-center">
