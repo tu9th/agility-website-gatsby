@@ -149,7 +149,6 @@ const CaseStudyDetails = (props) => {
 		})
 	}
 
-	
   const thisModuleRef = useRef(null)
   /* animation module */
   useEffect(() => {

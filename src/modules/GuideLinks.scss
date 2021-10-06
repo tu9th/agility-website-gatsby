@@ -24,6 +24,36 @@
 		transform: translateY(31%) translateX(-37%);
 		opacity: .27;
 	}
+	&.integration-detail {
+		padding-top: 151px;
+		padding: 151px 0 128px;
+		.container {
+			max-width: inherit;
+		}
+		.number {
+			line-height: 1.47;
+			margin-bottom: 10px;
+			font-weight: $fw-bold;
+			color: $color-ff;
+			letter-spacing: 0;
+			margin-right: 15px;
+			margin-top: 1px;
+		}
+		.content {
+			p {
+				margin-bottom: 0;
+			}
+		}
+		.item-guides{
+			padding: 21px 20px 22px;
+			&:first-child {
+				padding-top: 5px;
+			}
+			&:last-child {
+				padding-bottom: 5px;
+			}
+		}
+	}
 }
 .col-content-guide {
 	margin-bottom: 30px;

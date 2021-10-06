@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from "react-helmet"
 import { renderHTML } from '../agility/utils'
-import './RightORLeftContentModule.scss'
+import './IntegrationDetailBanner.scss'
 import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
-import IntegrationListing from './IntegrationListing'
-import IntegrationDetailBanner from './IntegrationDetailBanner'
-import IntegrationDetailContent from './IntegrationDetailContent'
-import IntegrationDetailGuideLink from './IntegrationDetailGuideLink'
-import IntegrationDetailSimilar from './IntegrationDetailSimilar'
+
 
 const HasImg = ({ img, isHomePage, page }) => {
 
@@ -33,85 +29,34 @@ const HasImg = ({ img, isHomePage, page }) => {
 	useEffect(() => {
 		setIsLoaded(true)
 	}, [])
-
+  const url = '/images/integration-banner.png'
 
 	return (
 		<React.Fragment>
-			{/* <picture>
-					<source srcSet={img.url}></source>
-					<img src={img.url} alt={ img.label ? img.label : 'image video' } className="img-mb"  />
-				</picture> */}
 				<Helmet>
-					<link rel="preload" as="image" href={img.url} media="screen" />
+					<link rel="preload" as="image" href={url} media="screen" />
 				</Helmet>
-
-
-
 			<img
-				src={img.url}
-				// width={ !isLoaded ? '320' : '' }
-				// height={ !isLoaded ? '208' : '' }
-				alt={img.label ? img.label : 'image video'} className={isHomePage ? 'img-mb' : 'anima-right'} />
-			{isHomePage &&
-				<div className="d-none d-sl-block">
-					<div className="ani-banner"></div>
-					<div className="ani-banner"></div>
-					<div className="ani-banner"></div>
-					<div className="ani-banner item-bg"></div>
-					<div className="ani-banner"></div>
-				</div>
-			}
-
+				src={url}
+				alt='image video' className='anima-right' />
 
 		</React.Fragment>
 	)
-	// return (
-	// 	<img src={img.url} className="anima-right" alt={ img.label ? img.label : 'image video' } />
-	// )
 }
 
 const ImgRender = React.memo(HasImg)
 
 
-const RightOrLeftContent = ({ item }) => {
-
-
-	const heading = item.customFields.title
-	const des = item.customFields.description
-	const breadcrumb = item.customFields.breadcrumb
-	const btn1 = item.customFields.cTA1Optional
-	const btn2 = item.customFields.cTA2Optional
-	const textSide = item.customFields.textSide
-	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white' : ''}`
+const IntegrationDetailBanner = ({ item }) => {
+	const heading = 'Google Analytics'
+	const des = 'Google Analytics is a service provided by Google to track all of the activity that happens on your website or app. Track all the activity from your Pages and Content from Agility CMS, including customer journeys, conversions, eCommerce and more.'
+	const breadcrumb = 'Explore All Integrations'
+	// const classSection = 'module mod-banner mod-integration-detail-banner animation bg-46 text-white'
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
-	let checkIntegration
 
-	if (window.location.href.includes('test=integration')) {
-		checkIntegration = <>
-			<IntegrationDetailSimilar />
-			<Spacing item={item} />
-			<IntegrationDetailGuideLink />
-			<Spacing item={item} />
-			<IntegrationDetailContent />
-			<Spacing item={item} />
-			<IntegrationDetailBanner />
-			<Spacing item={item} />
-			<IntegrationListing />
-			<Spacing item={item} />
-		</>
-	}
-
-	let classAniImg = 'col-md-6 col-lg-7 col-right-lr'
+	let classAniImg = 'col-md-6 col-lg-7 col-right-lr anima-right d-flex align-items-center justify-content-end'
 	let imgModule
-	if (item.customFields.graphic && item.customFields.graphic.url) {
-		imgModule = item.customFields.graphic
-	} else {
-		classAniImg = classAniImg + ' anima-right'
-	}
-
-
-	/*  */
 
 	const bannerRef = useRef(null)
 	const [isLottieLoad, setIsLottieLoad] = useState(false)
@@ -231,42 +176,38 @@ const RightOrLeftContent = ({ item }) => {
 			loadAni()
 		}
 	}, [isLottieLoad])
+
 	return (
 		<React.Fragment>
-			<section className={classSection} ref={bannerRef}>
+			<section className='module mod-integration-detail-banner animation bg-46 text-white' ref={bannerRef}>
 				<div className="container">
-					<div className={`row ${textSide === 'right' ? 'flex-md-row' : 'flex-md-row-reverse'} align-items-lg-center h1-big`}>
-						<div className={classAniImg}>
-							<div className={`wrap-ani-home text-center ${textSide === 'right' ? 'text-md-left' : 'text-md-right'} ps-rv ${isHomePage ? 'is-home' : 'internal-wrap'}`}>
+					<div className='row h1-big'>
+						<div className="col-md-6 col-lg-5 banner-col-text large-paragraph anima-left d-flex">
+              <div className="link box-message">
+                <p>
+                  <a className="link-line line-purple" href="">{breadcrumb}</a>
+                </p>
+              </div>
+              <div className="content-wrap">
+                <h1>{heading}</h1>
+                {des &&
+                  <div dangerouslySetInnerHTML={renderHTML(des)} className="description"></div>
+                }
+              </div>
+						</div>
+            <div className={classAniImg}>
+							<div className='text-center text-md-left ps-rv img-banner d-flex justify-content-center align-items-center'>
 								<ImgRender img={imgModule} isHomePage={isHomePage} />
 							</div>
-						</div>
-						<div className="col-md-6 col-lg-5 banner-col-text large-paragraph anima-left">
-							{breadcrumb && <h5>{breadcrumb}</h5>}
-							<h1>{heading}</h1>
-							{des &&
-								<div dangerouslySetInnerHTML={renderHTML(des)}></div>
-							}
-							{(btn1 || btn2) &&
-								<p className={`wrap-btn ${isHomePage ? '' : 'internal-btn'}`}>
-									{btn1 && btn1.href &&
-										<a href={btn1.href} target={btn1.target} className="text-decoration-none btn btn-primary">{btn1.text}</a>
-									}
-									{btn2 && btn2.href &&
-										<a href={btn2.href} target={btn2.target} className="text-decoration-none btn btn-outline-primary">{btn2.text}</a>
-									}
-								</p>
-							}
 						</div>
 					</div>
 				</div>
 			</section>
-			<Spacing item={item} />
-			{ checkIntegration }
+			{/* <Spacing item={item} /> */}
 		</React.Fragment>
 	);
 }
 
-export default RightOrLeftContent;
+export default IntegrationDetailBanner;
 
 

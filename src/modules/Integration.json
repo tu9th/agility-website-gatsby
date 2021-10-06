@@ -1,0 +1,1075 @@
+{
+  "query": {
+    "rotator": {
+      "nodes": [{
+        "properties": {
+          "itemOrder": 3
+        },
+        "contentID": 657,
+        "languageCode": "en-ca",
+        "customFields": {
+          "excerpt": "Agility helped Visit Orlando reduce manual processes and increase revenue by 20%.\r\n",
+          "title": "Visit Orlando: 20% increase in revenue with agile Headless Commerce",
+          "uRL": "visit-orlando",
+          "image": {
+            "url": "https://static.agilitycms.com/case-studies/images/visit-orlando-2_20200516204137_0.jpg",
+            "label": "Orlando castle with fireworks on agilitycms.com",
+            "filesize": 168600,
+            "height": 788,
+            "width": 940
+          },
+          "customerLogo": {
+            "url": "https://static.agilitycms.com/logos/visit-orlando-logo.svg",
+            "label": "Visit Orlando logo on agilitycms.com",
+            "filesize": 4688,
+            "height": null,
+            "width": null
+          }
+        }
+      }, {
+        "properties": {
+          "itemOrder": 4
+        },
+        "contentID": 671,
+        "languageCode": "en-ca",
+        "customFields": {
+          "excerpt": "\"With Agility we can decouple content from code, allowing content editors to work on their updates while we focus on what really matters: making our platform better for our users.\" - Vinícius Philot, Frontend Web Developer\r\n",
+          "title": "Cineplex: Ultimate Performance, Scalability and Usability for Movie Theater Giant",
+          "uRL": "cineplex",
+          "image": {
+            "url": "https://static.agilitycms.com/case-studies/images/cineplex4_20200516222705_0.jpg",
+            "label": "Woman at Cineplex watching movie on agilitycms.com",
+            "filesize": 89366,
+            "height": 788,
+            "width": 940
+          },
+          "customerLogo": {
+            "url": "https://static.agilitycms.com/logos/cineplex_logo.svg_20200516222523_0.png",
+            "label": "Cineplex Logo on agilitycms.com",
+            "filesize": 37712,
+            "height": 456,
+            "width": 1200
+          }
+        }
+      }, {
+        "properties": {
+          "itemOrder": 5
+        },
+        "contentID": 3553,
+        "languageCode": "en-ca",
+        "customFields": {
+          "excerpt": "Oxford Properties builds leading real estate businesses, with Agility CMS they can upload new multisite quickly and easily. ",
+          "title": "Modern Multisite Solution for Oxford Properties ",
+          "uRL": "modern-multisite-solution-for-oxford-properties",
+          "image": {
+            "url": "https://static.agilitycms.com/case-studies/images/union-park_20210519235052_0.jpg",
+            "label": "Toronto downtown on agilitycms.com",
+            "filesize": 117848,
+            "height": 750,
+            "width": 1000
+          },
+          "customerLogo": {
+            "url": "https://static.agilitycms.com/logos/1280px-oxford_properties_logo.svg_20210519233535_0.png",
+            "label": "OXFORD Logo on agilitycms.com",
+            "filesize": 24989,
+            "height": 365,
+            "width": 1280
+          }
+        }
+      }, {
+        "properties": {
+          "itemOrder": 6
+        },
+        "contentID": 909,
+        "languageCode": "en-ca",
+        "customFields": {
+          "excerpt": "Agility helped Hockey Canada improve page load speeds by 90% during peak traffic times.",
+          "title": "90% Improvement in Page Load Time",
+          "uRL": "hockey-canada",
+          "image": {
+            "url": "https://static.agilitycms.com/case-studies/images/hockey_20200516223809_0.jpg",
+            "label": "Hockey Canada players on the ice on agilitycms.com ",
+            "filesize": 111842,
+            "height": 788,
+            "width": 940
+          },
+          "customerLogo": {
+            "url": "https://static.agilitycms.com/logos/1200px-hockey_canada.svg_20190621181917_0.png",
+            "label": "Hockey Canada Logo on agilitycms.com",
+            "filesize": 94312,
+            "height": 1123,
+            "width": 1200
+          }
+        }
+      }]
+    },
+    "allAgilityCaseStudy": {
+      "edges": [{
+        "node": {
+          "customFields": {
+            "media": null,
+            "gallery": {
+              "galleryid": null
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/20/untitled-picture.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/20/arvada-web.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/20/arvada-5.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/20/arvada-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/20/arvada-3.png"
+            }],
+            "gallery": {
+              "galleryid": 20
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/31/4-p4p.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/31/3-p4p.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/31/2-p4p.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/31/1-p4p.jpg"
+            }],
+            "gallery": {
+              "galleryid": 31
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/24/cpa-web1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/24/cpa-wevb3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/24/cpa-web3.png"
+            }],
+            "gallery": {
+              "galleryid": 24
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/22/petcoweb.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/22/petcoweb2.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/22/petcoweb3.png"
+            }],
+            "gallery": {
+              "galleryid": 22
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/29/fc1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/29/fc-2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/29/fc-3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/29/fc-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/29/fc-5.png"
+            }],
+            "gallery": {
+              "galleryid": 29
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/8/annotation-2020-05-16-144929.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/8/vo3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/8/vo2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/8/vo1.png"
+            }],
+            "gallery": {
+              "galleryid": 8
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/27/cini-1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/27/cini-2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/27/cini-3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/27/cini-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/27/cini-5.png"
+            }],
+            "gallery": {
+              "galleryid": 27
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/13/s1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/13/s2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/13/s3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/13/s4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/13/s5.png"
+            }],
+            "gallery": {
+              "galleryid": 13
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/14/m1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/14/m2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/14/m3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/14/m4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/14/m5.png"
+            }],
+            "gallery": {
+              "galleryid": 14
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/11/ho1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/11/ho-3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/11/ho-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/11/ho-5.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/11/ho-6.png"
+            }],
+            "gallery": {
+              "galleryid": 11
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/28/comp1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/28/comp-2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/28/comp-3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/28/comp-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/28/comp-5.png"
+            }],
+            "gallery": {
+              "galleryid": 28
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/38/sc1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/38/sc2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/38/sc3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/38/sc4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/38/sc5.png"
+            }],
+            "gallery": {
+              "galleryid": 38
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/26/cali-1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/26/cali-2.jpg"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/26/cali-3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/26/cali-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/26/cali-5.png"
+            }],
+            "gallery": {
+              "galleryid": 26
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/18/la1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/18/la-2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/18/la-3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/18/la-4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/18/la-5.png"
+            }],
+            "gallery": {
+              "galleryid": 18
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/19/n2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/19/n1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/19/n3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/19/n4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/19/n5.png"
+            }],
+            "gallery": {
+              "galleryid": 19
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/21/ss1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/21/ss2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/21/ss3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/21/ss4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/21/ss5.png"
+            }],
+            "gallery": {
+              "galleryid": 21
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/34/me1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/34/me2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/34/me3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/34/me4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/34/me5.png"
+            }],
+            "gallery": {
+              "galleryid": 34
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/40/cu1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/40/cu2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/40/cu3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/40/cu4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/40/cu5.png"
+            }],
+            "gallery": {
+              "galleryid": 40
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/36/em1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/36/em2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/36/em3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/36/em4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/36/em5.png"
+            }],
+            "gallery": {
+              "galleryid": 36
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/39/sh1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/39/sh2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/39/sh3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/39/sh4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/39/sh5.png"
+            }],
+            "gallery": {
+              "galleryid": 39
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/35/co1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/35/co2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/35/co3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/35/co4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/35/co5.png"
+            }],
+            "gallery": {
+              "galleryid": 35
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/41/mc1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/41/mc2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/41/mc3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/41/mc4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/41/mc5.png"
+            }],
+            "gallery": {
+              "galleryid": 41
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/30/ac1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/30/ac2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/30/ac3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/30/ac4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/30/ac5.png"
+            }],
+            "gallery": {
+              "galleryid": 30
+            }
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "media": [{
+              "url": "https://static.agilitycms.com/MediaGroupings/53/ox1.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/53/ox2.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/53/ox3.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/53/ox4.png"
+            }, {
+              "url": "https://static.agilitycms.com/MediaGroupings/53/ox5.png"
+            }],
+            "gallery": {
+              "galleryid": 53
+            }
+          }
+        }
+      }]
+    },
+    "allAgilityResource": {
+      "edges": [{
+        "node": {
+          "customFields": {
+            "resourceTypeID": "402",
+            "title": "Content Before Design: The Foundations of Content-First Strategy",
+            "resourceTypeName": "Webinar",
+            "image": {
+              "url": "https://static.agilitycms.com/resources/images/copy-of-netlify-cms_20200724185043_0.jpg",
+              "label": "Content Before Design: The Foundations of Content-First Strategy"
+            },
+            "uRL": "content-first-content-before-design"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "resourceTypeID": "402",
+            "title": "Developer Training: JAMSTACK 101 with Gatsby and Agility CMS",
+            "resourceTypeName": "Webinar",
+            "image": {
+              "url": "https://static.agilitycms.com/resources/images/caas-4_20200605201751_0.jpg",
+              "label": "Man taking we dev course with Agility CMS "
+            },
+            "uRL": "developer-training-jamstack-101-with-gatsby-and-agility-cms"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "resourceTypeID": "402",
+            "title": "Webinar: The Future of CMS. A Faster Mindset.",
+            "resourceTypeName": "Webinar",
+            "image": {
+              "url": "https://static.agilitycms.com/resources/images/headless-wordpress-5_20200605202051_0.jpg",
+              "label": null
+            },
+            "uRL": "webinar-the-future-of-cms"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "resourceTypeID": "402",
+            "title": "Webinar: Building Fast Websites and Apps in 2020 ",
+            "resourceTypeName": "Webinar",
+            "image": {
+              "url": "https://static.agilitycms.com/resources/images/gatsby-webinar_20200413212131_0.jpg",
+              "label": null
+            },
+            "uRL": "webinar-building-fast-websites-and-apps-in-2020-with-gatsby-with-agility-cms"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "resourceTypeID": "402",
+            "title": "Webinar: Migrate to JAMStack Now",
+            "resourceTypeName": "Webinar",
+            "image": {
+              "url": "https://static.agilitycms.com/1sh2l0f3tv5a9y1sheg7.jpg",
+              "label": null
+            },
+            "uRL": "migrate-to-jamstack-now-no-excuses"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "resourceTypeID": "402",
+            "title": "Webinar: 5 Ways To Double Your Ticket Sales",
+            "resourceTypeName": "Webinar",
+            "image": {
+              "url": "https://static.agilitycms.com/layout/img/content/feature-webinar-.jpg",
+              "label": null
+            },
+            "uRL": "5-ways-to-double-your-ticket-sales-in-2017-webinar"
+          }
+        }
+      }]
+    },
+    "allAgilityBlogPost": {
+      "edges": [{
+        "node": {
+          "customFields": {
+            "title": "See you at Tessitura’s Learning & Community Conference 2017!",
+            "postImage": {
+              "url": "http://media.agilitycms.com/Attachments/NewItems/Slider1_Tech_20170811183046_0.jpg",
+              "label": null
+            },
+            "categoriesTitle": "Blog",
+            "uRL": "see-you-at-tessitura-s-learning-community-conference-2017"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Webinar On-Demand: Information + Content Architecture",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "webinar-on-demand-information-content-architecture"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Podcast: Why You Shouldn’t Just Give Clients What They Say They Want",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "podcast-why-you-shouldn-t-just-give-clients-what-they-say-they-want"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Google Penalized Sites for Unnatural Outbound Linking Over the Weekend",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "google-penalized-sites-for-unnatural-outbound-linking-over-the-weekend"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Minor Units: Deciding How to Store Monetary Values for Your Ecommerce Application",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "minor-units-deciding-how-to-store-monetary-values-for-your-e-commerce-application"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Content 101: When, Where and How to Update Your Website (WEBINAR)",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "content-101-when-where-and-how-to-update-your-website-webinar"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Dynamic Personalization Inspiration for Ecommerce Websites + How to Get Started",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "dynamic-personalization-inspiration-for-e-commerce-websites-how-to-get-started"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Mondelēz's Big Plan to Increase its Ecommerce Sales x 10 by 2020",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "mondel-z-s-big-plan-to-increase-its-e-commerce-sales-x-10-by-2020"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "Agility CMS Nabbed 3 People's Choice CMS Award Nominations",
+            "postImage": null,
+            "categoriesTitle": "Blog",
+            "uRL": "agility-cms-nabbed-3-people-s-choice-cms-award-nominations"
+          }
+        }
+      }, {
+        "node": {
+          "customFields": {
+            "title": "The Safe Holiday Rush 2020: What Ecommerce Sites Need to Do to Get Ready",
+            "postImage": {
+              "url": "https://static.agilitycms.com/posts/holidays_20201119205835_0.jpg",
+              "label": "2020 ecommerce pandemic shopping online holidays"
+            },
+            "categoriesTitle": "Blog",
+            "uRL": "2020-holiday-ecommerce"
+          }
+        }
+      }]
+    }
+  },
+  "props": {
+    "dynamicPageItem": {
+      "contentID": 3291,
+      "properties": {
+        "state": 2,
+        "modified": "2021-09-27T16:21:03.4",
+        "versionID": 33689,
+        "referenceName": "casestudies",
+        "definitionName": "CaseStudy",
+        "itemOrder": 8
+      },
+      "seo": {
+        "metaDescription": "As one of Canada's Big Five banks, Scotiabank found Agility CMS a perfect partner for fast and reliable content management. Read more! ",
+        "metaKeywords": "Scotiabank  Exceptional Content Experience",
+        "metaHTML": null,
+        "menuVisible": null,
+        "sitemapVisible": null
+      },
+      "customFields": {
+        "title": "Scotiabank: Delivering Exceptional and Secure Content Experience",
+        "textblob": "<h2>The Goal</h2>\n<p>Scotiabank came to Agility when they needed to quickly and security launch several websites for new regions that they expanded into.&nbsp; These regions included several countries such as Mexico and others in South America.</p>\n<h2>The Challenge</h2>\n<p>Scotiabank is a Canadian multinational banking and financial services company with the highest requirements for security and reliability. As one of Canada's Big Five banks, and the third-largest Canadian bank by deposits and market capitalization, Scotiabank was looking for a perfect partner for fast and reliable content management.</p>\n<h2>The Solution&nbsp;</h2>\n<p>Agility CMS has successfully met&nbsp; Scotiabank's high demanding needs since 2008:</p>\n<ul>\n<li>Easiness to adapt and add functionality to their site with their own developers' teams and implementation partners internationally</li>\n<li>Having full control of the website code</li>\n<li>100% confidence in Enterprise-grade security and reliability&nbsp;</li>\n</ul>\n<h3><strong><span>Part 1: Digital Property Creation</span></strong></h3>\n<p><span>Separate content instances were created in Agility CMS for each representative country.&nbsp; This allows each country to use their own content teams to <strong>manage the content that's specific and important to them</strong>.&nbsp; This was especially important because of the regionality of the languages in Latin America.</span></p>\n<h3><a name=\"_Toc66175669\"></a><strong><span>Part 2: Authentication</span></strong></h3>\n<p><span>All users of the Scotiabank CMS instances need to be <strong>authenticated securely</strong> to Agility using their existing corporate logins.&nbsp; This authentication process should carry forward any rules and branding that are already in use at Scotiabank.</span></p>\n<h2>The Outcome</h2>\n<p>Agility CMS successfully delivered:</p>\n<ol>\n<li>Superior Security Standards&nbsp;</li>\n<li>High-performant Canadian database</li>\n<li>Easy and user-friendly content management with creative and functional flexibility</li>\n</ol>\n<p><span>Each of the six countries in Scotiabank's Latin America portfolio is able to independently manage the content on their websites.&nbsp; Further, they are able to authenticate to Agility CMS using their Scotiabank corporate credentials via their existing Azure Active Directory login page. </span></p>\n<p><span>Scotiabank's security team has performed independent audits of the Agility CMS platform, which Agility has passed with flying colours each year.&nbsp; </span></p>\n<p><span>Scotiabank has successfully rebranded and rebuilt the website front-ends for each country over the many years that they've been on the Agility CMS platform.&nbsp; The development teams have re-used the existing content from Agility to save time and resources on each rebuild and design refresh.</span></p>\n<h3>Exceptional User Experience&nbsp;</h3>\n<p>Agility CMS was not meeting security and scalability needs, but also delivered exceptional User Experience to the team of content editors and developers.</p>\n<p>2020 NPS (Net Promoter Score: How likely are you to Recommend Agility CMS) was an average of 9.5 among Scotiabank marketing and development teams.</p>\n<p></p>\n<p>View Some of International Scotiabank Sites live:</p>\n<p>Mexico: <a href=\"https://www.scotiabank.com.mx/\">https://www.scotiabank.com.mx</a></p>\n<p>Peru: <a href=\"https://www.scotiabank.com.pe/Personas/tarjetas\">https://www.scotiabank.com.pe</a></p>\n<p>Colombia: <a href=\"https://www.scotiabankcolpatria.com/\">https://www.scotiabankcolpatria.com/</a>&nbsp;</p>\n<p><img src=\"https://static.agilitycms.com/integrated-geoscience-map-1.gif\" alt=\"headless cms for banks\" width=\"846\" height=\"423\" /></p>",
+        "clientNames": "Scotiabank",
+        "metaTitle": "Scotiabank Website Changes with Agility's Headless CMS ",
+        "excerpt": "As one of Canada's Big Five banks, Scotiabank found Agility CMS a perfect partner for fast and reliable content management. ",
+        "uRL": "scotiabank-delivering-exceptional-content-experience",
+        "image": {
+          "label": "Screenshot of Scotiabank Website ",
+          "url": "https://static.agilitycms.com/case-studies/images/screenshot-2021-02-19-111358_20210219191423_0.jpg",
+          "target": null,
+          "filesize": 229667,
+          "pixelHeight": "1231",
+          "pixelWidth": "1506",
+          "height": 1231,
+          "width": 1506
+        },
+        "thumbnailImage": {
+          "label": "Scotiabank website created with Agility CMS ",
+          "url": "https://static.agilitycms.com/Attachments/NewItems/screenshot-2021-02-19-092441-2_20210219174523_0.jpg",
+          "target": null,
+          "filesize": 120848,
+          "pixelHeight": "807",
+          "pixelWidth": "1677",
+          "height": 807,
+          "width": 1677
+        },
+        "customerLogo": {
+          "label": "Scotiabank Logo on agilitycms.com",
+          "url": "https://static.agilitycms.com/logos/scotiabank_logo-registered-1_20210219173107_0.png",
+          "target": null,
+          "filesize": 3886,
+          "pixelHeight": "39",
+          "pixelWidth": "272",
+          "height": 39,
+          "width": 272
+        },
+        "customerWhiteLogo": {
+          "label": "White Scotiabank logo on agilitycms.com",
+          "url": "https://static.agilitycms.com/MediaGroupings/3/scotiabank_logo-registered-white.png",
+          "target": null,
+          "filesize": 1417,
+          "pixelHeight": "39",
+          "pixelWidth": "272",
+          "height": 39,
+          "width": 272
+        },
+        "cTA": {
+          "contentID": 1782,
+          "properties": {
+            "state": 2,
+            "modified": "2021-03-15T12:19:26.523",
+            "versionID": 27115,
+            "referenceName": "sharedctablocks",
+            "definitionName": "CTABlock",
+            "itemOrder": 2
+          },
+          "customFields": {
+            "title": "Choosing a New CMS? Download Your 50-Point Checklist",
+            "internalTitle": "50 Point Checklist to Choose a Headless CMS",
+            "subtitle": "Avoid mistakes. Use our Free Ultimate Checklist.",
+            "image": {
+              "label": "choosing a headless cms",
+              "url": "https://static.agilitycms.com/Attachments/NewItems/cta-bottom-blog-webinars-7_20210315161905_0.jpg",
+              "target": null,
+              "filesize": 42492,
+              "pixelHeight": "300",
+              "pixelWidth": "975",
+              "height": 300,
+              "width": 975
+            },
+            "link": {
+              "href": "https://agilitycms.com/download/50-point-checklist-headless-cms?source=cta-bottom-blogpost",
+              "target": "_self",
+              "text": "Download Now"
+            }
+          }
+        },
+        "website": {
+          "href": "https://www.scotiabank.com.mx/",
+          "target": "_blank",
+          "text": "Scotiabank"
+        },
+        "caseStudyIndustries_TextField": "Entertainment",
+        "caseStudyIndustries_ValueField": "3840",
+        "caseStudyIndustries": [{
+          "contentID": 3840,
+          "properties": {
+            "state": 2,
+            "modified": "2021-08-26T14:37:20.06",
+            "versionID": 32510,
+            "referenceName": "casestudyindustries",
+            "definitionName": "CaseStudyIndustry",
+            "itemOrder": 1
+          },
+          "customFields": {
+            "title": "Entertainment"
+          }
+        }],
+        "caseStudyChallenges_TextField": "Ecommerce",
+        "caseStudyChallenges_ValueField": "3839",
+        "caseStudyChallenges": [{
+          "contentID": 3839,
+          "properties": {
+            "state": 2,
+            "modified": "2021-08-26T14:37:13.6",
+            "versionID": 32507,
+            "referenceName": "casestudychallenges",
+            "definitionName": "CaseStudyChallenge",
+            "itemOrder": 1
+          },
+          "customFields": {
+            "title": "Ecommerce"
+          }
+        }],
+        "topContent": "<h2>Integration Overview</h2>\r\n<p>Google Analytics can be connected to your website and to the Agility Content Manager to help you track the performance of your content. You can track individual pages or content items, as well as setup goals for your conversion rates.</p>",
+        "gallery": {
+          "galleryid": 13
+        },
+        "bottomContent": "<h2>A Successful Website With Agility CMS&nbsp;</h2>\r\n<p>Agility CMS has successfully met Scotiabank's high demanding needs since 2008:</p>\r\n<ul>\r\n<li>Easiness to adapt and add functionality to their site with their own developers' teams and implementation partners internationally</li>\r\n<li>Having full control of the website code</li>\r\n<li>100% confidence in Enterprise-grade security and reliability</li>\r\n</ul>\r\n<h3>Part 1: Digital Property Creation</h3>\r\n<p>Separate content instances were created in Agility CMS for each representative country. This allows each country to use their own content teams to <strong>manage the content that's specific and important to them</strong>. This was especially important because of the regionality of the languages in Latin America.</p>\r\n<h3><a name=\"_Toc66175669\"></a>Part 2: Authentication</h3>\r\n<p>All users of the Scotiabank CMS instances need to be <strong>authenticated securely</strong> to Agility using their existing corporate logins. This authentication process should carry forward any rules and branding that are already in use at Scotiabank.</p>\r\n<h2>Security and Content Management Solved</h2>\r\n<p>Agility CMS successfully delivered:</p>\r\n<ol>\r\n<li>Superior Security Standards</li>\r\n<li>High-performant Canadian database</li>\r\n<li>Easy and user-friendly content management with creative and functional flexibility</li>\r\n</ol>\r\n<p>Each of the six countries in Scotiabank's Latin America portfolio is able to independently manage the content on their websites. Further, they are able to authenticate to Agility CMS using their Scotiabank corporate credentials via their existing Azure Active Directory login page.</p>\r\n<p>Scotiabank's security team has performed independent audits of the Agility CMS platform, which Agility has passed with flying colours each year.</p>\r\n<p>Scotiabank has successfully rebranded and rebuilt the website front-ends for each country over the many years that they've been on the Agility CMS platform. The development teams have re-used the existing content from Agility to save time and resources on each rebuild and design refresh.</p>\r\n<h2>Exceptional User Experience</h2>\r\n<p>Agility CMS delivered exceptional User Experience to the team of content editors and developers.</p>\r\n<p>2020 NPS (Net Promoter Score: How likely are you to Recommend Agility CMS) was an average of 9.5 among Scotiabank marketing and development teams.</p>\r\n<p>View Some of International Scotiabank Sites live:</p>\r\n<p>Mexico: <a href=\"https://www.scotiabank.com.mx/\">https://www.scotiabank.com.mx</a></p>\r\n<p>Peru: <a href=\"https://www.scotiabank.com.pe/Personas/tarjetas\">https://www.scotiabank.com.pe</a></p>\r\n<p>Colombia: <a href=\"https://www.scotiabankcolpatria.com/\">https://www.scotiabankcolpatria.com/</a></p>",
+        "rightContentCopy": "<p>Agility CMS was not only meeting security and scalability needs, but also delivered exceptional User Experience to the team of content editors and developers.</p>",
+        "metrics": {
+          "referencename": "casestudies_keyvaluepair969"
+        },
+        "contentPanelCopy": "Agility CMS allows Scotiabank to maintain consistent content infrastructure and high security performance across numerous international locations and lines of business. ",
+        "brandFGColor": "#000",
+        "brandBGColor": "#fff",
+        "imagePosition": "left",
+        "productsRenderType": "list",
+        "cTAID": "1782",
+        "cTAName": "Choosing a New CMS? Download Your 50-Point Checklist"
+      }
+    },
+    "item": {
+      "contentID": 515,
+      "properties": {
+        "state": 2,
+        "modified": "2021-08-26T17:59:02.36",
+        "versionID": 32569,
+        "referenceName": "casestudydetails_casestudydeb002b6",
+        "definitionName": "CaseStudyDetails",
+        "itemOrder": 0
+      },
+      "customFields": {
+        "desktopSpace": "100",
+        "mobileSpace": "70"
+      }
+    },
+    "page": {
+      "pageID": 15,
+      "name": "case-study-details",
+      "path": null,
+      "title": "Case Study - Scotiabank: Delivering Exceptional and Secure Content Experience",
+      "menuText": "",
+      "pageType": "dynamic",
+      "templateName": "Main Template",
+      "redirectUrl": "",
+      "securePage": false,
+      "excludeFromOutputCache": false,
+      "visible": {
+        "menu": true,
+        "sitemap": true
+      },
+      "seo": {
+        "metaDescription": "As one of Canada's Big Five banks, Scotiabank found Agility CMS a perfect partner for fast and reliable content management. Read more! ",
+        "metaKeywords": "",
+        "metaHTML": "",
+        "menuVisible": null,
+        "sitemapVisible": null,
+        "canonicalUrl": "https://agilitycms.com/resources/case-studies/scotiabank-delivering-exceptional-content-experience/",
+        "twitterCard": "summary_large_image",
+        "ogType": "article",
+        "category": "Case Study",
+        "image": {
+          "label": "Screenshot of Scotiabank Website ",
+          "url": "https://static.agilitycms.com/case-studies/images/screenshot-2021-02-19-111358_20210219191423_0.jpg",
+          "target": null,
+          "filesize": 229667,
+          "pixelHeight": "1231",
+          "pixelWidth": "1506",
+          "height": 1231,
+          "width": 1506
+        }
+      },
+      "scripts": {
+        "excludedFromGlobal": false,
+        "top": null,
+        "bottom": null
+      },
+      "dynamic": {
+        "referenceName": "casestudies",
+        "fieldName": null,
+        "titleFormula": "Case Study - ##Title##",
+        "menuTextFormula": "##Title##",
+        "pageNameFormula": "##URL##",
+        "visibleOnMenu": false,
+        "visibleOnSitemap": false
+      },
+      "properties": {
+        "state": 2,
+        "modified": "2021-08-26T17:59:01.247",
+        "versionID": 2750
+      },
+      "zones": {
+        "Main": [{
+          "module": "CaseStudyContentPanel",
+          "item": {
+            "contentID": 508,
+            "properties": {
+              "state": 2,
+              "modified": "2021-08-26T17:59:02.13",
+              "versionID": 32568,
+              "referenceName": "casestudydetails_casestudycoca59b7",
+              "definitionName": "CaseStudyContentPanel",
+              "itemOrder": 0
+            },
+            "customFields": {
+              "desktopSpace": "100",
+              "mobileSpace": "0",
+              "caseStudies": {
+                "referencename": "casestudies"
+              }
+            }
+          }
+        }, {
+          "module": "CaseStudyDetails",
+          "item": {
+            "contentID": 515,
+            "properties": {
+              "state": 2,
+              "modified": "2021-08-26T17:59:02.36",
+              "versionID": 32569,
+              "referenceName": "casestudydetails_casestudydeb002b6",
+              "definitionName": "CaseStudyDetails",
+              "itemOrder": 0
+            },
+            "customFields": {
+              "desktopSpace": "100",
+              "mobileSpace": "70"
+            }
+          }
+        }, {
+          "module": "CaseStudyTechStack",
+          "item": {
+            "contentID": 520,
+            "properties": {
+              "state": 2,
+              "modified": "2021-08-26T17:59:02.677",
+              "versionID": 32570,
+              "referenceName": "casestudydetails_casestudyte772348",
+              "definitionName": "CaseStudyTechStack",
+              "itemOrder": 0
+            },
+            "customFields": {}
+          }
+        }, {
+          "module": "CenteredCTAPanel",
+          "item": {
+            "contentID": 2613,
+            "properties": {
+              "state": 2,
+              "modified": "2021-08-26T17:59:03.077",
+              "versionID": 32571,
+              "referenceName": "new - centered cta panel923",
+              "definitionName": "CenteredCTAPanel",
+              "itemOrder": 0
+            },
+            "customFields": {
+              "title": "Take the next steps",
+              "description": "<p>We're ready when you are. Let's chat about your problems. Let's find the solution.</p>",
+              "cTA1": {
+                "href": "/contact-us/request-a-demo",
+                "target": "_self",
+                "text": "Request a Demo"
+              }
+            }
+          }
+        }]
+      }
+    }
+  },
+  "guidLinks": {
+    "contentID": 3274,
+    "properties": {
+      "state": 2,
+      "modified": "2021-09-24T14:43:33.987",
+      "versionID": 33606,
+      "referenceName": "newpersonadeveloper_newguidea4f17e",
+      "definitionName": "GuideLinks",
+      "itemOrder": 0
+    },
+    "customFields": {
+      "desktopSpace": "100",
+      "mobileSpace": "80",
+      "heading": "Development Enterprise Style",
+      "guideIcon": {
+        "label": "Ready to dive in Enterprise CMS",
+        "url": "https://static.agilitycms.com/Attachments/NewItems/icon-userguide_20201013031131_0.svg",
+        "target": null,
+        "filesize": 1141,
+        "pixelHeight": "0",
+        "pixelWidth": "0"
+      },
+      "description": "The needs of the enterprise include more integrations, huge data sets, higher performance and unparalleled security. See how Agility empowers your developers to meet these needs.",
+      "mainCTA": {
+        "href": "/contact-us/chat-sales",
+        "target": "_self",
+        "text": "Speak with an Expert?"
+      },
+      "links": {
+        "referencename": "newpersonadeveloper_newguide35b300"
+      }
+    }
+  }
+}

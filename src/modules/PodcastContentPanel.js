@@ -13,9 +13,7 @@ const PodcastContentPanel = ({ item }) => {
 	return (
 		<section className="front-start p-w">
 			<div className="canvas" id="canvas-1">
-				<div className="img">
-
-				</div>
+				<div className="img"></div>
 			</div>
 
 			<div className={item.enableBackgroundImage ? 'rotated-bg' : ''}></div>

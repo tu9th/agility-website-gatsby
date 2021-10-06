@@ -1,0 +1,35 @@
+@import '../global/setting';
+
+.mod-integration-listing {
+  .filter-wrap {
+    margin-bottom: 58px;
+  }
+
+  .listing-wrap {
+    margin-bottom: 90px;
+  }
+
+  .btn {
+    padding: 18px 40px;
+    width: 100%;
+    &:after, span {
+      color: $blue;
+    }
+  }
+
+  .btn-load-more {
+    max-width: 186px;
+  }
+  .btn-explore-all-integration {
+    max-width: 268px;
+  }
+  .case-thumb {
+    .lazyload-wrapper {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 100%;
+    }
+  }
+}
