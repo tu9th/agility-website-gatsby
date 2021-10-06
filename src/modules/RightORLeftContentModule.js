@@ -249,15 +249,16 @@ const RightOrLeftContent = ({ item }) => {
 			</section>
 			<Spacing item={item} />
 			{ hasIntegration && <>
-				<IntegrationDetailSimilar />
+				<IntegrationListing />
 				<Spacing item={item} />
-				<IntegrationDetailGuideLink />
+
+				<IntegrationDetailBanner />
 				<Spacing item={item} />
 				<IntegrationDetailContent />
 				<Spacing item={item} />
-				<IntegrationDetailBanner />
+				<IntegrationDetailGuideLink />
 				<Spacing item={item} />
-				<IntegrationListing />
+				<IntegrationDetailSimilar />
 				<Spacing item={item} />
 			</> }
 		</React.Fragment>
