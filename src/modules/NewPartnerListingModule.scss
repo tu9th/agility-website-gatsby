@@ -1,6 +1,9 @@
 @import '../global/setting';
 
 .mod-integration-listing {
+  .case-col {
+    margin-top: 32px;
+  }
   .filter-wrap {
     margin-bottom: 58px;
   }
@@ -30,6 +33,11 @@
       top: 50%;
       transform: translate(0, -50%);
       width: 100%;
+      padding: 0 20px;
+      img {
+        margin: 0 auto;
+        display: block;
+      }
     }
   }
 }

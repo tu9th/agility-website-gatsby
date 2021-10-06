@@ -4,7 +4,6 @@ import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
-import IntegrationListing from './IntegrationListing'
 import IntegrationDetailBanner from './IntegrationDetailBanner'
 import IntegrationDetailContent from './IntegrationDetailContent'
 import IntegrationDetailGuideLink from './IntegrationDetailGuideLink'
@@ -249,8 +248,8 @@ const RightOrLeftContent = ({ item }) => {
 			</section>
 			<Spacing item={item} />
 			{ hasIntegration && <>
-				<IntegrationListing />
-				<Spacing item={item} />
+				{/* <IntegrationListing />
+				<Spacing item={item} /> */}
 
 				<IntegrationDetailBanner />
 				<Spacing item={item} />

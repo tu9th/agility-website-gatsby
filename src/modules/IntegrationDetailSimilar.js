@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './IntegrationListing.scss'
+import './NewPartnerListingModule.scss'
 import './CaseStudyReskin.scss'
 import PostItem from './PostItem'
 

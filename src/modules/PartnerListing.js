@@ -52,7 +52,6 @@ export default props => (
 			  }
         `}
 		render={queryData => {
-
 			//filter out only those logos that we want...
 			let lst = queryData.allAgilityPartner.nodes;
 
@@ -85,7 +84,6 @@ export default props => (
 				} else if (referenceName === "integrationspartners") {
 					p.customFields.url = "/partners/integrations/" + p.customFields.uRL;
 				}
-
 			});
 
 
@@ -101,7 +99,6 @@ export default props => (
 							return ids.findIndex(i => { return i === t.contentID;}) >= 0;
 						}) >= 0;
 					  });
-
 				}
 			}
 			return (
