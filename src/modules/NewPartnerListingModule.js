@@ -5,6 +5,7 @@ import './CaseStudyReskin.scss'
 import PostItem from './PostItem'
 import { graphql, StaticQuery } from "gatsby"
 import * as StringUtils from "../utils/string-utils"
+import Spacing from './Spacing'
 
 export default props => (
   <StaticQuery
@@ -75,12 +76,12 @@ export default props => (
         }
         return obj
       }, {})
-      return <NewPartnerListingModule options={options} list={list}/>
+      return <NewPartnerListingModule options={options} list={list} item={props.item}/>
     }}
   />
 )
 
-const NewPartnerListingModule = ({ options, list }) => {
+const NewPartnerListingModule = ({ options, list, item }) => {
   const classSection = 'module mod-integration-listing'
   const tmpIntegrationOpts = {
     name: 'integrations',
@@ -91,10 +92,25 @@ const NewPartnerListingModule = ({ options, list }) => {
   const [loadMoreIdx, setLoadMoreIdx] = useState(6)
   const [listIntegration, setListIntegration] = useState(list)
   const [integrationOpts, setIntegrationOpts] = useState(tmpIntegrationOpts)
-  console.log(listIntegration)
+
+  useEffect (() => {
+    setTimeout(() => {
+      const hideModules = document.querySelectorAll('.front-start, .front-start ~ .mod-space, .filtered-listing, .filtered-listing + .mod-space, .featured-case-studies, .featured-case-studies + .mod-space')
+      const ctaFooter = document.querySelectorAll('.mod-cta')
+      if (ctaFooter.length)
+      console.log('hideModuleseeeeeeeeeeeeeeeee', hideModules)
+      hideModules.forEach(mod => {
+        console.log(mod.style)
+        mod.style.display = 'none'
+      })
+      ctaFooter.forEach(mod => {
+        console.log(mod.style)
+        mod.classList.add('is-footer')
+      })
+    }, 1000)
+  }, [])
 
   const onChangeFilter = ({ name, value }) => {
-    console.log('{ name, value }', { name, value })
     let tmpListIntegration = value.includes(1) || !value.length ? storeListIntegration : storeListIntegration.filter(item => {
       const mapContentId = item.customTags.map(tag => tag.contentID)
       return value.some(val => mapContentId.includes(val))
@@ -135,5 +151,6 @@ const NewPartnerListingModule = ({ options, list }) => {
         </div>}
       </div>
     </section>
+    <Spacing item={item} />
   </React.Fragment>
 }
