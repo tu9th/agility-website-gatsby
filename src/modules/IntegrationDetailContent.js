@@ -10,59 +10,20 @@ import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
-import JSONData from './Integration.json'
 
-const IntegrationDetailContent = () => {
-	const query = JSONData.query
-	const props = JSONData.props
-	const mediaLists = query?.allAgilityCaseStudy?.edges
-	const relatedRes = query?.allAgilityResource?.edges
-	const relatedBlog = query?.allAgilityBlogPost?.edges
-	let alternativeRotator = query?.rotator?.nodes
-
-	let caseStudy = props.dynamicPageItem?.customFields;
-
-	let link = '/resources/case-studies/' + caseStudy.uRL
-
-	/* case studies rorator data */
-	alternativeRotator = alternativeRotator.filter(alt => {
-		if (alt.contentID !== props.item?.contentID) {
-			return alt
-		}
-	})
-	const roratorItems = {}
-	roratorItems.cTAbuttonText = caseStudy?.rotatorCTAbuttonText || 'See how';
-	roratorItems.title = caseStudy?.rotatorTitle || 'See Other Customer Success Stories'
-	roratorItems.caseStudies = caseStudy?.rotatorCaseStudies || alternativeRotator.slice(0, 3)
-	roratorItems.darkMode = caseStudy?.rotatorDarkMode
-	roratorItems.mobileSpace = caseStudy?.rotatorMobileSpace || 80
-	roratorItems.desktopSpace = caseStudy?.rotatorDesktopSpace || 100
+const IntegrationDetailContent = ({ viewModel}) => {
+	let dynamicPageItem = viewModel.dynamicPageItem
+	let documentation = viewModel.documentation
+	// let dynamicPageItem = viewModel.dynamicPageItem
 
 	/* case studies related resources data */
 	const relatedItems = {}
 	// relatedItems.cTAbuttonText = caseStudy?.relatedResourcesCTAbuttonText
-	relatedItems.title = caseStudy?.relatedResourcesTitle || 'View Related Resources'
-	relatedItems.relatedResources = caseStudy?.relatedResources
-	relatedItems.darkMode = caseStudy?.relatedResourcesDarkMode
+	relatedItems.title = dynamicPageItem?.relatedResourcesTitle || 'View Related Resources'
+	relatedItems.relatedResources = dynamicPageItem?.relatedResources
+	relatedItems.darkMode = dynamicPageItem?.relatedResourcesDarkMode
 	// relatedItems.mobileSpace = caseStudy?.relatedResourcesMobileSpace || 80
 	// relatedItems.desktopSpace = caseStudy?.relatedResourcesDesktopSpace || 100
-
-	const renderTags = (tags, type) => {
-		return tags.map((tag, index) => {
-			let link = `/resources/case-studies/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
-			return <>
-				<span key={index} className="d-inline-block cs-tag ps-rv">
-					{tag?.customFields?.title}
-					<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
-				</span>
-				<span key={index} className="d-inline-block cs-tag ps-rv">
-					{tag?.customFields?.title}
-					<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
-				</span>
-			</>
-		})
-	}
-
 
 	const thisModuleRef = useRef(null)
 	/* animation module */
@@ -84,71 +45,71 @@ const IntegrationDetailContent = () => {
 				<div className="container anima-bottom">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left content-ul beauty-ul">
-							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.topContent)}></div>
+							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob)}></div>
 						</div>
-						<div className="cs-detail-cont-right">
-							{caseStudy?.website?.href &&
-								<div className="small-paragraph cs-website last-mb-none">
-									<h4>Website</h4>
-									<p><a href={caseStudy?.website?.href} target={caseStudy?.website?.target || '_blank'}>{caseStudy?.website?.text || caseStudy?.website?.href}</a></p>
-								</div>
-							}
-
-							{caseStudy?.caseStudyChallenges && caseStudy?.caseStudyChallenges.length > 0 &&
-								<div className="small-paragraph cs-tag-wrap last-mb-none">
-									<h4>Type of Integration</h4>
-									<p>
-										{renderTags(caseStudy?.caseStudyChallenges, 'challenge')}
-									</p>
-								</div>
-							}
-
-							{caseStudy?.website?.href &&
-								<div className="small-paragraph cs-website last-mb-none">
-									<h4>Documentation</h4>
-									<div><a href={caseStudy?.website?.href} target={caseStudy?.website?.target || '_blank'}>{caseStudy?.website?.text || caseStudy?.website?.href}</a></div>
-									<div><a href={caseStudy?.website?.href} target={caseStudy?.website?.target || '_blank'}>{caseStudy?.website?.text || caseStudy?.website?.href}</a></div>
-								</div>
-							}
-
-							<div>
-								<div className="d-none d-lg-block">
-									<CaseStudySocialShare link={link} title={caseStudy.title} />
-									{caseStudy?.quote &&
-										<div className="cs-quote">
-											{/* <span className="icomoon icon-quote"></span> */}
-											<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(caseStudy?.quote)}></div>
-										</div>
-									}
-								</div>
-							</div>
-						</div>
+						<IntegrationRightSidebar dynamicPageItem={dynamicPageItem} documentation={documentation}/>
 					</div>
 				</div>
 
 			</section>
-			<Spacing item={props.item} />
-
+			{/* <Spacing item={props.item} /> */}
 		</>
-
 	);
 }
 
 export default IntegrationDetailContent
 
+const IntegrationRightSidebar = ({ dynamicPageItem, documentation }) => {
+	const website = dynamicPageItem?.customFields?.website
+	const tags = dynamicPageItem?.customFields?.customTags
+	let link = '/partners/integrations/' + dynamicPageItem.customFields.uRL
 
+	const renderTags = (tags, type) => {
+		return tags.map((tag, index) => {
+			let link = `/partners/integrations/?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+			return <span key={'tags-' + index} className="d-inline-block cs-tag ps-rv">
+					{tag?.customFields?.title}
+					<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
+				</span>
+		})
+	}
 
-const CaseStudySocialShare = ({ link, title }) => {
+	return <div className="cs-detail-cont-right">
+		{website?.href &&
+			<div className="small-paragraph cs-website last-mb-none">
+				<h4>Website</h4>
+				<p><a href={website?.href} target={website?.target || '_blank'}>{website?.text || website?.href}</a></p>
+			</div>
+		}
 
+		{tags && tags.length > 0 &&
+			<div className="small-paragraph cs-tag-wrap last-mb-none">
+				<h4>Type of Integration</h4>
+				<p>{renderTags(tags, 'integration')}</p>
+			</div>
+		}
+
+		{documentation && documentation.length > 0 &&
+			<div className="small-paragraph cs-website last-mb-none">
+				<h4>Documentation</h4>
+				{documentation.map((doc, index) => {
+					const url = doc.customFields.uRL
+					return <div key={'doc-' + index}><a href={url?.href} target={url?.target || '_blank'}>{url?.text || url?.href}</a></div>
+				})}
+			</div>
+		}
+
+		<div>
+			<div className="d-none d-lg-block">
+				<IntegrationSocialShare link={link} title={dynamicPageItem.title} />
+			</div>
+		</div>
+	</div>
+}
+const IntegrationSocialShare = ({ link, title }) => {
 	let shareLink = link.charAt(0) === '/' ? link.replace('/', '') : link
 	shareLink = shareLink.trim()
 	const domain = 'https://agilitycms.com'
-	useEffect(() => {
-
-		return () => {
-
-		}
-	}, [])
 
 	return (
 		<>

@@ -7,7 +7,6 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 import LazyLoad from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
-
 const HasImg = ({ img, isHomePage, page }) => {
 
 	const [isLoaded, setIsLoaded] = useState(false)
@@ -31,16 +30,18 @@ const HasImg = ({ img, isHomePage, page }) => {
 	useEffect(() => {
 		setIsLoaded(true)
 	}, [])
-  const url = '/images/integration-banner.png'
+
 
 	return (
 		<React.Fragment>
 				<Helmet>
-					<link rel="preload" as="image" href={url} media="screen" />
+					<link rel="preload" as="image" href={img.url} media="screen" />
 				</Helmet>
 			<img
-				src={url}
-				alt='image video' className='anima-right' />
+				src={img.url}
+				// width={ !isLoaded ? '320' : '' }
+				// height={ !isLoaded ? '208' : '' }
+				alt={img.label ? img.label : 'image video'} className='anima-right' />
 
 		</React.Fragment>
 	)
@@ -49,26 +50,21 @@ const HasImg = ({ img, isHomePage, page }) => {
 const ImgRender = React.memo(HasImg)
 
 
-const IntegrationDetailBanner = ({ item }) => {
-	const heading = 'Google Analytics'
-	const des = 'Google Analytics is a service provided by Google to track all of the activity that happens on your website or app. Track all the activity from your Pages and Content from Agility CMS, including customer journeys, conversions, eCommerce and more.'
+const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
+	const heading = item.title
+	const des = item.excerpt
 	const breadcrumb = 'Explore All Integrations'
 	// const classSection = 'module mod-banner mod-integration-detail-banner animation bg-46 text-white'
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
 
 	let classAniImg = 'col-md-6 col-lg-7 col-right-lr anima-right d-flex align-items-center justify-content-end'
-	let imgModule
+	let imgModule = item.partnerLogo
 
 	const bannerRef = useRef(null)
 	const [isLottieLoad, setIsLottieLoad] = useState(false)
 
 	/*  */
-	const detectHomePage = () => {
-		const detectHome = ['/new-home', '/new-home/', '/'].includes(window.location.pathname)
-		setIsHomePage(detectHome)
-	}
-
 	const appenLottie = (callback = function () { }) => {
 		const script = document.createElement("script");
 		script.id = 'lottie-script'
@@ -141,8 +137,6 @@ const IntegrationDetailBanner = ({ item }) => {
 	}
 
 	useEffect(() => {
-		detectHomePage()
-
 		/* animation module */
 		const scrollEventFunc = () => {
 			animationElementInnerComponent(bannerRef.current)
@@ -187,7 +181,7 @@ const IntegrationDetailBanner = ({ item }) => {
 						<div className="col-md-6 col-lg-5 banner-col-text large-paragraph anima-left d-flex">
               <div className="link box-message">
                 <p>
-                  <a className="link-line line-purple" href="">{breadcrumb}</a>
+                  <a className="link-line line-purple" href="/partners/integrations">{breadcrumb}</a>
                 </p>
               </div>
               <div className="content-wrap">
@@ -199,7 +193,9 @@ const IntegrationDetailBanner = ({ item }) => {
 						</div>
             <div className={classAniImg}>
 							<div className='text-center text-md-left ps-rv img-banner d-flex justify-content-center align-items-center'>
-								<ImgRender img={imgModule} isHomePage={isHomePage} />
+								<div className="img-wrap">
+									<ImgRender img={imgModule} isHomePage={isHomePage} />
+								</div>
 							</div>
 							<LazyLoad offset={ Helpers.lazyOffset } className="img-offset">
 								<img src='/images/integration-image.svg' alt='Agility CMS'></img>

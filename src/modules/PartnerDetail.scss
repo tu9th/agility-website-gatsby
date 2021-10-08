@@ -1,0 +1,17 @@
+.mod-integration-partner {
+  .case-d-gallery, .gal-slider {
+    margin-bottom: 0;
+  }
+  .gal-slider {
+    padding-bottom: 105px;
+  }
+  .slick-dots {
+    bottom: 45px;
+  }
+}
+
+@media (min-width: 992px) {
+  .mod-integration-partner {
+    margin-top: 62px;
+  }
+}

@@ -5,52 +5,20 @@ import './GuideLinks.scss'
 import Spacing from './Spacing'
 import Helpers from '../global/javascript/Helpers'
 import { animationElementInnerComponent } from '../global/javascript/animation'
-import JSONData from './IntegrationGuideLink.json'
 
-export default () => {
-	const referenceName = JSONData.props.item.customFields.links.referencename
-	const listGuideLinks = JSONData.queryData.allAgilityLink.nodes
-		.filter(obj => { return obj.properties.referenceName === referenceName })
-	const viewModel = {
-		item: JSONData.props.item,
-		listGuideLinks
-	}
-	return (
-		<GuideLinks {...viewModel} />
-	);
-}
-// props => (
-// 	<StaticQuery
-// 		query={''}
-// 		render={queryData => {
-// 			const referenceName = JSONData.props.item.customFields.links.referencename
-// 			const listGuideLinks = JSONData.queryData.allAgilityLink.nodes
-// 				.filter(obj => { return obj.properties.referenceName === referenceName })
-// 			const viewModel = {
-// 				item: props.item,
-// 				listGuideLinks
-// 			}
-// 			return (
-// 				<GuideLinks {...viewModel} />
-// 			);
-// 		}}
-// 	/>
-// )
-
-const GuideLinks = ({ item, listGuideLinks }) => {
-	const fields = item.customFields;
+const GuideLinks = ({viewModel}) => {
+	const fields = viewModel.dynamicPageItem.customFields;
 	const classSection = `module mod-user-guides integration-detail has-btn-white text-white GuideLinks animation ${fields.darkMode && fields.darkMode === 'true' ? ' dark-mode': ''}`
-	const heading = fields.heading
-	const description = fields.description
+	const heading = fields.titleStepImplementation
+	const description = fields.descriptionStepImplementation
 	const btnCta = fields.mainCTA
-	const imgURL = fields.guideIcon && fields.guideIcon.url.length > 0 ? fields.guideIcon.url : null
+	const imgURL = fields.stepIcon && fields.stepIcon.url.length > 0 ? fields.stepIcon.url : null
 	const thisModuleRef = useRef(null)
 
-	const listGuide = listGuideLinks.map((guide, idx) => {
+	const listGuide = viewModel.steps.map((guide, idx) => {
 		const customeFieldsGuide = guide.customFields
-		const descriptionGuide = customeFieldsGuide.description
+		const descriptionGuide = customeFieldsGuide.excerpt
 		const titleGuide = customeFieldsGuide.title
-		const uRLGuide = customeFieldsGuide.uRL
 		return (
 			<div className="item-guides ps-rv small-paragraph last-mb-none d-flex" key={idx}>
 				<div className="number">{idx + 1}.</div>
@@ -117,8 +85,8 @@ const GuideLinks = ({ item, listGuideLinks }) => {
 					</div>
 				</div>
 			</section>
-			<Spacing item={item}/>
 		</React.Fragment>
 	);
 }
 
+export default GuideLinks

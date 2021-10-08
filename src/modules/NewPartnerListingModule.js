@@ -69,7 +69,6 @@ export default props => (
         return arr
       }, [])
 			const tagsReferenceName = list[0].customFields.customTags.referencename
-
       const options = queryData.allAgilityCustomTag.nodes.reduce((obj, node) => {
         if (node.properties.referenceName ===  tagsReferenceName) {
           obj[node.contentID] = node.customFields.title
@@ -98,16 +97,28 @@ const NewPartnerListingModule = ({ options, list, item }) => {
       const hideModules = document.querySelectorAll('.front-start, .front-start ~ .mod-space, .filtered-listing, .filtered-listing + .mod-space, .featured-case-studies, .featured-case-studies + .mod-space')
       const ctaFooter = document.querySelectorAll('.mod-cta')
       if (ctaFooter.length)
-      console.log('hideModuleseeeeeeeeeeeeeeeee', hideModules)
       hideModules.forEach(mod => {
-        console.log(mod.style)
         mod.style.display = 'none'
       })
       ctaFooter.forEach(mod => {
-        console.log(mod.style)
         mod.classList.add('is-footer')
       })
     }, 1000)
+  }, [])
+
+  useEffect (() => {
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const queryIntegration = urlSearchParams.get('integration')
+    const checkIssetFilter = Object.keys(integrationOpts.options).find(key => {
+      return queryIntegration === integrationOpts.options[key].toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')
+    })
+    if (checkIssetFilter) {
+      const seletedValue = [Number(checkIssetFilter)]
+      const storeIntegrationOpts = JSON.parse(JSON.stringify(tmpIntegrationOpts))
+      storeIntegrationOpts.selectedOption = seletedValue
+      setIntegrationOpts(storeIntegrationOpts)
+      onChangeFilter({ value: seletedValue })
+    }
   }, [])
 
   const onChangeFilter = ({ name, value }) => {
@@ -115,7 +126,6 @@ const NewPartnerListingModule = ({ options, list, item }) => {
       const mapContentId = item.customTags.map(tag => tag.contentID)
       return value.some(val => mapContentId.includes(val))
     })
-
     setListIntegration(tmpListIntegration)
     setLoadMoreIdx(6)
   }

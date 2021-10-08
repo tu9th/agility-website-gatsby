@@ -4,10 +4,6 @@ import { renderHTML } from '../agility/utils'
 import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
-import IntegrationDetailBanner from './IntegrationDetailBanner'
-import IntegrationDetailContent from './IntegrationDetailContent'
-import IntegrationDetailGuideLink from './IntegrationDetailGuideLink'
-import IntegrationDetailSimilar from './IntegrationDetailSimilar'
 
 const HasImg = ({ img, isHomePage, page }) => {
 
@@ -82,8 +78,6 @@ const RightOrLeftContent = ({ item }) => {
 	const classSection = `module mod-banner right-or-left-content animation ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white has-btn-white' : ''}`
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
-	const [hasIntegration, setHasIntegration] = useState(false);
-
 
 	let classAniImg = 'col-md-6 col-lg-7 col-right-lr'
 	let imgModule
@@ -102,9 +96,7 @@ const RightOrLeftContent = ({ item }) => {
 	/*  */
 	const detectHomePage = () => {
 		const detectHome = ['/new-home', '/new-home/', '/'].includes(window.location.pathname)
-		const detectIntegration = window.location.href.includes('test=integration')
 		setIsHomePage(detectHome)
-		setHasIntegration(detectIntegration)
 	}
 
 	const appenLottie = (callback = function () { }) => {
@@ -247,19 +239,6 @@ const RightOrLeftContent = ({ item }) => {
 				</div>
 			</section>
 			<Spacing item={item} />
-			{ hasIntegration && <>
-				{/* <IntegrationListing />
-				<Spacing item={item} /> */}
-
-				<IntegrationDetailBanner />
-				<Spacing item={item} />
-				<IntegrationDetailContent />
-				<Spacing item={item} />
-				<IntegrationDetailGuideLink />
-				<Spacing item={item} />
-				<IntegrationDetailSimilar />
-				<Spacing item={item} />
-			</> }
 		</React.Fragment>
 	);
 }

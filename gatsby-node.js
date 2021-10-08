@@ -137,7 +137,7 @@ exports.onCreateNode = async ({
   getCache,
 }) => {
 	try {
-		if (node.internal.type === 'agilityCaseStudy') {
+		if (['agilityCaseStudy', 'agilityPartner'].includes(node.internal.type)) {
 			node.customFields.media = null
 			if (node.customFields.gallery && node.customFields.gallery.galleryid) {
 				const api = contentFetch.getApi({
@@ -146,7 +146,7 @@ exports.onCreateNode = async ({
 					isPreview: agilityConfig.isPreview
 				});
 				const id = node.customFields.gallery.galleryid
-				const gallery = await api.getGallery({galleryID: id})
+				const gallery = await api.getGallery({ galleryID: id })
 				node.customFields.media = gallery.media
 			}
 		}
