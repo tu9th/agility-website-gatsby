@@ -1,7 +1,9 @@
 @import '../global/setting';
 
 .mod-integration-listing {
-  margin: 45px 0;
+  &.similar {
+    margin: 96px 0 120px;
+  }
   .case-col {
     margin-top: 32px;
   }
@@ -45,6 +47,8 @@
 
 @media (min-width: 992px) {
   .mod-integration-listing {
-    margin: 96px 0 120px;
+    &.similar {
+      margin: 45px 0;
+    }
   }
 }
