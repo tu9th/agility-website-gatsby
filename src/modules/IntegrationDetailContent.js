@@ -44,7 +44,7 @@ const IntegrationDetailContent = ({ viewModel}) => {
 			<section ref={thisModuleRef} className="p-w new-case-study-details animation">
 				<div className="container anima-bottom">
 					<div className="cs-detail-cont d-flex flex-grow">
-						<div className="cs-detail-cont-left content-ul beauty-ul">
+						<div className="cs-detail-cont-left content-ul">
 							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob)}></div>
 						</div>
 						<IntegrationRightSidebar dynamicPageItem={dynamicPageItem} documentation={documentation}/>

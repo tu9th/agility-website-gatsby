@@ -8,6 +8,18 @@
   .slick-dots {
     bottom: 45px;
   }
+  .list-url {
+    li {
+      padding-left: 23px;
+      margin-bottom: 0;
+      &::after {
+        left: 0;
+      }
+      p {
+        margin-bottom: 16px;
+      }
+    }
+  }
 }
 
 @media (min-width: 992px) {
