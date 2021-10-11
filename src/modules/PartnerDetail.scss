@@ -4,9 +4,6 @@
   }
   .gal-slider {
     padding-bottom: 105px;
-    .slick-arrow {
-      top: calc(100% - 70px);
-    }
   }
   .slick-dots {
     bottom: 15px;
@@ -36,9 +33,13 @@
     .slick-dots {
       bottom: 45px;
     }
+  }
+}
+@media (max-width: 767px) {
+  .mod-integration-partner {
     .gal-slider {
       .slick-arrow {
-        top: calc(100% - 60px);
+        top: calc(100% - 70px);
       }
     }
   }
