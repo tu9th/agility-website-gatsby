@@ -116,8 +116,8 @@ const IntegrationSocialShare = ({ link, title }) => {
 			<div className="cs-d-social">
 				<h5>SHARE INTEGRATION</h5>
 				<div className="soc-box d-flex flex-wrap">
-				<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
-						<span className="icomoon icon-google-plus"></span>
+					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-share2"></span>
 					</a>
 					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-linkedin2"></span>

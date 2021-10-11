@@ -4,9 +4,12 @@
   }
   .gal-slider {
     padding-bottom: 105px;
+    .slick-arrow {
+      top: calc(100% - 70px);
+    }
   }
   .slick-dots {
-    bottom: 45px;
+    bottom: 15px;
   }
   .list-url {
     li {
@@ -25,5 +28,18 @@
 @media (min-width: 992px) {
   .mod-integration-partner {
     margin-top: 62px;
+  }
+}
+
+@media (min-width: 768px) {
+  .mod-integration-partner {
+    .slick-dots {
+      bottom: 45px;
+    }
+    .gal-slider {
+      .slick-arrow {
+        top: calc(100% - 60px);
+      }
+    }
   }
 }
