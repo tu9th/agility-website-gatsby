@@ -130,6 +130,18 @@
       order: 2;
     }
   }
+
+  .mod-integration-detail-banner {
+    padding: 25px 20px 50px;
+    .banner-col-text {
+      margin-bottom: 30px;
+    }
+    .img-banner {
+    }
+    .col-right-lr {
+      justify-content: center;
+    }
+  }
 }
 @media (min-width: 768px){
   .wrap-ani-home {
