@@ -3,15 +3,17 @@ import IntegrationDetailBanner from './IntegrationDetailBanner'
 
 import "./CaseStudyContentPanel.scss"
 
-const PartnerContentPanel = ({ item, dynamicPageItem, test1, test2 }) => {
+const PartnerContentPanel = ({ item, dynamicPageItem }) => {
     item = dynamicPageItem.customFields;
     var bgColor = item.brandBGColor;
     var fgColor = item.brandFGColor;
     const [isIntegration, setIsIntegration] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const detectIntegration = () => {
         const detectIntegration = window.location.pathname.includes('/integrations')
         setIsIntegration(detectIntegration)
+        setIsLoaded(true)
     }
 
     useEffect(() => {
@@ -31,8 +33,8 @@ const PartnerContentPanel = ({ item, dynamicPageItem, test1, test2 }) => {
 
     return (
         <React.Fragment>
-            {isIntegration && <IntegrationDetailBanner item={item} dynamicPageItem={dynamicPageItem}/>}
-            {!isIntegration && <section className="p-w case-study-content-panel" style={{ backgroundColor: bgColor }}>
+            {isLoaded && isIntegration && <IntegrationDetailBanner item={item} dynamicPageItem={dynamicPageItem}/>}
+            {isLoaded && !isIntegration && <section className="p-w case-study-content-panel" style={{ backgroundColor: bgColor }}>
                 <div className="container-my">
                     <div className="content-panel-flex">
 
