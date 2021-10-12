@@ -132,13 +132,34 @@
   }
 
   .mod-integration-detail-banner {
+    h1 {
+      margin-bottom: 20px;
+    }
+    .col-right-lr {
+      margin-bottom: 35px;
+    }
+    .img-offset {
+      width: 80%;
+    }
+    .h1-big {
+      flex-direction: column-reverse;
+    }
+    .link-url {
+      &.d-none {
+        display: block;
+      }
+      &.d-block {
+        display: none;
+      }
+    }
     padding: 25px 20px 50px;
     .banner-col-text {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     .img-banner {
     }
     .col-right-lr {
+      padding: 0;
       justify-content: center;
     }
   }

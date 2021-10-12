@@ -63,6 +63,11 @@ const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
 
 	const bannerRef = useRef(null)
 	const [isLottieLoad, setIsLottieLoad] = useState(false)
+	const link = <div className="link box-message">
+		<p>
+			<a className="link-line line-purple" href="/partners/integrations">{breadcrumb}</a>
+		</p>
+	</div>
 
 	/*  */
 	const appenLottie = (callback = function () { }) => {
@@ -177,13 +182,10 @@ const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
 		<React.Fragment>
 			<section className='module mod-integration-detail-banner animation bg-46 text-white' ref={bannerRef}>
 				<div className="container">
+					<div className="row link-url d-none">{link}</div>
 					<div className='row h1-big'>
 						<div className="col-md-6 col-lg-5 banner-col-text large-paragraph anima-left d-flex">
-              <div className="link box-message">
-                <p>
-                  <a className="link-line line-purple" href="/partners/integrations">{breadcrumb}</a>
-                </p>
-              </div>
+							<div className="link-url d-block">{link}</div>
               <div className="content-wrap">
                 <h1>{heading}</h1>
                 {des &&

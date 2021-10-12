@@ -132,7 +132,7 @@ const NewPartnerListingModule = ({ options, list, item }) => {
 
   const loadMoreHandler = () => {
     let tmpLoadMoreIdx = loadMoreIdx
-    tmpLoadMoreIdx += 6
+    tmpLoadMoreIdx += 15
     setLoadMoreIdx(tmpLoadMoreIdx)
   }
 
