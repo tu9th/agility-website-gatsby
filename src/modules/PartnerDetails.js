@@ -100,8 +100,8 @@ export default props => (
 			const dynamicPageItem = props.dynamicPageItem
 			const documentReferenceName = customFields?.documentationIntegration?.referencename
 			const stepsReferenceName = customFields?.stepsImplementation?.referencename
-			const tags = dynamicPageItem.customFields.customTags.map(tag => tag.contentID)
-			const mediaLists = queryData.allAgilityPartner.nodes.map(node => {
+			const tags = dynamicPageItem?.customFields?.customTags?.map(tag => tag.contentID)
+			const mediaLists = queryData?.allAgilityPartner?.nodes?.map(node => {
 				return {
 					node
 				}
