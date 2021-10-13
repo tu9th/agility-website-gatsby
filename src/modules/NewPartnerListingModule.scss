@@ -43,6 +43,11 @@
       }
     }
   }
+  .btn-load-more {
+    &::after {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: 992px) {
