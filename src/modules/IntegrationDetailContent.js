@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { graphql, StaticQuery, useStaticQuery, Link } from "gatsby"
+import React, { useEffect, useRef } from 'react';
+// graphql, StaticQuery, useStaticQuery,
+import { Link } from "gatsby"
 import { renderHTML } from '../agility/utils'
 // import CallToAction from "../components/call-to-action.jsx"
-import Slider from 'react-slick'
+// import Slider from 'react-slick'
 // import ResponsiveImage from '../components/responsive-image'
-import RelatedResources from './RelatedResources';
-import Spacing from './Spacing'
+// import RelatedResources from './RelatedResources';
+// import Spacing from './Spacing'
 // import LazyLoad from 'react-lazyload'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 import "./CaseStudyDetails.scss"

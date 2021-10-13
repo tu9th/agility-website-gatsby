@@ -1,8 +1,8 @@
 import React ,{useEffect, useRef} from 'react';
-import { graphql, StaticQuery } from 'gatsby'
+// import { graphql, StaticQuery } from 'gatsby'
 import LazyLoad from 'react-lazyload'
 import './GuideLinks.scss'
-import Spacing from './Spacing'
+// import Spacing from './Spacing'
 import Helpers from '../global/javascript/Helpers'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 

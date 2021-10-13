@@ -84,7 +84,7 @@ const NewPartnerListingModule = ({ options, list, item }) => {
   const classSection = 'module mod-integration-listing'
   const tmpIntegrationOpts = {
     name: 'integrations',
-    options: { ...options, 1: 'All Integration' },
+    options: { ...options, 1: 'All Integrations' },
     selectedOption: [1]
   }
   let storeListIntegration = list
