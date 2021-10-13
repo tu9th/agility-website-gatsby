@@ -115,7 +115,7 @@ export default props => (
 			} else {
 				similarPartner = queryData.allAgilityPartner.nodes.filter(node => {
 					return node.properties.referenceName === dynamicPageItem.properties.referenceName
-						&& node.customTags.some(tag => tags.includes(tag.contentID))
+						&& node.customTags.some(tag => (tags || []).includes(tag.contentID))
 						&& node.contentID !== dynamicPageItem.contentID
 				})
 				if (similarPartner.length === 0) {
