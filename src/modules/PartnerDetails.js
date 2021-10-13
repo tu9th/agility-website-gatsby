@@ -109,7 +109,6 @@ export default props => (
 			let similarPartner = []
 			if (customFields.similarList && customFields.similarList.length) {
 				similarPartner = customFields.similarList.map(item => {
-					console.log('item.partnerLogo', item.partnerLogo)
 					item.customFields.postImage = item.customFields.partnerLogo
 					return item
 				})
