@@ -106,16 +106,25 @@ export default props => (
 					node
 				}
 			})
-			let similarPartner = queryData.allAgilityPartner.nodes.filter(node => {
-				return node.properties.referenceName === dynamicPageItem.properties.referenceName
-					&& node.customTags.some(tag => tags.includes(tag.contentID))
-					&& node.contentID !== dynamicPageItem.contentID
-			})
-			if (similarPartner.length === 0) {
+			let similarPartner = []
+			if (customFields.similarList && customFields.similarList.length) {
+				similarPartner = customFields.similarList.map(item => {
+					console.log('item.partnerLogo', item.partnerLogo)
+					item.customFields.postImage = item.customFields.partnerLogo
+					return item
+				})
+			} else {
 				similarPartner = queryData.allAgilityPartner.nodes.filter(node => {
 					return node.properties.referenceName === dynamicPageItem.properties.referenceName
-					&& node.contentID !== dynamicPageItem.contentID
+						&& node.customTags.some(tag => tags.includes(tag.contentID))
+						&& node.contentID !== dynamicPageItem.contentID
 				})
+				if (similarPartner.length === 0) {
+					similarPartner = queryData.allAgilityPartner.nodes.filter(node => {
+						return node.properties.referenceName === dynamicPageItem.properties.referenceName
+							&& node.contentID !== dynamicPageItem.contentID
+					})
+				}
 			}
 			similarPartner.length = 3
 			similarPartner.forEach(partner => {
