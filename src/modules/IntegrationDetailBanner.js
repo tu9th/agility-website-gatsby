@@ -58,7 +58,7 @@ const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
 	const array = []
 	const [isHomePage, setIsHomePage] = useState(false);
 
-	let classAniImg = 'col-md-6 col-lg-7 col-right-lr anima-right d-flex align-items-center justify-content-end'
+	let classAniImg = 'col-md-6 col-right-lr anima-right d-flex align-items-center'
 	let imgModule = item.partnerLogo
 
 	const bannerRef = useRef(null)
@@ -184,7 +184,7 @@ const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
 				<div className="container">
 					<div className="row link-url d-none">{link}</div>
 					<div className='row h1-big'>
-						<div className="col-md-6 col-lg-5 banner-col-text large-paragraph anima-left d-flex">
+						<div className="col-md-6 banner-col-text large-paragraph anima-left d-flex">
 							<div className="link-url d-block">{link}</div>
               <div className="content-wrap">
                 <h1>{heading}</h1>
