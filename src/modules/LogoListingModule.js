@@ -7,12 +7,12 @@ import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 import { AgilityImage }  from "@agility/gatsby-image-agilitycms"
 const LogoListingModule = ({ item }) => {
-
 	const [spaceBottom, setSpaceBottom] = useState(false)
-
+	const [isIntegration, setIsIntegration] = useState(false);
 	const heading = item.customFields.title
 	const logos = item.customFields.logos
 	const classSection = `module LogoListingModule animation  ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white': ''}`
+
 	const listLogos = ArrayUtils.shuffleArray(logos).map((key, idx) => {
 		const className = `logo-item logo-v${idx + 1}`
 		let logoImage = key.customFields.logo.url
@@ -20,12 +20,15 @@ const LogoListingModule = ({ item }) => {
 			logoImage = `${logoImage}?w=200`
 		}
 		const logoTitle = key.customFields.logo.label
-		// const link = key.customFields.uRL.href
-		// const taget = key.customFields.uRL.target
+		const link = key?.customFields?.uRL?.href
+		const target = key?.customFields?.uRL?.target
 		return (
 			<div className={className} key={idx}>
 				<div className='d-block'>
-						<AgilityImage image={key.customFields.logo} />
+					{isIntegration && <a href={link} target={target}>
+						<AgilityImage image={key.customFields.logo}/>
+					</a>}
+					{!isIntegration && <AgilityImage image={key.customFields.logo} />}
 						{/* <Lazyload offset={ Helpers.lazyOffset }><img src={logoImage} alt={logoTitle} loading="lazy"></img></Lazyload> */}
 				</div>
 			</div>
@@ -44,9 +47,13 @@ const LogoListingModule = ({ item }) => {
 	// 		}
 	// 	}, 5);
 	// }
-	// useEffect(() => {
-	// 	initLogo()
-  // });
+	const detectIntegration = () => {
+		const detectIntegration = window.location.pathname.includes('/integrations')
+		setIsIntegration(detectIntegration)
+	}
+	useEffect(() => {
+		detectIntegration()
+  });
 	const settings = {
 		dots: true,
 		infinite: true,

@@ -139,7 +139,7 @@ const NewPartnerListingModule = ({ options, list, item }) => {
   return <React.Fragment>
     <section className={classSection}>
       <div className="container">
-        <div className="filter-wrap">
+        <div className="filter-wrap small-paragraph">
           <SelectC8 className="d-inline-block" data={integrationOpts} onChange={onChangeFilter} />
         </div>
 
