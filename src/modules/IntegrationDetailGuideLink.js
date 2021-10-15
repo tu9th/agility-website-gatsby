@@ -11,7 +11,7 @@ const GuideLinks = ({viewModel}) => {
 	const classSection = `module mod-user-guides integration-detail has-btn-white text-white GuideLinks animation ${fields.darkMode && fields.darkMode === 'true' ? ' dark-mode': ''}`
 	const heading = fields.titleStepImplementation
 	const description = fields.descriptionStepImplementation
-	const btnCta = fields.mainCTA
+	const btnCta = fields.cTA
 	const imgURL = fields.stepIcon && fields.stepIcon.url.length > 0 ? fields.stepIcon.url : null
 	const thisModuleRef = useRef(null)
 

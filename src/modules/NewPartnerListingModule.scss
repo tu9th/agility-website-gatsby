@@ -2,7 +2,7 @@
 
 .mod-integration-listing {
   &.similar {
-    margin: 96px 0 120px;
+    margin: 45px 0;
   }
   .case-col {
     margin-top: 32px;
@@ -53,7 +53,7 @@
 @media (min-width: 992px) {
   .mod-integration-listing {
     &.similar {
-      margin: 45px 0;
+      margin: 96px 0 120px;
     }
   }
 }

@@ -16,14 +16,18 @@ const PostItem = ({ post, isIntegration }) => {
 	}
 
   return (
-    <div className="case-box h-100 transition-25 ps-rv">
+    <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
       <div className="case-thumb ps-rv overflow-hidden">
         {!isIntegration && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
         {isIntegration && <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>}
       </div>
-      <div className="case-content small-paragraph">
-        <h3>{title}</h3>
-        <p>{trimText(body)}</p>
+      <div className="case-content d-flex flex-column small-paragraph flex">
+        <div className="flex-0-0">
+          <h3>{title}</h3>
+        </div>
+        <div className="flex">
+          <p>{trimText(body)}</p>
+        </div>
         {link &&
           <Link to={link} className="link-line link-purple">Read More</Link>
         }
