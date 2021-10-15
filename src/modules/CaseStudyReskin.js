@@ -336,7 +336,7 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
         } else {
           return (
             <div key={index} className="col-md-6 col-lg-4 case-col">
-              < PostItem post={post} />
+              < PostItem showCustomerLogo={true} post={post} />
             </div>)
         }
       } else {
@@ -360,7 +360,6 @@ const CaseStudyReskin = ({ item, posts = [] }) => {
               < PostSpecialItem post={post} isSpecial={isPurpleBackground} />
             </div>)
         }
-        console.log('postssssssssss', post.customFields.customerLogo, post.customFields.customerWhiteLogo)
 
         return (
           <div key={index} className="col-md-6 col-lg-4 case-col">
