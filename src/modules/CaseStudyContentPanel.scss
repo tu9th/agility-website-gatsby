@@ -42,6 +42,13 @@
   line-height: 1.4;
 }
 
+.case-panel {
+  .customer-logo {
+    max-width: 312px;
+    margin-bottom: 20px;
+  }
+}
+
 @media (min-width: 992px) {
   .case-panel {
     border-top: 1px solid $color-c9;

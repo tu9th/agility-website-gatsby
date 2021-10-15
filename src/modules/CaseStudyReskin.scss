@@ -33,6 +33,13 @@
       transform: scale3d(1.03, 1.03, 1);
     }
   }
+  .customer-logo {
+    position: absolute;
+    left: 26px;
+    bottom: 31px;
+    max-width: 195px;
+    z-index: 1;
+  }
 }
 
 .case-content {
