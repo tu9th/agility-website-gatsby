@@ -4,11 +4,13 @@ import LazyBackground from '../utils/LazyBackground'
 import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
-const PostItem = ({ post, isIntegration }) => {
+const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
   const thumbUrl = post?.customFields?.postImage?.url
   const link = post?.url
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt
+  const urlCustomer = post?.customFields?.customerWhiteLogo?.url
+  console.log(post?.customFields?.customerWhiteLogo?.url)
 
 	const trimText = (text) => {
 		let txt = text.split(' ')
@@ -20,6 +22,12 @@ const PostItem = ({ post, isIntegration }) => {
       <div className="case-thumb ps-rv overflow-hidden">
         {!isIntegration && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
         {isIntegration && <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>}
+        {showCustomerLogo  && <div className="customer-logo">
+          <Lazyload offset={Helpers.lazyOffset}>
+            <img src={urlCustomer} className="bg transition-25"></img>
+          </Lazyload>
+        </div>
+        }
       </div>
       <div className="case-content d-flex flex-column small-paragraph flex">
         <div className="flex-0-0">
