@@ -40,6 +40,11 @@
     max-width: 195px;
     z-index: 1;
   }
+  .overlay-bg {
+    @include position(absolute, null, null, 0, 0, 1);
+    @include sizeEx(100%, 140px);
+    background-image: linear-gradient(to top, #64666ACC, transparent 100%);
+  }
 }
 
 .case-content {

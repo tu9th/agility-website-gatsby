@@ -10,7 +10,9 @@ const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
-  console.log(post?.customFields?.customerWhiteLogo?.url)
+  const styleOverlay = {
+    'background-image': "url('/images/bg-case-study.png')"
+  }
 
 	const trimText = (text) => {
 		let txt = text.split(' ')
@@ -22,11 +24,14 @@ const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
       <div className="case-thumb ps-rv overflow-hidden">
         {!isIntegration && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
         {isIntegration && <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>}
-        {showCustomerLogo  && <div className="customer-logo">
+        {showCustomerLogo && <>
+        <div className="overlay-bg bg"></div>
+        <div className="customer-logo">
           <Lazyload offset={Helpers.lazyOffset}>
             <img src={urlCustomer} className="bg transition-25"></img>
           </Lazyload>
         </div>
+        </>
         }
       </div>
       <div className="case-content d-flex flex-column small-paragraph flex">
