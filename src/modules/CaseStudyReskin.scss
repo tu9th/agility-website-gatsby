@@ -39,6 +39,9 @@
     bottom: 31px;
     max-width: 195px;
     z-index: 1;
+    img {
+      max-height: 100px;
+    }
   }
   .overlay-bg {
     @include position(absolute, null, null, 0, 0, 1);
