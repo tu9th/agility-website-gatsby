@@ -40,7 +40,7 @@
     z-index: 1;
     img {
       max-width: 195px;
-      max-height: 100px;
+      max-height: 75px;
     }
   }
   .overlay-bg {
@@ -169,11 +169,18 @@
   }
   .case-box {
     border: 1px solid rgba(201, 216, 230, 0.5);
+    .customer-logo {
+      left: 15px;
+      bottom: 15px;
+      img {
+        max-height: 60px;
+      }
+    }
   }
 
   .case-thumb {
     &::before {
-      padding-bottom: 64.94%;
+      padding-bottom: 67.5%;
     }
   }
 }
@@ -214,5 +221,34 @@
   .case-box,
   .case-spe-box {
     box-shadow:  0 5px 30px -8px rgba(85, 63, 164, 0.25);
+  }
+}
+
+@media (min-width: 1200px) {
+  .case-thumb {
+    &::before {
+      padding-bottom: 64.94%;
+    }
+  }
+  .case-box {
+    .customer-logo {
+      left: 20px;
+      bottom: 20px;
+      img {
+        max-height: 65px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .case-box {
+    .customer-logo {
+      left: 26px;
+      bottom: 31px;
+      img {
+        max-height: 75px;
+      }
+    }
   }
 }

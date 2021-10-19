@@ -10,9 +10,6 @@ const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
-  const styleOverlay = {
-    'background-image': "url('/images/bg-case-study.png')"
-  }
 
 	const trimText = (text) => {
 		let txt = text.split(' ')
@@ -25,7 +22,7 @@ const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
         {!isIntegration && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
         {isIntegration && <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>}
         {showCustomerLogo && <>
-        <div className="overlay-bg bg"></div>
+        <div className="overlay-bg"></div>
         <div className="customer-logo">
           <Lazyload offset={Helpers.lazyOffset}>
             <img src={urlCustomer} className="bg transition-25"></img>
