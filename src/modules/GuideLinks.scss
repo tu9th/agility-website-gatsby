@@ -34,7 +34,7 @@
 			font-weight: $fw-bold;
 			color: $color-ff;
 			letter-spacing: 0;
-			margin-right: 15px;
+			margin-right: 10px;
 			margin-top: 1px;
 		}
 		.content {
@@ -43,7 +43,7 @@
 			}
 		}
 		.item-guides{
-			padding: 21px 20px 22px;
+			padding: 21px 10px 22px;
 			&:first-child {
 				padding-top: 20px;
 			}
@@ -59,7 +59,7 @@
 			right: 5px;
 		}
 		.list-guides {
-			padding: 10px 25px;
+			padding: 10px 15px;
 			margin: 0;
 		}
 	}
@@ -166,8 +166,17 @@
 				}
 			}
 		}
+		.item-guides{
+			padding: 21px 20px 22px;
+		}
 		&.integration-detail {
 			padding: 151px 0 128px;
+			.list-guides {
+				padding: 10px 25px;
+			}
+			.number {
+				margin-right: 15px;
+			}
 		}
 	}
 	.bg-guides {
