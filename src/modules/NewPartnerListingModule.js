@@ -68,9 +68,13 @@ export default props => (
         }
         return arr
       }, [])
+      const tagsExist = [...new Set(list.reduce((arr, item) => {
+				return [...arr, ...item.customTags.map(tag => tag.contentID)]
+			}, []))]
+
 			const tagsReferenceName = list[0].customFields.customTags.referencename
       const options = queryData.allAgilityCustomTag.nodes.reduce((obj, node) => {
-        if (node.properties.referenceName ===  tagsReferenceName) {
+        if (node.properties.referenceName ===  tagsReferenceName && tagsExist.includes(node.contentID)) {
           obj[node.contentID] = node.customFields.title
         }
         return obj

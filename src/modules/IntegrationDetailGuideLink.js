@@ -59,30 +59,28 @@ const GuideLinks = ({viewModel}) => {
 			<section className={classSection} ref={ thisModuleRef }>
 				<LazyLoad offset={ Helpers.lazyOffset }><img src="/images/user-guides.svg" alt='Ready to dive in?' className='bg-guides'></img></LazyLoad>
 				<span className="icomoon icon-gears"></span>
-				<div className="container">
-					<div className="row align-items-center">
-						<div className="col-lg-5 last-mb-none col-content-guide anima-left">
-							{ imgURL &&
-								<LazyLoad offset={ Helpers.lazyOffset }><img src={imgURL} alt={heading}></img></LazyLoad>
-							}
-							{ heading &&
-								<h2>{heading}</h2>
-							}
-							{ description &&
-								<p>{description}</p>
-							}
-							{ btnCta && btnCta.href &&
-								<p><a href={btnCta.href} target={btnCta.target} className="btn btn-outline-white text-decoration-none ">{ btnCta.text }</a></p>
-							}
-						</div>
-						{ listGuide.length > 0 &&
-							<div className="col-lg-7 anima-right">
-								<div className="list-guides">
-									{listGuide}
-								</div>
-							</div>
+				<div className="container row align-items-center mx-auto">
+					<div className="col-lg-5 last-mb-none col-content-guide anima-left">
+						{ imgURL &&
+							<LazyLoad offset={ Helpers.lazyOffset }><img src={imgURL} alt={heading}></img></LazyLoad>
+						}
+						{ heading &&
+							<h2>{heading}</h2>
+						}
+						{ description &&
+							<p>{description}</p>
+						}
+						{ btnCta && btnCta.href &&
+							<p><a href={btnCta.href} target={btnCta.target} className="btn btn-outline-white text-decoration-none ">{ btnCta.text }</a></p>
 						}
 					</div>
+					{ listGuide.length > 0 &&
+						<div className="col-lg-7 anima-right">
+							<div className="list-guides">
+								{listGuide}
+							</div>
+						</div>
+					}
 				</div>
 			</section>
 		</React.Fragment>
