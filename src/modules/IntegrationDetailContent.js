@@ -39,6 +39,7 @@ const IntegrationDetailContent = ({ viewModel}) => {
 			window.removeEventListener('scroll', scrollEventFunc)
 		}
 	}, [])
+	console.log('dynamicPageItem', dynamicPageItem)
 
 	return (
 		<>
@@ -46,7 +47,7 @@ const IntegrationDetailContent = ({ viewModel}) => {
 				<div className="container anima-bottom">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left content-ul">
-							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob)}></div>
+							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob || dynamicPageItem?.customFields?.overviewContent)}></div>
 						</div>
 						<IntegrationRightSidebar dynamicPageItem={dynamicPageItem} documentation={documentation}/>
 					</div>

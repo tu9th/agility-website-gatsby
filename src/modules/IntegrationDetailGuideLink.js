@@ -9,7 +9,7 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 const GuideLinks = ({viewModel}) => {
 	const fields = viewModel.dynamicPageItem.customFields;
 	const classSection = `module mod-user-guides integration-detail has-btn-white text-white GuideLinks animation ${fields.darkMode && fields.darkMode === 'true' ? ' dark-mode': ''}`
-	const heading = fields.titleStepImplementation
+	const heading = fields.titleStepImplementation || fields.setupHeading
 	const description = fields.descriptionStepImplementation
 	const btnCta = fields.cTA
 	const imgURL = fields.stepIcon && fields.stepIcon.url.length > 0 ? fields.stepIcon.url : null
@@ -17,8 +17,8 @@ const GuideLinks = ({viewModel}) => {
 
 	const listGuide = viewModel.steps.map((guide, idx) => {
 		const customeFieldsGuide = guide.customFields
-		const descriptionGuide = customeFieldsGuide.excerpt
-		const titleGuide = customeFieldsGuide.title
+		const descriptionGuide = customeFieldsGuide.excerpt || customeFieldsGuide.description
+		const titleGuide = customeFieldsGuide.title || customeFieldsGuide.heading
 		return (
 			<div className="item-guides ps-rv small-paragraph last-mb-none d-flex" key={idx}>
 				<div className="number">{idx + 1}.</div>

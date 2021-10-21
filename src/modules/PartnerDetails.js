@@ -82,6 +82,25 @@ export default props => (
 					}
 				}
 			}
+			allAgilityLink {
+				nodes {
+					properties {
+						definitionName
+						referenceName
+					}
+					contentID
+					id
+					customFields {
+						description
+						title
+						uRL {
+							href
+							target
+							text
+						}
+					}
+				}
+			}
 			allAgilityStepForImplementation {
 				nodes {
 					customFields {
@@ -93,13 +112,31 @@ export default props => (
 					}
 				}
 			}
+			allAgilityIntegrationItem {
+				nodes {
+					customFields {
+						description
+						heading
+						link {
+							href
+							target
+							text
+						}
+					}
+					contentID
+					properties {
+						referenceName
+					}
+				}
+			}
 		}
     `}
 		render={queryData => {
 			const customFields = props.dynamicPageItem.customFields
 			const dynamicPageItem = props.dynamicPageItem
-			const documentReferenceName = customFields?.documentationIntegration?.referencename
-			const stepsReferenceName = customFields?.stepsImplementation?.referencename
+			const isIntegrationReference = dynamicPageItem.properties.referenceName === 'integrations'
+			const documentReferenceName = customFields?.documentationIntegration?.referencename || customFields?.documentationLinks?.referencename
+			const stepsReferenceName = customFields?.steps?.referencename || customFields?.stepsImplementation?.referencename
 			const tags = dynamicPageItem?.customFields?.customTags?.map(tag => tag.contentID)
 			const mediaLists = queryData?.allAgilityPartner?.nodes?.map(node => {
 				return {
@@ -135,12 +172,17 @@ export default props => (
 			})
 
 			//filter out only those logos that we want...
-			let documentation = queryData.allAgilityLinks.nodes.filter(m => {
+			let documentation = queryData[isIntegrationReference ? 'allAgilityLink' :'allAgilityLinks'].nodes.filter(m => {
 				return m.properties.referenceName === documentReferenceName;
 			});
-			let steps = queryData.allAgilityStepForImplementation.nodes.filter(m => {
+			let steps = queryData[isIntegrationReference ? 'allAgilityIntegrationItem' : 'allAgilityStepForImplementation'].nodes.filter(m => {
 				return m.properties.referenceName === stepsReferenceName;
 			});
+			if (stepsReferenceName) {
+				steps = steps.map(step => {
+					return step
+				})
+			}
 			const [isIntegration, setIsIntegration] = useState(false);
 			const detectIntegration = () => {
 				const detectIntegration = window.location.pathname.includes('/integrations')
