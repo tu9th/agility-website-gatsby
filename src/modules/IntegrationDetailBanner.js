@@ -52,7 +52,7 @@ const ImgRender = React.memo(HasImg)
 
 const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
 	const heading = item.title
-	const des = item.excerpt
+	const des = item.excerpt || item.companyDescription
 	const breadcrumb = 'Explore All Integrations'
 	// const classSection = 'module mod-banner mod-integration-detail-banner animation bg-46 text-white'
 	const array = []

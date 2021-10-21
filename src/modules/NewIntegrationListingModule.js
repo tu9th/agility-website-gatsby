@@ -42,12 +42,9 @@ export default props => (
     }
     `}
     render={queryData => {
-      console.log('queryData.allAgilityIntegrations', queryData.allAgilityIntegrations)
 			const referenceName = props.item.customFields.partners.referencename;
-      console.log(referenceName)
 
       const list = queryData.allAgilityIntegrations.nodes.reduce((arr, node) => {
-        console.log('node.properties.referenceName', node)
         const customField = node?.customFields || {}
         if (node.properties.referenceName === referenceName) {
           let excerpt = customField.companyDescription;
@@ -78,7 +75,6 @@ export default props => (
 )
 
 const NewIntegrationListingModule = ({ options, list, item }) => {
-  console.log('options', options)
   const classSection = 'module mod-integration-listing'
   const tmpIntegrationOpts = {
     name: 'integrations',
@@ -123,7 +119,6 @@ const NewIntegrationListingModule = ({ options, list, item }) => {
     let tmpListIntegration = value.includes(1) || !value.length ? storeListIntegration : storeListIntegration.filter(item => {
       // const mapContentId = item.customTags.map(tag => tag.contentID)
       const tags = item.customFields.integrationType_ValueField.split(',').map(tag => Number(tag))
-      console.log(tags)
       return value.some(val => tags.includes(val))
     })
     setListIntegration(tmpListIntegration)

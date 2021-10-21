@@ -12,7 +12,7 @@ const GuideLinks = ({viewModel}) => {
 	const heading = fields.titleStepImplementation || fields.setupHeading
 	const description = fields.descriptionStepImplementation
 	const btnCta = fields.cTA
-	const imgURL = fields.stepIcon && fields.stepIcon.url.length > 0 ? fields.stepIcon.url : null
+	const imgURL = fields.stepIcon && fields.stepIcon.url.length > 0 ? fields.stepIcon.url : '/images/icon-userguide.svg'
 	const thisModuleRef = useRef(null)
 
 	const listGuide = viewModel.steps.map((guide, idx) => {

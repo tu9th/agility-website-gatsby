@@ -12,9 +12,10 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 import "./CaseStudyDetails.scss"
 import "./RichTextArea.scss"
 
-const IntegrationDetailContent = ({ viewModel}) => {
+const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 	let dynamicPageItem = viewModel.dynamicPageItem
 	let documentation = viewModel.documentation
+	console.log(viewModel, viewModel.isIntegrationReference)
 	// let dynamicPageItem = viewModel.dynamicPageItem
 
 	/* case studies related resources data */
@@ -39,7 +40,6 @@ const IntegrationDetailContent = ({ viewModel}) => {
 			window.removeEventListener('scroll', scrollEventFunc)
 		}
 	}, [])
-	console.log('dynamicPageItem', dynamicPageItem)
 
 	return (
 		<>
@@ -49,7 +49,7 @@ const IntegrationDetailContent = ({ viewModel}) => {
 						<div className="cs-detail-cont-left content-ul">
 							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob || dynamicPageItem?.customFields?.overviewContent)}></div>
 						</div>
-						<IntegrationRightSidebar dynamicPageItem={dynamicPageItem} documentation={documentation}/>
+						<IntegrationRightSidebar dynamicPageItem={dynamicPageItem} documentation={documentation} isIntegrationReference={viewModel.isIntegrationReference}/>
 					</div>
 				</div>
 
@@ -61,9 +61,14 @@ const IntegrationDetailContent = ({ viewModel}) => {
 
 export default IntegrationDetailContent
 
-const IntegrationRightSidebar = ({ dynamicPageItem, documentation }) => {
-	const website = dynamicPageItem?.customFields?.website
-	const tags = dynamicPageItem?.customFields?.customTags
+const IntegrationRightSidebar = ({ dynamicPageItem, documentation, isIntegrationReference }) => {
+	console.log('dynamicPageItem', dynamicPageItem)
+	const website = isIntegrationReference ? {
+		href: dynamicPageItem.website,
+		text: dynamicPageItem.title
+	} : dynamicPageItem?.customFields?.website
+	let tags = dynamicPageItem?.customFields?.customTags
+	console.log('tagssssssss', tags)
 	let link = '/partners/integrations/' + dynamicPageItem.customFields.uRL
 
 	const renderTags = (tags, type) => {

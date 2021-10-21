@@ -6,6 +6,7 @@ import IntegrationDetailGuideLink from './IntegrationDetailGuideLink'
 import IntegrationDetailSimilar from './IntegrationDetailSimilar'
 import * as StringUtils from "../utils/string-utils"
 import CaseStudyGallery from './CaseStudyGallery';
+import * as ArrayUtils from '../utils/array-utils.js';
 
 import "./CaseStudyDetails.scss"
 import "./PartnerDetail.scss"
@@ -28,6 +29,35 @@ export default props => (
 				  value
 				}
 			  }
+			}
+			allAgilityIntegrations(sort: {order: ASC, fields: properties___itemOrder}) {
+				nodes {
+					contentID
+					properties {
+						referenceName
+					}
+					customFields {
+						screenshots {
+							galleryid
+						}
+						media {
+							mediaID
+							fileName
+							url
+							size
+							modifiedOn
+						}
+						title
+						excerpt:companyDescription
+            integrationType_ValueField
+            integrationType_TextField
+						uRL
+						postImage:logo {
+              label
+              url
+            }
+					}
+				}
 			}
 			allAgilityPartner(sort: {order: ASC, fields: properties___itemOrder}) {
 				nodes {
@@ -64,6 +94,15 @@ export default props => (
 					}
 				}
 			}
+			allAgilityIntegrationType(sort: {order: ASC, fields: properties___itemOrder}) {
+        nodes {
+          id
+          customFields {
+            title
+          }
+          contentID
+        }
+      }
 			allAgilityLinks {
 				nodes {
 					customFields {
@@ -134,11 +173,20 @@ export default props => (
 		render={queryData => {
 			const customFields = props.dynamicPageItem.customFields
 			const dynamicPageItem = props.dynamicPageItem
+			const allAgilityIntegrationType = queryData.allAgilityIntegrationType
 			const isIntegrationReference = dynamicPageItem.properties.referenceName === 'integrations'
 			const documentReferenceName = customFields?.documentationIntegration?.referencename || customFields?.documentationLinks?.referencename
 			const stepsReferenceName = customFields?.steps?.referencename || customFields?.stepsImplementation?.referencename
-			const tags = dynamicPageItem?.customFields?.customTags?.map(tag => tag.contentID)
-			const mediaLists = queryData?.allAgilityPartner?.nodes?.map(node => {
+			let tags = isIntegrationReference ? dynamicPageItem?.customFields?.integrationType_ValueField.split(',').map(tag => Number(tag)) : dynamicPageItem?.customFields?.customTags?.map(tag => tag.contentID)
+			const allIntegration = ArrayUtils.shuffleArray((isIntegrationReference ? queryData?.allAgilityIntegrations?.nodes : queryData?.allAgilityPartner?.nodes) || [])
+
+			if (isIntegrationReference) {
+				dynamicPageItem.customFields.customTags = dynamicPageItem?.customFields?.integrationType_ValueField.split(',').map(tag => {
+					const findType = allAgilityIntegrationType.nodes.find(node => node.contentID === Number(tag)) || {}
+					return findType
+				})
+			}
+			const mediaLists = allIntegration.map(node => {
 				return {
 					node
 				}
@@ -150,13 +198,14 @@ export default props => (
 					return item
 				})
 			} else {
-				similarPartner = queryData.allAgilityPartner.nodes.filter(node => {
+				similarPartner = allIntegration.filter(node => {
+					const tagsNode = isIntegrationReference ? node.customFields.integrationType_ValueField.split(',').map(tag => Number(tag)) : node.customTags.map(tag => tag.contentID)
 					return node.properties.referenceName === dynamicPageItem.properties.referenceName
-						&& node.customTags.some(tag => (tags || []).includes(tag.contentID))
+						&& tagsNode.some(tag => (tags || []).includes(tag))
 						&& node.contentID !== dynamicPageItem.contentID
 				})
 				if (similarPartner.length === 0) {
-					similarPartner = queryData.allAgilityPartner.nodes.filter(node => {
+					similarPartner = allIntegration.filter(node => {
 						return node.properties.referenceName === dynamicPageItem.properties.referenceName
 							&& node.contentID !== dynamicPageItem.contentID
 					})
@@ -208,13 +257,14 @@ export default props => (
 				item: props.item,
 				documentation: documentation || [],
 				steps: steps || [],
-				similarPartner
+				similarPartner,
+				isIntegrationReference
 			}
 			return (
 				<section className="mod-integration-partner">
 					{ isIntegration && <>
 						<IntegrationDetailContent viewModel={viewModel}/>
-						<CaseStudyGallery dataList={mediaLists} galleryId={customFields?.gallery?.galleryid} title={customFields.title} />
+						<CaseStudyGallery dataList={mediaLists} galleryId={customFields?.gallery?.galleryid || customFields?.screenshots?.galleryId} title={customFields.title} />
 						{steps && steps.length > 0 && <IntegrationDetailGuideLink viewModel={viewModel}/>}
 						<IntegrationDetailSimilar viewModel={viewModel} />
 						</>
