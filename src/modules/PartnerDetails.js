@@ -213,12 +213,14 @@ export default props => (
 			}
 			similarPartner.length = 3
 			similarPartner.forEach(partner => {
-				let excerpt = partner.customFields.excerpt;
+				let excerpt = partner.customFields.excerpt || partner.customFields.companyDescription;
 				if (excerpt) {
 					partner.customFields.excerpt = StringUtils.stripHtml(excerpt, 200);
 				}
 				partner.url = "/partners/integrations/" + partner.customFields.uRL;
+				partner.customFields.postImage = partner.customFields.logo
 			})
+			console.log(similarPartner)
 
 			//filter out only those logos that we want...
 			let documentation = queryData[isIntegrationReference ? 'allAgilityLink' :'allAgilityLinks'].nodes.filter(m => {

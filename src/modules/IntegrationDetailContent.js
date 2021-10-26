@@ -15,7 +15,6 @@ import "./RichTextArea.scss"
 const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 	let dynamicPageItem = viewModel.dynamicPageItem
 	let documentation = viewModel.documentation
-	console.log(viewModel, viewModel.isIntegrationReference)
 	// let dynamicPageItem = viewModel.dynamicPageItem
 
 	/* case studies related resources data */
@@ -62,13 +61,11 @@ const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 export default IntegrationDetailContent
 
 const IntegrationRightSidebar = ({ dynamicPageItem, documentation, isIntegrationReference }) => {
-	console.log('dynamicPageItem', dynamicPageItem)
 	const website = isIntegrationReference ? {
 		href: dynamicPageItem.website,
 		text: dynamicPageItem.title
 	} : dynamicPageItem?.customFields?.website
 	let tags = dynamicPageItem?.customFields?.customTags
-	console.log('tagssssssss', tags)
 	let link = '/partners/integrations/' + dynamicPageItem.customFields.uRL
 
 	const renderTags = (tags, type) => {

@@ -8,7 +8,7 @@ const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
   const thumbUrl = post?.customFields?.postImage?.url
   const link = post?.url
   const title = post?.customFields?.title
-  const body = post?.customFields?.excerpt
+  const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
 
 	const trimText = (text) => {
