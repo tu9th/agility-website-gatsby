@@ -52,7 +52,7 @@ export default props => (
             integrationType_ValueField
             integrationType_TextField
 						uRL
-						postImage:logo {
+						logo {
               label
               url
             }
@@ -218,9 +218,10 @@ export default props => (
 					partner.customFields.excerpt = StringUtils.stripHtml(excerpt, 200);
 				}
 				partner.url = "/partners/integrations/" + partner.customFields.uRL;
-				partner.customFields.postImage = partner.customFields.logo
+				if (!partner.customFields.postImage && isIntegrationReference) {
+					partner.customFields.postImage = partner.customFields.logo
+				}
 			})
-			console.log(similarPartner)
 
 			//filter out only those logos that we want...
 			let documentation = queryData[isIntegrationReference ? 'allAgilityLink' :'allAgilityLinks'].nodes.filter(m => {
