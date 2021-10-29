@@ -62,8 +62,8 @@ export default IntegrationDetailContent
 
 const IntegrationRightSidebar = ({ dynamicPageItem, documentation, isIntegrationReference }) => {
 	const website = isIntegrationReference ? {
-		href: dynamicPageItem.website,
-		text: dynamicPageItem.title
+		href: dynamicPageItem.customFields.website,
+		text: dynamicPageItem.customFields.title
 	} : dynamicPageItem?.customFields?.website
 	let tags = dynamicPageItem?.customFields?.customTags
 	let link = '/partners/integrations/' + dynamicPageItem.customFields.uRL
