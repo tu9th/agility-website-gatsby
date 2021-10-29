@@ -34,7 +34,6 @@ const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 		}
 		animationElementInnerComponent(thisModuleRef.current)
 		window.addEventListener('scroll', scrollEventFunc)
-
 		return () => {
 			window.removeEventListener('scroll', scrollEventFunc)
 		}
@@ -44,6 +43,12 @@ const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 		content = <>
 			<h2>{dynamicPageItem?.customFields?.overviewHeading}</h2>
 			<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.overviewContent)}></div>
+			{viewModel.overviewItems.length && <ul className="list-url last-mb-none">
+				{viewModel.overviewItems.map(item => <li key={`overview-item-` + item.contentID}>
+					<p><strong>{item?.customFields?.heading}</strong></p>
+					<p>{item?.customFields?.description}</p>
+				</li>)}
+			</ul>}
 		</>
 	}
 

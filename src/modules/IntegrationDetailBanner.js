@@ -59,7 +59,6 @@ const IntegrationDetailBanner = ({ item, dynamicPageItem }) => {
 	const [isHomePage, setIsHomePage] = useState(false);
 
 	let classAniImg = 'col-md-6 col-right-lr anima-right d-flex align-items-center'
-	console.log('item', item)
 	let imgModule = item.logo || item.partnerLogo
 
 	const bannerRef = useRef(null)

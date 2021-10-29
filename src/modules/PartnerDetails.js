@@ -230,6 +230,12 @@ export default props => (
 			let steps = queryData[isIntegrationReference ? 'allAgilityIntegrationItem' : 'allAgilityStepForImplementation'].nodes.filter(m => {
 				return m.properties.referenceName === stepsReferenceName;
 			});
+			let overviewItems = []
+			if (isIntegrationReference) {
+				overviewItems = queryData[isIntegrationReference ? 'allAgilityIntegrationItem' : 'allAgilityStepForImplementation'].nodes.filter(m => {
+					return m.properties.referenceName === customFields?.overviewItems?.referencename;
+				})
+			}
 			if (stepsReferenceName) {
 				steps = steps.map(step => {
 					return step
@@ -261,6 +267,7 @@ export default props => (
 				documentation: documentation || [],
 				steps: steps || [],
 				similarPartner,
+				overviewItems,
 				isIntegrationReference
 			}
 			return (
