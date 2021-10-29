@@ -13,6 +13,8 @@
       padding-left: 23px;
       margin-bottom: 0;
       &::after {
+        top: 20px;
+        background-size: cover;
         left: 0;
       }
       p {
