@@ -39,6 +39,13 @@ const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 			window.removeEventListener('scroll', scrollEventFunc)
 		}
 	}, [])
+	let content = <div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob)}></div>
+	if (viewModel.isIntegrationReference) {
+		content = <>
+			<h2>{dynamicPageItem?.customFields?.overviewHeading}</h2>
+			<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.overviewContent)}></div>
+		</>
+	}
 
 	return (
 		<>
@@ -46,7 +53,7 @@ const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 				<div className="container anima-bottom">
 					<div className="cs-detail-cont d-flex flex-grow">
 						<div className="cs-detail-cont-left content-ul">
-							<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob || dynamicPageItem?.customFields?.overviewContent)}></div>
+						{content}
 						</div>
 						<IntegrationRightSidebar dynamicPageItem={dynamicPageItem} documentation={documentation} isIntegrationReference={viewModel.isIntegrationReference}/>
 					</div>
