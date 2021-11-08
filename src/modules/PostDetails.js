@@ -12,7 +12,6 @@ import "./PostDetails.scss"
 
 
 const PostDetails = ({ item, dynamicPageItem, page }) => {
-
   item = item.customFields;
   const post = dynamicPageItem.customFields;
   const author = post.author.customFields;
@@ -71,7 +70,7 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
             {post.subTitle &&
               <h4 className="h4">{post.subTitle}</h4>
             }
-            <PostTags post={post} />
+            {/* <PostTags post={post} /> */}
 
             <div className="meta">
               <div className="author">
@@ -150,7 +149,7 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
               <div className="addition-info">
                 <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
                   <div className="case-thumb ps-rv overflow-hidden">
-                    <LazyBackground className="ps-as z-2 bg transition-25" src={post.postImage.url} />
+                    <LazyBackground className="ps-as z-2 bg transition-25" src={post?.postImage?.url} />
                   </div>
                   <div className="case-content d-flex flex-column small-paragraph flex">
                     <div className="tag">
@@ -171,7 +170,7 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
 
                 <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
                   <div className="case-thumb ps-rv overflow-hidden">
-                    <LazyBackground className="ps-as z-2 bg transition-25" src={post.postImage.url} />
+                    <LazyBackground className="ps-as z-2 bg transition-25" src={post?.postImage?.url} />
                   </div>
 
                   <div className="case-content d-flex flex-column small-paragraph flex">
@@ -216,7 +215,6 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
               {post.subTitle &&
                 <h4 className="h4">{post.subTitle}</h4>
               }
-              <PostTags post={post} />
 
               <div className="meta">
                 <div className="author">
