@@ -64,8 +64,6 @@ export default props => (
 		  }
     `}
 		render={queryData => {
-			console.log(queryData, props)
-
 			//filter out only those logos that we want...
 			let posts = queryData.allAgilityBlogPost.nodes;
 			let item = props.item;
