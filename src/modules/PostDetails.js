@@ -208,7 +208,7 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
         window.hljs.highlightAll()
         clearInterval(runHljs)
       }
-    }, 1000)
+    }, 500)
 	}
 
   useEffect(() => {
