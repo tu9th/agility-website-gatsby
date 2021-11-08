@@ -14,45 +14,63 @@ export default props => (
 	<StaticQuery
 		query={graphql`
 		query NewPostListingQuery {
-			allAgilityBlogPost(filter: {properties: {referenceName: {eq: "blogposts"}}}, sort: {fields: customFields___date, order: DESC}) {
-			  nodes {
-				contentID
-				customFields {
-				  date(formatString: "MMMM D, YYYY")
-				  excerpt
-				  title
-				  uRL
-				  postImage {
-            label
-            url
-            filesize
-            height
-            width
-				  }
-				}
-				category {
-				  customFields {
-					title
-				  }
-				}
-				author {
-				  customFields {
-					image {
-					  url
-					  label
+			allAgilityBlogPost(
+				filter: {properties: {referenceName: {eq: "blogposts"}}}
+				sort: {fields: customFields___date, order: DESC}
+			) {
+				nodes {
+					contentID
+					customFields {
+						date(formatString: "MMMM D, YYYY")
+						excerpt
+						title
+						uRL
+						postImage {
+							label
+							url
+							filesize
+							height
+							width
+						}
+						blogCategories {
+							referencename
+							sortids
+						}
+						blogCategories_TextField
+						blogCategories_ValueField
 					}
-					title
-				  }
+					category {
+						customFields {
+							title
+						}
+					}
+					author {
+						customFields {
+							image {
+								url
+								label
+							}
+							title
+						}
+					}
+					tags {
+						contentID
+						customFields {
+							title
+						}
+					}
 				}
-				tags {
+			}
+			allAgilityBlogCategory {
+				nodes {
+					id
 					contentID
 					customFields {
 						title
 					}
 				}
-			  }
 			}
-			allAgilityBlogCategory {
+			allAgilityNewBlogCategory {
 				nodes {
 					id
 					contentID
@@ -70,7 +88,7 @@ export default props => (
 			const [loadMoreIdx, setLoadMoreIdx] = useState(12)
 			const tmpPostOptions = {
 				name: 'posts',
-				options: { ...queryData.allAgilityBlogCategory.nodes.reduce((obj, node) => {
+				options: { ...queryData.allAgilityNewBlogCategory.nodes.reduce((obj, node) => {
 					// if (node.properties.referenceName ===  tagsReferenceName ) {
 						obj[node.contentID] = node.customFields.title
 					// }
@@ -79,6 +97,7 @@ export default props => (
 				selectedOption: [1]
 			}
 			const [postOpts, setPostOpts] = useState(tmpPostOptions)
+			const [postRender, setPostRender] = useState(posts)
 
 			//filter by tag if neccessary
 			if (props.dynamicPageItem && props.dynamicPageItem.properties.definitionName === "BlogTag") {
@@ -125,7 +144,18 @@ export default props => (
 			}, [])
 
 			const onChangeFilter = ({ name, value }) => {
-				console.log('sssss')
+				console.log('name, value', name, value)
+				if (value.includes(1)) {
+					setPostRender(posts)
+				} else {
+					const tmpPosts = posts.filter(post => {
+						return (post?.customFields?.blogCategories_ValueField || '').split(',').some(valueField => {
+							return value.includes(Number(valueField))
+						})
+					})
+					setPostRender(tmpPosts)
+					setLoadMoreIdx(12)
+				}
 			}
 
 			return (
@@ -139,16 +169,24 @@ export default props => (
 							<section className="mod-space space-20 space-dt-50 "></section>
 
 							<div className="row">
-								{posts.filter((item, index) => index < loadMoreIdx).map(post => {
+								{postRender.filter((item, index) => index < loadMoreIdx).map(post => {
 									const thumbUrl = post?.customFields?.postImage?.url
 									const link = post?.url
 									const title = post?.customFields?.title
 									const body = post?.customFields?.excerpt || ''
-									const date = DateTime.fromISO().toFormat("MMM d, yyyy")
+									// const date = DateTime.fromISO().toFormat("MMM d, yyyy")
 									const trimText = (text) => {
 										let txt = text.split(' ')
 										return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
 									}
+									let categories = []
+									if (post?.customFields?.blogCategories_TextField) {
+										categories = post?.customFields?.blogCategories_TextField.split(',').map(category => {
+											return { customFields: { title: category } }
+										})
+
+									}
+									// console.log(categories)
 
 									return  <div className="col-12 col-md-6 col-lg-4 post-item" key={`post-${post.contentID}`}>
 										<div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
@@ -163,15 +201,7 @@ export default props => (
 												<div className="flex description">
 													<p>{trimText(body)}</p>
 													<div className="wrap-tags">
-														{renderTags([{
-															customFields: { title: 'CMS' }
-														}, {
-															customFields: { title: 'Headless CMS' }
-														}, {
-															customFields: { title: 'Jamstack' }
-														}, {
-															customFields: { title: 'Artificial Intelligence' }
-														}])}
+														{renderTags(categories)}
 													</div>
 												</div>
 												{link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
@@ -182,7 +212,7 @@ export default props => (
 								})}
 							</div>
 
-							{loadMoreIdx <= posts.length - 1 && <div className="text-center">
+							{loadMoreIdx <= postRender.length - 1 && <div className="text-center">
 							<a className="btn btn-load-more" onClick={loadMoreHandler}>
 								<span>Load More</span>
 							</a>

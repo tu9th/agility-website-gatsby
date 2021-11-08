@@ -190,6 +190,5 @@ const allModules = {
 }
 
 export const getModule = (name) => {
-	console.log(name)
 	return allModules[name]
 }
