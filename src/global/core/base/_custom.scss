@@ -98,6 +98,10 @@ html.hide-loader {
   background-color: $color-6d;
 }
 
+.bg-58 {
+  background-color: $color-58;
+}
+
 .vertical-middle {
   vertical-align: middle;
 }
@@ -574,6 +578,24 @@ ol {
   .pagination {
     li {
       padding-top: 2px;
+    }
+  }
+}
+.new-post {
+  .case-thumb {
+    .lazyload-wrapper {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 100%;
+      padding: 0 20px;
+      img {
+        margin: 0 auto;
+        max-width: 360px;
+        width: 100%;
+        display: block;
+      }
     }
   }
 }

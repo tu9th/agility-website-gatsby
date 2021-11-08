@@ -36,8 +36,7 @@ const FeaturedResContent = ({ item, readMoreLabel }) => {
 		<div className="featured-item">
 			<Link to={item.url}>
 				<div className="image">
-					<ResponsiveImage img={item.image}
-						breaks={[{ w: 768, h: 433, max: 800 }, { w: 768, h: 433, min: 800 }, { w: 480, h: 277, min: 1190 }]} />
+					<ResponsiveImage img={item.image} />
 				</div>
 			</Link>
 			<div className="content">
