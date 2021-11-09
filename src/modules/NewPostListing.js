@@ -86,6 +86,15 @@ export default props => (
 			let posts = queryData.allAgilityBlogPost.nodes;
 			let item = props.item;
 			const [loadMoreIdx, setLoadMoreIdx] = useState(12)
+			if (props.dynamicPageItem && props.dynamicPageItem.properties.definitionName === "BlogTag") {
+				const tagContentID = props.dynamicPageItem.contentID;
+
+				posts = posts.filter(p => {
+					if (! p.tags || ! (p.tags.length > 0)) return false;
+					const index = p.tags.findIndex(t => { return parseInt(t.contentID) === parseInt(tagContentID); });
+					return index >= 0;
+				});
+			}
 			const tmpPostOptions = {
 				name: 'posts',
 				options: { ...queryData.allAgilityNewBlogCategory.nodes.reduce((obj, node) => {

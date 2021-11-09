@@ -338,9 +338,6 @@
 		.container {
 			padding-top: 120px;
 		}
-		.post-item {
-			margin-bottom: 0;
-		}
 	}
 }
 
@@ -353,6 +350,11 @@
 		.addition-info {
 			position: relative;
 			top: 800px;
+		}
+	}
+	.mod-related-resources {
+		.post-item {
+			margin-bottom: 0;
 		}
 	}
 }
