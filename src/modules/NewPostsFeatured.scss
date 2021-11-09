@@ -1,5 +1,8 @@
 .mod-new-posts-featured {
 	margin-bottom: 20px;
+	.case-thumb::before {
+		padding-bottom: 56%;
+	}
 	.posts-feature-item-col {
 		width: 100%;
 		padding: 0 16px;
