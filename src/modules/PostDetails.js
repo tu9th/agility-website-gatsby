@@ -27,15 +27,15 @@ const AboutAuthor = ({ author }) => {
   </div>
 }
 
-const renderTags = (tags, skipTitle = false) => {
+const renderTags = (tags, options = {}) => {
   return tags.map((tag, index) => {
     let link = "/resources/posts" + encodeURIComponent(tag.customFields.title.toLowerCase().replace(/ /g, "-"))
-    if (skipTitle) {
+    if (options.skipTitle) {
       link = '/resources/posts'
     }
     return <span key={'tags-' + index} className="d-inline-block cs-tag ps-rv">
       {tag?.customFields?.title}
-      <Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
+      {!options.skipLink && <Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>}
     </span>
   })
 }
@@ -52,7 +52,7 @@ const InfoPost = ({ post, item, link }) => {
   return <div className="info-post">
     {post.blogTags && post.blogTags.length && <div className="info-wrap" v>
       <h4>Topic</h4>
-      {post.blogTags && renderTags(post.blogTags)}
+      {post.blogTags && renderTags(post.blogTags, { skipLink: true })}
     </div>}
 
     {post?.furtherReading?.href && <div className="info-wrap cs-website">
@@ -96,7 +96,7 @@ const PostDetailItem = ({post}) => {
         <div className="wrap-tags">
           {renderTags([{
             customFields: { title: 'Blog' }
-          }], true)}
+          }], { skipTitle: true })}
         </div>
         <h3>
           <Link to={link} className="color-inherit">{post?.customFields?.title}</Link>
@@ -133,7 +133,6 @@ const RightSidebar = ({ post, item, link, relatedPost }) => {
   if (postsRight.length > 2) postsRight.length = 2
   if (isNotEmpty(post.titleRightCTA) || isNotEmpty(post.contentRightCTA) || post?.buttonRightCTA?.href) {
     rightCTABlock = <>
-      <div className="mod-space space-dt-50 space-20"></div>
       <div className="bg-58 text-center last-mb-none text-white flex-column d-flex align-items-center justify-content-center learn-more-section">
         {isNotEmpty(post.titleRightCTA) && <h3>{post.titleRightCTA}</h3>}
         {isNotEmpty(post.contentRightCTA) && <p>{post.contentRightCTA}</p>}

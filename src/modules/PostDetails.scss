@@ -324,6 +324,9 @@
 	.case-content {
 		padding: 17px 24px 20px;
 	}
+	.new-post:not(:last-child) {
+		margin-bottom: 50px;
+	}
 }
 
 @media (min-width: 767px) {

@@ -96,12 +96,25 @@ export default props => (
 					return index >= 0;
 				});
 			}
+			let categoryExist = []
+			posts.forEach(p => {
+				let excerpt = p.customFields.excerpt;
+				if (excerpt) {
+					p.customFields.excerpt = StringUtils.stripHtml(excerpt, 200);
+				}
+				p.url = "/resources/posts/" + p.customFields.uRL;
+				if (p?.customFields?.blogCategories_ValueField) {
+					categoryExist = [...categoryExist, ...p?.customFields?.blogCategories_ValueField.split(',').map(item => Number(item))]
+				}
+			});
+			categoryExist = [...new Set(categoryExist)]
+
 			const tmpPostOptions = {
 				name: 'posts',
 				options: { ...queryData.allAgilityNewBlogCategory.nodes.reduce((obj, node) => {
-					// if (node.properties.referenceName ===  tagsReferenceName ) {
+					if (categoryExist.includes(node.contentID)) {
 						obj[node.contentID] = node.customFields.title
-					// }
+					}
 					return obj
 				}, {}), 1: 'Blog Category' },
 				selectedOption: [1]
@@ -119,14 +132,6 @@ export default props => (
 					return index >= 0;
 				});
 			}
-
-			posts.forEach(p => {
-				let excerpt = p.customFields.excerpt;
-				if (excerpt) {
-					p.customFields.excerpt = StringUtils.stripHtml(excerpt, 200);
-				}
-				p.url = "/resources/posts/" + p.customFields.uRL;
-			});
 
 			const loadMoreHandler = () => {
 				let tmpLoadMoreIdx = loadMoreIdx
