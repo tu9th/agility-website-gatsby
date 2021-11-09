@@ -287,7 +287,7 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
                   <h4 className="h4">{post.subTitle}</h4>
                 }
 
-                <div className="meta">
+                <div className="meta top">
                   <div className="author">
                     <div className="author-image">
                       <img src={author && author.image ? author.image.url + '?w=100' : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg?w=100"} alt={author && author.title ? author.title : 'image author'} />

@@ -176,7 +176,7 @@ export default props => (
 				<>
 					<section className="mod-new-post-listing">
 						<div className="container">
-							<div className="filter-wrap small-paragraph">
+							<div className="filter-wrap small-paragraph case-filter-box">
 								<SelectC8 className="d-inline-block" data={postOpts} onChange={onChangeFilter} />
 							</div>
 
