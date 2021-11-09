@@ -180,8 +180,6 @@ export default props => (
 								<SelectC8 className="d-inline-block" data={postOpts} onChange={onChangeFilter} />
 							</div>
 
-							<section className="mod-space space-20 space-dt-50 "></section>
-
 							<div className="row">
 								{postRender.filter((item, index) => index < loadMoreIdx).map(post => {
 									const thumbUrl = post?.customFields?.postImage?.url
