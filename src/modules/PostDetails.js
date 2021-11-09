@@ -179,7 +179,6 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
           return postItem.contentID !== dynamicPageItem.contentID && categoryNum.includes(Number(valueField))
         })
       })
-      console.log(relatedPost)
       if (relatedPost.length === 0) {
         relatedPost = getRecentPost()
       }
