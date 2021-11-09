@@ -79,7 +79,7 @@ const InfoPost = ({ post, item, link }) => {
 }
 
 const RelatedResources = ({ item, post}) => {
-  const thumbUrl = post?.customFields?.postImage?.url
+  const thumbUrl = post?.postImage?.url
   let link = '/resources/posts/' + item.uRL
   return <section className="mod-related-resources">
     <div className="container">
@@ -104,7 +104,7 @@ const RelatedResources = ({ item, post}) => {
               </div>
               {link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
             </div>
-            {/* <Link to={link} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link> */}
+            <Link to={link} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link>
           </div>
         </div>
         })}
