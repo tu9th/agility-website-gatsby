@@ -60,7 +60,6 @@
 						margin-bottom: 10px;
 					}
 					.h5 {
-						font-family: $semibold;
 						font-size: 13px;
 						font-weight: 500;
 						color: #4c6884;
@@ -98,8 +97,8 @@
 				.h5 {
 					margin: 0 ;
 					font-size: 15px;
-					font-family: $bold;
 					text-transform: none;
+					font-weight: 700;
 					color: #484b4d;
 				}
 			}
@@ -351,8 +350,7 @@
 			padding: 20px 50px;
 		}
 		.addition-info {
-			position: relative;
-			top: 800px;
+			margin-top: 800px;
 		}
 	}
 	.mod-related-resources {
