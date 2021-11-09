@@ -1,4 +1,6 @@
 @import "../global/setting";
+@import "../global/_variables-global.scss";
+
 .header {
   @include position(relative, 0, 0, null, 0, 9999);
   @extend %add-tr;
