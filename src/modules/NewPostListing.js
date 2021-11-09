@@ -5,8 +5,9 @@ import SelectC8 from '../utils/SelectC8'
 import Helpers from '../global/javascript/Helpers'
 import { Link } from 'gatsby'
 import LazyBackground from '../utils/LazyBackground'
-import { DateTime } from 'luxon'
+// import { DateTime } from 'luxon'
 import Spacing from './Spacing'
+import Lazyload from 'react-lazyload'
 
 import './NewPostListing.scss'
 
@@ -183,7 +184,6 @@ export default props => (
 									const link = post?.url
 									const title = post?.customFields?.title
 									const body = post?.customFields?.excerpt || ''
-									// const date = DateTime.fromISO().toFormat("MMM d, yyyy")
 									const trimText = (text) => {
 										let txt = text.split(' ')
 										return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
@@ -193,14 +193,13 @@ export default props => (
 										categories = post?.customFields?.blogCategories_TextField.split(',').map(category => {
 											return { customFields: { title: category } }
 										})
-
 									}
-									// console.log(categories)
 
 									return  <div className="col-12 col-md-6 col-lg-4 post-item" key={`post-${post.contentID}`}>
 										<div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
-											<div className="case-thumb ps-rv overflow-hidden">
-												<LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />
+											<div className="case-thumb ps-rv overflow-hidden bg-c9-o25">
+												{thumbUrl && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
+												{!thumbUrl && <Lazyload offset={Helpers.lazyOffset}><img src="/images/blog-icon-default.png" className='image-default' alt='Default Blog' loading="lazy" /></Lazyload>}
 											</div>
 											<div className="case-content d-flex flex-column small-paragraph flex">
 												<div className="flex-0-0 last-mb-none heading">

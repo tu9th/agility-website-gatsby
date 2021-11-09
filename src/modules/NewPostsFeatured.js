@@ -5,6 +5,9 @@ import ResponsiveImage from '../components/responsive-image';
 import { Link } from "gatsby"
 import './NewPostsFeatured.scss'
 import Spacing from './Spacing'
+import LazyBackground from '../utils/LazyBackground'
+import Helpers from '../global/javascript/Helpers'
+import Lazyload from 'react-lazyload'
 
 const NewPostsFeatured = ({ item }) => {
 	let posts = item?.customFields?.posts;
@@ -25,21 +28,25 @@ const NewPostsFeatured = ({ item }) => {
 
 			<div className="row">
 				{posts.map(post => {
+					const thumbUrl = post?.customFields?.postImage?.url
+					const link = '/resources/posts/' + post?.customFields?.uRL
 					return <div className="posts-feature-item-col flex col-12 col-lg-4" key={`post-feature-${post.contentID}`}>
-						<div className="posts-feature-item-wrap flex h-100 d-flex transition-25 ps-rv">
-							{post?.customFields?.postImage && <div className="image flex-0-0">
-								<ResponsiveImage img={post.customFields.postImage} breaks={[{ h: 241, max: 800 }, { h: 241, min: 800 }, { h: 241, min: 1190 }]} />
-							</div>}
-							<div className="content-wrap text-white last-mb-none d-flex flex flex-column">
-								<div className="content flex">
-									<h3>{post.customFields.title}</h3>
+						<div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex posts-feature-item-wrap">
+							<div className="case-thumb ps-rv overflow-hidden bg-c9-o25">
+								{thumbUrl && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
+								{!thumbUrl && <Lazyload offset={Helpers.lazyOffset}><img src="/images/blog-icon-default.png" className='image-default' alt='Default Blog' loading="lazy" /></Lazyload>}
+								<Link to={link} className="ps-as"><span className="sr-only">{post?.customFields?.title}</span></Link>
+							</div>
+							<div className="case-content d-flex flex-column small-paragraph flex text-white bg-58">
+								<div className="flex heading">
+									<h3>{post?.customFields?.title}</h3>
 									<p>{post.customFields.excerpt}</p>
 								</div>
 								<div className="cta flex-0-0">
-									<a className="btn btn-outline-white text-white">{ item?.customFields?.readMoreLabel || 'Read More' }</a>
+									<Link to={post.url} className="btn btn-outline-white text-white">Read More</Link>
 								</div>
 							</div>
-							<Link to={post.url} className="ps-as"></Link>
+							<Link to={link} className=" ps-as"><span className="sr-only">{post?.customFields?.title}</span></Link>
 						</div>
 					</div>
 				})}

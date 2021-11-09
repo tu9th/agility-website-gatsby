@@ -3,11 +3,12 @@ import { Link } from "gatsby"
 import { DateTime } from 'luxon'
 import ResponsiveImage from '../components/responsive-image.jsx'
 import { renderHTML } from '../agility/utils'
-import PostTags from "../components/PostTags.jsx"
 import CallToAction from "../components/call-to-action.jsx"
 import LazyBackground from '../utils/LazyBackground'
 import Spacing from './Spacing'
-
+import {  graphql, StaticQuery } from "gatsby"
+import Helpers from '../global/javascript/Helpers'
+import Lazyload from 'react-lazyload'
 import "./RichTextArea.scss"
 import "./PostDetails.scss"
 
@@ -26,9 +27,12 @@ const AboutAuthor = ({ author }) => {
   </div>
 }
 
-const renderTags = (tags, type) => {
+const renderTags = (tags, skipTitle = false) => {
   return tags.map((tag, index) => {
-    let link = "/resources/posts/tag/" + encodeURIComponent(tag.customFields.title.toLowerCase().replace(/ /g, "-"))
+    let link = "/resources/posts" + encodeURIComponent(tag.customFields.title.toLowerCase().replace(/ /g, "-"))
+    if (skipTitle) {
+      link = '/resources/posts'
+    }
     return <span key={'tags-' + index} className="d-inline-block cs-tag ps-rv">
       {tag?.customFields?.title}
       <Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
@@ -46,10 +50,10 @@ const InfoPost = ({ post, item, link }) => {
   }
 
   return <div className="info-post">
-    <div className="info-wrap">
+    {post.blogTags && post.blogTags.length && <div className="info-wrap" v>
       <h4>Topic</h4>
       {post.blogTags && renderTags(post.blogTags)}
-    </div>
+    </div>}
 
     {post?.furtherReading?.href && <div className="info-wrap cs-website">
       <h4>Further Reading</h4>
@@ -78,44 +82,55 @@ const InfoPost = ({ post, item, link }) => {
   </div>
 }
 
-const RelatedResources = ({ item, post}) => {
-  const thumbUrl = post?.postImage?.url
-  let link = '/resources/posts/' + item.uRL
+const PostDetailItem = ({post}) => {
+  const thumbUrl = post?.customFields?.postImage?.url
+  const link = '/resources/posts/' + post?.customFields?.uRL
+  return <div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
+    <div className="case-thumb ps-rv overflow-hidden bg-c9-o25">
+      {thumbUrl && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
+      {!thumbUrl && <Lazyload offset={Helpers.lazyOffset}><img src="/images/blog-icon-default.png" className='image-default' alt='Default Blog' loading="lazy" /></Lazyload>}
+      <Link to={link} className="ps-as"><span className="sr-only">{post?.customFields?.title}</span></Link>
+    </div>
+    <div className="case-content d-flex flex-column small-paragraph flex">
+      <div className="flex heading">
+        <div className="wrap-tags">
+          {renderTags([{
+            customFields: { title: 'Blog' }
+          }], true)}
+        </div>
+        <h3>
+          <Link to={link} className="color-inherit">{post?.customFields?.title}</Link>
+        </h3>
+      </div>
+      {link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
+    </div>
+    {/* <Link to={link} className=" ps-as"><span className="sr-only">{post?.customFields?.title}</span></Link> */}
+  </div>
+}
+
+const RelatedResources = ({ item, post, relatedPost }) => {
+  console.log('item, post', item, post)
   return <section className="mod-related-resources">
     <div className="container">
       <div className="title text-center">
-        <h2>View Related Resources</h2>
+        <h2>{post?.titleRelatedResources || 'View Related Resources'}</h2>
       </div>
       <div className="row">
-        {[0,1,2].map((item, index) => {
-          return <div className="col-12 col-lg-4 post-item" key={'itemee-' + index}>
-          <div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
-            <div className="case-thumb ps-rv overflow-hidden">
-              <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />
-            </div>
-            <div className="case-content d-flex flex-column small-paragraph flex">
-              <div className="flex heading">
-                <div className="wrap-tags">
-                  {renderTags([{
-                    customFields: { title: 'Guide' }
-                  }])}
-                </div>
-                <h3>Building an Ecommerce Website with Agility</h3>
-              </div>
-              {link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
-            </div>
-            <Link to={link} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link>
+        {relatedPost.map(post => {
+          return <div className="col-12 col-lg-4 post-item" key={'related-blog' + post.contentID}>
+            <PostDetailItem post={post}/>
           </div>
-        </div>
         })}
       </div>
     </div>
   </section>
 }
 
-const RightSidebar = ({ post, item, link }) => {
+const RightSidebar = ({ post, item, link, relatedPost }) => {
   const isNotEmpty = str => str && str.trim() !== ''
   let rightCTABlock = ''
+  let postsRight = JSON.parse(JSON.stringify(relatedPost || []))
+  if (postsRight.length > 2) postsRight.length = 2
   if (isNotEmpty(post.titleRightCTA) || isNotEmpty(post.contentRightCTA) || post?.buttonRightCTA?.href) {
     rightCTABlock = <>
       <div className="mod-space space-dt-50 space-20"></div>
@@ -128,62 +143,40 @@ const RightSidebar = ({ post, item, link }) => {
       </div>
     </>
   }
+
   return <>
     <InfoPost post={post} item={item} link={link} />
 
     <div className="addition-info d-none d-lg-block">
-      <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
-        <div className="case-thumb ps-rv overflow-hidden">
-          <LazyBackground className="ps-as z-2 bg transition-25" src={post?.postImage?.url} />
-        </div>
-        <div className="case-content d-flex flex-column small-paragraph flex">
-          <div className="tag">
-            <span className="d-inline-block cs-tag ps-rv">
-              Guide
-              <Link to={'https://www.google.com/'} target="_self" className="ps-as"><span className="sr-only">Guide</span></Link>
-            </span>
-          </div>
-          <h3>Building an Ecommerce Website with Agility</h3>
-          {link &&
-            <Link to={'https://www.google.com/'} className="link-line link-purple">Read More</Link>
-          }
-        </div>
-        <Link to={'https://www.google.com/'} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link>
-      </div>
+      {postsRight.map(postItem => {
+        return <PostDetailItem post={postItem} key={'post-right-' + postItem.contentID} />
+      })}
 
-      <div className="mod-space space-dt-50"></div>
-
-      <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
-        <div className="case-thumb ps-rv overflow-hidden">
-          <LazyBackground className="ps-as z-2 bg transition-25" src={post?.postImage?.url} />
-        </div>
-
-        <div className="case-content d-flex flex-column small-paragraph flex">
-          <div className="tag">
-            <span className="d-inline-block cs-tag ps-rv">
-              Blog
-              <Link to={'https://www.google.com/'} target="_self" className="ps-as"><span className="sr-only">Guide</span></Link>
-            </span>
-          </div>
-          <h3>Building an Ecommerce Website with Agility</h3>
-          {link &&
-            <Link to={'https://www.google.com/'} className="link-line link-purple">Read More</Link>
-          }
-        </div>
-        <Link to={'https://www.google.com/'} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link>
-      </div>
-
-
+      {/* <div className="mod-space space-dt-50"></div> */}
       {rightCTABlock}
     </div>
   </>
 }
 
-const PostDetails = ({ item, dynamicPageItem, page }) => {
-  console.log('dataaaaaaaaaaa', dynamicPageItem)
+const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
   item = item.customFields;
+  const allPost = queryData?.allAgilityBlogPost?.nodes || []
   let link = '/resources/posts/' + item.uRL
   const post = dynamicPageItem.customFields;
+  let relatedPost = []
+  const getRelatedPost = () => {
+    let tmpPosts = allPost.filter(postItem => dynamicPageItem.contentID !== postItem.contentID && (postItem.customFields.blogCategories_ValueField || postItem.customFields.blogCategories_ValueField === ''))
+    if (tmpPosts.length > 3) tmpPosts.length = 3
+    return tmpPosts
+  }
+  if (post.resourcesList && post.resourcesList.length > 0) {
+    relatedPost = post.resourcesList
+  } else {
+    if (!post.blogCategories_ValueField) {
+      relatedPost = getRelatedPost()
+    } else {
+    }
+  }
   const author = post.author.customFields;
   const hasTweets = post.textblob && post.textblob.indexOf('class="twitter-tweet"') !== -1;
   const [state, setState] = useState({
@@ -298,7 +291,7 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
               </div>
 
               <div className=" d-block d-lg-none">
-                <RightSidebar post={post} item={item} link={link}/>
+                <RightSidebar post={post} item={item} link={link} relatedPost={relatedPost}/>
               </div>
             </div>
             <div className="col-lg-5"></div>
@@ -316,16 +309,72 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
             </div>
             <div className="col-lg-1"></div>
             <div className="col-lg-4 d-none d-lg-block">
-              <RightSidebar post={post} item={item} link={link}/>
+              <RightSidebar post={post} item={item} link={link} relatedPost={relatedPost}/>
             </div>
           </div>
         </div>
       </section>
-      <RelatedResources item={item} post={post}/>
+      <RelatedResources item={item} post={post} relatedPost={relatedPost}/>
       <Spacing item={{ customFields: item }} />
     </>
   );
 }
 
-
-export default PostDetails;
+export default props => (
+  <StaticQuery
+		query={graphql`
+		query NewPostDetailQuery {
+			allAgilityBlogPost(
+				filter: {properties: {referenceName: {eq: "blogposts"}}}
+				sort: {fields: customFields___date, order: DESC}
+			) {
+				nodes {
+					contentID
+					customFields {
+						date(formatString: "MMMM D, YYYY")
+						excerpt
+						title
+						uRL
+						postImage {
+							label
+							url
+							filesize
+							height
+							width
+						}
+						blogCategories {
+							referencename
+							sortids
+						}
+						blogCategories_TextField
+						blogCategories_ValueField
+					}
+					category {
+						customFields {
+							title
+						}
+					}
+					author {
+						customFields {
+							image {
+								url
+								label
+							}
+							title
+						}
+					}
+					tags {
+						contentID
+						customFields {
+							title
+						}
+					}
+				}
+			}
+		}
+    `}
+		render={queryData => {
+      return <PostDetails {...props} queryData={queryData} />
+		}}
+	/>
+)
