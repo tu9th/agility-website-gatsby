@@ -23,6 +23,9 @@
 			margin: 0;
 		}
 	}
+	.case-thumb::before {
+		padding-bottom: 56%;
+	}
 
 	.container.p-w-small {
 		> .h4 {
@@ -301,6 +304,9 @@
 .mod-related-resources {
 	h2 {
 		margin-bottom: 42px;
+	}
+	.case-thumb::before {
+		padding-bottom: 56%;
 	}
 	.heading {
 		margin-bottom: 20px;
