@@ -52,7 +52,7 @@ const InfoPost = ({ post, item, link }) => {
     </div>
 
     {post?.furtherReading?.href && <div className="info-wrap cs-website">
-      <h4>Further Reading sfasf</h4>
+      <h4>Further Reading</h4>
       <p>
         <a href={post?.furtherReading?.href} target={post?.furtherReading?.target}>{text}</a>
       </p>
@@ -79,7 +79,7 @@ const InfoPost = ({ post, item, link }) => {
 }
 
 const RelatedResources = ({ item, post}) => {
-  const thumbUrl = post?.customFields?.postImage?.url
+  const thumbUrl = post?.postImage?.url
   let link = '/resources/posts/' + item.uRL
   return <section className="mod-related-resources">
     <div className="container">
@@ -104,7 +104,7 @@ const RelatedResources = ({ item, post}) => {
               </div>
               {link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
             </div>
-            {/* <Link to={link} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link> */}
+            <Link to={link} className=" ps-as"><span className="sr-only">Building an Ecommerce Website with Agility</span></Link>
           </div>
         </div>
         })}
@@ -131,7 +131,7 @@ const RightSidebar = ({ post, item, link }) => {
   return <>
     <InfoPost post={post} item={item} link={link} />
 
-    <div className="addition-info">
+    <div className="addition-info d-none d-lg-block">
       <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
         <div className="case-thumb ps-rv overflow-hidden">
           <LazyBackground className="ps-as z-2 bg transition-25" src={post?.postImage?.url} />
@@ -271,28 +271,34 @@ const PostDetails = ({ item, dynamicPageItem, page }) => {
       <section className="blog-post-details">
         <div className="container p-w-small">
           <div className="row">
-            <div className="col-xl-7 rich-text mb-0">
-            {
-                item.backButton && item.backButton.text && item.backButton.href &&
-                <Link to={item.backButton.href} className="back d-flex ai-center ps-rv">
-                  <span className="icomoon icon-chevron-left"></span>
-                  <span>{item.backButton.text}</span>
-                </Link>
-              }
-              <div className="date">{DateTime.fromISO(post.date).toFormat("MMM d, yyyy")}</div>
+            <div className="col-xl-7 mb-0">
+              <div className="rich-text">
+                {
+                  item.backButton && item.backButton.text && item.backButton.href &&
+                  <Link to={item.backButton.href} className="back d-flex ai-center ps-rv">
+                    <span className="icomoon icon-chevron-left"></span>
+                    <span>{item.backButton.text}</span>
+                  </Link>
+                }
+                <div className="date">{DateTime.fromISO(post.date).toFormat("MMM d, yyyy")}</div>
 
-              <h1 className="h1">{post.title}</h1>
-              {post.subTitle &&
-                <h4 className="h4">{post.subTitle}</h4>
-              }
+                <h1 className="h1">{post.title}</h1>
+                {post.subTitle &&
+                  <h4 className="h4">{post.subTitle}</h4>
+                }
 
-              <div className="meta">
-                <div className="author">
-                  <div className="author-image">
-                    <img src={author && author.image ? author.image.url + '?w=100' : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg?w=100"} alt={author && author.title ? author.title : 'image author'} />
+                <div className="meta">
+                  <div className="author">
+                    <div className="author-image">
+                      <img src={author && author.image ? author.image.url + '?w=100' : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg?w=100"} alt={author && author.title ? author.title : 'image author'} />
+                    </div>
+                    <h5 className="h5">{author?.title}</h5>
                   </div>
-                  <h5 className="h5">{author?.title}</h5>
                 </div>
+              </div>
+
+              <div className=" d-block d-lg-none">
+                <RightSidebar post={post} item={item} link={link}/>
               </div>
             </div>
             <div className="col-lg-5"></div>
