@@ -159,7 +159,6 @@ export default props => (
 			}, [])
 
 			const onChangeFilter = ({ name, value }) => {
-				console.log('name, value', name, value)
 				if (value.includes(1)) {
 					setPostRender(posts)
 				} else {
@@ -214,7 +213,7 @@ export default props => (
 												<div className="flex description">
 													<p>{trimText(body)}</p>
 													<div className="wrap-tags">
-														{renderTags(categories)}
+														{renderTags(post?.tags)}
 													</div>
 												</div>
 												{link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}

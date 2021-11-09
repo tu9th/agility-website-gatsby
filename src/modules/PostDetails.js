@@ -109,7 +109,6 @@ const PostDetailItem = ({post}) => {
 }
 
 const RelatedResources = ({ item, post, relatedPost }) => {
-  console.log('item, post', item, post)
   return <section className="mod-related-resources">
     <div className="container">
       <div className="title text-center">
@@ -163,7 +162,7 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
   let link = '/resources/posts/' + item.uRL
   const post = dynamicPageItem.customFields;
   let relatedPost = []
-  const getRelatedPost = () => {
+  const getRecentPost = () => {
     let tmpPosts = allPost.filter(postItem => dynamicPageItem.contentID !== postItem.contentID && (postItem.customFields.blogCategories_ValueField || postItem.customFields.blogCategories_ValueField === ''))
     if (tmpPosts.length > 3) tmpPosts.length = 3
     return tmpPosts
@@ -172,8 +171,18 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
     relatedPost = post.resourcesList
   } else {
     if (!post.blogCategories_ValueField) {
-      relatedPost = getRelatedPost()
+      relatedPost = getRecentPost()
     } else {
+      const categoryNum = post.blogCategories_ValueField.split(',').map(item => Number(item))
+      relatedPost = allPost.filter(postItem => {
+        return (postItem?.customFields?.blogCategories_ValueField || '').split(',').some(valueField => {
+          return postItem.contentID !== dynamicPageItem.contentID && categoryNum.includes(Number(valueField))
+        })
+      })
+      console.log(relatedPost)
+      if (relatedPost.length === 0) {
+        relatedPost = getRecentPost()
+      }
     }
   }
   const author = post.author.customFields;
