@@ -96,25 +96,18 @@ export default props => (
 					return index >= 0;
 				});
 			}
-			let categoryExist = []
 			posts.forEach(p => {
 				let excerpt = p.customFields.excerpt;
 				if (excerpt) {
 					p.customFields.excerpt = StringUtils.stripHtml(excerpt, 200);
 				}
 				p.url = "/resources/posts/" + p.customFields.uRL;
-				if (p?.customFields?.blogCategories_ValueField) {
-					categoryExist = [...categoryExist, ...p?.customFields?.blogCategories_ValueField.split(',').map(item => Number(item))]
-				}
 			});
-			categoryExist = [...new Set(categoryExist)]
 
 			const tmpPostOptions = {
 				name: 'posts',
 				options: { ...queryData.allAgilityNewBlogCategory.nodes.reduce((obj, node) => {
-					if (categoryExist.includes(node.contentID)) {
-						obj[node.contentID] = node.customFields.title
-					}
+					obj[node.contentID] = node.customFields.title
 					return obj
 				}, {}), 1: 'Blog Category' },
 				selectedOption: [1]
@@ -181,7 +174,8 @@ export default props => (
 							</div>
 
 							<div className="row">
-								{postRender.filter((item, index) => index < loadMoreIdx).map(post => {
+								{postRender.length === 0 && <h3 className="text-center col-12">There are no post in this category. Please check back later.</h3>}
+								{postRender.length > 0 && postRender.filter((item, index) => index < loadMoreIdx).map(post => {
 									const thumbUrl = post?.customFields?.postImage?.url
 									const link = post?.url
 									const title = post?.customFields?.title
