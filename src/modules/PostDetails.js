@@ -33,6 +33,9 @@ const renderTags = (tags, options = {}) => {
     if (options.skipTitle) {
       link = '/resources/posts'
     }
+    if (options.isTag) {
+      link = "/resources/posts/tag/" + encodeURIComponent(tag.customFields.title.toLowerCase().replace(/ /g, "-"))
+    }
     return <span key={'tags-' + index} className="d-inline-block cs-tag ps-rv">
       {tag?.customFields?.title}
       {!options.skipLink && <Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>}
@@ -52,7 +55,7 @@ const InfoPost = ({ post, item, link }) => {
   return <div className="info-post">
     {post.blogTags && post.blogTags.length && <div className="info-wrap" v>
       <h4>Topic</h4>
-      {post.blogTags && renderTags(post.blogTags, { skipLink: true })}
+      {post.blogTags && renderTags(post.blogTags, { isTag: true })}
     </div>}
 
     {post?.furtherReading?.href && <div className="info-wrap cs-website">
@@ -64,7 +67,6 @@ const InfoPost = ({ post, item, link }) => {
 
     <div className="info-wrap cs-d-social">
       <h5>SHARE POST</h5>
-      
       <div className="soc-box d-flex flex-wrap">
         <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
           <span className="icomoon icon-linkedin2"></span>
@@ -102,7 +104,7 @@ const PostDetailItem = ({post}) => {
       </div>
       {link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
     </div>
-    {/* <Link to={link} className=" ps-as"><span className="sr-only">{post?.customFields?.title}</span></Link> */}
+    <Link to={link} className=" ps-as"><span className="sr-only">{post?.customFields?.title}</span></Link>
   </div>
 }
 
