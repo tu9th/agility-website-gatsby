@@ -134,7 +134,7 @@ export default props => (
 
 			const renderTags = (tags, type) => {
 				return tags.map((tag, index) => {
-					let link = `/resources/posts?${type}=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+					let link = `/resources/posts/tag/${encodeURIComponent(tag.customFields.title.toLowerCase().replace(/ /g, "-"))}`
 					return <span key={'tags-' + index} className="d-inline-block cs-tag ps-rv">
 							{tag?.customFields?.title}
 							<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
@@ -196,10 +196,11 @@ export default props => (
 											<div className="case-thumb ps-rv overflow-hidden bg-c9-o25">
 												{thumbUrl && <LazyBackground className="ps-as z-2 bg transition-25" src={thumbUrl} />}
 												{!thumbUrl && <Lazyload offset={Helpers.lazyOffset}><img src="/images/blog-icon-default.png" className='image-default' alt='Default Blog' loading="lazy" /></Lazyload>}
+												<Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
 											</div>
 											<div className="case-content d-flex flex-column small-paragraph flex">
 												<div className="flex-0-0 last-mb-none heading">
-													<h3>{title}</h3>
+													<h3><Link to={link} className="color-inherit">{title}</Link> </h3>
 													<p className="date">{post?.customFields?.date}</p>
 												</div>
 												<div className="flex description">
@@ -210,7 +211,7 @@ export default props => (
 												</div>
 												{link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
 											</div>
-											<Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
+											{/* <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link> */}
 										</div>
 									</div>
 								})}
