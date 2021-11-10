@@ -159,8 +159,8 @@ const RightSidebar = ({ post, item, link, relatedPost }) => {
 const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
   item = item.customFields;
   const allPost = queryData?.allAgilityBlogPost?.nodes || []
-  let link = '/resources/posts/' + item.uRL
   const post = dynamicPageItem.customFields;
+  let link = '/resources/posts/' + post.uRL
   let relatedPost = []
   const getRecentPost = () => {
     let tmpPosts = allPost.filter(postItem => dynamicPageItem.contentID !== postItem.contentID && (postItem.customFields.blogCategories_ValueField || postItem.customFields.blogCategories_ValueField === ''))
