@@ -88,12 +88,11 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
       <div
         className={`dropdown shadow-none dropdown-select-c8 border-0 no-bg h-auto p-0 ps-rv ${showDropdown ? 'show' : ''}`}
       >
-        <a
-          className="dropdown-toggle form-control shadow-none text-decoration-none ps-rv"
+        <span
+          className="dropdown-toggle pointer form-control shadow-none text-decoration-none ps-rv"
           onClick={(e) => {
             toggleDropdown(e)
           }}
-          href="null"
           role="button"
           data-toggle="dropdown"
           aria-haspopup="true"
@@ -122,7 +121,7 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
           <span className="caret-c8">
             <span className="icomoon icon-down-menu"></span>
           </span>
-        </a>
+        </span>
         <div
           className={`dropdown-menu dropdown-menu-c8 text-reset w-100 p-0 m-0 ${showDropdown ? 'show' : ''}`}
         >

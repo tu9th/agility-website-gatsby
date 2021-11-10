@@ -94,6 +94,9 @@ $translate: 100px;
 .row.row-25 {
 	margin: 0 -25px;
 }
+.pointer {
+  cursor: pointer;
+}
 @media (min-width: 768px) {
   .d-md-flex {
     display: -webkit-box;
