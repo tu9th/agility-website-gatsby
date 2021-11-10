@@ -18,7 +18,6 @@ const CenteredContentPanel = ({ item, dynamicPageItem }) => {
 	if (dynamicPageItem && dynamicPageItem.properties.definitionName === "BlogTag") {
 		tagStr = `${dynamicPageItem.customFields.title} Posts`
 	}
-	console.log('tagStrrrrrrrrrr', tagStr)
 	/* animation module */
 	useEffect(() => {
 		const scrollEventFunc = () => {

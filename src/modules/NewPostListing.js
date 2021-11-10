@@ -86,16 +86,9 @@ export default props => (
 			//filter out only those logos that we want...
 			let posts = queryData.allAgilityBlogPost.nodes;
 			let item = props.item;
+			const allAgilityNewBlogCategory = queryData.allAgilityNewBlogCategory.nodes
 			const [loadMoreIdx, setLoadMoreIdx] = useState(12)
-			if (props.dynamicPageItem && props.dynamicPageItem.properties.definitionName === "BlogTag") {
-				const tagContentID = props.dynamicPageItem.contentID;
 
-				posts = posts.filter(p => {
-					if (! p.tags || ! (p.tags.length > 0)) return false;
-					const index = p.tags.findIndex(t => { return parseInt(t.contentID) === parseInt(tagContentID); });
-					return index >= 0;
-				});
-			}
 			posts.forEach(p => {
 				let excerpt = p.customFields.excerpt;
 				if (excerpt) {
@@ -106,18 +99,24 @@ export default props => (
 
 			const tmpPostOptions = {
 				name: 'posts',
-				options: { ...queryData.allAgilityNewBlogCategory.nodes.reduce((obj, node) => {
+				options: { ...allAgilityNewBlogCategory.reduce((obj, node) => {
 					obj[node.contentID] = node.customFields.title
 					return obj
 				}, {}), 1: 'Blog Category' },
 				selectedOption: [1]
 			}
-			const [postOpts, setPostOpts] = useState(tmpPostOptions)
-			const [postRender, setPostRender] = useState(posts)
 
-			//filter by tag if neccessary
 			if (props.dynamicPageItem && props.dynamicPageItem.properties.definitionName === "BlogTag") {
 				const tagContentID = props.dynamicPageItem.contentID;
+				// tmpPostOptions.selectedOption = [tagContentID]
+				console.log('testtt', )
+				const findCategory = allAgilityNewBlogCategory.find(category => {
+					return encodeURIComponent(props.dynamicPageItem.customFields.title.toLowerCase().replace(/ /g, "-")) === encodeURIComponent(category.customFields.title.toLowerCase().replace(/ /g, "-"))
+				})
+
+				if (findCategory) {
+					tmpPostOptions.selectedOption = [findCategory.contentID]
+				}
 
 				posts = posts.filter(p => {
 					if (! p.tags || ! (p.tags.length > 0)) return false;
@@ -125,6 +124,10 @@ export default props => (
 					return index >= 0;
 				});
 			}
+			const [postOpts, setPostOpts] = useState(tmpPostOptions)
+			const [postRender, setPostRender] = useState(posts)
+
+			//filter by tag if neccessary
 
 			const loadMoreHandler = () => {
 				let tmpLoadMoreIdx = loadMoreIdx
@@ -152,17 +155,21 @@ export default props => (
 			}, [])
 
 			const onChangeFilter = ({ name, value }) => {
+				// `/resources/posts/tag/${encodeURIComponent(tag.customFields.title.toLowerCase().replace(/ /g, "-"))}`
+				let url = ''
 				if (value.includes(1)) {
 					setPostRender(posts)
+					url = '/resources/posts'
 				} else {
-					const tmpPosts = posts.filter(post => {
-						return (post?.customFields?.blogCategories_ValueField || '').split(',').some(valueField => {
-							return value.includes(Number(valueField))
-						})
+					const detailCategory = queryData.allAgilityNewBlogCategory.nodes.find((node) => {
+						console.log(value, node.contentID)
+						return value.includes(node.contentID)
 					})
-					setPostRender(tmpPosts)
-					setLoadMoreIdx(12)
+					if (detailCategory) {
+						url = `/resources/posts/tag/${encodeURIComponent(detailCategory.customFields.title.toLowerCase().replace(/ /g, "-"))}`
+					}
 				}
+				window.location.href = url
 			}
 
 			return (
