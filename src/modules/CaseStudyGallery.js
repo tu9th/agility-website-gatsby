@@ -29,7 +29,7 @@ const CaseStudyGallery = ({ dataList, galleryId, title, settingsOveride }) => {
   const galleries = listMedia?.map((i, index) => {
     return (
       <div key={index} className="gal-item">
-        <img src={i.url} alt={title} />
+        <img src={i.url + '?w=700'} alt={title} />
       </div>
     )
   });
