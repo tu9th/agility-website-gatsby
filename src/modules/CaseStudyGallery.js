@@ -4,7 +4,8 @@ import React from 'react';
 const CaseStudyGallery = ({ dataList, galleryId, title, settingsOveride }) => {
   const mediaLists = dataList // query?.allAgilityCaseStudy?.edges
   const founded = mediaLists?.filter(i => {
-    if (i.node?.customFields?.gallery?.galleryid === galleryId) {
+    const galleryidSelect = i.node?.customFields?.gallery?.galleryid || i.node?.customFields?.screenshots?.galleryid
+    if (galleryidSelect === galleryId) {
       return i.node.customFields
     }
   })
