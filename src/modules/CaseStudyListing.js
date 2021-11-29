@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, StaticQuery } from "gatsby"
 import * as StringUtils from "../utils/string-utils"
 
-import ReusablePostListing from "../components/reusable-post-listing.jsx"
+import ReusablePostListing from "./CaseStudyReskin"
 
 import './PostListing.scss'
 
@@ -12,33 +12,45 @@ export default props => (
 		query CaseStudyListingQuery {
 			allAgilityCaseStudy(filter: {properties: {referenceName: {eq: "casestudies"}}}, sort: {fields: properties___itemOrder}) {
 			  nodes {
-				properties {
-				  itemOrder
+					properties {
+						itemOrder
+					}
+					contentID
+					languageCode
+					customFields {
+						excerpt
+						title
+						uRL
+						postImage: image {
+							url
+							label
+							filesize
+							height
+							width
+						}
+						logo: customerLogo {
+							url
+							label
+							filesize
+							height
+							width
+						}
+						caseStudyIndustries_TextField
+						caseStudyChallenges_TextField
+						customerWhiteLogo {
+							filesize
+							height
+							label
+							pixelHeight
+							pixelWidth
+							url
+							width
+						}
+						isPurpleBackground
+					}
 				}
-				contentID
-				languageCode
-				customFields {
-				  excerpt
-				  title
-				  uRL
-				  postImage: image {
-					url
-					label
-					filesize
-					height
-					width
-				  }
-				  logo: customerLogo {
-					url
-					label
-					filesize
-					height
-					width
-				  }
-				}
-			  }
 			}
-		  }
+		}
 
 		`}
 		render={queryData => {
@@ -52,6 +64,7 @@ export default props => (
 				if (excerpt) {
 					p.customFields.excerpt = StringUtils.stripHtml(excerpt, 200);
 				}
+				// console.log('postttttttttttttttt', p.customFields.customerWhiteLogo, p.customFields.customerLogo)
 
 				p.url = "/resources/case-studies/" + p.customFields.uRL;
 

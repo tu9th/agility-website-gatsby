@@ -38,6 +38,7 @@ const LandingPageHeader = loadable(() => import("./LandingPageHeader"))
 const LandingPageHeaderForm = loadable(() => import("./LandingPageHeaderForm"))
 const LatestPosts = loadable(() => import("./LatestPosts"))
 const LatestResources = loadable(() => import("./LatestResources"))
+const RelatedResources = loadable(() => import("./RelatedResources"))
 const LogoListing = loadable(() => import("./LogoListing"))
 const LogoListingModule = loadable(() => import("./LogoListingModule"))
 
@@ -46,6 +47,8 @@ const NewIntegrationModule = loadable(() => import("./NewIntegrationModule"))
 const PartnerContentPanel = loadable(() => import("./PartnerContentPanel"))
 const PartnerDetails = loadable(() => import("./PartnerDetails"))
 const PartnerListing = loadable(() => import("./PartnerListing"))
+const NewPartnerListingModule = loadable(() => import("./NewPartnerListingModule"))
+const NewIntegrationListingModule = loadable(() => import("./NewIntegrationListingModule"))
 const PartnerLogoListing = loadable(() => import("./PartnerLogoListing"))
 const PeopleListing = loadable(() => import("./PeopleListing"))
 const PlanDetailsTable = loadable(() => import("./PlanDetailsTable"))
@@ -123,13 +126,17 @@ const allModules = {
 	"LandingPageHeaderForm": LandingPageHeaderForm,
 	"LatestPosts": LatestPosts,
 	"LatestResources": LatestResources,
+	"RelatedResources": RelatedResources,
 	"LogoListing": LogoListing,
 	"LogoListingModule": LogoListingModule,
 	"MostViewedArticles": MostViewedArticles,
 	"NewIntegrationModule": NewIntegrationModule,
 	"PartnerContentPanel": PartnerContentPanel,
 	"PartnerDetails": PartnerDetails,
+	"NEW-IntegrationDetail": PartnerDetails,
 	"PartnerListing": PartnerListing,
+	"NewPartnerListingModule": NewPartnerListingModule,
+	"NewIntegrationListingModule": NewIntegrationListingModule,
 	"PartnerLogoListing": PartnerLogoListing,
 	"PeopleListing": PeopleListing,
 	"PlanDetailsTable": PlanDetailsTable,
