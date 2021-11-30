@@ -93,6 +93,7 @@ const TriplePanelModule = loadable(() => import("./TriplePanelModule"))
 const TwoPanelFeatureComparison = loadable(() => import("./TwoPanelFeatureComparison"))
 const VerticalContentPanel = loadable(() => import("./VerticalContentPanel"))
 const VideoPlayerModule = loadable(() => import("./VideoPlayerModule"))
+const VideoModule = loadable(() => import("./VideoModule"))
 
 
 const allModules = {
@@ -185,6 +186,7 @@ const allModules = {
 	"TwoPanelFeatureComparison": TwoPanelFeatureComparison,
 	"VerticalContentPanel": VerticalContentPanel,
 	"VideoPlayerModule": VideoPlayerModule,
+	"VideoModule": VideoModule,
 
 
 }
