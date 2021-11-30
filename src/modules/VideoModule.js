@@ -75,6 +75,10 @@ const VideoModule = ({ item }) => {
 		);
 	}
 
+	if (urlVideo === undefined) {
+		return null
+	}
+
 	return (
 		<React.Fragment>
 
@@ -95,12 +99,13 @@ const VideoModule = ({ item }) => {
 							{isPaused &&
 								<Video />
 							}
-							<div className=" text-decoration-none has-popup ps-as bg bg-bottom-center" allow="autoplay" src={urlThumbnail} style={{ backgroundImage: `url('${urlThumbnail}')`}}>
-								<div onClick={togglePause} className="ps-as">
-									<span className="icomoon icon-video"><span className="path3"></span></span>
-								</div>
+							<div className={` text-decoration-none ${urlVideo.href ? 'has-popup ps-as bg' : 'ps-as'} bg-bottom-center`} allow="autoplay" src={urlThumbnail} style={{ backgroundImage: `url('${urlThumbnail}')`}}>
+								{urlVideo.href &&
+									<div onClick={togglePause} className="ps-as">
+										<span className="icomoon icon-video"><span className="path3"></span></span>
+									</div>
+								}
 							</div>
-
 						</div>
 					</div>
 				</div>
