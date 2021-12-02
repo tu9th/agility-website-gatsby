@@ -75,7 +75,7 @@ const VideoModule = ({ item }) => {
 		);
 	}
 
-	if (urlVideo === undefined) {
+	if (urlVideo === undefined && thumbnail === undefined) {
 		return null
 	}
 
@@ -99,8 +99,8 @@ const VideoModule = ({ item }) => {
 							{isPaused &&
 								<Video />
 							}
-							<div className={` text-decoration-none ${urlVideo.href ? 'has-popup ps-as bg' : 'ps-as'} bg-bottom-center`} allow="autoplay" src={urlThumbnail} style={{ backgroundImage: `url('${urlThumbnail}')`}}>
-								{urlVideo.href &&
+							<div className={` text-decoration-none ${urlVideo && urlVideo.href ? 'has-popup ps-as bg' : 'ps-as'} bg-bottom-center`} allow="autoplay" src={urlThumbnail} style={{ backgroundImage: `url('${urlThumbnail}')`}}>
+								{urlVideo && urlVideo.href &&
 									<div onClick={togglePause} className="ps-as">
 										<span className="icomoon icon-video"><span className="path3"></span></span>
 									</div>
