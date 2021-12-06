@@ -6,7 +6,6 @@ import './NewFeaturedResource.scss'
 
 const NewFeaturedResource = ({ item }) => {
   const { image, resourceTypeName, title, uRL, textblob } = item?.customFields?.featuredResource?.customFields
-	console.log('NewFeaturedResource', item)
 
 	return (
     <section>
