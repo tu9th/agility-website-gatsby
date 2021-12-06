@@ -4,7 +4,7 @@ import LazyBackground from '../utils/LazyBackground'
 import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
-const PostItem = ({ post, isIntegration, showCustomerLogo, hideDescription = false }) => {
+const PostItem = ({ post, isIntegration, showCustomerLogo }) => {
   const thumbUrl = post?.customFields?.postImage?.url
   const link = post?.url
   const title = post?.customFields?.title
@@ -35,11 +35,9 @@ const PostItem = ({ post, isIntegration, showCustomerLogo, hideDescription = fal
         <div className="flex-0-0">
           <h3>{title}</h3>
         </div>
-        {!hideDescription &&
-          <div className="flex">
-            <p>{trimText(body)}</p>
-          </div>
-        }
+        <div className="flex">
+          <p>{trimText(body)}</p>
+        </div>
         {link &&
           <Link to={link} className="link-line link-purple">Read More</Link>
         }

@@ -88,9 +88,7 @@ const TriplePanelModule = loadable(() => import("./TriplePanelModule"))
 const TwoPanelFeatureComparison = loadable(() => import("./TwoPanelFeatureComparison"))
 const VerticalContentPanel = loadable(() => import("./VerticalContentPanel"))
 const VideoPlayerModule = loadable(() => import("./VideoPlayerModule"))
-//==== New Resource ======//
-const NewFeaturedResource = loadable(() => import("./NewFeaturedResource"))
-const NewDowloadableEbooks = loadable(() => import("./NewDowloadableEbooks"))
+
 
 const allModules = {
 	"2BoxContent": TwoBoxContent,
@@ -179,8 +177,8 @@ const allModules = {
 	"TwoPanelFeatureComparison": TwoPanelFeatureComparison,
 	"VerticalContentPanel": VerticalContentPanel,
 	"VideoPlayerModule": VideoPlayerModule,
-	"NEWFeaturedResource": NewFeaturedResource,
-	"NEWDownloadableeBooks": NewDowloadableEbooks,
+
+
 }
 
 export const getModule = (name) => {

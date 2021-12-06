@@ -1,19 +1,16 @@
 {
-  "hash": "9c8e8497684b6f822823",
+  "hash": "b0658c86287823db676d",
   "publicPath": "/",
-  "outputPath": "C:\\Users\\toan.nguyen.FKMAGENCY\\Documents\\9thwonder-v2\\agility-cms",
+  "outputPath": "D:\\Workplace\\9thWonder\\agility-website-gatsby",
   "assetsByChunkName": {
     "polyfill": [
       "polyfill.js",
-      "polyfill.0fcd87c16b9a4b5da462.hot-update.js"
+      "polyfill.69108f97b33af7ff714a.hot-update.js"
     ],
     "commons": [
       "commons.css",
       "commons.js",
-      "commons.0fcd87c16b9a4b5da462.hot-update.js"
-    ],
-    "component---cache-dev-404-page-js": [
-      "component---cache-dev-404-page-js.js"
+      "commons.69108f97b33af7ff714a.hot-update.js"
     ],
     "component---src-agility-components-dynamic-preview-page-js": [
       "component---src-agility-components-dynamic-preview-page-js.js"
@@ -23,14 +20,6 @@
     ],
     "component---src-pages-casestudy-detail-reskin-js": [
       "component---src-pages-casestudy-detail-reskin-js.js"
-    ],
-    "component---src-pages-resource-detail-js": [
-      "component---src-pages-resource-detail-js.js",
-      "component---src-pages-resource-detail-js.0fcd87c16b9a4b5da462.hot-update.js"
-    ],
-    "component---src-pages-resource-reskin-js": [
-      "component---src-pages-resource-reskin-js.js",
-      "component---src-pages-resource-reskin-js.0fcd87c16b9a4b5da462.hot-update.js"
     ],
     "2BoxContent": [
       "2BoxContent.js"
@@ -281,13 +270,6 @@
     "VideoPlayerModule": [
       "VideoPlayerModule.js"
     ],
-    "NewFeaturedResource": [
-      "NewFeaturedResource.js"
-    ],
-    "NewDowloadableEbooks": [
-      "NewDowloadableEbooks.js",
-      "NewDowloadableEbooks.0fcd87c16b9a4b5da462.hot-update.js"
-    ],
     "framework": [
       "framework.js"
     ]
@@ -296,8 +278,8 @@
     {
       "type": "assets by status",
       "cached": true,
-      "filteredChildren": 106,
-      "size": 25327294
+      "filteredChildren": 98,
+      "size": 21533579
     }
   ],
   "namedChunkGroups": {
@@ -311,7 +293,7 @@
           "name": "polyfill.js"
         },
         {
-          "name": "polyfill.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "polyfill.69108f97b33af7ff714a.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -338,7 +320,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -350,16 +332,10 @@
     },
     "component---cache-dev-404-page-js": {
       "name": "component---cache-dev-404-page-js",
-      "chunks": [
-        "component---cache-dev-404-page-js"
-      ],
-      "assets": [
-        {
-          "name": "component---cache-dev-404-page-js.js"
-        }
-      ],
+      "chunks": [],
+      "assets": [],
       "filteredAssets": 0,
-      "assetsSize": null,
+      "assetsSize": 0,
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
       "children": {},
@@ -400,7 +376,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "component---src-agility-page-js.js"
@@ -431,78 +407,10 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "component---src-pages-casestudy-detail-reskin-js.js"
-        }
-      ],
-      "filteredAssets": 0,
-      "assetsSize": null,
-      "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 0,
-      "children": {},
-      "childAssets": {}
-    },
-    "component---src-pages-resource-detail-js": {
-      "name": "component---src-pages-resource-detail-js",
-      "chunks": [
-        "framework",
-        "commons",
-        "component---src-pages-resource-detail-js"
-      ],
-      "assets": [
-        {
-          "name": "framework.js"
-        },
-        {
-          "name": "commons.css"
-        },
-        {
-          "name": "commons.js"
-        },
-        {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
-        },
-        {
-          "name": "component---src-pages-resource-detail-js.js"
-        },
-        {
-          "name": "component---src-pages-resource-detail-js.0fcd87c16b9a4b5da462.hot-update.js"
-        }
-      ],
-      "filteredAssets": 0,
-      "assetsSize": null,
-      "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 0,
-      "children": {},
-      "childAssets": {}
-    },
-    "component---src-pages-resource-reskin-js": {
-      "name": "component---src-pages-resource-reskin-js",
-      "chunks": [
-        "framework",
-        "commons",
-        "component---src-pages-resource-reskin-js"
-      ],
-      "assets": [
-        {
-          "name": "framework.js"
-        },
-        {
-          "name": "commons.css"
-        },
-        {
-          "name": "commons.js"
-        },
-        {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
-        },
-        {
-          "name": "component---src-pages-resource-reskin-js.js"
-        },
-        {
-          "name": "component---src-pages-resource-reskin-js.0fcd87c16b9a4b5da462.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -530,7 +438,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "2BoxContent.js"
@@ -561,7 +469,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "BestofBothWorldsModule.js"
@@ -592,7 +500,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CTABlocks.js"
@@ -623,7 +531,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "Callout.js"
@@ -654,7 +562,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CaseStudyContentPanel.js"
@@ -685,7 +593,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CaseStudyDetails.js"
@@ -716,7 +624,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CaseStudyListing.js"
@@ -747,7 +655,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CaseStudyRotator.js"
@@ -795,7 +703,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CenteredContentPanel.js"
@@ -826,7 +734,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "CenteredCTAPanel.js"
@@ -857,7 +765,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "ContentPanel.js"
@@ -888,7 +796,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "ContentPanelForm.js"
@@ -919,7 +827,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "EventDetails.js"
@@ -950,7 +858,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "EventListing.js"
@@ -981,7 +889,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "Faqs.js"
@@ -1012,7 +920,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeatureBlocks.js"
@@ -1043,7 +951,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeatureBlocksWithText.js"
@@ -1074,7 +982,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeatureComparisonChart.js"
@@ -1105,7 +1013,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeatureList.js"
@@ -1153,7 +1061,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeaturedCaseStudies.js"
@@ -1184,7 +1092,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeaturedPlanCTA.js"
@@ -1215,7 +1123,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "FeaturedResources.js"
@@ -1246,7 +1154,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "G2CrowdReviewListing.js"
@@ -1277,7 +1185,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "GartnerPeerInsightsBar.js"
@@ -1308,7 +1216,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "GatedDownload.js"
@@ -1339,7 +1247,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "GettingStarted.js"
@@ -1370,7 +1278,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "GuideLinks.js"
@@ -1401,7 +1309,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "InfoBox.js"
@@ -1432,7 +1340,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "JobListing.js"
@@ -1463,7 +1371,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "LandingPageHeader.js"
@@ -1494,7 +1402,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "LandingPageHeaderForm.js"
@@ -1525,7 +1433,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "LatestPosts.js"
@@ -1556,7 +1464,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "LatestResources.js"
@@ -1587,7 +1495,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "RelatedResources.js"
@@ -1618,7 +1526,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "LogoListing.js"
@@ -1649,7 +1557,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "LogoListingModule.js"
@@ -1680,7 +1588,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "MostViewedArticles.js"
@@ -1711,7 +1619,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "NewIntegrationModule.js"
@@ -1742,7 +1650,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PartnerContentPanel.js"
@@ -1773,7 +1681,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PartnerDetails.js"
@@ -1804,7 +1712,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PartnerListing.js"
@@ -1835,7 +1743,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "NewPartnerListingModule.js"
@@ -1866,7 +1774,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "NewIntegrationListingModule.js"
@@ -1897,7 +1805,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PartnerLogoListing.js"
@@ -1928,7 +1836,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PeopleListing.js"
@@ -1959,7 +1867,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PlanDetailsTable.js"
@@ -1990,7 +1898,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PlanFeaturesCTA.js"
@@ -2021,7 +1929,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PodcastContentPanel.js"
@@ -2052,7 +1960,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PodcastDetail.js"
@@ -2100,7 +2008,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PostDetails.js"
@@ -2131,7 +2039,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PostListing.js"
@@ -2162,7 +2070,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PricingPackagesModule.js"
@@ -2193,7 +2101,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PricingPlans.js"
@@ -2224,7 +2132,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "PricingTable.js"
@@ -2255,7 +2163,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "ResourceDetails.js"
@@ -2286,7 +2194,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "ReviewRotator.js"
@@ -2317,7 +2225,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "RichTextArea.js"
@@ -2348,7 +2256,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "RightLeftContent.js"
@@ -2379,7 +2287,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "RightORLeftContentModule.js"
@@ -2410,7 +2318,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "RightOrLeftCaseStudyTestimonial.js"
@@ -2441,7 +2349,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "RightOrLeftSteps.js"
@@ -2472,7 +2380,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "SearchResults.js"
@@ -2503,7 +2411,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "SectionBreadcrumbModule.js"
@@ -2534,7 +2442,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "Share.js"
@@ -2565,7 +2473,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "SingleTestimonialPanel.js"
@@ -2613,7 +2521,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "StarterTemplateDetails.js"
@@ -2644,7 +2552,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "StarterTemplateListing.js"
@@ -2675,7 +2583,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "StayInTouch.js"
@@ -2706,7 +2614,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "SubmissionForm.js"
@@ -2737,7 +2645,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "SubscribedThankYou.js"
@@ -2768,7 +2676,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "TabPanels.js"
@@ -2799,7 +2707,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "TestDrive.js"
@@ -2830,7 +2738,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "Testimonials.js"
@@ -2861,7 +2769,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "TestimonialsLogos.js"
@@ -2892,7 +2800,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "TriplePanelComparisonModule.js"
@@ -2923,7 +2831,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "TriplePanelModule.js"
@@ -2954,7 +2862,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "TwoPanelFeatureComparison.js"
@@ -2985,7 +2893,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "VerticalContentPanel.js"
@@ -3016,75 +2924,10 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
+          "name": "commons.69108f97b33af7ff714a.hot-update.js"
         },
         {
           "name": "VideoPlayerModule.js"
-        }
-      ],
-      "filteredAssets": 0,
-      "assetsSize": null,
-      "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 0,
-      "children": {},
-      "childAssets": {}
-    },
-    "NewFeaturedResource": {
-      "name": "NewFeaturedResource",
-      "chunks": [
-        "framework",
-        "commons",
-        "NewFeaturedResource"
-      ],
-      "assets": [
-        {
-          "name": "framework.js"
-        },
-        {
-          "name": "commons.css"
-        },
-        {
-          "name": "commons.js"
-        },
-        {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
-        },
-        {
-          "name": "NewFeaturedResource.js"
-        }
-      ],
-      "filteredAssets": 0,
-      "assetsSize": null,
-      "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 0,
-      "children": {},
-      "childAssets": {}
-    },
-    "NewDowloadableEbooks": {
-      "name": "NewDowloadableEbooks",
-      "chunks": [
-        "framework",
-        "commons",
-        "NewDowloadableEbooks"
-      ],
-      "assets": [
-        {
-          "name": "framework.js"
-        },
-        {
-          "name": "commons.css"
-        },
-        {
-          "name": "commons.js"
-        },
-        {
-          "name": "commons.0fcd87c16b9a4b5da462.hot-update.js"
-        },
-        {
-          "name": "NewDowloadableEbooks.js"
-        },
-        {
-          "name": "NewDowloadableEbooks.0fcd87c16b9a4b5da462.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3101,7 +2944,7 @@
       "id": "polyfill",
       "files": [
         "polyfill.js",
-        "polyfill.0fcd87c16b9a4b5da462.hot-update.js"
+        "polyfill.69108f97b33af7ff714a.hot-update.js"
       ]
     },
     {
@@ -3109,7 +2952,7 @@
       "files": [
         "commons.css",
         "commons.js",
-        "commons.0fcd87c16b9a4b5da462.hot-update.js"
+        "commons.69108f97b33af7ff714a.hot-update.js"
       ]
     },
     {
@@ -3137,12 +2980,6 @@
       ]
     },
     {
-      "id": "component---cache-dev-404-page-js",
-      "files": [
-        "component---cache-dev-404-page-js.js"
-      ]
-    },
-    {
       "id": "component---src-agility-components-dynamic-preview-page-js",
       "files": [
         "component---src-agility-components-dynamic-preview-page-js.js"
@@ -3158,20 +2995,6 @@
       "id": "component---src-pages-casestudy-detail-reskin-js",
       "files": [
         "component---src-pages-casestudy-detail-reskin-js.js"
-      ]
-    },
-    {
-      "id": "component---src-pages-resource-detail-js",
-      "files": [
-        "component---src-pages-resource-detail-js.js",
-        "component---src-pages-resource-detail-js.0fcd87c16b9a4b5da462.hot-update.js"
-      ]
-    },
-    {
-      "id": "component---src-pages-resource-reskin-js",
-      "files": [
-        "component---src-pages-resource-reskin-js.js",
-        "component---src-pages-resource-reskin-js.0fcd87c16b9a4b5da462.hot-update.js"
       ]
     },
     {
@@ -3670,19 +3493,6 @@
       "id": "VideoPlayerModule",
       "files": [
         "VideoPlayerModule.js"
-      ]
-    },
-    {
-      "id": "NewFeaturedResource",
-      "files": [
-        "NewFeaturedResource.js"
-      ]
-    },
-    {
-      "id": "NewDowloadableEbooks",
-      "files": [
-        "NewDowloadableEbooks.js",
-        "NewDowloadableEbooks.0fcd87c16b9a4b5da462.hot-update.js"
       ]
     },
     {
