@@ -1,16 +1,15 @@
 import React from 'react';
 import { renderHTML } from '../agility/utils'
 import PostItemImageVertical from '../modules/DownloadableItem'
-import './NewDowloadableEbooks.scss'
+import './NewWebinarDowload.scss'
 import { Link } from 'gatsby'
 
 const NewDowloadableEbooks = ({ item }) => {
-	console.log('NewDowloadableEbooks', item)
-  const { content, cTAButton, listeBooks } = item?.customFields
-  const listEBooks = listeBooks?.map(post => {
+  const { content, cTAButton, listWebinar } = item?.customFields
+  const listWebinars = listWebinar?.map(post => {
     return (
       <div className="col-md-6 col-lg-4">
-        < PostItemImageVertical post={post} isVerticalImage= {true} />
+        < PostItemImageVertical post={post} isVerticalImage= {false} />
       </div>
     )
   })
@@ -20,9 +19,9 @@ const NewDowloadableEbooks = ({ item }) => {
         { content &&
           <div className="mx-auto mb-5 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
         }
-        { listEBooks && listEBooks.length &&
+        { listWebinars && listWebinars.length &&
           <div className="row">
-            { listEBooks }
+            { listWebinars }
           </div>
         }
         { cTAButton && cTAButton.href &&

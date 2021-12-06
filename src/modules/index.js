@@ -91,6 +91,8 @@ const VideoPlayerModule = loadable(() => import("./VideoPlayerModule"))
 //==== New Resource ======//
 const NewFeaturedResource = loadable(() => import("./NewFeaturedResource"))
 const NewDowloadableEbooks = loadable(() => import("./NewDowloadableEbooks"))
+const NewWebinarDowload = loadable(() => import("./NewWebinarDowload"))
+const NewFeaturedCaseStudies = loadable(() => import("./NewFeaturedCaseStudies"))
 
 const allModules = {
 	"2BoxContent": TwoBoxContent,
@@ -181,6 +183,8 @@ const allModules = {
 	"VideoPlayerModule": VideoPlayerModule,
 	"NEWFeaturedResource": NewFeaturedResource,
 	"NEWDownloadableeBooks": NewDowloadableEbooks,
+	"NEWWebinarDownload": NewWebinarDowload,
+	"NEWFeaturedCaseStudies": NewFeaturedCaseStudies,
 }
 
 export const getModule = (name) => {
