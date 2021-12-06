@@ -26,7 +26,7 @@
   .resource-lp-left {
     padding: 250px 44px 44px;
     margin-bottom: 0;
-    max-width: 470px;
+    max-width: 550px;
   }
   .resource-lp-right {
     max-width: 500px;
@@ -111,5 +111,17 @@
   max-width: 425px;
   .d-table {
     height: 310px;
+  }
+}
+
+
+/*  */
+/*  */
+/*  */
+.thanks-block {
+  .resource-lp-right {
+    max-width: 600px;
+    font-size: rem(21);
+    line-height: 1.33;
   }
 }
