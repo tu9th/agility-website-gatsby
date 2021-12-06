@@ -6,9 +6,9 @@ import { Link } from 'gatsby'
 
 const NewDowloadableEbooks = ({ item }) => {
   const { content, cTAButton, listWebinar } = item?.customFields
-  const listWebinars = listWebinar?.map(post => {
+  const listWebinars = listWebinar?.map((post, index) => {
     return (
-      <div className="col-md-6 col-lg-4">
+      <div className="col-md-6 col-lg-4" key={index}>
         < PostItemImageVertical post={post} isVerticalImage= {false} />
       </div>
     )

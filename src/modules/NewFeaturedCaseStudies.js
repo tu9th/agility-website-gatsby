@@ -5,11 +5,10 @@ import './NewFeaturedCaseStudies.scss'
 import { Link } from 'gatsby'
 
 const NewFeaturedCaseStudies = ({ item }) => {
-  console.log('NewFeaturedCaseStudies', item)
   const { content, cTAButton, listCaseStudies } = item?.customFields
-  const listCaseStudiesRender = listCaseStudies?.map(post => {
+  const listCaseStudiesRender = listCaseStudies?.map((post, index) => {
     return (
-      <div className="col-md-6 col-lg-4">
+      <div className="col-md-6 col-lg-4" key={index}>
         <PostItem showCustomerLogo={true} post={post} />
       </div>
     )
