@@ -18,7 +18,7 @@ const NewDowloadableEbooks = ({ item }) => {
     <section>
       <div className="container ps-rv bg">
         { content &&
-          <div className="mx-auto mb-5 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
+          <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
         }
         { listEBooks && listEBooks.length &&
           <div className="row">

@@ -159,7 +159,7 @@ const NewAllResources = ({item, resources, resourceType, content, numberItemPerP
 			<section className="mod-new-post-listing">
 				<div className="container">
 					{ content &&
-						<div className="mx-auto mb-5 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
+						<div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
 					}
 					<div className="filter-wrap small-paragraph case-filter-box">
 						<SelectC8 className="d-inline-block" data={postOpts} onChange={onChangeFilter} />
