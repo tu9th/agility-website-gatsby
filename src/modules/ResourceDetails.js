@@ -14,7 +14,7 @@ import PostItemImageVertical from '../modules/DownloadableItem'
 const renderTags = (tags, type) => {
 
 	// if (typeof tags )
-	console.log(typeof tags, tags.length);
+	console.log(typeof tags, tags?.length);
 	if (typeof (tags) === 'object' && !tags.length) {
 		let link = `/resources/${type}/${tags?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 		return (
@@ -90,7 +90,7 @@ const RecommendedWebinar = ({item}) => {
           {renderTags(customFields.resourceType, 'tag')}
         </p>
 				{customFields.title &&
-        	<h3>{customFields.title}</h3>				
+        	<h3>{customFields.title}</h3>
 				}
         <Link to={link} className="link-line link-purple">Watch Now</Link>
       </div>
@@ -108,7 +108,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 			listeBooks: resource.topReads
 	}
 
-	const topWebinar = resource.topWebinars.length ? resource.topWebinars[0] : resource.topWebinars
+	const topWebinar = resource.topWebinars?.length ? resource.topWebinars[0] : resource.topWebinars
 
 	console.log('item', resource);
 	return (
@@ -175,7 +175,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 									breaks={[{ w: 640, max: 640 }, { w: 780, max: 800 }, { w: 1200, max: 1920 }]} />
 							</div>
 						}
-            
+
 						<div className="content mt-35">
 							<div dangerouslySetInnerHTML={renderHTML(resource.textblob)}></div>
 						</div>
@@ -204,7 +204,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
             <div className="space-80"></div>
             {/* <CTA /> */}
 						<RightCTA rightCTAButton={resource.rightCTAButton} rightCTAContent={resource.rightCTAContent} />
-            
+
           </div>
         </div>
       </div>

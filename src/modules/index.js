@@ -168,6 +168,7 @@ const allModules = {
 	"Share": Share,
 	"SingleTestimonialPanel": SingleTestimonialPanel,
 	"Spacing": Spacing,
+	"Space": Spacing,
 	"StarterTemplateDetails": StarterTemplateDetails,
 	"StarterTemplateListing": StarterTemplateListing,
 	"StayInTouch": StayInTouch,
