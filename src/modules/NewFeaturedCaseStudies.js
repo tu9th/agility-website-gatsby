@@ -3,6 +3,7 @@ import { renderHTML } from '../agility/utils'
 import PostItem from '../modules/PostItem'
 import './NewFeaturedCaseStudies.scss'
 import { Link } from 'gatsby'
+import Spacing from './Spacing';
 
 const NewFeaturedCaseStudies = ({ item }) => {
   const { content, cTAButton, listCaseStudies } = item?.customFields
@@ -14,6 +15,7 @@ const NewFeaturedCaseStudies = ({ item }) => {
     )
   })
   return (
+    <>
     <section>
       <div className="container ps-rv bg">
         { content &&
@@ -31,6 +33,8 @@ const NewFeaturedCaseStudies = ({ item }) => {
         }
       </div>
     </section>
+    <Spacing item={item}/>
+    </>
 	);
 }
 

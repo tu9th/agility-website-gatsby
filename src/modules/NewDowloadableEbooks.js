@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderHTML } from '../agility/utils'
 import PostItemImageVertical from '../modules/DownloadableItem'
+import Spacing from './Spacing'
 import './NewDowloadableEbooks.scss'
 import { Link } from 'gatsby'
 
@@ -15,6 +16,7 @@ const NewDowloadableEbooks = ({ item }) => {
     )
   })
 	return (
+    <>
     <section>
       <div className="container ps-rv bg">
         { content &&
@@ -34,6 +36,8 @@ const NewDowloadableEbooks = ({ item }) => {
         }
       </div>
     </section>
+    <Spacing item={item}/>
+    </>
 	);
 }
 

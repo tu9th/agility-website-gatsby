@@ -2,6 +2,7 @@ import React from 'react';
 import { renderHTML } from '../agility/utils'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import './NewWebinarDowload.scss'
+import Spacing from './Spacing';
 import { Link } from 'gatsby'
 
 const NewDowloadableEbooks = ({ item }) => {
@@ -14,7 +15,8 @@ const NewDowloadableEbooks = ({ item }) => {
     )
   })
 	return (
-    <section>
+    <>
+    <section className="mod-webi">
       <div className="container ps-rv bg">
         { content &&
           <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
@@ -33,6 +35,8 @@ const NewDowloadableEbooks = ({ item }) => {
         }
       </div>
     </section>
+    <Spacing item={item}/>
+    </>
 	);
 }
 
