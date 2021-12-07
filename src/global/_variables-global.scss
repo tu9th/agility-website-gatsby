@@ -122,6 +122,9 @@ $translate: 100px;
     display: none !important;
   }
 }
+.z-1 {
+  z-index: 1;
+}
 @media (min-width: 992px) {
   .align-items-lg-center {
     align-items: center !important;
