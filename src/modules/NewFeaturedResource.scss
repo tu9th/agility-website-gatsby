@@ -20,3 +20,19 @@
     top: 20px;
   }
 }
+
+@media screen and (min-width: 992px) {
+  .resource-lp-left {
+    padding: 250px 44px 44px;
+    margin-bottom: 0;
+    max-width: 550px;
+  }
+  .resource-lp-right {
+    max-width: 500px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .resource-lp-left {
+    margin-right: 50px;
+  }
+}
