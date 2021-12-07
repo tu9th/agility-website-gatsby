@@ -176,7 +176,7 @@ const NewAllResources = ({item, resources, resourceType, content, numberItemPerP
 				</div>}
 				</div>
 			</section>
-			{/* <Spacing item={item}/> */}
+			<Spacing item={item}/>
 		</>
 	);
 }

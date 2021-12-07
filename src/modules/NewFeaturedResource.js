@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderHTML } from '../agility/utils'
+import Spacing from './Spacing';
 
 import './NewFeaturedResource.scss'
 
@@ -8,7 +9,8 @@ const NewFeaturedResource = ({ item }) => {
   const { image, resourceTypeName, title, uRL, textblob } = item?.customFields?.featuredResource?.customFields
 
 	return (
-    <section>
+    <>
+    <section className="">
       <div className="container ps-rv bg">
         <div className="row">
           <div className="col col-12 col-lg-6">
@@ -43,6 +45,8 @@ const NewFeaturedResource = ({ item }) => {
         </div>
       </div>
     </section>
+    <Spacing item={item}/>
+    </>
 	);
 }
 
