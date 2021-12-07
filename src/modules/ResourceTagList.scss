@@ -1,0 +1,30 @@
+.mod-resource-tag-list {
+  .img-item {
+    margin-bottom: 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 14px 2px 38px 11px rgba(0,0,0,0.24);
+  }
+
+  .col-item {
+    margin-bottom: 20px;
+  }
+  .resource-bg {
+    padding-bottom: 50%;
+  }
+}
+
+
+@media (min-width: 768px){
+  .mod-resource-tag-list {
+    .col-item {
+      padding: 0 60px;
+    }
+    .list-resources-tags {
+      margin: 0 -60px;
+    }
+    .col-item {
+      margin-bottom: 100px;
+    }
+  }
+}
