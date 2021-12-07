@@ -9,7 +9,7 @@ const NewFeaturedCaseStudies = ({ item }) => {
   const { content, cTAButton, listCaseStudies } = item?.customFields
   const listCaseStudiesRender = listCaseStudies?.map((post, index) => {
     return (
-      <div className="col-md-6 col-lg-4" key={index}>
+      <div className="col-md-6 col-lg-4 mb-45" key={index}>
         <PostItem showCustomerLogo={true} post={post} />
       </div>
     )
@@ -25,7 +25,7 @@ const NewFeaturedCaseStudies = ({ item }) => {
           {listCaseStudiesRender}
         </div>
         { cTAButton && cTAButton.href &&
-          <div className="text-center">
+          <div className="text-center mt-35">
             <Link to={cTAButton?.href} className="btn">
               <span>{cTAButton.text ? cTAButton.text : 'Browser All Case Studies'}</span>
             </Link>

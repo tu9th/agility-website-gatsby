@@ -25,7 +25,7 @@ const DownloadEbookForm = ({ item, slug }) => {
   console.log('redirectUrl', redirectUrl);
 	return (
     <div className="download-form text-center">
-      <h3 className="h2">Get the Resource Title</h3>
+      <h3>Get the Resource Title</h3>
       <SingleForm
         colour={item.backgroundColour}
         title={item.leftColumnTitle}

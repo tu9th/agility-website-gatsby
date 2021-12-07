@@ -10,7 +10,7 @@ const NewDowloadableEbooks = ({ item }) => {
   const { content, cTAButton, listeBooks } = item?.customFields
   const listEBooks = listeBooks?.map((post, index) => {
     return (
-      <div className="col-md-6 col-lg-4" key={index}>
+      <div className="col-md-6 col-lg-4 mb-45" key={index}>
         < PostItemImageVertical post={post} isVerticalImage= {true} />
       </div>
     )
@@ -29,7 +29,7 @@ const NewDowloadableEbooks = ({ item }) => {
         }
         { cTAButton && cTAButton.href &&
           <div className="text-center">
-            <Link to={cTAButton?.href} className="btn">
+            <Link to={cTAButton?.href} className="btn mb-0 mt-35">
               <span>{cTAButton.text ? cTAButton.text : 'Browser All Downloadable items'}</span>
             </Link>
           </div>
