@@ -68,6 +68,12 @@
   }
 }
 
+@media screen and (max-width: 991px) {
+  .downloadable-box {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 
 
@@ -83,46 +89,46 @@
 
 /* Detail page */
 
-.new-resource-detail {
-  position: relative;
-  background-image: linear-gradient(to bottom, #e9f0f5 0%, #fff);
-  .resource-lp-left {
-    margin-left: 0;
-    margin: 20px 0 40px;
-    max-width: 550px;
+// .new-resource-detail {
+//   position: relative;
+//   background-image: linear-gradient(to bottom, #e9f0f5 0%, #fff);
+//   .resource-lp-left {
+//     margin-left: 0;
+//     margin: 20px 0 40px;
+//     max-width: 550px;
 
-  }
-  .res-pattern-logo {
-    .ps-as {
-      width: 60%;
-    }
-  }
-}
+//   }
+//   .res-pattern-logo {
+//     .ps-as {
+//       width: 60%;
+//     }
+//   }
+// }
 
-.re-webina-thumb {
-  padding-bottom: 52.47%;
-  border-radius: 8px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.content-blog {
-  padding: 18px 20px;
-  border: 1px solid $color-c9;
-  border-top: 0;
-  p {
-    margin-bottom: 10px;
-  }
-}
-.recommend-webinar {
-  max-width: 425px;
-}
-.learn-more-cta {
-  padding: 35px;
-  max-width: 425px;
-  .d-table {
-    height: 310px;
-  }
-}
+// .re-webina-thumb {
+//   padding-bottom: 52.47%;
+//   border-radius: 8px;
+//   border-bottom-left-radius: 0;
+//   border-bottom-right-radius: 0;
+// }
+// .content-blog {
+//   padding: 18px 20px;
+//   border: 1px solid $color-c9;
+//   border-top: 0;
+//   p {
+//     margin-bottom: 10px;
+//   }
+// }
+// .recommend-webinar {
+//   max-width: 425px;
+// }
+// .learn-more-cta {
+//   padding: 35px;
+//   max-width: 425px;
+//   .d-table {
+//     height: 310px;
+//   }
+// }
 
 
 /*  */
@@ -136,10 +142,10 @@
   }
 }
 
-@media screen and (max-width: 991px) {
-  .recommend-webinar,
-  .learn-more-cta {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+// @media screen and (max-width: 991px) {
+//   .recommend-webinar,
+//   .learn-more-cta {
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
