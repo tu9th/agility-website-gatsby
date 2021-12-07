@@ -48,6 +48,8 @@ const PartnerContentPanel = loadable(() => import("./PartnerContentPanel"))
 const PartnerDetails = loadable(() => import("./PartnerDetails"))
 const PartnerListing = loadable(() => import("./PartnerListing"))
 const NewPartnerListingModule = loadable(() => import("./NewPartnerListingModule"))
+const NewResourcesTagTitle = loadable(() => import("./NewResourcesTagTitle"))
+const NewResourceTagList = loadable(() => import("./NewResourceTagList"))
 const NewIntegrationListingModule = loadable(() => import("./NewIntegrationListingModule"))
 const PartnerLogoListing = loadable(() => import("./PartnerLogoListing"))
 const PeopleListing = loadable(() => import("./PeopleListing"))
@@ -147,6 +149,9 @@ const allModules = {
 	"NEW-IntegrationDetail": PartnerDetails,
 	"PartnerListing": PartnerListing,
 	"NewPartnerListingModule": NewPartnerListingModule,
+	"NEW-ResourceTagTitle": NewResourcesTagTitle,
+	'NEW-ResourceTagTagList': NewResourceTagList,
+	'NEWResourceListingByTopic': NewResourceTagList,
 	"NewIntegrationListingModule": NewIntegrationListingModule,
 	"PartnerLogoListing": PartnerLogoListing,
 	"PeopleListing": PeopleListing,
@@ -197,7 +202,7 @@ const allModules = {
 	"NEWWebinarDownload": NewWebinarDowload,
 	"NEWFeaturedCaseStudies": NewFeaturedCaseStudies,
 	"NEWAllResources": NewAllResources,
-	"NEWeBookThankYou": NewEBookThankYou,
+	"NEWeBookThankYou": NewEBookThankYou
 }
 
 export const getModule = (name) => {
