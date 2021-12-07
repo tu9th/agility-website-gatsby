@@ -8,6 +8,7 @@ import './ResourceDetails.scss'
 import './RichTextArea.scss'
 import LazyBackground from '../utils/LazyBackground'
 import PostItemImageVertical from '../modules/DownloadableItem'
+import DownloadEbookForm from '../components/forms/DownloadEbookForm'
 
 
 
@@ -62,11 +63,9 @@ const TopReads = ({ item }) => {
 	return (
     <section>
       <div className="container ps-rv bg">
-        { content &&
           <div className="mx-auto mb-5 last-mb-none max-w-940 text-center beauty-ul">
-						<h2>{content}</h2>
+						<h2>Top Picks For You</h2>
 					</div>
-        }
         { listEBooks && listEBooks.length &&
           <div className="row">
             { listEBooks }
@@ -82,7 +81,7 @@ const RecommendedWebinar = ({item}) => {
 	const customFields = item.customFields
 	const link = `/resources/${customFields.resourceTypeName.toLowerCase()}/${customFields.uRL}`;
 	return (
-    <div>
+    <div className="recommend-webinar">
       <h3 className="h2">Recommended Webinars</h3>
       <LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
       <div className="content-blog">
@@ -98,6 +97,12 @@ const RecommendedWebinar = ({item}) => {
   )
 }
 
+
+/* ______________________ */
+/* ______________________ */
+/* ______________________ */
+/* Main Component Detail */
+
 const ResourceDetails = ({ item, dynamicPageItem }) => {
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
@@ -110,53 +115,10 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 
 	const topWebinar = resource.topWebinars.length ? resource.topWebinars[0] : resource.topWebinars
 
-	console.log('item', resource);
+	console.log('item', item, resource);
 	return (
 		<React.Fragment>
 		<section className="resource-details new-resource-detail">
-			{/* <div className="rich-text">
-				<div className="container p-w-small">
-					<h1 className="h1">{resource.title}</h1>
-					{resource.subTitle &&
-						<h4 className="h4">{resource.subTitle}</h4>
-					}
-					<div className="meta">
-
-							<div className="author-image">
-								<img src={resource.author.customFields.image ? resource.author.customFields.image.url + '?w=100' : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg?w=100"} alt={resource.author.customFields.title ? resource.author.customFields.title : 'author image'} />
-							</div>
-							<h5 className="h5">{resource.author.customFields.title}</h5>
-
-						<span className="date">{DateTime.fromISO(resource.date).toFormat("MMM d, yyyy")}</span>
-					</div>
-
-					{resource.image &&
-						<div className="image">
-							<ResponsiveImage img={resource.image}
-								breaks={[{ w: 640, max: 640 }, { w: 780, max: 800 }, { w: 1200, max: 1920 }]} />
-						</div>
-					}
-
-					<div className="content">
-						<div dangerouslySetInnerHTML={renderHTML(resource.textblob)}></div>
-
-						<div className="download-button">
-							{resource.fileDownload &&
-								<a className="btn" href={resource.fileDownload.url} title={resource.fileDownload.label}>{resource.fileDownload.label}</a>
-							}
-						</div>
-
-						{ resource.cTA && <CallToAction item={resource.cTA} /> }
-
-					</div>
-
-					{
-						item.backButton && item.backButton.text && item.backButton.href &&
-						<Link to={item.backButton.href} className="back d-flex ai-center"><img src="https://static.agilitycms.com/layout/img/ico/gray.svg" alt={item.backButton.text} /><span>{item.backButton.text}</span></Link>
-					}
-				</div>
-			</div> */}
-
 			<div className="space-50 space-dt-100"></div>
 			<div className="container">
         <div className="d-flex flex-wrap">
@@ -187,7 +149,6 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
               <h4>Categories</h4>
               <p>
                 {renderTags(resource.resourceType, 'tag')}
-                {/* {renderTags(resource.resourceTopics, 'topic')} */}
               </p>
             </div>
             <div className="small-paragraph cs-tag-wrap last-mb-none">
@@ -197,9 +158,8 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
               </p>
             </div>
 
-            {/*  */}
-            {/* <GetResourceForm /> */}
-            {/* recommend webinar */}
+						<DownloadEbookForm item={{customFields: item}} />
+						<div className="space-80"></div>
             <RecommendedWebinar item={topWebinar} />
             <div className="space-80"></div>
             {/* <CTA /> */}
@@ -211,6 +171,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 		</section>
 
 		<TopReads item={topReadsItem} />
+		<div className="space-80"></div>
 		</React.Fragment>
 	);
 }
