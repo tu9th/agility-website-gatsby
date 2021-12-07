@@ -8,7 +8,7 @@ import { getLeadSourceDetailForForm } from '../../utils/lead-utils.js'
 import './DownloadEbookForm.scss';
 
 
-const ContactUs = ({ item }) => {
+const DownloadEbookForm = ({ item, slug }) => {
 
 	item = item.customFields;
 	const firstNameLabel = item.firstNameLabel ?? 'First Name'
@@ -17,6 +17,12 @@ const ContactUs = ({ item }) => {
 	const phoneLabel = item.phoneLabel ?? 'Phone'
 	const companyLabel = item.companyLabel ?? 'Company'
 
+  // const redirectUrl = item.redirectURL//.replace('##URL##', slug)
+  const redirectUrl = {
+    ...item.redirectURL,
+    href: item.redirectURL.href.replace('##URL##', slug)
+  }
+  console.log('redirectUrl', redirectUrl);
 	return (
     <div className="download-form text-center">
       <h3 className="h2">Get the Resource Title</h3>
@@ -28,7 +34,7 @@ const ContactUs = ({ item }) => {
         formTitle={item.rightColumnTitle}
         thanksMessage={item.thanksMessage}
         conversionScript={item.conversionScript}
-        redirectURL={item.redirectURL}
+        redirectURL={redirectUrl}
         postURL={item.submissionPOSTURL}
         submissionCopy={item.submissionCopy}
         submitButtonLabel={ item.submitButtonLabel }
@@ -56,4 +62,4 @@ const ContactUs = ({ item }) => {
   );
 
 }
-export default ContactUs;
+export default DownloadEbookForm;

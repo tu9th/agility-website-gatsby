@@ -158,7 +158,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
               </p>
             </div>
 
-						<DownloadEbookForm item={{customFields: item}} />
+						<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />
 						<div className="space-80"></div>
             <RecommendedWebinar item={topWebinar} />
             <div className="space-80"></div>
