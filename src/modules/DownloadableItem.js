@@ -7,7 +7,7 @@ import Helpers from '../global/javascript/Helpers'
 const DownloadableItem = ({ post, isVerticalImage }) => {
   console.log('DownloadableItem', post)
   const thumbUrl = post?.customFields?.postImage ? post?.customFields?.postImage?.url : post?.customFields?.image?.url
-  const link = post?.url || post?.customFields?.uRL
+  const link = post?.customFields?.fileDownload?.url
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
