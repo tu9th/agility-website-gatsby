@@ -37,7 +37,7 @@ export default props => (
 					contentID
 				}
 			}
-			allAgilityResourceType {
+			allAgilityResourceType(sort: {order: ASC, fields: properties___itemOrder}) {
 				nodes {
 					customFields {
 						title
