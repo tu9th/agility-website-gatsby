@@ -188,8 +188,7 @@ const fakeCase = [
     "url": "/resources/case-studies/compass-group-canada"
 }
 ];
-const FeatureCaseStudies = () => {
-
+const FeatureCaseStudies = ({topWebinar}) => {
   return (
     <section>
     <div className="container ps-rv bg">
@@ -197,10 +196,10 @@ const FeatureCaseStudies = () => {
         <h2>Top Webinars for You</h2>
       </div>
       <div className="row">
-        {fakeCase.map(post => {
+        {topWebinar.map(post => {
           return (
             <div className="col-md-6 col-lg-4">
-              < PostItem showCustomerLogo={true} post={post} hideDescription={true} />
+              <PostItem showCustomerLogo={true} post={post} hideDescription={true} />
             </div>
           )
         })}
@@ -209,8 +208,7 @@ const FeatureCaseStudies = () => {
   </section>
   )
 }
-const DownloadEbook = ({posts, isVerticalImage}) => {
-
+const DownloadEbook = ({topReads, isVerticalImage}) => {
   return (
     <section>
     <div className="container ps-rv bg">
@@ -218,7 +216,7 @@ const DownloadEbook = ({posts, isVerticalImage}) => {
         <h2>Top Reads For You</h2>
       </div>
       <div className="row">
-        {fakeCase.map(post => {
+        {topReads.map(post => {
           return (
             <div className="col-md-6 col-lg-4">
               < PostItemImageVertical post={post} isVerticalImage= {isVerticalImage} />
@@ -273,10 +271,63 @@ const FeatureRes = ({ eBookSelected }) => {
 
 const NewEBookThankYou = ({ item, resources }) => {
   const [eBookSelected, setEBookSelected] = useState(null)
+  const [topWebinar, setTopWebinar] = useState(null)
+  const [topRead, setTopRead] = useState(null)
+
+  const handleGetTopWebinars = (topWebinarIds) => {
+    let results = []
+    if (topWebinarIds?.length) {
+      const formatTopWebinarIds = topWebinarIds.map(id => Number(id))
+      results = resources.filter(res => {
+        return formatTopWebinarIds.includes(res.contentID)
+      })
+    }
+    if(results.length < 3) {
+      let count = results.length
+      for(let i = 0; i < resources.length; i++) {
+        if (count < 3) {
+          results.push(resources[0])
+          count++
+        }
+        if (count === 3) {
+          break;
+        }
+      }
+    }
+    return results
+  }
+
+  const handleGetTopReads = (topReadIds) => {
+    let results = []
+    if (topReadIds?.length) {
+      const formatTopReadIds = topReadIds.map(id => Number(id))
+      results = resources.filter(res => {
+        return formatTopReadIds.includes(res.contentID)
+      })
+    }
+    if(results.length < 3) {
+      let count = results.length
+      for(let i = 0; i < resources.length; i++) {
+        if (count < 3) {
+          results.push(resources[0])
+          count++
+        }
+        if (count === 3) {
+          break;
+        }
+      }
+    }
+    return results
+  }
   useEffect(() => {
     const pathName = window.location.pathname
     const urlEBook = pathName.substring(pathName.indexOf('/ebook/') + 7, pathName.indexOf('/thank-you'))
     const eBookFinded = resources.find(res => res.customFields?.uRL === urlEBook)
+    const topWebinarIds = eBookFinded?.customFields?.topWebinars_ValueField?.split(',')
+    const topReadIds = eBookFinded?.customFields?.topReads_ValueField?.split(',')
+    setTopWebinar(handleGetTopWebinars(topWebinarIds))
+    setTopRead(handleGetTopReads(topReadIds))
+    console.log('eBookFinded', eBookFinded)
     setEBookSelected(eBookFinded)
   }, [])
 	return (
@@ -286,10 +337,10 @@ const NewEBookThankYou = ({ item, resources }) => {
         <div className="space-80"></div>
         <FeatureRes eBookSelected={eBookSelected} />
         <div className="space-80"></div>
-        <FeatureCaseStudies />
+        <FeatureCaseStudies topWebinar={topWebinar} />
         <div className="space-80"></div>
         <div className="space-80"></div>
-        <DownloadEbook isVerticalImage={true} />
+        <DownloadEbook topReads={topRead} isVerticalImage={true} />
         <div className="space-80"></div>
 			</section>
     }
