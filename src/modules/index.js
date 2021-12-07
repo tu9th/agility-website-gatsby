@@ -93,8 +93,13 @@ const TriplePanelModule = loadable(() => import("./TriplePanelModule"))
 const TwoPanelFeatureComparison = loadable(() => import("./TwoPanelFeatureComparison"))
 const VerticalContentPanel = loadable(() => import("./VerticalContentPanel"))
 const VideoPlayerModule = loadable(() => import("./VideoPlayerModule"))
-const VideoModule = loadable(() => import("./VideoModule"))
-
+//==== New Resource ======//
+const NewFeaturedResource = loadable(() => import("./NewFeaturedResource"))
+const NewDowloadableEbooks = loadable(() => import("./NewDowloadableEbooks"))
+const NewWebinarDowload = loadable(() => import("./NewWebinarDowload"))
+const NewFeaturedCaseStudies = loadable(() => import("./NewFeaturedCaseStudies"))
+const NewAllResources = loadable(() => import("./NewAllResources"))
+const NewEBookThankYou = loadable(() => import("./NewEBookThankYou"))
 
 const allModules = {
 	"2BoxContent": TwoBoxContent,
@@ -172,6 +177,7 @@ const allModules = {
 	"Share": Share,
 	"SingleTestimonialPanel": SingleTestimonialPanel,
 	"Spacing": Spacing,
+	"Space": Spacing,
 	"StarterTemplateDetails": StarterTemplateDetails,
 	"StarterTemplateListing": StarterTemplateListing,
 	"StayInTouch": StayInTouch,
@@ -186,9 +192,12 @@ const allModules = {
 	"TwoPanelFeatureComparison": TwoPanelFeatureComparison,
 	"VerticalContentPanel": VerticalContentPanel,
 	"VideoPlayerModule": VideoPlayerModule,
-	"VideoModule": VideoModule,
-
-
+	"NEWFeaturedResource": NewFeaturedResource,
+	"NEWDownloadableeBooks": NewDowloadableEbooks,
+	"NEWWebinarDownload": NewWebinarDowload,
+	"NEWFeaturedCaseStudies": NewFeaturedCaseStudies,
+	"NEWAllResources": NewAllResources,
+	"NEWeBookThankYou": NewEBookThankYou,
 }
 
 export const getModule = (name) => {

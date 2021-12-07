@@ -40,19 +40,15 @@ const IntegrationDetailContent = ({ viewModel, isIntegrationReference}) => {
 	}, [])
 	let content = <div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.textblob)}></div>
 	if (viewModel.isIntegrationReference) {
-		let listOverview = ''
-		if (viewModel.overviewItems.length) {
-			listOverview = <ul className="list-url last-mb-none">
-			{viewModel.overviewItems.map(item => <li key={`overview-item-` + item.contentID}>
-				<p><strong>{item?.customFields?.heading}</strong></p>
-				<p>{item?.customFields?.description}</p>
-			</li>)}
-		</ul>
-		}
 		content = <>
 			<h2>{dynamicPageItem?.customFields?.overviewHeading}</h2>
 			<div className="cs-detail-inner last-mb-none" dangerouslySetInnerHTML={renderHTML(dynamicPageItem?.customFields?.overviewContent)}></div>
-			{listOverview}
+			{viewModel.overviewItems.length && <ul className="list-url last-mb-none">
+				{viewModel.overviewItems.map(item => <li key={`overview-item-` + item.contentID}>
+					<p><strong>{item?.customFields?.heading}</strong></p>
+					<p>{item?.customFields?.description}</p>
+				</li>)}
+			</ul>}
 		</>
 	}
 

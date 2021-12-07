@@ -68,6 +68,27 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   const lazyRef = useRef(null)
   const [active, setActive] = useState(1)
   const [stickyStyle, setStickyStyle] = useState({})
+  // const initClass = (ele) => {
+  //   const wH = window.innerHeight
+  //   const header = document.querySelectorAll('.header')[0].offsetHeight
+  //   const offset = wH - header
+  //   const calcHeight = ele.querySelectorAll('.title-i-c')[0].offsetHeight + 60 + ele.querySelectorAll('.wrap-lv2')[0].offsetHeight + 60
+  //   if (calcHeight < offset) {
+  //     ele.classList.add('is-full')
+  //     ele.classList.remove('is-lv2')
+  //   } else {
+  //     ele.classList.add('is-lv2')
+  //     ele.classList.remove('is-full')
+  //   }
+  // }
+  // const setheight = (ele) => {
+  //   const Fakeheight = ele.querySelectorAll('.fake-height')[0]
+  //   const title = ele.querySelectorAll('.title-i-c ')[0].offsetHeight
+  //   const item = ele.querySelectorAll('.list-image-ic .item-image-ic')
+  //   const list = ele.querySelectorAll('.list-content-ic')[0]
+  //   Fakeheight.style.height = title + item.length*list.offsetHeight*4/5 + 60 + 'px'
+  //   Fakeheight.style.paddingTop = title + 60 +'px'
+  // }
 
   useEffect(() => {
     const $this = lazyRef.current
@@ -78,6 +99,19 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
     } else {
       serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
     }
+    // let flag = true
+
+    // // #region Sticky won't work if any parent element have overflow is hidden || scroll || auto => remove overflow on body, html
+    // document.body.style.setProperty('overflow', 'unset', 'important')
+    // // #endregion
+
+    // setheight($this)
+    // initClass($this)
+    // if (lazyRef.current.classList.contains('is-full')) {
+    //   setUpCanBeReset($this.querySelectorAll('.fake-height')[0])
+    // } else {
+    //   setUpCanBeReset($this.querySelectorAll('.wrap-box-vertical')[0])
+    // }
 
     const scrollWindow = () => {
       // caculatePin($this)
@@ -124,6 +158,64 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
   let scrollTop
 
   let widthSerLeft
+  const resetPropertyPin = (pinElement) => {
+    pinElement.classList.remove(classPin)
+    pinElement.classList.remove(classPin2)
+    pinElement.style.marginLeft = '0'
+    pinElement.style.top = 'auto'
+  }
+
+  // const setUpCanBeReset = (pinElement) => {
+  //   widthSerLeft = pinElement.offsetWidth + 20
+  // }
+  // const calculateHeightEachItem = () => {
+  //   const $this = lazyRef.current
+  //   const $fakeHeight = $this.querySelectorAll('.fake-height')[0]
+  //   let serviceLeft
+
+  //   if ($this.classList.contains('is-full')) {
+  //     serviceLeft = $this.querySelectorAll('.wrap-box-vertical')[0]
+  //   } else {
+  //     serviceLeft = $this.querySelectorAll('.wrap-lv2')[0]
+  //   }
+  //   const lengthItemIc = $this.querySelectorAll('.item-ic').length
+  //   const heightEachItemIc = (serviceLeft.offsetHeight + $fakeHeight.offsetHeight) / lengthItemIc
+  //   let positionTopEachItem = []
+  //   for (let index = 0; index < lengthItemIc; index++) {
+  //     positionTopEachItem = [...positionTopEachItem, index === 0 ? 0 : (heightEachItemIc * index)]
+  //   }
+  //   return positionTopEachItem
+  // }
+
+  // const caculatePin = ($this) => {
+  //   const doc = document.documentElement;
+  //   const topPosition = document.getElementsByTagName('header')[0].offsetHeight + 80 + 'px'
+  //   let positionTopEachItem = calculateHeightEachItem()
+  //   let tabActive = 0
+  //   const currentPosition = $this.getBoundingClientRect().top - 200
+  //   scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+
+  //   if (topPosition !== stickyStyle.top) {
+  //     setStickyStyle({
+  //       top: topPosition
+  //     })
+  //   }
+
+  //   if (currentPosition > 0) tabActive = 0
+  //   else if (Math.abs(currentPosition) >= positionTopEachItem[positionTopEachItem.length - 1]) tabActive = positionTopEachItem.length - 1
+  //   else {
+  //     for (let index = 0; index < positionTopEachItem.length; index++) {
+  //       const item = positionTopEachItem[index]
+  //       const nextItem = positionTopEachItem[index + 1]
+  //       if (nextItem && item <= Math.abs(currentPosition) && Math.abs(currentPosition) <= nextItem) {
+  //         tabActive = index
+  //       }
+  //     }
+  //   }
+  //   activeTab(tabActive)
+
+  //   return true
+  // }
 
   const activeTabHandler = (idx) => {
     setActive(idx + 1)
@@ -131,6 +223,16 @@ const VerticalContentPanel = ({ item, listPanelContent }) => {
       forceCheck();
     }, 50)
   }
+
+  // const activeTabHandler = (idx) => {
+    // const $this = lazyRef.current
+    // const heightEachItem = calculateHeightEachItem()
+    // const doc = document.documentElement;
+    // scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+    // Helpers.animateScrollTop(scrollTop + $this.getBoundingClientRect().top + heightEachItem[idx], 100)
+    // console.log('Testtt')
+    // activeTab(idx)
+  // }
 
   let isHomePage = false
 	if(typeof window !== `undefined`){

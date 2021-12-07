@@ -5,6 +5,8 @@ import './RightORLeftContentModule.scss'
 import Spacing from './Spacing'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 
+
+
 const HasImg = ({ img, isHomePage, page }) => {
 
 	const [isLoaded, setIsLoaded] = useState(false)

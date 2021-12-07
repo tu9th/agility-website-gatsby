@@ -20,6 +20,7 @@ const ContentZone = ({ name, page, dynamicPageItem }) => {
 			if (moduleItem.item) {
 
 				const moduleDefName = moduleItem.item.properties.definitionName;
+				console.log('moduleDefName', moduleDefName)
 				// console.log(moduleDefName, moduleItem.item)
 				let ModuleComponentToRender = null
 

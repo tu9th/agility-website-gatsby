@@ -5,8 +5,9 @@ import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
 const DownloadableItem = ({ post, isVerticalImage }) => {
-  const thumbUrl = post?.customFields?.postImage?.url
-  const link = post?.url
+  console.log('DownloadableItem', post)
+  const thumbUrl = post?.customFields?.postImage ? post?.customFields?.postImage?.url : post?.customFields?.image?.url
+  const link = post?.url || post?.customFields?.uRL
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url

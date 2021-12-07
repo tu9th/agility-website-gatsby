@@ -105,7 +105,6 @@ const CaseStudyDetails = (props) => {
 	`)
 
 	const mediaLists = query?.allAgilityCaseStudy?.edges
-	console.log(mediaLists)
 	const relatedRes = query?.allAgilityResource?.edges
 	const relatedBlog = query?.allAgilityBlogPost?.edges
 	let alternativeRotator = query?.rotator?.nodes

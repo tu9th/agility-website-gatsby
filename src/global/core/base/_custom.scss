@@ -98,24 +98,8 @@ html.hide-loader {
   background-color: $color-6d;
 }
 
-.bg-58 {
-  background-color: $color-58;
-}
-
-.bg-c9 {
-  background-color: $color-c9;
-}
-.bg-c9-o25 {
-  background-color: rgba($color-c9, 0.25);
-}
 .vertical-middle {
   vertical-align: middle;
-}
-.color-inherit {
-  color: inherit;
-  &:hover {
-    color: inherit;
-  }
 }
 
 .bg-17 {
@@ -298,9 +282,6 @@ form button[type='submit'] {
 
 .lazy {
   min-width: 1px;
-}
-.mb-0 {
-  margin-bottom: 0;
 }
 
 .mod-content-center.bg-17 {
@@ -579,6 +560,10 @@ ol {
   }
 }
 
+.mb-45 {
+  margin-bottom: 45px;
+}
+
 // @include media-breakpoint-up(sm) {
 //   .main-content {
 //     padding-top: 105px;
@@ -593,32 +578,6 @@ ol {
   .pagination {
     li {
       padding-top: 2px;
-    }
-  }
-}
-.new-post {
-  .case-thumb {
-    .lazyload-wrapper {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translate(0, -50%);
-      width: 100%;
-      padding: 0 20px;
-      img {
-        margin: 0 auto;
-        max-width: 360px;
-        width: 100%;
-        display: block;
-      }
-      .image-default {
-        max-width: 100%;
-        top: 50%;
-        left: 50%;
-        width: auto;
-        transform: translate(-50%, -50%);
-        position: absolute;
-      }
     }
   }
 }

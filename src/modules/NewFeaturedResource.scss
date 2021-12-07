@@ -1,0 +1,38 @@
+@import "../global/_variables.scss";
+@import '../global/setting';
+.resource-lp-right {
+  // max-width: 500px;
+  height: 200px;
+}
+.resource-lp-left {
+  background-color: $color-ff;
+  padding: 250px 44px 44px;
+  margin-left: auto;
+  margin-bottom: 45px;
+  border-radius: 8px;
+  box-shadow: inset -3px -8px 7px rgba($color: $black, $alpha: 0.1), 0 27px 57px rgba($color: $color-58, $alpha: 0.16);
+}
+.res-pattern-logo {
+  margin-bottom: 25px;
+  .ps-as {
+    left: auto;
+    right: 25px;
+    top: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .resource-lp-left {
+    padding: 250px 44px 44px;
+    margin-bottom: 0;
+    max-width: 550px;
+  }
+  .resource-lp-right {
+    max-width: 500px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .resource-lp-left {
+    margin-right: 50px;
+  }
+}
