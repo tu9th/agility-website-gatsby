@@ -84,6 +84,8 @@
 /* Detail page */
 
 .new-resource-detail {
+  position: relative;
+  background-image: linear-gradient(to bottom, #e9f0f5 0%, #fff);
   .resource-lp-left {
     margin-left: 0;
     margin: 20px 0 40px;
@@ -111,7 +113,9 @@
     margin-bottom: 10px;
   }
 }
-
+.recommend-webinar {
+  max-width: 425px;
+}
 .learn-more-cta {
   padding: 35px;
   max-width: 425px;
@@ -129,5 +133,13 @@
     max-width: 600px;
     font-size: rem(21);
     line-height: 1.33;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .recommend-webinar,
+  .learn-more-cta {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
