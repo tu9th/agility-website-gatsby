@@ -113,6 +113,8 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 			listeBooks: resource.topReads
 	}
 
+	const linkResource = `/resources/${resource.resourceTypeName.toLowerCase()}/${resource.uRL}`
+
 	const topWebinar = resource.topWebinars?.length ? resource.topWebinars[0] : resource.topWebinars
 
 	console.log('item', item, resource);
@@ -157,11 +159,12 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
                 {renderTags(resource.resourceTopics, 'topic')}
               </p>
             </div>
-
+						<SocialShare url={linkResource} />
+						<div className="space-50 space-dt-80"></div>
 						<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />
-						<div className="space-80"></div>
+						<div className="space-50 space-dt-80"></div>
             <RecommendedWebinar item={topWebinar} />
-            <div className="space-80"></div>
+            <div className="space-50 space-dt-80"></div>
             {/* <CTA /> */}
 						<RightCTA rightCTAButton={resource.rightCTAButton} rightCTAContent={resource.rightCTAContent} />
 
@@ -179,3 +182,26 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 export default ResourceDetails;
 
 
+const SocialShare = ({ url }) => {
+	let shareLink = url.charAt(0) === '/' ? url.replace('/', '') : url
+	shareLink = shareLink.trim()
+	const domain = 'https://agilitycms.com'
+	return (
+		<>
+			<div className="cs-d-social">
+				<h5>Share Case Study</h5>
+				<div className="soc-box d-flex flex-wrap">
+					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-linkedin2"></span>
+					</a>
+					<a href={`https://twitter.com/intent/tweet/?url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-twitter"></span>
+					</a>
+					<a href={`https://www.facebook.com/sharer/sharer.php?u=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
+						<span className="icomoon icon-facebook"></span>
+					</a>
+				</div>
+			</div>
+		</>
+	)
+}
