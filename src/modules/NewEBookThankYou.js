@@ -234,7 +234,8 @@ const DownloadEbook = ({posts, isVerticalImage}) => {
   )
 }
 
-const FeatureRes = () => {
+const FeatureRes = ({ eBookSelected }) => {
+  const { downloadButtonText, fileDownload, image, excerpt, title} = eBookSelected?.customFields
   return (
     <section className="thanks-block">
       <div className="container ps-rv bg">
@@ -242,27 +243,26 @@ const FeatureRes = () => {
           <div className="col col-12 col-lg-6">
             <div className="d-table w-100 h-100 resource-lp-right">
               <div className="d-table-cell">
-                <h2 className="h1">Enjoy Your Ultimate 50-Point Checklist for Choosing a Headless CMS eBook!</h2>
-                <Link to='#'>Click Download here to access the Ebook!</Link>
-                <p>
-                  Click Download here to access the Ebook!
-                  Check your inbox in a second.
-                  Enjoy!
-                </p>
-                <p>
-                  We’ll also have sent the Ebook to your email so that you can read it anytime.
-                </p>
-                <a className="btn btn-yellow">Call to action</a>
+                { title &&
+                  <h2 className="h1">{title}</h2>
+                }
+                { fileDownload && fileDownload?.url &&
+                  <a href={fileDownload?.url || '#'} download>Click Download here to access the Ebook!</a>
+                }
+                { excerpt &&
+                  <p>{excerpt}</p>
+                }
+                { downloadButtonText &&
+                  <a href={fileDownload?.url || '#'} className="btn btn-yellow">{downloadButtonText}</a>
+                }
               </div>
             </div>
           </div>
           <div className="col col-12 col-lg-6">
             <div className="resource-lp-left ps-rv last-mb-none">
-              <div className="res-pattern-logo mb-2">
-                <img className="ps-as" src="./images/features/line-pattern.svg" alt="Hello"/>
-                <img src="./images/features/logo-pattern.svg" alt="Hello"/>
-              </div>
-              <h3 className="h1">The Ultimate 50-Point Checklist for Choosing a Headless CMS</h3>
+              { image &&
+                <img src={image.url || "./images/features/logo-pattern.svg"} alt="Hello"/>
+              }
             </div>
           </div>
         </div>
@@ -272,16 +272,19 @@ const FeatureRes = () => {
 }
 
 const NewEBookThankYou = ({ item, resources }) => {
-  const pathName = window.location.pathname
-  const urlEBook = pathName.substring(pathName.indexOf('/ebook/') + 7, pathName.indexOf('/thank-you'))
-  const eBookSelected = resources.find(res => res.customFields?.uRL === urlEBook)
-  console.log('eBookSelected', eBookSelected)
-
+  const [eBookSelected, setEBookSelected] = useState(null)
+  useEffect(() => {
+    const pathName = window.location.pathname
+    const urlEBook = pathName.substring(pathName.indexOf('/ebook/') + 7, pathName.indexOf('/thank-you'))
+    const eBookFinded = resources.find(res => res.customFields?.uRL === urlEBook)
+    setEBookSelected(eBookFinded)
+  }, [])
 	return (
 		<>
+    { eBookSelected &&
 			<section className="mod-new-post-listing">
         <div className="space-80"></div>
-        <FeatureRes />
+        <FeatureRes eBookSelected={eBookSelected} />
         <div className="space-80"></div>
         <FeatureCaseStudies />
         <div className="space-80"></div>
@@ -289,6 +292,7 @@ const NewEBookThankYou = ({ item, resources }) => {
         <DownloadEbook isVerticalImage={true} />
         <div className="space-80"></div>
 			</section>
+    }
 		</>
 	);
 }

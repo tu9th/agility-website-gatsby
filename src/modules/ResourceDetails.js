@@ -25,7 +25,7 @@ const renderTags = (tags, type) => {
 			</span>
 		)
 	}
-	return tags.map((tag, index) => {
+	return tags?.map((tag, index) => {
 		let link = `/resources/${type}/${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 		return (
 			<span key={index} className="d-inline-block cs-tag ps-rv">
@@ -43,7 +43,9 @@ const RightCTA = ({rightCTAButton, rightCTAContent}) => {
       <div className="d-table w-100">
         <div className="d-table-cell align-middle text-center small-paragraph last-mb-none">
 					<div dangerouslySetInnerHTML={renderHTML(rightCTAContent)}></div>
-         <Link to={rightCTAButton.href} className="btn btn-white mb-0">Watch Now</Link>
+					{ rightCTAButton &&
+						<Link to={rightCTAButton.href} className="btn btn-white mb-0">Watch Now</Link>
+					}
         </div>
       </div>
     </div>
@@ -77,24 +79,30 @@ const TopReads = ({ item }) => {
 }
 
 const RecommendedWebinar = ({item}) => {
-
-	const customFields = item.customFields
-	const link = `/resources/${customFields.resourceTypeName.toLowerCase()}/${customFields.uRL}`;
+	if (item) {
+		const customFields = item.customFields
+		const link = `/resources/${customFields.resourceTypeName.toLowerCase()}/${customFields.uRL}`;
+		return (
+			<div className="recommend-webinar">
+				<h3 className="h2">Recommended Webinars</h3>
+				<LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
+				<div className="content-blog">
+					<p>
+						{renderTags(customFields.resourceType, 'tag')}
+					</p>
+					{customFields.title &&
+						<h3>{customFields.title}</h3>
+					}
+					<Link to={link} className="link-line link-purple">Watch Now</Link>
+				</div>
+			</div>
+		)
+	}
 	return (
-    <div className="recommend-webinar">
-      <h3 className="h2">Recommended Webinars</h3>
-      <LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
-      <div className="content-blog">
-        <p>
-          {renderTags(customFields.resourceType, 'tag')}
-        </p>
-				{customFields.title &&
-        	<h3>{customFields.title}</h3>
-				}
-        <Link to={link} className="link-line link-purple">Watch Now</Link>
-      </div>
-    </div>
-  )
+	<div className="recommend-webinar">
+		<h3 className="h2">Recommended Webinars</h3>
+	</div>
+	)
 }
 
 
