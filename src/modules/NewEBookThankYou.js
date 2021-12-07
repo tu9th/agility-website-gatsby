@@ -1,63 +1,80 @@
-import React, { useEffect } from 'react'
-import LayoutTemplate from "../components/NewLayoutTemplate"
-import NewGlobalHeader from '../components/NewGlobalHeader'
-import NewGlobalFooter from '../components/NewGlobalFooter'
-import SEO from '../components/SEO'
+import React, { useEffect, useState} from 'react';
+import {  graphql, StaticQuery, Link } from "gatsby"
+import * as StringUtils from "../utils/string-utils"
+import { renderHTML } from '../agility/utils'
+import LazyBackground from '../utils/LazyBackground'
+// import { DateTime } from 'luxon'
 import PostItem from '../modules/PostItem'
 import PostItemImageVertical from '../modules/DownloadableItem'
+import Spacing from './Spacing'
+import Lazyload from 'react-lazyload'
 
+import './NewEBookThankYou.scss'
 
-import './detail.scss'
-
-/* Fake module */
-import CenteredContentPanel from '../modules/CenteredContentPanel'
-import { Link } from 'gatsby'
-
-const centerContent = {
-  "contentID": 2552,
-  "properties": {
-      "state": 2,
-      "modified": "2021-08-23T12:29:45.777",
-      "versionID": 32450,
-      "referenceName": "newpricing_newcenteredcontenac889e",
-      "definitionName": "CenteredContentPanel",
-      "itemOrder": 0
-  },
-  "customFields": {
-      "title": "Simple pricing. Powerful technology.",
-      "description": "<p>We make it easy to choose the right plan for your needs.</p>",
-      "section": "The Agility Resource Center"
-  }
-}
-
-const ResourcesReskin = (props) => {
-  var classes = 'main-content main page'
-  return(
-    <LayoutTemplate>
-    <SEO page={{ seo: {} }} />
-    <NewGlobalHeader />
-    <main className={classes}>
-      <CenteredContentPanel item={centerContent} />
-      <div className="space-80"></div>
-      <FeatureRes />
-      <div className="space-80"></div>
-      <FeatureCaseStudies />
-      <div className="space-80"></div>
-      <div className="space-80"></div>
-      <DownloadEbook isVerticalImage={true} />
-      <div className="space-80"></div>
-
-    </main>
-    <NewGlobalFooter />
-  </LayoutTemplate>
-  )
-}
-
-export default ResourcesReskin
-
-
-
-
+export default props => (
+	<StaticQuery
+		query={graphql`
+		query NewEBookThankYouQuery {
+			allAgilityResource(sort: {fields: customFields___date, order: DESC}) {
+				nodes {
+          customFields {
+          image {
+            url
+            width
+            height
+            label
+          }
+          resourceType {
+            contentid
+          }
+          date(formatString: "MMMM D, YYYY")
+          title
+          uRL
+          resourceTypeID
+          resourceTypeName
+          resourceTopics {
+            referencename
+            sortids
+          }
+          topReads {
+            referencename
+          }
+          topWebinars {
+            referencename
+          }
+          resourceTopics_TextField
+          resourceTopics_ValueField
+          topReads_ValueField
+          topReads_TextField
+          topWebinars_TextField
+          topWebinars_ValueField
+          excerpt
+          cTA {
+            contentid
+          }
+          fileDownload {
+            url
+            label
+            filesize
+          }
+          downloadButtonText
+        }
+        contentID
+				}
+			}
+		  }
+    `}
+		render={queryData => {
+			//filter out only those logos that we want...
+			let resources = queryData.allAgilityResource.nodes
+			const viewModel = {
+				item: props.item,
+				resources,
+			}
+			return (<NewEBookThankYou {...viewModel}/>);
+		}}
+	/>
+)
 
 /*  */
 const fakeCase = [
@@ -252,4 +269,26 @@ const FeatureRes = () => {
       </div>
     </section>
   )
+}
+
+const NewEBookThankYou = ({ item, resources }) => {
+  const pathName = window.location.pathname
+  const urlEBook = pathName.substring(pathName.indexOf('/ebook/') + 7, pathName.indexOf('/thank-you'))
+  const eBookSelected = resources.find(res => res.customFields?.uRL === urlEBook)
+  console.log('eBookSelected', eBookSelected)
+
+	return (
+		<>
+			<section className="mod-new-post-listing">
+        <div className="space-80"></div>
+        <FeatureRes />
+        <div className="space-80"></div>
+        <FeatureCaseStudies />
+        <div className="space-80"></div>
+        <div className="space-80"></div>
+        <DownloadEbook isVerticalImage={true} />
+        <div className="space-80"></div>
+			</section>
+		</>
+	);
 }
