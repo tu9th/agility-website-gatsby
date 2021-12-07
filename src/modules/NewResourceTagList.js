@@ -57,8 +57,8 @@ export default props => (
 const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
   const [loadMoreIdx, setLoadMoreIdx] = useState(12)
   const stringContentId = dynamicPageItem.contentID.toString()
+  const [checkIsEbook, setCheckIsEbook] = useState(false)
 
-  console.log('dynamicPageItem.properties.referenceName', dynamicPageItem.properties.referenceName)
   const listResourceTopic = allResource.filter(resourceItem => {
     const data = {
       ...resourceItem.customFields,
@@ -70,6 +70,12 @@ const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
     }
     return condition
   })
+
+  useEffect (() => {
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const isTestingEbook = urlSearchParams.get('test-ebook') === '1'
+    setCheckIsEbook(isTestingEbook)
+  }, [])
 
   const loadMoreHandler = () => {
     let tmpLoadMoreIdx = loadMoreIdx
@@ -87,13 +93,21 @@ const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
             let resType = item.customFields.resourceTypeName.toLowerCase().replace(/ /g, "-");
             const url = `/resources/${resType}/${item.customFields.slug}`
             const customFields = item.customFields
-            return <div className="col-md-6 col-xl-4 last-mb-none col-item d-flex" key={`resouce-${item.id}`}>
+            return <div className="col-sm-6 col-xl-4 last-mb-none col-item d-flex" key={`resouce-${item.id}`}>
               <div className="item-resource d-flex flex-column">
-                <div className="img-item">
+
+                {checkIsEbook && <div className="img-item ebook ps-rv z-1">
+                  <Link to={url}>
+                    <LazyBackground className="bg ps-as bg-overlay" src={'/images/pattern-resoucre-ebook.png'} />
+                    <LazyBackground className="resource-bg ebook bg ps-rv" src={customFields.image.url + '?w=500'} />
+                  </Link>
+                </div>}
+
+                {!checkIsEbook && <div className="img-item">
                   <Link to={url}>
                     <LazyBackground className="resource-bg bg" src={customFields.image.url} />
                   </Link>
-                </div>
+                </div>}
                 <div className="flex">
                   <Link to={url}> <h3 className="h3">{customFields.title}</h3></Link>
                   <p>{customFields.excerpt}</p>
