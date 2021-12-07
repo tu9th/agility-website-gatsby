@@ -100,9 +100,13 @@
 .re-webina-thumb {
   padding-bottom: 52.47%;
   border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .content-blog {
   padding: 18px 20px;
+  border: 1px solid $color-c9;
+  border-top: 0;
   p {
     margin-bottom: 10px;
   }
