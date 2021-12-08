@@ -15,8 +15,6 @@ import { animationElementInnerComponent } from '../global/javascript/animation';
 
 
 const renderTags = (tags, type) => {
-
-	// if (typeof tags )
 	console.log(typeof tags, tags?.length);
 	if (typeof (tags) === 'object' && !tags.length) {
 		let link = `/resources/${type}/${tags?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
@@ -107,10 +105,12 @@ const RecommendedWebinar = ({item}) => {
 /* Main Component Detail */
 
 const ResourceDetails = ({ item, dynamicPageItem }) => {
-	// console.log(item, 'babab', dynamicPageItem);
-	console.log('item', item, resource);
+
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
+
+		// console.log(item, 'babab', dynamicPageItem);
+	// console.log('item', item, resource);
 
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
