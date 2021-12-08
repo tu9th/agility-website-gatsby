@@ -28,7 +28,7 @@ const NewFeaturedCaseStudies = ({ item }) => {
         </div>
         { cTAButton && cTAButton.href &&
           <div className="text-center mt-35">
-            <Link to={cTAButton?.href} className="btn">
+            <Link to={cTAButton?.href} className="btn btn-browser-all">
               <span>{cTAButton.text ? cTAButton.text : 'Browser All Case Studies'}</span>
             </Link>
           </div>
