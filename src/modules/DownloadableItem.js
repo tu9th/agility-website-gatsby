@@ -18,7 +18,7 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
 	}
 
   return (
-    <div className="downloadable-box h-100 transition-25 ps-rv d-flex flex-column">
+    <div className={`downloadable-box h-100 transition-25 ps-rv d-flex flex-column  ${isVerticalImage ? 'vertical' : 'horizon'}`}>
         {isVerticalImage &&
          <div className="downloadable-thumb-vertical ps-rv">
             <div className="downloadable-pattern">
@@ -34,7 +34,7 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
         }
         {!isVerticalImage &&
           <div className="downloadable-thumb ps-rv overflow-hidden">
-            <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>
+            <LazyBackground src={thumbUrl} className="bg h-100 transition-25"></LazyBackground>
           </div>
         }
 
