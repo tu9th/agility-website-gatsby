@@ -24,9 +24,15 @@ export default props => (
             height
             label
           }
+          coverImage {
+            url
+          }
           thankYouContent
           resourceType {
             contentid
+          }
+          bookCover {
+            url
           }
           date(formatString: "MMMM D, YYYY")
           title
@@ -132,7 +138,8 @@ const DownloadEbook = ({topReads, isVerticalImage}) => {
 }
 
 const FeatureRes = ({ eBookSelected }) => {
-  const { downloadButtonText, fileDownload, image, excerpt, title, thankYouContent} = eBookSelected?.customFields
+  const { downloadButtonText, fileDownload, image, excerpt, title, thankYouContent, bookCover} = eBookSelected?.customFields
+  const urlCover = bookCover ? bookCover.url : '/images/ebook-cover-default.png'
   return (
     <section className="thanks-block">
       <div className="space-80"></div>
@@ -140,16 +147,19 @@ const FeatureRes = ({ eBookSelected }) => {
         <div className="row">
           <div className="col col-12 col-lg-6">
             <div className="d-table w-100 h-100 resource-lp-right">
-              { thankYouContent &&
-                <div className="d-table-cell" dangerouslySetInnerHTML={renderHTML(thankYouContent)}></div>
-              }
+              <div className="d-table-cell">
+                { thankYouContent &&
+                  <div dangerouslySetInnerHTML={renderHTML(thankYouContent)}></div>
+                }
+                { downloadButtonText &&
+                  <a href={fileDownload?.url || '#'} className="btn btn-yellow text-uppercase">{downloadButtonText}</a>
+                }
+              </div>
             </div>
           </div>
           <div className="col col-12 col-lg-6 col-second">
             <div className="resource-lp-left ps-rv last-mb-none">
-              { image &&
-                <img src={image.url || "./images/features/logo-pattern.svg"} alt="Hello"/>
-              }
+              <img src={urlCover} alt={title}/>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
 const DownloadableItem = ({ post, isVerticalImage }) => {
-  let thumbUrl = isVerticalImage ? (post?.customFields?.coverImage ? post?.customFields?.coverImage?.url : '/images/ebook-cover-default.png') : post?.customFields?.image?.url
+  let thumbUrl = isVerticalImage ? (post?.customFields?.bookCover ? post?.customFields?.bookCover?.url : '/images/ebook-cover-default.png') : post?.customFields?.image?.url
   let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
   const link = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
   const title = post?.customFields?.title
