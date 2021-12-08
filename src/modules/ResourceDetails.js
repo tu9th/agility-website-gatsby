@@ -116,7 +116,9 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
 	const classModule = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? 'res-ebook' : ''
 	const thumbImage = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? resource.bookCover : resource.image
-	thumbImage.label = thumbImage.label ? thumbImage.label : resource.title
+	if (thumbImage) {
+		thumbImage.label = thumbImage?.label ? thumbImage.label : resource.title
+	}	
 	const topReadsItem = {
 		customFields: {
 			content: `<h2>Top Picks For You</h2>`,
