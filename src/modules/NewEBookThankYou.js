@@ -197,6 +197,8 @@ const FeatureCaseStudies = ({topWebinar}) => {
       </div>
       <div className="row">
         {topWebinar.map(post => {
+          let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
+          post.url = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
           return (
             <div className="col-md-6 col-lg-4">
               <PostItem showCustomerLogo={true} post={post} hideDescription={true} />
