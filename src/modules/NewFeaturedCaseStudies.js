@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { renderHTML } from '../agility/utils'
 import PostItem from '../modules/PostItem'
 import './NewFeaturedCaseStudies.scss'
 import { Link } from 'gatsby'
 import Spacing from './Spacing';
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 const NewFeaturedCaseStudies = ({ item }) => {
   const { content, cTAButton, listCaseStudies } = item?.customFields
@@ -12,16 +13,31 @@ const NewFeaturedCaseStudies = ({ item }) => {
     post.url = 'case-studies/' + post?.customFields?.uRL
     return (
       <div className="col-md-6 col-lg-4 mb-45" key={index}>
-        <PostItem showCustomerLogo={true} post={post} />
+        <PostItem showCustomerLogo={false} post={post} />
       </div>
     )
   })
+
+  	/* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
   return (
     <>
-    <section>
-      <div className="container ps-rv bg">
+    <section ref={thisModuleRef} className="animation">
+      <div className="container ps-rv bg anima-bottom">
         { content &&
-          <div className="mx-auto mb-5 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
+          <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
         }
         <div className="row">
           {listCaseStudiesRender}

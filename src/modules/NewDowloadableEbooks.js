@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { renderHTML } from '../agility/utils'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import Spacing from './Spacing'
 import './NewDowloadableEbooks.scss'
 import { Link } from 'gatsby'
+import { animationElementInnerComponent } from '../global/javascript/animation';
 
 const NewDowloadableEbooks = ({ item }) => {
 	console.log('NewDowloadableEbooks', item)
@@ -15,10 +16,25 @@ const NewDowloadableEbooks = ({ item }) => {
       </div>
     )
   })
+
+    	/* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
     <>
-    <section>
-      <div className="container ps-rv bg">
+    <section ref={thisModuleRef} className="animation">
+      <div className="container anima-bottom ps-rv bg">
         { content &&
           <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
         }
