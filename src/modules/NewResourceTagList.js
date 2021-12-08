@@ -39,6 +39,11 @@ export default props => (
               height
               width
             }
+            bookCover {
+              filesize
+              height
+              url
+            }
             uRL
             fileDownload {
               label
@@ -106,7 +111,7 @@ const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
                 {checkIsEbook && <div className="img-item ebook ps-rv z-1">
                   <Link to={url}>
                     <LazyBackground className="bg ps-as bg-overlay" src={'/images/pattern-resoucre-ebook.png'} />
-                    <LazyBackground className="resource-bg ebook bg ps-rv" src={customFields.image.url + '?w=500'} />
+                    <LazyBackground className="resource-bg ebook bg ps-rv" src={(customFields.bookCover ? customFields.bookCover.url : customFields.image.url) + '?w=500'} />
                   </Link>
                 </div>}
 
