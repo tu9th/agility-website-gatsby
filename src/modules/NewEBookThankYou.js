@@ -24,9 +24,6 @@ export default props => (
             height
             label
           }
-          coverImage {
-            url
-          }
           thankYouContent
           resourceType {
             contentid
