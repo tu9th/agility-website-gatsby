@@ -182,6 +182,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 						{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
 							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
 						}
+						<div className="space-50 space-dt-0"></div>
 						<SocialShare url={linkResource} />
 						<div className="space-50 space-dt-80"></div>
 
