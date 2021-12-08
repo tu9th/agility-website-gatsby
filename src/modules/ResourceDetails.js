@@ -9,6 +9,7 @@ import './RichTextArea.scss'
 import LazyBackground from '../utils/LazyBackground'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import DownloadEbookForm from '../components/forms/DownloadEbookForm'
+import NewDowloadableEbooks from './NewDowloadableEbooks'
 
 
 
@@ -54,28 +55,30 @@ const RightCTA = ({rightCTAButton, rightCTAContent}) => {
 
 
 const TopReads = ({ item }) => {
-  const { content, listeBooks } = item
-  const listEBooks = listeBooks?.map((post, index) => {
-    return (
-      <div className="col-md-6 col-lg-4" key={index}>
-        < PostItemImageVertical post={post} isVerticalImage= {true} />
-      </div>
-    )
-  })
+  // const posts = {
+	// 	content: `<h2>Top Picks For You</h2>`,
+	// 	cTAButton: '',
+	// 	listEBooks: item.listEBooks
+	// }
+	// const { content, listeBooks } = item
+
+
+  // const listEBooks = listeBooks?.map((post, index) => {
+  //   return (
+  //     <div className="col-md-6 col-lg-4" key={index}>
+  //       < PostItemImageVertical post={post} isVerticalImage= {true} />
+  //     </div>
+  //   )
+  // })
 	return (
-    <section className="top-read-for-u">
-      <div className="container ps-rv bg">
-				<div className="top-read-line"></div>
-          <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
-						<h2>Top Picks For You</h2>
-					</div>
-        { listEBooks && listEBooks.length &&
-          <div className="row">
-            { listEBooks }
-          </div>
-        }
-      </div>
-    </section>
+		<>
+			<div className="top-read-for-u">
+				<div className="container ps-rv bg">
+					<div className="top-read-line"></div>
+				</div>
+			</div>
+			<NewDowloadableEbooks item={item} />
+		</>
 	);
 }
 
@@ -114,13 +117,20 @@ const RecommendedWebinar = ({item}) => {
 /* Main Component Detail */
 
 const ResourceDetails = ({ item, dynamicPageItem }) => {
+	console.log(item, 'babab', dynamicPageItem);
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 
 
 	const topReadsItem = {
-			content: resource.topReads_TextField,
-			listeBooks: resource.topReads
+		customFields: {
+			content: `<h2>Top Picks For You</h2>`,
+			listeBooks: resource.topReads,
+			// cTAButton: {
+			// 	href: resource.fileDownload?.url,
+			// 	text: `Download`
+			// }
+		}
 	}
 
 	const linkResource = `/resources/${resource.resourceTypeName.toLowerCase()}/${resource.uRL}`
@@ -169,11 +179,19 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
                 {renderTags(resource.resourceTopics, 'topic')}
               </p>
             </div>
-						<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />
+						{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
+							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
+						}
 						<SocialShare url={linkResource} />
 						<div className="space-50 space-dt-80"></div>
-            <RecommendedWebinar item={topWebinar} />
-            <div className="space-50 space-dt-80"></div>
+
+						{topWebinar &&
+							<>
+								<RecommendedWebinar item={topWebinar} />
+								<div className="space-50 space-dt-80"></div>
+							</>
+						}
+            
             {/* <CTA /> */}
 						<RightCTA rightCTAButton={resource.rightCTAButton} rightCTAContent={resource.rightCTAContent} />
 
