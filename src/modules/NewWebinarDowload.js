@@ -7,9 +7,10 @@ import { Link } from 'gatsby'
 
 const NewDowloadableEbooks = ({ item }) => {
   const { content, cTAButton, listWebinar } = item?.customFields
+  console.log('bbb', item);
   const listWebinars = listWebinar?.map((post, index) => {
     return (
-      <div className="col-md-6 col-lg-4" key={index}>
+      <div className="col-md-6 col-lg-4 mb-45" key={index}>
         < PostItemImageVertical post={post} isVerticalImage= {false} />
       </div>
     )
@@ -27,7 +28,7 @@ const NewDowloadableEbooks = ({ item }) => {
           </div>
         }
         { cTAButton && cTAButton.href &&
-          <div className="text-center">
+          <div className="text-center mt-35">
             <Link to={cTAButton?.href} className="btn">
               <span>{cTAButton.text ? cTAButton.text : 'Browser All Downloadable items'}</span>
             </Link>

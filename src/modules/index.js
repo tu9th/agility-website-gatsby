@@ -102,6 +102,7 @@ const NewWebinarDowload = loadable(() => import("./NewWebinarDowload"))
 const NewFeaturedCaseStudies = loadable(() => import("./NewFeaturedCaseStudies"))
 const NewAllResources = loadable(() => import("./NewAllResources"))
 const NewEBookThankYou = loadable(() => import("./NewEBookThankYou"))
+const NEWSocialSubscribe = loadable(() => import("./NEWSocialSubscribe"))
 
 const allModules = {
 	"2BoxContent": TwoBoxContent,
@@ -202,7 +203,8 @@ const allModules = {
 	"NEWWebinarDownload": NewWebinarDowload,
 	"NEWFeaturedCaseStudies": NewFeaturedCaseStudies,
 	"NEWAllResources": NewAllResources,
-	"NEWeBookThankYou": NewEBookThankYou
+	"NEWeBookThankYou": NewEBookThankYou,
+	"NEWSocialSubscribe": NEWSocialSubscribe,
 }
 
 export const getModule = (name) => {

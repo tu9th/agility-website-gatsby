@@ -63,9 +63,10 @@ const TopReads = ({ item }) => {
     )
   })
 	return (
-    <section>
+    <section className="top-read-for-u">
       <div className="container ps-rv bg">
-          <div className="mx-auto mb-5 last-mb-none max-w-940 text-center beauty-ul">
+				<div className="top-read-line"></div>
+          <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
 						<h2>Top Picks For You</h2>
 					</div>
         { listEBooks && listEBooks.length &&
@@ -84,7 +85,7 @@ const RecommendedWebinar = ({item}) => {
 		const link = `/resources/${customFields.resourceTypeName.toLowerCase()}/${customFields.uRL}`;
 		return (
 			<div className="recommend-webinar">
-				<h3 className="h2">Recommended Webinars</h3>
+				<h3>Recommended Webinars</h3>
 				<LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
 				<div className="content-blog">
 					<p>
@@ -100,7 +101,7 @@ const RecommendedWebinar = ({item}) => {
 	}
 	return (
 	<div className="recommend-webinar">
-		<h3 className="h2">Recommended Webinars</h3>
+		<h3>Recommended Webinars</h3>
 	</div>
 	)
 }
@@ -129,12 +130,12 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 	return (
 		<React.Fragment>
 		<section className="resource-details new-resource-detail">
-			<div className="space-50 space-dt-100"></div>
+			<div className="space-70 space-dt-90"></div>
 			<div className="container">
-        <div className="d-flex flex-wrap">
+        <div className="d-lg-flex flex-wrap">
           <div className="cs-detail-cont-left content-ul beauty-ul">
             <div className="cs-detail-inner last-mb-none">
-							<div className="mb-5">
+							<div className="date-box small-paragraph">
 								<span className="date">{DateTime.fromISO(resource.date).toFormat("MMM d, yyyy")}</span>
 							</div>
 						<h1 className="h1">{resource.title}</h1>
@@ -167,9 +168,8 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
                 {renderTags(resource.resourceTopics, 'topic')}
               </p>
             </div>
-						<SocialShare url={linkResource} />
-						<div className="space-50 space-dt-80"></div>
 						<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />
+						<SocialShare url={linkResource} />
 						<div className="space-50 space-dt-80"></div>
             <RecommendedWebinar item={topWebinar} />
             <div className="space-50 space-dt-80"></div>
@@ -197,7 +197,7 @@ const SocialShare = ({ url }) => {
 	return (
 		<>
 			<div className="cs-d-social">
-				<h5>Share Case Study</h5>
+				<h5>Share This</h5>
 				<div className="soc-box d-flex flex-wrap">
 					<a href={`https://www.linkedin.com/shareArticle?mini=true&url=${domain + '/' + shareLink}`} target="_blank" className="d-flex align-items-center justify-content-center">
 						<span className="icomoon icon-linkedin2"></span>
