@@ -40,16 +40,20 @@ const renderTags = (tags, type) => {
 const RightCTA = ({rightCTAButton, rightCTAContent}) => {
 
   return (
-    <div className="learn-more-cta bg-58 text-white">
-      <div className="d-table w-100">
-        <div className="d-table-cell align-middle text-center small-paragraph last-mb-none">
-					<div dangerouslySetInnerHTML={renderHTML(rightCTAContent)}></div>
-					{ rightCTAButton &&
-						<Link to={rightCTAButton.href} className="btn btn-white mb-0">Watch Now</Link>
-					}
-        </div>
-      </div>
-    </div>
+		<>
+			{rightCTAContent && rightCTAButton.href &&
+				<div className="learn-more-cta bg-58 text-white">
+					<div className="d-table w-100">
+						<div className="d-table-cell align-middle text-center small-paragraph last-mb-none">
+							<div dangerouslySetInnerHTML={renderHTML(rightCTAContent)}></div>
+							{ rightCTAButton &&
+								<Link to={rightCTAButton.href} className="btn btn-white mb-0">{rightCTAButton.text || 'Watch Now'}</Link>
+							}
+						</div>
+					</div>
+				</div>
+			}
+		</>
   )
 }
 
@@ -121,6 +125,10 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 
+	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
+	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
+
+	console.log('resourceTypes', resourceTopics);
 
 	const topReadsItem = {
 		customFields: {
@@ -167,18 +175,23 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
           </div>
           {/*  */}
           <div className="cs-detail-cont-right">
-            <div className="small-paragraph cs-tag-wrap last-mb-none">
-              <h4>Categories</h4>
-              <p>
-                {renderTags(resource.resourceType, 'category')}
-              </p>
-            </div>
-            <div className="small-paragraph cs-tag-wrap last-mb-none">
-              <h4>Topics</h4>
-              <p>
-                {renderTags(resource.resourceTopics, 'topic')}
-              </p>
-            </div>
+						{resourceTypes && resourceTypes.length &&
+							<div className="small-paragraph cs-tag-wrap last-mb-none">
+								<h4>Categories</h4>
+								<p>
+									{renderTags(resourceTypes, 'category')}
+								</p>
+							</div>
+						}
+						{resourceTopics && resourceTopics.length &&
+							<div className="small-paragraph cs-tag-wrap last-mb-none">
+								<h4>Topics</h4>
+								<p>
+									{renderTags(resourceTopics, 'topic')}
+								</p>
+							</div>
+						}
+            
 						{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
 							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
 						}
