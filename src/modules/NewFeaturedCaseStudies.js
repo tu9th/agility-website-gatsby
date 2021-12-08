@@ -7,7 +7,9 @@ import Spacing from './Spacing';
 
 const NewFeaturedCaseStudies = ({ item }) => {
   const { content, cTAButton, listCaseStudies } = item?.customFields
+  console.log('NewFeaturedCaseStudies', listCaseStudies)
   const listCaseStudiesRender = listCaseStudies?.map((post, index) => {
+    post.url = 'case-studies/' + post?.customFields?.uRL
     return (
       <div className="col-md-6 col-lg-4 mb-45" key={index}>
         <PostItem showCustomerLogo={true} post={post} />

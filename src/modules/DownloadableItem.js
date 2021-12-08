@@ -5,20 +5,12 @@ import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
 const DownloadableItem = ({ post, isVerticalImage }) => {
-  console.log('DownloadableItem', post)
   const thumbUrl = post?.customFields?.postImage ? post?.customFields?.postImage?.url : post?.customFields?.image?.url
-  let link = post?.customFields?.fileDownload?.url
+  let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
+  const link = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
   const title = post?.customFields?.title
   const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
-
-  // if (!isVerticalImage) {
-  //   if (post.customFields?.resourceTypeName) {
-  //     link = `/resources/${post.customFields?.resourceTypeName.toLowerCase()}/${post.customFields?.uRL}`
-  //   } else {
-  //     link = `/resources/${post.customFields?.uRL}`
-  //   }
-  // }
 
 	const trimText = (text) => {
 		let txt = text.split(' ')
