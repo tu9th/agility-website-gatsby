@@ -45,7 +45,7 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
         <div className="flex last-mb-none">
           <p>{trimText(body)}</p>
         </div>
-        {link && isVerticalImage &&
+        {link &&
           <Link to={link} className="link-line link-purple mt-15">Download</Link>
         }
       </div>
