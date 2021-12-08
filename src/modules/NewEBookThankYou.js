@@ -24,6 +24,7 @@ export default props => (
             height
             label
           }
+          thankYouContent
           resourceType {
             contentid
           }
@@ -131,7 +132,7 @@ const DownloadEbook = ({topReads, isVerticalImage}) => {
 }
 
 const FeatureRes = ({ eBookSelected }) => {
-  const { downloadButtonText, fileDownload, image, excerpt, title} = eBookSelected?.customFields
+  const { downloadButtonText, fileDownload, image, excerpt, title, thankYouContent} = eBookSelected?.customFields
   return (
     <section className="thanks-block">
       <div className="space-80"></div>
@@ -139,20 +140,9 @@ const FeatureRes = ({ eBookSelected }) => {
         <div className="row">
           <div className="col col-12 col-lg-6">
             <div className="d-table w-100 h-100 resource-lp-right">
-              <div className="d-table-cell">
-                { title &&
-                  <h1 className="h1 mb-25">{title}</h1>
-                }
-                { fileDownload && fileDownload?.url &&
-                  <p><a href={fileDownload?.url || '#'} download>Click Download here to access the Ebook!</a></p>
-                }
-                { excerpt &&
-                  <p>{excerpt}</p>
-                }
-                { downloadButtonText &&
-                  <a href={fileDownload?.url || '#'} className="btn btn-yellow text-uppercase">{downloadButtonText}</a>
-                }
-              </div>
+              { thankYouContent &&
+                <div className="d-table-cell" dangerouslySetInnerHTML={renderHTML(thankYouContent)}></div>
+              }
             </div>
           </div>
           <div className="col col-12 col-lg-6 col-second">
