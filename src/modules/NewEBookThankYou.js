@@ -101,25 +101,32 @@ const FeatureCaseStudies = ({topWebinar}) => {
 }
 const DownloadEbook = ({topReads, isVerticalImage}) => {
   return (
-    <section>
-    <div className="container ps-rv bg">
-      <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
-        <h2>Top Reads For You</h2>
+    <>
+    <div className="top-read-for-u">
+      <div className="container ps-rv bg">
+        <div className="top-read-line"></div>
       </div>
-      <div className="row">
-        {topReads.map(post => {
-          return (
-            <div className="col-md-6 col-lg-4">
-              < PostItemImageVertical post={post} isVerticalImage= {isVerticalImage} />
-            </div>
-          )
-        })}
-      </div>
-      {/* <div className="text-center">
-        <Link to="#" className="btn"><span>Browser All Downloadable items</span></Link>
-      </div> */}
     </div>
-  </section>
+    <section>
+      <div className="container ps-rv bg">
+        <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
+          <h2>Top Reads For You</h2>
+        </div>
+        <div className="row">
+          {topReads.map(post => {
+            return (
+              <div className="col-md-6 col-lg-4">
+                < PostItemImageVertical post={post} isVerticalImage= {isVerticalImage} />
+              </div>
+            )
+          })}
+        </div>
+        {/* <div className="text-center">
+          <Link to="#" className="btn"><span>Browser All Downloadable items</span></Link>
+        </div> */}
+      </div>
+    </section>
+  </>
   )
 }
 
@@ -231,8 +238,13 @@ const NewEBookThankYou = ({ item, resources }) => {
         <FeatureCaseStudies topWebinar={topWebinar} />
         <div className="space-80"></div>
         <div className="space-80"></div>
-        <DownloadEbook topReads={topRead} isVerticalImage={true} />
-        <div className="space-80"></div>
+        {topRead && topRead.length &&
+        <>
+          <DownloadEbook topReads={topRead} isVerticalImage={true} />
+          <div className="space-70 space-dt-100"></div>
+        </>
+        }
+
 			</section>
     }
 		</>

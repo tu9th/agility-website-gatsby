@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { Link } from "gatsby"
 import {DateTime} from 'luxon'
 import { renderHTML } from '../agility/utils'
@@ -10,6 +10,7 @@ import LazyBackground from '../utils/LazyBackground'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import DownloadEbookForm from '../components/forms/DownloadEbookForm'
 import NewDowloadableEbooks from './NewDowloadableEbooks'
+import { animationElementInnerComponent } from '../global/javascript/animation';
 
 
 
@@ -59,21 +60,6 @@ const RightCTA = ({rightCTAButton, rightCTAContent}) => {
 
 
 const TopReads = ({ item }) => {
-  // const posts = {
-	// 	content: `<h2>Top Picks For You</h2>`,
-	// 	cTAButton: '',
-	// 	listEBooks: item.listEBooks
-	// }
-	// const { content, listeBooks } = item
-
-
-  // const listEBooks = listeBooks?.map((post, index) => {
-  //   return (
-  //     <div className="col-md-6 col-lg-4" key={index}>
-  //       < PostItemImageVertical post={post} isVerticalImage= {true} />
-  //     </div>
-  //   )
-  // })
 	return (
 		<>
 			<div className="top-read-for-u">
@@ -121,23 +107,19 @@ const RecommendedWebinar = ({item}) => {
 /* Main Component Detail */
 
 const ResourceDetails = ({ item, dynamicPageItem }) => {
-	console.log(item, 'babab', dynamicPageItem);
+	// console.log(item, 'babab', dynamicPageItem);
+	console.log('item', item, resource);
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
-
-	console.log('resourceTypes', resourceTopics);
+	const classModule = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? 'res-ebook' : ''
 
 	const topReadsItem = {
 		customFields: {
 			content: `<h2>Top Picks For You</h2>`,
 			listeBooks: resource.topReads,
-			// cTAButton: {
-			// 	href: resource.fileDownload?.url,
-			// 	text: `Download`
-			// }
 		}
 	}
 
@@ -145,14 +127,26 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 
 	const topWebinar = resource.topWebinars?.length ? resource.topWebinars[0] : resource.topWebinars
 
-	console.log('item', item, resource);
+	/* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
 	return (
 		<React.Fragment>
-		<section className="resource-details new-resource-detail">
+		<section ref={thisModuleRef} className={`resource-details new-resource-detail animation ${classModule}`}>
 			<div className="space-70 space-dt-90"></div>
-			<div className="container ps-rv z-2">
+			<div className="container ps-rv z-2 ">
         <div className="d-lg-flex flex-wrap">
-          <div className="cs-detail-cont-left content-ul beauty-ul">
+          <div className="cs-detail-cont-left content-ul beauty-ul anima-left">
             <div className="cs-detail-inner last-mb-none">
 							<div className="date-box small-paragraph">
 								<span className="date">{DateTime.fromISO(resource.date).toFormat("MMM d, yyyy")}</span>
@@ -162,7 +156,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 							<p>{resource.subTitle}</p>
 						}
 						{resource.image &&
-							<div className="image">
+							<div className="image-thumb">
 								<ResponsiveImage img={resource.image}
 									breaks={[{ w: 640, max: 640 }, { w: 780, max: 800 }, { w: 1200, max: 1920 }]} />
 							</div>
@@ -174,7 +168,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
             </div>
           </div>
           {/*  */}
-          <div className="cs-detail-cont-right">
+          <div className="cs-detail-cont-right anima-right">
 						{resourceTypes && resourceTypes.length &&
 							<div className="small-paragraph cs-tag-wrap last-mb-none">
 								<h4>Categories</h4>
@@ -191,21 +185,18 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 								</p>
 							</div>
 						}
-            
 						{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
 							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
 						}
 						<div className="space-50 space-dt-0"></div>
 						<SocialShare url={linkResource} />
 						<div className="space-50 space-dt-80"></div>
-
 						{topWebinar &&
 							<>
 								<RecommendedWebinar item={topWebinar} />
 								<div className="space-50 space-dt-80"></div>
 							</>
 						}
-            
             {/* <CTA /> */}
 						<RightCTA rightCTAButton={resource.rightCTAButton} rightCTAContent={resource.rightCTAContent} />
 
@@ -214,8 +205,12 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
       </div>
 		</section>
 
-		<TopReads item={topReadsItem} />
-		<div className="space-80"></div>
+		{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
+			<>
+				<TopReads item={topReadsItem} />
+				<div className="space-80"></div>
+			</>
+		}
 		</React.Fragment>
 	);
 }
