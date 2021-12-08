@@ -24,6 +24,11 @@ export default props => (
               referencename
               sortids
             }
+            resourceTypeName
+            resourceType {
+              contentid
+            }
+            resourceTypeID
             excerpt
             image {
               label
@@ -58,7 +63,6 @@ const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
   const [loadMoreIdx, setLoadMoreIdx] = useState(12)
   const stringContentId = dynamicPageItem.contentID.toString()
   const [checkIsEbook, setCheckIsEbook] = useState(false)
-
   const listResourceTopic = allResource.filter(resourceItem => {
     const data = {
       ...resourceItem.customFields,
@@ -68,13 +72,16 @@ const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
     if (dynamicPageItem.properties.referenceName === 'resourcetopics') {
       condition = ((data.resourceTopics_ValueField || '').split(',')).includes(stringContentId)
     }
+    if (dynamicPageItem.properties.referenceName === 'resourcetypes') {
+      condition = ((data.resourceTypeID || '').split(',')).includes(stringContentId)
+    }
     return condition
   })
 
   useEffect (() => {
-    const urlSearchParams = new URLSearchParams(window.location.search)
-    const isTestingEbook = urlSearchParams.get('test-ebook') === '1'
-    setCheckIsEbook(isTestingEbook)
+    if ((dynamicPageItem?.customFields?.title || '').toLowerCase() === 'ebook') {
+      setCheckIsEbook(true)
+    }
   }, [])
 
   const loadMoreHandler = () => {
@@ -112,7 +119,8 @@ const NewResourcesTagList = ({ allResource, page, item, dynamicPageItem }) => {
                   <Link to={url}> <h3 className="h3">{customFields.title}</h3></Link>
                   <p>{customFields.excerpt}</p>
                 </div>
-                {item.customFields.fileDownload && <a className="link-line link-purple " href={item.customFields.fileDownload.url} download>Download</a>}
+                <Link to={url} className="link-line link-purple">Download</Link>
+                {/* {item.customFields.fileDownload && <a className="link-line link-purple " href={item.customFields.fileDownload.url} download>Download</a>} */}
               </div>
             </div>
           })}
