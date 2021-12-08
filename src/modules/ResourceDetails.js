@@ -9,6 +9,7 @@ import './RichTextArea.scss'
 import LazyBackground from '../utils/LazyBackground'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import DownloadEbookForm from '../components/forms/DownloadEbookForm'
+import NewDowloadableEbooks from './NewDowloadableEbooks'
 
 
 
@@ -54,7 +55,14 @@ const RightCTA = ({rightCTAButton, rightCTAContent}) => {
 
 
 const TopReads = ({ item }) => {
-  const { content, listeBooks } = item
+  const posts = {
+		content: `<h2>Top Picks For You</h2>`,
+		cTAButton: '',
+		listEBooks: item.listEBooks
+	}
+	const { content, listeBooks } = item
+
+
   const listEBooks = listeBooks?.map((post, index) => {
     return (
       <div className="col-md-6 col-lg-4" key={index}>
@@ -113,6 +121,7 @@ const RecommendedWebinar = ({item}) => {
 /* Main Component Detail */
 
 const ResourceDetails = ({ item, dynamicPageItem }) => {
+	console.log(item, 'babab', dynamicPageItem);
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 
