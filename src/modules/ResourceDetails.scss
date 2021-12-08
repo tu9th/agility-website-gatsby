@@ -166,11 +166,6 @@
 			width: 60%;
 		}
 	}
-	.res-ebook {
-		.image-thumb .gatsby-image-wrapper {
-			max-width: 550px;
-		}
-	}
 	.cs-detail-inner {
 		h3,
 		h4,
@@ -183,6 +178,12 @@
 			line-height: 1.57;
   		letter-spacing: -0.28px;
 		}
+	}
+}
+
+.res-ebook {
+	.image-thumb .gatsby-image-wrapper {
+		max-width: 550px;
 	}
 }
 
