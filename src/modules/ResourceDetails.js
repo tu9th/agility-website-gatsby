@@ -82,14 +82,15 @@ const TopReads = ({ item }) => {
 const RecommendedWebinar = ({item}) => {
 	if (item) {
 		const customFields = item.customFields
-		const link = `/resources/${customFields.resourceTypeName.toLowerCase()}/${customFields.uRL}`;
+		let resType = customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
+  	const link = `/resources/${resType ? resType + '/' : ''}${customFields.uRL}`
 		return (
 			<div className="recommend-webinar">
 				<h3>Recommended Webinars</h3>
 				<LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
 				<div className="content-blog">
 					<p>
-						{renderTags(customFields.resourceType, 'tag')}
+						{renderTags(customFields.resourceType, 'category')}
 					</p>
 					{customFields.title &&
 						<h3>{customFields.title}</h3>
@@ -159,7 +160,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
             <div className="small-paragraph cs-tag-wrap last-mb-none">
               <h4>Categories</h4>
               <p>
-                {renderTags(resource.resourceType, 'tag')}
+                {renderTags(resource.resourceType, 'category')}
               </p>
             </div>
             <div className="small-paragraph cs-tag-wrap last-mb-none">
