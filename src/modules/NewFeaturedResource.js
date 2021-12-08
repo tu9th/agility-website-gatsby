@@ -8,8 +8,8 @@ import './NewFeaturedResource.scss'
 
 
 const NewFeaturedResource = ({ item }) => {
-  const { image, resourceTypeName, title, uRL, textblob, fileDownload } = item?.customFields?.featuredResource?.customFields
-
+  const { image, bookCover, resourceTypeName, title, uRL, textblob, fileDownload } = item?.customFields?.featuredResource?.customFields
+  console.log('item?.customFields?.featuredResource?.customFields', item?.customFields?.featuredResource?.customFields);
   /* animation module */
 	const thisModuleRef = useRef(null)
 	useEffect(() => {
@@ -32,7 +32,7 @@ const NewFeaturedResource = ({ item }) => {
         <div className="row">
           <div className="col col-12 col-lg-6">
             <div className="resource-lp-left max-w-470 ps-rv last-mb-none">
-              <ResponsiveImage img={image} />
+              <ResponsiveImage img={bookCover} />
             </div>
           </div>
           <div className="col col-12 col-lg-6">
