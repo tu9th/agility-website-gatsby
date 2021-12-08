@@ -12,13 +12,13 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
   const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
 
-  if (!isVerticalImage) {
-    if (post.customFields?.resourceTypeName) {
-      link = `/resources/${post.customFields?.resourceTypeName.toLowerCase()}/${post.customFields?.uRL}`
-    } else {
-      link = `/resources/${post.customFields?.uRL}`
-    }
-  }
+  // if (!isVerticalImage) {
+  //   if (post.customFields?.resourceTypeName) {
+  //     link = `/resources/${post.customFields?.resourceTypeName.toLowerCase()}/${post.customFields?.uRL}`
+  //   } else {
+  //     link = `/resources/${post.customFields?.uRL}`
+  //   }
+  // }
 
 	const trimText = (text) => {
 		let txt = text.split(' ')
@@ -53,7 +53,7 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
         <div className="flex last-mb-none">
           <p>{trimText(body)}</p>
         </div>
-        {link && isVerticalImage &&
+        {link &&
           <Link to={link} className="link-line link-purple mt-15">Download</Link>
         }
       </div>
