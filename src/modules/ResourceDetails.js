@@ -9,6 +9,7 @@ import './RichTextArea.scss'
 import LazyBackground from '../utils/LazyBackground'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import DownloadEbookForm from '../components/forms/DownloadEbookForm'
+import NewDowloadableEbooks from './NewDowloadableEbooks'
 
 
 
@@ -54,42 +55,45 @@ const RightCTA = ({rightCTAButton, rightCTAContent}) => {
 
 
 const TopReads = ({ item }) => {
-  const { content, listeBooks } = item
-  const listEBooks = listeBooks?.map((post, index) => {
-    return (
-      <div className="col-md-6 col-lg-4" key={index}>
-        < PostItemImageVertical post={post} isVerticalImage= {true} />
-      </div>
-    )
-  })
+  // const posts = {
+	// 	content: `<h2>Top Picks For You</h2>`,
+	// 	cTAButton: '',
+	// 	listEBooks: item.listEBooks
+	// }
+	// const { content, listeBooks } = item
+
+
+  // const listEBooks = listeBooks?.map((post, index) => {
+  //   return (
+  //     <div className="col-md-6 col-lg-4" key={index}>
+  //       < PostItemImageVertical post={post} isVerticalImage= {true} />
+  //     </div>
+  //   )
+  // })
 	return (
-    <section className="top-read-for-u">
-      <div className="container ps-rv bg">
-				<div className="top-read-line"></div>
-          <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
-						<h2>Top Picks For You</h2>
-					</div>
-        { listEBooks && listEBooks.length &&
-          <div className="row">
-            { listEBooks }
-          </div>
-        }
-      </div>
-    </section>
+		<>
+			<div className="top-read-for-u">
+				<div className="container ps-rv bg">
+					<div className="top-read-line"></div>
+				</div>
+			</div>
+			<NewDowloadableEbooks item={item} />
+		</>
 	);
 }
 
 const RecommendedWebinar = ({item}) => {
 	if (item) {
 		const customFields = item.customFields
-		const link = `/resources/${customFields.resourceTypeName.toLowerCase()}/${customFields.uRL}`;
+		let resType = customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
+  	const link = `/resources/${resType ? resType + '/' : ''}${customFields.uRL}`
 		return (
 			<div className="recommend-webinar">
 				<h3>Recommended Webinars</h3>
 				<LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
 				<div className="content-blog">
 					<p>
-						{renderTags(customFields.resourceType, 'tag')}
+						{renderTags(customFields.resourceType, 'category')}
 					</p>
 					{customFields.title &&
 						<h3>{customFields.title}</h3>
@@ -113,13 +117,20 @@ const RecommendedWebinar = ({item}) => {
 /* Main Component Detail */
 
 const ResourceDetails = ({ item, dynamicPageItem }) => {
+	console.log(item, 'babab', dynamicPageItem);
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 
 
 	const topReadsItem = {
-			content: resource.topReads_TextField,
-			listeBooks: resource.topReads
+		customFields: {
+			content: `<h2>Top Picks For You</h2>`,
+			listeBooks: resource.topReads,
+			// cTAButton: {
+			// 	href: resource.fileDownload?.url,
+			// 	text: `Download`
+			// }
+		}
 	}
 
 	const linkResource = `/resources/${resource.resourceTypeName.toLowerCase()}/${resource.uRL}`
@@ -159,7 +170,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
             <div className="small-paragraph cs-tag-wrap last-mb-none">
               <h4>Categories</h4>
               <p>
-                {renderTags(resource.resourceType, 'tag')}
+                {renderTags(resource.resourceType, 'category')}
               </p>
             </div>
             <div className="small-paragraph cs-tag-wrap last-mb-none">
@@ -168,11 +179,20 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
                 {renderTags(resource.resourceTopics, 'topic')}
               </p>
             </div>
-						<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />
+						{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
+							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
+						}
+						<div className="space-50 space-dt-0"></div>
 						<SocialShare url={linkResource} />
 						<div className="space-50 space-dt-80"></div>
-            <RecommendedWebinar item={topWebinar} />
-            <div className="space-50 space-dt-80"></div>
+
+						{topWebinar &&
+							<>
+								<RecommendedWebinar item={topWebinar} />
+								<div className="space-50 space-dt-80"></div>
+							</>
+						}
+            
             {/* <CTA /> */}
 						<RightCTA rightCTAButton={resource.rightCTAButton} rightCTAContent={resource.rightCTAContent} />
 
