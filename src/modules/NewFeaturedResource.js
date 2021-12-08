@@ -49,8 +49,8 @@ const NewFeaturedResource = ({ item }) => {
                   textblob &&
                   <div dangerouslySetInnerHTML={renderHTML(textblob)}></div>
                 }
-                { fileDownload && fileDownload.url &&
-                  <a href={fileDownload.url} className="btn mb-0">Download</a>
+                { uRL && resourceTypeName &&
+                  <a href={`/resources/${resourceTypeName.toLowerCase()}/${uRL}`} className="btn mb-0">Download</a>
                 }
               </div>
             </div>
