@@ -13,7 +13,11 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
 
   if (!isVerticalImage) {
-    link = `/resources/${post.customFields?.resourceTypeName.toLowerCase()}/${post.customFields?.uRL}`
+    if (post.customFields?.resourceTypeName) {
+      link = `/resources/${post.customFields?.resourceTypeName.toLowerCase()}/${post.customFields?.uRL}`
+    } else {
+      link = `/resources/${post.customFields?.uRL}`
+    }
   }
 
 	const trimText = (text) => {
