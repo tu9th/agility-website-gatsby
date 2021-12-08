@@ -29,7 +29,7 @@ const NewDowloadableEbooks = ({ item }) => {
         }
         { cTAButton && cTAButton.href &&
           <div className="text-center mt-35">
-            <Link to={cTAButton?.href} className="btn">
+            <Link to={cTAButton?.href} className="btn btn-browser-all">
               <span>{cTAButton.text ? cTAButton.text : 'Browser All Downloadable items'}</span>
             </Link>
           </div>
