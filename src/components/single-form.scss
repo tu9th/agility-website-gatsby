@@ -439,6 +439,17 @@
       }
     }
 
+    .invalid-feedback {
+      display: none;
+      font-size: 12px;
+      color: $invalid;
+
+      position: absolute;
+      right: 0;
+      top: 7px;
+
+    }
+
 }
 
 @media (max-width: 991px) {
