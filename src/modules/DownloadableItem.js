@@ -5,8 +5,7 @@ import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
 const DownloadableItem = ({ post, isVerticalImage }) => {
-  console.log('ôsodsdsd', post);
-  let thumbUrl = post?.customFields?.coverImage ? post?.customFields?.coverImage?.url : post?.customFields?.image?.url
+  let thumbUrl = isVerticalImage ? (post?.customFields?.coverImage ? post?.customFields?.coverImage?.url : '/images/ebook-cover-default.png') : post?.customFields?.image?.url
   let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
   const link = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
   const title = post?.customFields?.title
@@ -17,11 +16,6 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
 		let txt = text.split(' ')
 		return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
 	}
-
-  if (!isVerticalImage) {
-    thumbUrl = post?.customFields?.image?.url
-  }
-  console.log('thumbUrl', title, isVerticalImage, thumbUrl);
   return (
     <div className={`downloadable-box h-100 transition-25 ps-rv d-flex flex-column  ${isVerticalImage ? 'vertical' : 'horizon'}`}>
         {isVerticalImage &&
