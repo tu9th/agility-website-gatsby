@@ -126,6 +126,7 @@ const NewAllResources = ({item, resources, resourceType, content, numberItemPerP
 	const onChangeFilter = ({ name, value }) => {
 		if (value.includes(1)) {
 			setPostRender(resources)
+			setPostOpts({...tmpPostOptions, selectedOption: [1]})
 		} else {
 			const detailCategory = resourceType.find((node) => {
 				return value.includes(node.contentID)
@@ -134,6 +135,7 @@ const NewAllResources = ({item, resources, resourceType, content, numberItemPerP
 				return value.includes(+res.customFields?.resourceTypeID)
 			})
 			setPostRender(newResoucesFilter)
+			setPostOpts({...tmpPostOptions, selectedOption: value})
 		}
 		setLoadMoreIdx(numberItemPerPage ? Number(numberItemPerPage) : 12)
 	}
