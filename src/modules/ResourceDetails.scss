@@ -138,7 +138,18 @@
 
 .new-resource-detail {
 	position: relative;
-	background-image: linear-gradient(to bottom, #e9f0f5 0%, #fff);
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		height: 872px;
+		max-height: 100%;
+		opacity: .75;
+		background-image: linear-gradient(to bottom, #e9f0f5 0%, #fff);
+	}
 	// .resource-lp-left {
 	// 	margin-left: 0;
 	// 	margin: 20px 0 40px;

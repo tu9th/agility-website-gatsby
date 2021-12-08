@@ -131,7 +131,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 		<React.Fragment>
 		<section className="resource-details new-resource-detail">
 			<div className="space-70 space-dt-90"></div>
-			<div className="container">
+			<div className="container ps-rv z-2">
         <div className="d-lg-flex flex-wrap">
           <div className="cs-detail-cont-left content-ul beauty-ul">
             <div className="cs-detail-inner last-mb-none">
