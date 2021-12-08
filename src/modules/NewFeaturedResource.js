@@ -1,19 +1,34 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { renderHTML } from '../agility/utils'
 import Spacing from './Spacing';
 
 import ResponsiveImage from '../components/responsive-image.jsx'
-
+import { animationElementInnerComponent } from '../global/javascript/animation';
 import './NewFeaturedResource.scss'
 
 
 const NewFeaturedResource = ({ item }) => {
   const { image, resourceTypeName, title, uRL, textblob, fileDownload } = item?.customFields?.featuredResource?.customFields
+
+  /* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
     <>
-    <section className="new-feature-res ps-rv">
+    <section ref={thisModuleRef} className="new-feature-res ps-rv animation">
     <div className="space-50 space-dt-70"></div>
-      <div className="container ps-rv z-2 bg">
+      <div className="container ps-rv z-2 bg anima-bottom">
         <div className="row">
           <div className="col col-12 col-lg-6">
             <div className="resource-lp-left max-w-470 ps-rv last-mb-none">

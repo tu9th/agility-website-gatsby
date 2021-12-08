@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { renderHTML } from '../agility/utils'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import './NewWebinarDowload.scss'
 import Spacing from './Spacing';
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
+import { animationElementInnerComponent } from '../global/javascript/animation';
+
 
 const NewDowloadableEbooks = ({ item }) => {
   const { content, cTAButton, listWebinar } = item?.customFields
@@ -15,10 +17,25 @@ const NewDowloadableEbooks = ({ item }) => {
       </div>
     )
   })
+
+    	/* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
     <>
-    <section className="mod-webi">
-      <div className="container ps-rv bg">
+    <section ref={thisModuleRef} className="mod-webi animation">
+      <div className="container ps-rv bg anima-bottom">
         { content &&
           <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul" dangerouslySetInnerHTML={renderHTML(content)}></div>
         }
