@@ -21,10 +21,10 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
         {isVerticalImage &&
          <div className="downloadable-thumb-vertical ps-rv">
             <div className="downloadable-pattern">
-            <Lazyload offset={Helpers.lazyOffset}><img src="/images/features/downloadable-pattern.svg" className="bg transition-25"></img></Lazyload>
+            <Lazyload offset={Helpers.lazyOffset}><img src="/images/features/downloadable-pattern.svg" className="bg transition-25" alt={title || 'Ebook'}></img></Lazyload>
             </div>
             <div className="downloadable-img">
-              <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>
+              <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25" alt={title || 'Ebook'}></img></Lazyload>
             </div>
           </div>
         }
