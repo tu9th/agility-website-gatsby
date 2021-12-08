@@ -110,12 +110,13 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 	item = item.customFields;
 
 		// console.log(item, 'babab', dynamicPageItem);
-	// console.log('item', item, resource);
+	console.log('item', item, resource);
 
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
 	const classModule = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? 'res-ebook' : ''
-
+	const thumbImage = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? resource.bookCover : resource.image
+	thumbImage.label = thumbImage.label ? thumbImage.label : resource.title
 	const topReadsItem = {
 		customFields: {
 			content: `<h2>Top Picks For You</h2>`,
@@ -155,9 +156,9 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 						{resource.subTitle &&
 							<p>{resource.subTitle}</p>
 						}
-						{resource.image &&
+						{thumbImage && thumbImage.url &&
 							<div className="image-thumb">
-								<ResponsiveImage img={resource.image}
+								<ResponsiveImage img={thumbImage}
 									breaks={[{ w: 640, max: 640 }, { w: 780, max: 800 }, { w: 1200, max: 1920 }]} />
 							</div>
 						}

@@ -5,7 +5,7 @@ import Lazyload from 'react-lazyload'
 import Helpers from '../global/javascript/Helpers'
 
 const DownloadableItem = ({ post, isVerticalImage }) => {
-  const thumbUrl = post?.customFields?.postImage ? post?.customFields?.postImage?.url : post?.customFields?.image?.url
+  let thumbUrl = isVerticalImage ? (post?.customFields?.bookCover ? post?.customFields?.bookCover?.url : '/images/ebook-cover-default.png') : post?.customFields?.image?.url
   let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
   const link = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
   const title = post?.customFields?.title
@@ -16,16 +16,15 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
 		let txt = text.split(' ')
 		return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
 	}
-
   return (
     <div className={`downloadable-box h-100 transition-25 ps-rv d-flex flex-column  ${isVerticalImage ? 'vertical' : 'horizon'}`}>
         {isVerticalImage &&
          <div className="downloadable-thumb-vertical ps-rv">
             <div className="downloadable-pattern">
-            <Lazyload offset={Helpers.lazyOffset}><img src="/images/features/downloadable-pattern.svg" className="bg transition-25"></img></Lazyload>
+            <Lazyload offset={Helpers.lazyOffset}><img src="/images/features/downloadable-pattern.svg" className="bg transition-25" alt={title || 'Ebook'}></img></Lazyload>
             </div>
             <div className="downloadable-img">
-              <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25"></img></Lazyload>
+              <Lazyload offset={Helpers.lazyOffset}><img src={thumbUrl} className="bg transition-25" alt={title || 'Ebook'}></img></Lazyload>
             </div>
           </div>
         }

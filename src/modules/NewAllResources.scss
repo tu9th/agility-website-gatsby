@@ -21,7 +21,7 @@
   }
   .btn {
     padding: 18px 40px;
-    // width: 100%;
+    width: auto !important;
     &:after, span {
       color: $blue;
     }
