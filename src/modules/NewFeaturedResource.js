@@ -8,9 +8,7 @@ import './NewFeaturedResource.scss'
 
 
 const NewFeaturedResource = ({ item }) => {
-  const { image, resourceTypeName, title, uRL, textblob } = item?.customFields?.featuredResource?.customFields
-
-  console.log('ssss', item);
+  const { image, resourceTypeName, title, uRL, textblob, fileDownload } = item?.customFields?.featuredResource?.customFields
 	return (
     <>
     <section className="new-feature-res ps-rv">
@@ -20,13 +18,6 @@ const NewFeaturedResource = ({ item }) => {
           <div className="col col-12 col-lg-6">
             <div className="resource-lp-left max-w-470 ps-rv last-mb-none">
               <ResponsiveImage img={image} />
-              {/* <div className="res-pattern-logo mb-2">
-                <img className="ps-as" src="./images/features/line-pattern.svg" alt="Hello"/>
-                <img src="./images/features/logo-pattern.svg" alt="Hello"/>
-              </div>
-              { title &&
-                <h3 className="h1">{title}</h3>
-              } */}
             </div>
           </div>
           <div className="col col-12 col-lg-6">
@@ -43,7 +34,9 @@ const NewFeaturedResource = ({ item }) => {
                   textblob &&
                   <div dangerouslySetInnerHTML={renderHTML(textblob)}></div>
                 }
-                <a href={uRL ? uRL : '#'} className="btn mb-0">Download</a>
+                { fileDownload && fileDownload.url &&
+                  <a href={fileDownload.url} className="btn mb-0">Download</a>
+                }
               </div>
             </div>
           </div>
