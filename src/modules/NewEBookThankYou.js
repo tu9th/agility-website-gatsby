@@ -15,57 +15,60 @@ export default props => (
 	<StaticQuery
 		query={graphql`
 		query NewEBookThankYouQuery {
-			allAgilityResource(sort: {fields: customFields___date, order: DESC}) {
-				nodes {
+      allAgilityResource(
+        filter: {customFields: {resourceTypeName: {in: ["eBook","Webinar"]}}}
+      ) {
+        totalCount
+        nodes {
           customFields {
-          image {
-            url
-            width
-            height
-            label
+            image {
+              url
+              width
+              height
+              label
+            }
+            bookCover {
+              url
+            }
+            thankYouContent
+            resourceType {
+              contentid
+            }
+            date(formatString: "MMMM D, YYYY")
+            title
+            uRL
+            resourceTypeID
+            resourceTypeName
+            resourceTopics {
+              referencename
+              sortids
+            }
+            topReads {
+              referencename
+            }
+            topWebinars {
+              referencename
+            }
+            resourceTopics_TextField
+            resourceTopics_ValueField
+            topReads_ValueField
+            topReads_TextField
+            topWebinars_TextField
+            topWebinars_ValueField
+            excerpt
+            cTA {
+              contentid
+            }
+            fileDownload {
+              url
+              label
+              filesize
+            }
+            downloadButtonText
           }
-          thankYouContent
-          resourceType {
-            contentid
-          }
-          bookCover {
-            url
-          }
-          date(formatString: "MMMM D, YYYY")
-          title
-          uRL
-          resourceTypeID
-          resourceTypeName
-          resourceTopics {
-            referencename
-            sortids
-          }
-          topReads {
-            referencename
-          }
-          topWebinars {
-            referencename
-          }
-          resourceTopics_TextField
-          resourceTopics_ValueField
-          topReads_ValueField
-          topReads_TextField
-          topWebinars_TextField
-          topWebinars_ValueField
-          excerpt
-          cTA {
-            contentid
-          }
-          fileDownload {
-            url
-            label
-            filesize
-          }
-          downloadButtonText
+          contentID
         }
-        contentID
-				}
-			}
+      }
 		  }
     `}
 		render={queryData => {
@@ -73,6 +76,7 @@ export default props => (
 			let resources = queryData.allAgilityResource.nodes
 			const viewModel = {
 				item: props.item,
+        dynamicPageItem: props.dynamicPageItem,
 				resources,
 			}
 			return (<NewEBookThankYou {...viewModel}/>);
@@ -89,11 +93,11 @@ const FeatureCaseStudies = ({topWebinar}) => {
         <h2>Top Webinars for You</h2>
       </div>
       <div className="row">
-        {topWebinar.map(post => {
+        {topWebinar?.map((post, index) => {
           let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
           post.url = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
           return (
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" key={index}>
               <PostItem showCustomerLogo={true} post={post} hideDescription={true} />
             </div>
           )
@@ -117,9 +121,9 @@ const DownloadEbook = ({topReads, isVerticalImage}) => {
           <h2>Top Reads For You</h2>
         </div>
         <div className="row">
-          {topReads.map(post => {
+          {topReads.map((post, index) => {
             return (
-              <div className="col-md-6 col-lg-4">
+              <div className="col-md-6 col-lg-4" key={index}>
                 < PostItemImageVertical post={post} isVerticalImage= {isVerticalImage} />
               </div>
             )
@@ -165,10 +169,10 @@ const FeatureRes = ({ eBookSelected }) => {
   )
 }
 
-const NewEBookThankYou = ({ item, resources }) => {
-  const [eBookSelected, setEBookSelected] = useState(null)
-  const [topWebinar, setTopWebinar] = useState(null)
-  const [topRead, setTopRead] = useState(null)
+const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
+  const [eBookSelected, setEBookSelected] = useState(dynamicPageItem)
+  const topWebinarIds = eBookSelected?.customFields?.topWebinars_ValueField?.split(',')
+  const topReadIds = eBookSelected?.customFields?.topReads_ValueField?.split(',')
 
   const handleGetTopWebinars = (topWebinarIds) => {
     let results = []
@@ -181,7 +185,7 @@ const NewEBookThankYou = ({ item, resources }) => {
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
-        if (count < 3) {
+        if (count < 3 && resources[0].customFields?.resourceTypeName === 'Webinar') {
           results.push(resources[0])
           count++
         }
@@ -204,7 +208,7 @@ const NewEBookThankYou = ({ item, resources }) => {
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
-        if (count < 3) {
+        if (count < 3 && resources[0].customFields?.resourceTypeName === 'eBook') {
           results.push(resources[0])
           count++
         }
@@ -215,17 +219,11 @@ const NewEBookThankYou = ({ item, resources }) => {
     }
     return results
   }
-  useEffect(() => {
-    const pathName = window.location.pathname
-    const urlEBook = pathName.substring(pathName.indexOf('/ebook/') + 7, pathName.indexOf('/thank-you'))
-    const eBookFinded = resources.find(res => res.customFields?.uRL === urlEBook)
-    const topWebinarIds = eBookFinded?.customFields?.topWebinars_ValueField?.split(',')
-    const topReadIds = eBookFinded?.customFields?.topReads_ValueField?.split(',')
-    setTopWebinar(handleGetTopWebinars(topWebinarIds))
-    setTopRead(handleGetTopReads(topReadIds))
-    console.log('eBookFinded', eBookFinded)
-    setEBookSelected(eBookFinded)
-  }, [])
+
+  const topWebinar = handleGetTopWebinars(topWebinarIds)
+
+  const topRead = handleGetTopReads(topReadIds)
+
 	return (
 		<>
     { eBookSelected &&
