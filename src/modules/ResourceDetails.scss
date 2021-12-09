@@ -236,9 +236,14 @@
 		margin-bottom: 70px;
 	}
 }
-@media screen and (min-width: 1501px) {
+@media screen and (min-width: 1200px) {
 	.new-resource-detail {
 		padding-bottom: 100px;
+	}
+}
+@media screen and (min-width: 1501px) {
+	.new-resource-detail {
+		padding-bottom: 200px;
 	}
 	.recommend-webinar {
 		h3 {
