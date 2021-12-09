@@ -15,9 +15,65 @@ export default props => (
 	<StaticQuery
 		query={graphql`
 		query NewEBookThankYouQuery {
-      allAgilityResource(
-        filter: {customFields: {resourceTypeName: {in: ["eBook","Webinar"]}}}
-      ) {
+      eBook:allAgilityResource(
+				filter: {customFields: {resourceTypeName: {eq: "eBook"}}}
+				limit: 4
+			) {
+        totalCount
+        nodes {
+          customFields {
+            image {
+              url
+              width
+              height
+              label
+            }
+            bookCover {
+              url
+            }
+            thankYouContent
+            resourceType {
+              contentid
+            }
+            date(formatString: "MMMM D, YYYY")
+            title
+            uRL
+            resourceTypeID
+            resourceTypeName
+            resourceTopics {
+              referencename
+              sortids
+            }
+            topReads {
+              referencename
+            }
+            topWebinars {
+              referencename
+            }
+            resourceTopics_TextField
+            resourceTopics_ValueField
+            topReads_ValueField
+            topReads_TextField
+            topWebinars_TextField
+            topWebinars_ValueField
+            excerpt
+            cTA {
+              contentid
+            }
+            fileDownload {
+              url
+              label
+              filesize
+            }
+            downloadButtonText
+          }
+          contentID
+        }
+      }
+      Webinar:allAgilityResource(
+				filter: {customFields: {resourceTypeName: {eq: "Webinar"}}}
+				limit: 4
+			) {
         totalCount
         nodes {
           customFields {
@@ -73,7 +129,7 @@ export default props => (
     `}
 		render={queryData => {
 			//filter out only those logos that we want...
-			let resources = queryData.allAgilityResource.nodes
+			let resources = queryData.eBook.nodes.concat(queryData.Webinar.nodes)
 			const viewModel = {
 				item: props.item,
         dynamicPageItem: props.dynamicPageItem,

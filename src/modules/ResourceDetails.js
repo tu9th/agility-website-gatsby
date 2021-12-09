@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import { Link } from "gatsby"
+import { graphql, StaticQuery, Link } from "gatsby"
 import {DateTime} from 'luxon'
 import { renderHTML } from '../agility/utils'
 import ResponsiveImage from '../components/responsive-image.jsx'
@@ -15,7 +15,6 @@ import { animationElementInnerComponent } from '../global/javascript/animation';
 
 
 const renderTags = (tags, type) => {
-	console.log(typeof tags, tags?.length);
 	if (typeof (tags) === 'object' && !tags.length) {
 		let link = `/resources/${type}/${tags?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 		return (
@@ -66,7 +65,6 @@ const TopReads = ({ item }) => {
 				</div>
 			</div>
 			<NewDowloadableEbooks item={item} />
-
 		</>
 	);
 }
@@ -81,7 +79,7 @@ const RecommendedWebinar = ({item}) => {
 				<h3>Recommended Webinars</h3>
 				<LazyBackground className="re-webina-thumb bg ps-rv" src={customFields.image?.url} >
 					<Link to={link} className="ps-as d-flex align-items-center justify-content-center"><span className="sr-only">{customFields.title}</span>
-						<span class="icomoon icon-video"><span class="path3"></span></span>
+						<span className="icomoon icon-video"><span className="path3"></span></span>
 					</Link>
 				</LazyBackground>
 				<div className="content-blog">
@@ -108,15 +106,138 @@ const RecommendedWebinar = ({item}) => {
 /* ______________________ */
 /* ______________________ */
 /* Main Component Detail */
-
-const ResourceDetails = ({ item, dynamicPageItem }) => {
+export default props => (
+	<StaticQuery
+		query={graphql`
+		query NewResourceDetailQuery {
+      eBook:allAgilityResource(
+				filter: {customFields: {resourceTypeName: {eq: "eBook"}}}
+				limit: 4
+			) {
+        totalCount
+        nodes {
+          customFields {
+            image {
+              url
+              width
+              height
+              label
+            }
+            bookCover {
+              url
+            }
+            thankYouContent
+            resourceType {
+              contentid
+            }
+            date(formatString: "MMMM D, YYYY")
+            title
+            uRL
+            resourceTypeID
+            resourceTypeName
+            resourceTopics {
+              referencename
+              sortids
+            }
+            topReads {
+              referencename
+            }
+            topWebinars {
+              referencename
+            }
+            resourceTopics_TextField
+            resourceTopics_ValueField
+            topReads_ValueField
+            topReads_TextField
+            topWebinars_TextField
+            topWebinars_ValueField
+            excerpt
+            cTA {
+              contentid
+            }
+            fileDownload {
+              url
+              label
+              filesize
+            }
+            downloadButtonText
+          }
+          contentID
+        }
+      }
+      Webinar:allAgilityResource(
+				filter: {customFields: {resourceTypeName: {eq: "Webinar"}}}
+				limit: 4
+			) {
+        totalCount
+        nodes {
+          customFields {
+            image {
+              url
+              width
+              height
+              label
+            }
+            bookCover {
+              url
+            }
+            thankYouContent
+            resourceType {
+              contentid
+            }
+            date(formatString: "MMMM D, YYYY")
+            title
+            uRL
+            resourceTypeID
+            resourceTypeName
+            resourceTopics {
+              referencename
+              sortids
+            }
+            topReads {
+              referencename
+            }
+            topWebinars {
+              referencename
+            }
+            resourceTopics_TextField
+            resourceTopics_ValueField
+            topReads_ValueField
+            topReads_TextField
+            topWebinars_TextField
+            topWebinars_ValueField
+            excerpt
+            cTA {
+              contentid
+            }
+            fileDownload {
+              url
+              label
+              filesize
+            }
+            downloadButtonText
+          }
+          contentID
+        }
+      }
+		  }
+    `}
+		render={queryData => {
+			//filter out only those logos that we want...
+			let resources = queryData.eBook.nodes.concat(queryData.Webinar.nodes)
+			const viewModel = {
+				item: props.item,
+        dynamicPageItem: props.dynamicPageItem,
+				resources,
+			}
+			return (<ResourceDetails {...viewModel}/>);
+		}}
+	/>
+)
+const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
-
-		// console.log(item, 'babab', dynamicPageItem);
-	console.log('item', item, resource);
-
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
 	const classModule = resource.resourceTypeName &&
@@ -126,11 +247,34 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 	(resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName.toLowerCase() === 'webinar') ? resource.bookCover : resource.image;
 	if (thumbImage) {
 		thumbImage.label = thumbImage?.label ? thumbImage.label : resource.title
-	}	
+	}
+	const topReadIds = resource?.topReads_ValueField?.split(',')
+	const handleGetTopReads = (topReadIds) => {
+    let results = []
+    if (topReadIds?.length) {
+      const formatTopReadIds = topReadIds.map(id => Number(id))
+      results = resources.filter(res => {
+        return formatTopReadIds.includes(res.contentID)
+      })
+    }
+    if(results.length < 3) {
+      let count = results.length
+      for(let i = 0; i < resources.length; i++) {
+        if (count < 3 && resources[0].customFields?.resourceTypeName === 'eBook') {
+          results.push(resources[0])
+          count++
+        }
+        if (count === 3) {
+          break;
+        }
+      }
+    }
+    return results
+  }
 	const topReadsItem = {
 		customFields: {
 			content: `<h2>Top Picks For You</h2>`,
-			listeBooks: resource.topReads,
+			listeBooks: handleGetTopReads(topReadIds),
 			cTAButton: {
 				href: '/resources',
 				text: 'View All Resources'
@@ -201,7 +345,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 							</div>
 						}
 						{(resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'webinar') &&
-							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
+							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />
 						}
 						<div className="space-50 space-dt-0"></div>
 						<SocialShare url={linkResource} />
@@ -229,9 +373,6 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 		</React.Fragment>
 	);
 }
-
-export default ResourceDetails;
-
 
 const SocialShare = ({ url }) => {
 	let shareLink = url.charAt(0) === '/' ? url.replace('/', '') : url
