@@ -188,7 +188,7 @@
 	// border-bottom-right-radius: 0;
 	&:hover {
 		.icon-video {
-			background: rgba(255, 255, 255, 0.6);
+			background: rgba(255, 255, 255, 0.93);
 		}
 	}
 	.icon-video {
@@ -279,12 +279,12 @@
 }
 @media screen and (min-width: 1200px) {
 	.new-resource-detail {
-		padding-bottom: 100px;
+		padding-bottom: 60px;
 	}
 }
 @media screen and (min-width: 1501px) {
 	.new-resource-detail {
-		padding-bottom: 200px;
+		padding-bottom: 80px;
 	}
 	.res-download-detail {
 		.cs-detail-cont-left {

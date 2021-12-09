@@ -322,7 +322,7 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 						}
 
 						<div className="content mt-35">
-							<div dangerouslySetInnerHTML={renderHTML(resource.textblob)}></div>
+							<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(resource.textblob)}></div>
 						</div>
             </div>
           </div>
