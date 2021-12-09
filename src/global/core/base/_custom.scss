@@ -637,6 +637,9 @@ ol {
   .max-w-940 {
     max-width: 805px;
   }
+  .lg-mb-0 {
+    margin-bottom: 0 !important;
+  }
 }
 
 @include media-breakpoint-up(xl) {
