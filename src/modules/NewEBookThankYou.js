@@ -97,7 +97,7 @@ const FeatureCaseStudies = ({topWebinar}) => {
           let resType = post?.customFields?.resourceTypeName?.toLowerCase().replace(/ /g, "-") || ''
           post.url = `/resources/${resType ? resType + '/' : ''}${post?.customFields?.uRL}`
           return (
-            <div className="col-md-6 col-lg-4" key={index}>
+            <div className="col-md-6 col-lg-4 mb-45 lg-mb-0" key={index}>
               <PostItem showCustomerLogo={true} post={post} hideDescription={true} />
             </div>
           )
@@ -123,7 +123,7 @@ const DownloadEbook = ({topReads, isVerticalImage}) => {
         <div className="row">
           {topReads.map((post, index) => {
             return (
-              <div className="col-md-6 col-lg-4" key={index}>
+              <div className="col-md-6 col-lg-4 mb-45 lg-mb-0" key={index}>
                 < PostItemImageVertical post={post} isVerticalImage= {isVerticalImage} />
               </div>
             )
@@ -146,7 +146,7 @@ const FeatureRes = ({ eBookSelected }) => {
       <div className="space-80"></div>
       <div className="container ps-rv bg">
         <div className="row">
-          <div className="col col-12 col-lg-6">
+          <div className="col col-12 col-lg-6 mb-45 lg-mb-0">
             <div className="d-table w-100 h-100 resource-lp-right">
               <div className="d-table-cell">
                 { thankYouContent &&
@@ -229,10 +229,9 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
     { eBookSelected &&
 			<section className="mod-new-post-listing">
         <FeatureRes eBookSelected={eBookSelected} />
-        <div className="space-80"></div>
+        <div className="space-20 space-dt-40"></div>
         <FeatureCaseStudies topWebinar={topWebinar} />
-        <div className="space-80"></div>
-        <div className="space-80"></div>
+        <div className="space-30 space-dt-80"></div>
         {topRead && topRead.length &&
         <>
           <DownloadEbook topReads={topRead} isVerticalImage={true} />
