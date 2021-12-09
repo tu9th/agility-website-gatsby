@@ -120,8 +120,9 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 
 	const thumbImage = resource.resourceTypeName &&
 	(resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName.toLowerCase() === 'webinar') ? resource.bookCover : resource.image;
-
-	thumbImage.label = thumbImage.label ? thumbImage.label : resource.title
+	if (thumbImage) {
+		thumbImage.label = thumbImage?.label ? thumbImage.label : resource.title
+	}	
 	const topReadsItem = {
 		customFields: {
 			content: `<h2>Top Picks For You</h2>`,
