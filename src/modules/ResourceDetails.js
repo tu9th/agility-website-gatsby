@@ -66,6 +66,7 @@ const TopReads = ({ item }) => {
 				</div>
 			</div>
 			<NewDowloadableEbooks item={item} />
+
 		</>
 	);
 }
@@ -114,13 +115,21 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
-	const classModule = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? 'res-ebook' : ''
-	const thumbImage = resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' ? resource.bookCover : resource.image
+	const classModule = resource.resourceTypeName &&
+	(resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName.toLowerCase() === 'webinar') ? 'res-download-detail' : '';
+
+	const thumbImage = resource.resourceTypeName &&
+	(resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName.toLowerCase() === 'webinar') ? resource.bookCover : resource.image;
+
 	thumbImage.label = thumbImage.label ? thumbImage.label : resource.title
 	const topReadsItem = {
 		customFields: {
 			content: `<h2>Top Picks For You</h2>`,
 			listeBooks: resource.topReads,
+			cTAButton: {
+				href: '/resources',
+				text: 'View All Resources'
+			}
 		}
 	}
 
@@ -186,7 +195,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 								</p>
 							</div>
 						}
-						{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
+						{(resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'webinar') &&
 							<DownloadEbookForm item={{customFields: item}} slug={resource.uRL} />						
 						}
 						<div className="space-50 space-dt-0"></div>
@@ -206,7 +215,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
       </div>
 		</section>
 
-		{resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' &&
+		{(resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'webinar') &&
 			<>
 				<TopReads item={topReadsItem} />
 				<div className="space-80"></div>

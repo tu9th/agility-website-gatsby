@@ -12,6 +12,8 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
   const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
 
+  console.log('DownloadableItem', post);
+
 	const trimText = (text) => {
 		let txt = text.split(' ')
 		return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
@@ -29,11 +31,11 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
           </div>
         }
         {!isVerticalImage &&
-          <Link to={link} className="ps-as"><span className="sr-only">{title}</span></Link>
-        }
-        {!isVerticalImage &&
           <div className="downloadable-thumb ps-rv overflow-hidden">
             <LazyBackground src={thumbUrl} className="bg h-100 transition-25"></LazyBackground>
+            <Link to={link} className="ps-as d-flex align-items-center justify-content-center"><span className="sr-only">{title}</span>
+              <span class="icomoon icon-video"><span class="path3"></span></span>
+            </Link>
           </div>
         }
 
