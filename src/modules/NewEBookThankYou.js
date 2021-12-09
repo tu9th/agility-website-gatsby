@@ -227,8 +227,9 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
 	return (
 		<>
     { eBookSelected &&
+    <>
+      <FeatureRes eBookSelected={eBookSelected} />
 			<section className="mod-new-post-listing">
-        <FeatureRes eBookSelected={eBookSelected} />
         <div className="space-20 space-dt-40"></div>
         <FeatureCaseStudies topWebinar={topWebinar} />
         <div className="space-30 space-dt-80"></div>
@@ -240,6 +241,7 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
         }
 
 			</section>
+    </>
     }
 		</>
 	);
