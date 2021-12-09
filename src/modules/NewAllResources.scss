@@ -22,9 +22,6 @@
   .btn {
     padding: 18px 40px;
     width: auto !important;
-    &:after, span {
-      color: $blue;
-    }
   }
   .btn-load-more {
     max-width: 186px;
