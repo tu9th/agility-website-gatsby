@@ -145,6 +145,7 @@ const FeatureCaseStudies = ({topWebinar}) => {
   return (
     <section>
     <div className="container ps-rv bg">
+      <div className="top-read-line"></div>
       <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
         <h2>Top Webinars for You</h2>
       </div>
