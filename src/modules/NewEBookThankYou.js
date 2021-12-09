@@ -227,18 +227,22 @@ const FeatureRes = ({ eBookSelected }) => {
 }
 
 const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
+  console.log('dynamicPageItem', dynamicPageItem);
   const [eBookSelected, setEBookSelected] = useState(dynamicPageItem)
-  const topWebinarIds = eBookSelected?.customFields?.topWebinars_ValueField?.split(',')
-  const topReadIds = eBookSelected?.customFields?.topReads_ValueField?.split(',')
+  const topWebinarIds = eBookSelected?.customFields?.topWebinars
+  const topReadIds = eBookSelected?.customFields?.topReads
 
   const handleGetTopWebinars = (topWebinarIds) => {
-    let results = []
-    if (topWebinarIds?.length) {
-      const formatTopWebinarIds = topWebinarIds.map(id => Number(id))
-      results = resources.filter(res => {
-        return formatTopWebinarIds.includes(res.contentID)
-      })
-    }
+    let results = topWebinarIds || []
+    // if (topWebinarIds?.length) {
+    //   const formatTopWebinarIds = topWebinarIds.map(id => Number(id))
+    //   results = resources.filter(res => {
+    //     return formatTopWebinarIds.includes(res.contentID)
+    //   })
+    // }
+
+    // console.log('topWebinarIds', results);
+
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
@@ -255,13 +259,13 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
   }
 
   const handleGetTopReads = (topReadIds) => {
-    let results = []
-    if (topReadIds?.length) {
-      const formatTopReadIds = topReadIds.map(id => Number(id))
-      results = resources.filter(res => {
-        return formatTopReadIds.includes(res.contentID)
-      })
-    }
+    let results = topReadIds || []
+    // if (topReadIds?.length) {
+    //   const formatTopReadIds = topReadIds.map(id => Number(id))
+    //   results = resources.filter(res => {
+    //     return formatTopReadIds.includes(res.contentID)
+    //   })
+    // }
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
@@ -278,6 +282,7 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
   }
 
   const topWebinar = handleGetTopWebinars(topWebinarIds)
+  console.log('topWebinar', topWebinar);
 
   const topRead = handleGetTopReads(topReadIds)
 

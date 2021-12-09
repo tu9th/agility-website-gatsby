@@ -248,15 +248,15 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 	if (thumbImage) {
 		thumbImage.label = thumbImage?.label ? thumbImage.label : resource.title
 	}
-	const topReadIds = resource?.topReads_ValueField?.split(',')
+	const topReadIds = resource?.topReads
 	const handleGetTopReads = (topReadIds) => {
-    let results = []
-    if (topReadIds?.length) {
-      const formatTopReadIds = topReadIds.map(id => Number(id))
-      results = resources.filter(res => {
-        return formatTopReadIds.includes(res.contentID)
-      })
-    }
+    let results = topReadIds || []
+    // if (topReadIds?.length) {
+    //   const formatTopReadIds = topReadIds.map(id => Number(id))
+    //   results = resources.filter(res => {
+    //     return formatTopReadIds.includes(res.contentID)
+    //   })
+    // }
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
@@ -285,7 +285,6 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 	const linkResource = `/resources/${resource.resourceTypeName.toLowerCase()}/${resource.uRL}`
 
 	const topWebinar = resource.topWebinars?.length ? resource.topWebinars[0] : resource.topWebinars
-
 	/* animation module */
 	const thisModuleRef = useRef(null)
 	useEffect(() => {
