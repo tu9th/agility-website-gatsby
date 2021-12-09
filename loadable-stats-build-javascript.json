@@ -1,16 +1,16 @@
 {
-  "hash": "7dbef7cc0e3b401117b2",
+  "hash": "23f148093684ae9c9ef2",
   "publicPath": "/",
   "outputPath": "C:\\Users\\toan.nguyen.FKMAGENCY\\Documents\\9thwonder-v2\\agility-cms",
   "assetsByChunkName": {
     "polyfill": [
       "polyfill.js",
-      "polyfill.47a6a108d231cb3cc4ec.hot-update.js"
+      "polyfill.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "commons": [
       "commons.css",
       "commons.js",
-      "commons.47a6a108d231cb3cc4ec.hot-update.js"
+      "commons.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "component---cache-dev-404-page-js": [
       "component---cache-dev-404-page-js.js"
@@ -19,79 +19,98 @@
       "component---src-agility-components-dynamic-preview-page-js.js"
     ],
     "component---src-agility-page-js": [
-      "component---src-agility-page-js.js"
+      "component---src-agility-page-js.js",
+      "component---src-agility-page-js.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "component---src-pages-casestudy-detail-reskin-js": [
-      "component---src-pages-casestudy-detail-reskin-js.js"
+      "component---src-pages-casestudy-detail-reskin-js.js",
+      "component---src-pages-casestudy-detail-reskin-js.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "component---src-pages-resource-detail-js": [
       "component---src-pages-resource-detail-js.js",
-      "component---src-pages-resource-detail-js.47a6a108d231cb3cc4ec.hot-update.js"
+      "component---src-pages-resource-detail-js.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "component---src-pages-resource-reskin-js": [
       "component---src-pages-resource-reskin-js.js",
-      "component---src-pages-resource-reskin-js.47a6a108d231cb3cc4ec.hot-update.js"
+      "component---src-pages-resource-reskin-js.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "component---src-pages-resource-thank-js": [
       "component---src-pages-resource-thank-js.js",
-      "component---src-pages-resource-thank-js.47a6a108d231cb3cc4ec.hot-update.js"
+      "component---src-pages-resource-thank-js.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "2BoxContent": [
-      "2BoxContent.js"
+      "2BoxContent.js",
+      "2BoxContent.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "BestofBothWorldsModule": [
-      "BestofBothWorldsModule.js"
+      "BestofBothWorldsModule.js",
+      "BestofBothWorldsModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CTABlocks": [
       "CTABlocks.js"
     ],
     "Callout": [
-      "Callout.js"
+      "Callout.js",
+      "Callout.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CaseStudyContentPanel": [
-      "CaseStudyContentPanel.js"
+      "CaseStudyContentPanel.js",
+      "CaseStudyContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CaseStudyDetails": [
-      "CaseStudyDetails.js"
+      "CaseStudyDetails.js",
+      "CaseStudyDetails.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CaseStudyListing": [
-      "CaseStudyListing.js"
+      "CaseStudyListing.js",
+      "CaseStudyListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CaseStudyRotator": [
-      "CaseStudyRotator.js"
+      "CaseStudyRotator.js",
+      "CaseStudyRotator.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CaseStudyTechStack": [
       "CaseStudyTechStack.js"
     ],
     "CenteredContentPanel": [
-      "CenteredContentPanel.js"
+      "CenteredContentPanel.js",
+      "CenteredContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "CenteredCTAPanel": [
-      "CenteredCTAPanel.js"
+      "CenteredCTAPanel.js",
+      "CenteredCTAPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "ContentPanel": [
-      "ContentPanel.js"
+      "ContentPanel.js",
+      "ContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "ContentPanelForm": [
-      "ContentPanelForm.js"
+      "ContentPanelForm.js",
+      "ContentPanelForm.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "EventDetails": [
-      "EventDetails.js"
+      "EventDetails.js",
+      "EventDetails.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "EventListing": [
-      "EventListing.js"
+      "EventListing.js",
+      "EventListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "Faqs": [
-      "Faqs.js"
+      "Faqs.js",
+      "Faqs.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "FeatureBlocks": [
-      "FeatureBlocks.js"
+      "FeatureBlocks.js",
+      "FeatureBlocks.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "FeatureBlocksWithText": [
-      "FeatureBlocksWithText.js"
+      "FeatureBlocksWithText.js",
+      "FeatureBlocksWithText.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "FeatureComparisonChart": [
-      "FeatureComparisonChart.js"
+      "FeatureComparisonChart.js",
+      "FeatureComparisonChart.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "FeatureList": [
       "FeatureList.js"
@@ -103,73 +122,93 @@
       "FeaturedCaseStudies.js"
     ],
     "FeaturedPlanCTA": [
-      "FeaturedPlanCTA.js"
+      "FeaturedPlanCTA.js",
+      "FeaturedPlanCTA.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "FeaturedResources": [
-      "FeaturedResources.js"
+      "FeaturedResources.js",
+      "FeaturedResources.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "G2CrowdReviewListing": [
       "G2CrowdReviewListing.js"
     ],
     "GartnerPeerInsightsBar": [
-      "GartnerPeerInsightsBar.js"
+      "GartnerPeerInsightsBar.js",
+      "GartnerPeerInsightsBar.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "GatedDownload": [
-      "GatedDownload.js"
+      "GatedDownload.js",
+      "GatedDownload.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "GettingStarted": [
       "GettingStarted.js"
     ],
     "GuideLinks": [
-      "GuideLinks.js"
+      "GuideLinks.js",
+      "GuideLinks.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "InfoBox": [
-      "InfoBox.js"
+      "InfoBox.js",
+      "InfoBox.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "JobListing": [
-      "JobListing.js"
+      "JobListing.js",
+      "JobListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "LandingPageHeader": [
-      "LandingPageHeader.js"
+      "LandingPageHeader.js",
+      "LandingPageHeader.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "LandingPageHeaderForm": [
-      "LandingPageHeaderForm.js"
+      "LandingPageHeaderForm.js",
+      "LandingPageHeaderForm.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "LatestPosts": [
-      "LatestPosts.js"
+      "LatestPosts.js",
+      "LatestPosts.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "LatestResources": [
-      "LatestResources.js"
+      "LatestResources.js",
+      "LatestResources.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "RelatedResources": [
-      "RelatedResources.js"
+      "RelatedResources.js",
+      "RelatedResources.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "LogoListing": [
-      "LogoListing.js"
+      "LogoListing.js",
+      "LogoListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "LogoListingModule": [
-      "LogoListingModule.js"
+      "LogoListingModule.js",
+      "LogoListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "MostViewedArticles": [
       "MostViewedArticles.js"
     ],
     "NewIntegrationModule": [
-      "NewIntegrationModule.js"
+      "NewIntegrationModule.js",
+      "NewIntegrationModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PartnerContentPanel": [
-      "PartnerContentPanel.js"
+      "PartnerContentPanel.js",
+      "PartnerContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PartnerDetails": [
-      "PartnerDetails.js"
+      "PartnerDetails.js",
+      "PartnerDetails.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PartnerListing": [
-      "PartnerListing.js"
+      "PartnerListing.js",
+      "PartnerListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewPartnerListingModule": [
-      "NewPartnerListingModule.js"
+      "NewPartnerListingModule.js",
+      "NewPartnerListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewIntegrationListingModule": [
-      "NewIntegrationListingModule.js"
+      "NewIntegrationListingModule.js",
+      "NewIntegrationListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PartnerLogoListing": [
       "PartnerLogoListing.js"
@@ -184,7 +223,8 @@
       "PlanFeaturesCTA.js"
     ],
     "PodcastContentPanel": [
-      "PodcastContentPanel.js"
+      "PodcastContentPanel.js",
+      "PodcastContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PodcastDetail": [
       "PodcastDetail.js"
@@ -193,13 +233,16 @@
       "PodcastListing.js"
     ],
     "PostDetails": [
-      "PostDetails.js"
+      "PostDetails.js",
+      "PostDetails.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PostListing": [
-      "PostListing.js"
+      "PostListing.js",
+      "PostListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PricingPackagesModule": [
-      "PricingPackagesModule.js"
+      "PricingPackagesModule.js",
+      "PricingPackagesModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "PricingPlans": [
       "PricingPlans.js"
@@ -209,10 +252,11 @@
     ],
     "ResourceDetails": [
       "ResourceDetails.js",
-      "ResourceDetails.47a6a108d231cb3cc4ec.hot-update.js"
+      "ResourceDetails.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "ReviewRotator": [
-      "ReviewRotator.js"
+      "ReviewRotator.js",
+      "ReviewRotator.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "RichTextArea": [
       "RichTextArea.js"
@@ -221,16 +265,20 @@
       "RightLeftContent.js"
     ],
     "RightORLeftContentModule": [
-      "RightORLeftContentModule.js"
+      "RightORLeftContentModule.js",
+      "RightORLeftContentModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "RightOrLeftCaseStudyTestimonial": [
-      "RightOrLeftCaseStudyTestimonial.js"
+      "RightOrLeftCaseStudyTestimonial.js",
+      "RightOrLeftCaseStudyTestimonial.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "RightOrLeftSteps": [
-      "RightOrLeftSteps.js"
+      "RightOrLeftSteps.js",
+      "RightOrLeftSteps.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "SearchResults": [
-      "SearchResults.js"
+      "SearchResults.js",
+      "SearchResults.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "SectionBreadcrumbModule": [
       "SectionBreadcrumbModule.js"
@@ -239,22 +287,27 @@
       "Share.js"
     ],
     "SingleTestimonialPanel": [
-      "SingleTestimonialPanel.js"
+      "SingleTestimonialPanel.js",
+      "SingleTestimonialPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "Spacing": [
       "Spacing.js"
     ],
     "StarterTemplateDetails": [
-      "StarterTemplateDetails.js"
+      "StarterTemplateDetails.js",
+      "StarterTemplateDetails.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "StarterTemplateListing": [
-      "StarterTemplateListing.js"
+      "StarterTemplateListing.js",
+      "StarterTemplateListing.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "StayInTouch": [
-      "StayInTouch.js"
+      "StayInTouch.js",
+      "StayInTouch.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "SubmissionForm": [
-      "SubmissionForm.js"
+      "SubmissionForm.js",
+      "SubmissionForm.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "SubscribedThankYou": [
       "SubscribedThankYou.js"
@@ -272,44 +325,51 @@
       "TestimonialsLogos.js"
     ],
     "TriplePanelComparisonModule": [
-      "TriplePanelComparisonModule.js"
+      "TriplePanelComparisonModule.js",
+      "TriplePanelComparisonModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "TriplePanelModule": [
-      "TriplePanelModule.js"
+      "TriplePanelModule.js",
+      "TriplePanelModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "TwoPanelFeatureComparison": [
-      "TwoPanelFeatureComparison.js"
+      "TwoPanelFeatureComparison.js",
+      "TwoPanelFeatureComparison.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "VerticalContentPanel": [
-      "VerticalContentPanel.js"
+      "VerticalContentPanel.js",
+      "VerticalContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "VideoPlayerModule": [
-      "VideoPlayerModule.js"
+      "VideoPlayerModule.js",
+      "VideoPlayerModule.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewFeaturedResource": [
-      "NewFeaturedResource.js"
+      "NewFeaturedResource.js",
+      "NewFeaturedResource.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewDowloadableEbooks": [
       "NewDowloadableEbooks.js",
-      "NewDowloadableEbooks.47a6a108d231cb3cc4ec.hot-update.js"
+      "NewDowloadableEbooks.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewWebinarDowload": [
       "NewWebinarDowload.js",
-      "NewWebinarDowload.47a6a108d231cb3cc4ec.hot-update.js"
+      "NewWebinarDowload.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewFeaturedCaseStudies": [
       "NewFeaturedCaseStudies.js"
     ],
     "NewAllResources": [
-      "NewAllResources.js"
+      "NewAllResources.js",
+      "NewAllResources.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NewEBookThankYou": [
       "NewEBookThankYou.js",
-      "NewEBookThankYou.47a6a108d231cb3cc4ec.hot-update.js"
+      "NewEBookThankYou.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "NEWSocialSubscribe": [
       "NEWSocialSubscribe.js",
-      "NEWSocialSubscribe.47a6a108d231cb3cc4ec.hot-update.js"
+      "NEWSocialSubscribe.56b48d2b0f6b00ddafc2.hot-update.js"
     ],
     "framework": [
       "framework.js"
@@ -319,8 +379,8 @@
     {
       "type": "assets by status",
       "cached": true,
-      "filteredChildren": 117,
-      "size": 27926792
+      "filteredChildren": 178,
+      "size": 29145096
     }
   ],
   "namedChunkGroups": {
@@ -334,7 +394,7 @@
           "name": "polyfill.js"
         },
         {
-          "name": "polyfill.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "polyfill.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -361,7 +421,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -423,10 +483,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "component---src-agility-page-js.js"
+        },
+        {
+          "name": "component---src-agility-page-js.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -454,10 +517,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "component---src-pages-casestudy-detail-reskin-js.js"
+        },
+        {
+          "name": "component---src-pages-casestudy-detail-reskin-js.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -485,13 +551,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "component---src-pages-resource-detail-js.js"
         },
         {
-          "name": "component---src-pages-resource-detail-js.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "component---src-pages-resource-detail-js.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -519,13 +585,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "component---src-pages-resource-reskin-js.js"
         },
         {
-          "name": "component---src-pages-resource-reskin-js.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "component---src-pages-resource-reskin-js.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -553,13 +619,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "component---src-pages-resource-thank-js.js"
         },
         {
-          "name": "component---src-pages-resource-thank-js.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "component---src-pages-resource-thank-js.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -587,10 +653,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "2BoxContent.js"
+        },
+        {
+          "name": "2BoxContent.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -618,10 +687,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "BestofBothWorldsModule.js"
+        },
+        {
+          "name": "BestofBothWorldsModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -649,7 +721,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CTABlocks.js"
@@ -680,10 +752,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "Callout.js"
+        },
+        {
+          "name": "Callout.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -711,10 +786,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CaseStudyContentPanel.js"
+        },
+        {
+          "name": "CaseStudyContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -742,10 +820,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CaseStudyDetails.js"
+        },
+        {
+          "name": "CaseStudyDetails.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -773,10 +854,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CaseStudyListing.js"
+        },
+        {
+          "name": "CaseStudyListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -804,10 +888,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CaseStudyRotator.js"
+        },
+        {
+          "name": "CaseStudyRotator.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -852,10 +939,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CenteredContentPanel.js"
+        },
+        {
+          "name": "CenteredContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -883,10 +973,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "CenteredCTAPanel.js"
+        },
+        {
+          "name": "CenteredCTAPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -914,10 +1007,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "ContentPanel.js"
+        },
+        {
+          "name": "ContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -945,10 +1041,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "ContentPanelForm.js"
+        },
+        {
+          "name": "ContentPanelForm.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -976,10 +1075,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "EventDetails.js"
+        },
+        {
+          "name": "EventDetails.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1007,10 +1109,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "EventListing.js"
+        },
+        {
+          "name": "EventListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1038,10 +1143,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "Faqs.js"
+        },
+        {
+          "name": "Faqs.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1069,10 +1177,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeatureBlocks.js"
+        },
+        {
+          "name": "FeatureBlocks.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1100,10 +1211,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeatureBlocksWithText.js"
+        },
+        {
+          "name": "FeatureBlocksWithText.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1131,10 +1245,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeatureComparisonChart.js"
+        },
+        {
+          "name": "FeatureComparisonChart.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1162,7 +1279,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeatureList.js"
@@ -1210,7 +1327,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeaturedCaseStudies.js"
@@ -1241,10 +1358,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeaturedPlanCTA.js"
+        },
+        {
+          "name": "FeaturedPlanCTA.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1272,10 +1392,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "FeaturedResources.js"
+        },
+        {
+          "name": "FeaturedResources.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1303,7 +1426,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "G2CrowdReviewListing.js"
@@ -1334,10 +1457,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "GartnerPeerInsightsBar.js"
+        },
+        {
+          "name": "GartnerPeerInsightsBar.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1365,10 +1491,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "GatedDownload.js"
+        },
+        {
+          "name": "GatedDownload.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1396,7 +1525,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "GettingStarted.js"
@@ -1427,10 +1556,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "GuideLinks.js"
+        },
+        {
+          "name": "GuideLinks.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1458,10 +1590,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "InfoBox.js"
+        },
+        {
+          "name": "InfoBox.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1489,10 +1624,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "JobListing.js"
+        },
+        {
+          "name": "JobListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1520,10 +1658,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "LandingPageHeader.js"
+        },
+        {
+          "name": "LandingPageHeader.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1551,10 +1692,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "LandingPageHeaderForm.js"
+        },
+        {
+          "name": "LandingPageHeaderForm.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1582,10 +1726,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "LatestPosts.js"
+        },
+        {
+          "name": "LatestPosts.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1613,10 +1760,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "LatestResources.js"
+        },
+        {
+          "name": "LatestResources.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1644,10 +1794,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "RelatedResources.js"
+        },
+        {
+          "name": "RelatedResources.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1675,10 +1828,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "LogoListing.js"
+        },
+        {
+          "name": "LogoListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1706,10 +1862,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "LogoListingModule.js"
+        },
+        {
+          "name": "LogoListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1737,7 +1896,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "MostViewedArticles.js"
@@ -1768,10 +1927,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewIntegrationModule.js"
+        },
+        {
+          "name": "NewIntegrationModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1799,10 +1961,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PartnerContentPanel.js"
+        },
+        {
+          "name": "PartnerContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1830,10 +1995,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PartnerDetails.js"
+        },
+        {
+          "name": "PartnerDetails.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1861,10 +2029,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PartnerListing.js"
+        },
+        {
+          "name": "PartnerListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1892,10 +2063,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewPartnerListingModule.js"
+        },
+        {
+          "name": "NewPartnerListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1923,10 +2097,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewIntegrationListingModule.js"
+        },
+        {
+          "name": "NewIntegrationListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -1954,7 +2131,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PartnerLogoListing.js"
@@ -1985,7 +2162,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PeopleListing.js"
@@ -2016,7 +2193,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PlanDetailsTable.js"
@@ -2047,7 +2224,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PlanFeaturesCTA.js"
@@ -2078,10 +2255,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PodcastContentPanel.js"
+        },
+        {
+          "name": "PodcastContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2109,7 +2289,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PodcastDetail.js"
@@ -2157,10 +2337,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PostDetails.js"
+        },
+        {
+          "name": "PostDetails.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2188,10 +2371,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PostListing.js"
+        },
+        {
+          "name": "PostListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2219,10 +2405,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PricingPackagesModule.js"
+        },
+        {
+          "name": "PricingPackagesModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2250,7 +2439,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PricingPlans.js"
@@ -2281,7 +2470,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "PricingTable.js"
@@ -2312,13 +2501,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "ResourceDetails.js"
         },
         {
-          "name": "ResourceDetails.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "ResourceDetails.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2346,10 +2535,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "ReviewRotator.js"
+        },
+        {
+          "name": "ReviewRotator.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2377,7 +2569,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "RichTextArea.js"
@@ -2408,7 +2600,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "RightLeftContent.js"
@@ -2439,10 +2631,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "RightORLeftContentModule.js"
+        },
+        {
+          "name": "RightORLeftContentModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2470,10 +2665,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "RightOrLeftCaseStudyTestimonial.js"
+        },
+        {
+          "name": "RightOrLeftCaseStudyTestimonial.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2501,10 +2699,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "RightOrLeftSteps.js"
+        },
+        {
+          "name": "RightOrLeftSteps.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2532,10 +2733,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "SearchResults.js"
+        },
+        {
+          "name": "SearchResults.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2563,7 +2767,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "SectionBreadcrumbModule.js"
@@ -2594,7 +2798,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "Share.js"
@@ -2625,10 +2829,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "SingleTestimonialPanel.js"
+        },
+        {
+          "name": "SingleTestimonialPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2673,10 +2880,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "StarterTemplateDetails.js"
+        },
+        {
+          "name": "StarterTemplateDetails.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2704,10 +2914,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "StarterTemplateListing.js"
+        },
+        {
+          "name": "StarterTemplateListing.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2735,10 +2948,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "StayInTouch.js"
+        },
+        {
+          "name": "StayInTouch.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2766,10 +2982,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "SubmissionForm.js"
+        },
+        {
+          "name": "SubmissionForm.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2797,7 +3016,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "SubscribedThankYou.js"
@@ -2828,7 +3047,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "TabPanels.js"
@@ -2859,7 +3078,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "TestDrive.js"
@@ -2890,7 +3109,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "Testimonials.js"
@@ -2921,7 +3140,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "TestimonialsLogos.js"
@@ -2952,10 +3171,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "TriplePanelComparisonModule.js"
+        },
+        {
+          "name": "TriplePanelComparisonModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -2983,10 +3205,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "TriplePanelModule.js"
+        },
+        {
+          "name": "TriplePanelModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3014,10 +3239,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "TwoPanelFeatureComparison.js"
+        },
+        {
+          "name": "TwoPanelFeatureComparison.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3045,10 +3273,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "VerticalContentPanel.js"
+        },
+        {
+          "name": "VerticalContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3076,10 +3307,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "VideoPlayerModule.js"
+        },
+        {
+          "name": "VideoPlayerModule.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3107,10 +3341,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewFeaturedResource.js"
+        },
+        {
+          "name": "NewFeaturedResource.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3138,13 +3375,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewDowloadableEbooks.js"
         },
         {
-          "name": "NewDowloadableEbooks.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "NewDowloadableEbooks.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3172,13 +3409,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewWebinarDowload.js"
         },
         {
-          "name": "NewWebinarDowload.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "NewWebinarDowload.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3206,7 +3443,7 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewFeaturedCaseStudies.js"
@@ -3237,10 +3474,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewAllResources.js"
+        },
+        {
+          "name": "NewAllResources.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3268,13 +3508,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NewEBookThankYou.js"
         },
         {
-          "name": "NewEBookThankYou.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "NewEBookThankYou.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3302,13 +3542,13 @@
           "name": "commons.js"
         },
         {
-          "name": "commons.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "commons.56b48d2b0f6b00ddafc2.hot-update.js"
         },
         {
           "name": "NEWSocialSubscribe.js"
         },
         {
-          "name": "NEWSocialSubscribe.47a6a108d231cb3cc4ec.hot-update.js"
+          "name": "NEWSocialSubscribe.56b48d2b0f6b00ddafc2.hot-update.js"
         }
       ],
       "filteredAssets": 0,
@@ -3325,7 +3565,7 @@
       "id": "polyfill",
       "files": [
         "polyfill.js",
-        "polyfill.47a6a108d231cb3cc4ec.hot-update.js"
+        "polyfill.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3333,7 +3573,7 @@
       "files": [
         "commons.css",
         "commons.js",
-        "commons.47a6a108d231cb3cc4ec.hot-update.js"
+        "commons.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3375,46 +3615,50 @@
     {
       "id": "component---src-agility-page-js",
       "files": [
-        "component---src-agility-page-js.js"
+        "component---src-agility-page-js.js",
+        "component---src-agility-page-js.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "component---src-pages-casestudy-detail-reskin-js",
       "files": [
-        "component---src-pages-casestudy-detail-reskin-js.js"
+        "component---src-pages-casestudy-detail-reskin-js.js",
+        "component---src-pages-casestudy-detail-reskin-js.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "component---src-pages-resource-detail-js",
       "files": [
         "component---src-pages-resource-detail-js.js",
-        "component---src-pages-resource-detail-js.47a6a108d231cb3cc4ec.hot-update.js"
+        "component---src-pages-resource-detail-js.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "component---src-pages-resource-reskin-js",
       "files": [
         "component---src-pages-resource-reskin-js.js",
-        "component---src-pages-resource-reskin-js.47a6a108d231cb3cc4ec.hot-update.js"
+        "component---src-pages-resource-reskin-js.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "component---src-pages-resource-thank-js",
       "files": [
         "component---src-pages-resource-thank-js.js",
-        "component---src-pages-resource-thank-js.47a6a108d231cb3cc4ec.hot-update.js"
+        "component---src-pages-resource-thank-js.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "2BoxContent",
       "files": [
-        "2BoxContent.js"
+        "2BoxContent.js",
+        "2BoxContent.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "BestofBothWorldsModule",
       "files": [
-        "BestofBothWorldsModule.js"
+        "BestofBothWorldsModule.js",
+        "BestofBothWorldsModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3426,31 +3670,36 @@
     {
       "id": "Callout",
       "files": [
-        "Callout.js"
+        "Callout.js",
+        "Callout.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "CaseStudyContentPanel",
       "files": [
-        "CaseStudyContentPanel.js"
+        "CaseStudyContentPanel.js",
+        "CaseStudyContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "CaseStudyDetails",
       "files": [
-        "CaseStudyDetails.js"
+        "CaseStudyDetails.js",
+        "CaseStudyDetails.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "CaseStudyListing",
       "files": [
-        "CaseStudyListing.js"
+        "CaseStudyListing.js",
+        "CaseStudyListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "CaseStudyRotator",
       "files": [
-        "CaseStudyRotator.js"
+        "CaseStudyRotator.js",
+        "CaseStudyRotator.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3462,61 +3711,71 @@
     {
       "id": "CenteredContentPanel",
       "files": [
-        "CenteredContentPanel.js"
+        "CenteredContentPanel.js",
+        "CenteredContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "CenteredCTAPanel",
       "files": [
-        "CenteredCTAPanel.js"
+        "CenteredCTAPanel.js",
+        "CenteredCTAPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "ContentPanel",
       "files": [
-        "ContentPanel.js"
+        "ContentPanel.js",
+        "ContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "ContentPanelForm",
       "files": [
-        "ContentPanelForm.js"
+        "ContentPanelForm.js",
+        "ContentPanelForm.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "EventDetails",
       "files": [
-        "EventDetails.js"
+        "EventDetails.js",
+        "EventDetails.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "EventListing",
       "files": [
-        "EventListing.js"
+        "EventListing.js",
+        "EventListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "Faqs",
       "files": [
-        "Faqs.js"
+        "Faqs.js",
+        "Faqs.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "FeatureBlocks",
       "files": [
-        "FeatureBlocks.js"
+        "FeatureBlocks.js",
+        "FeatureBlocks.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "FeatureBlocksWithText",
       "files": [
-        "FeatureBlocksWithText.js"
+        "FeatureBlocksWithText.js",
+        "FeatureBlocksWithText.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "FeatureComparisonChart",
       "files": [
-        "FeatureComparisonChart.js"
+        "FeatureComparisonChart.js",
+        "FeatureComparisonChart.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3540,13 +3799,15 @@
     {
       "id": "FeaturedPlanCTA",
       "files": [
-        "FeaturedPlanCTA.js"
+        "FeaturedPlanCTA.js",
+        "FeaturedPlanCTA.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "FeaturedResources",
       "files": [
-        "FeaturedResources.js"
+        "FeaturedResources.js",
+        "FeaturedResources.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3558,13 +3819,15 @@
     {
       "id": "GartnerPeerInsightsBar",
       "files": [
-        "GartnerPeerInsightsBar.js"
+        "GartnerPeerInsightsBar.js",
+        "GartnerPeerInsightsBar.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "GatedDownload",
       "files": [
-        "GatedDownload.js"
+        "GatedDownload.js",
+        "GatedDownload.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3576,61 +3839,71 @@
     {
       "id": "GuideLinks",
       "files": [
-        "GuideLinks.js"
+        "GuideLinks.js",
+        "GuideLinks.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "InfoBox",
       "files": [
-        "InfoBox.js"
+        "InfoBox.js",
+        "InfoBox.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "JobListing",
       "files": [
-        "JobListing.js"
+        "JobListing.js",
+        "JobListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "LandingPageHeader",
       "files": [
-        "LandingPageHeader.js"
+        "LandingPageHeader.js",
+        "LandingPageHeader.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "LandingPageHeaderForm",
       "files": [
-        "LandingPageHeaderForm.js"
+        "LandingPageHeaderForm.js",
+        "LandingPageHeaderForm.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "LatestPosts",
       "files": [
-        "LatestPosts.js"
+        "LatestPosts.js",
+        "LatestPosts.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "LatestResources",
       "files": [
-        "LatestResources.js"
+        "LatestResources.js",
+        "LatestResources.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "RelatedResources",
       "files": [
-        "RelatedResources.js"
+        "RelatedResources.js",
+        "RelatedResources.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "LogoListing",
       "files": [
-        "LogoListing.js"
+        "LogoListing.js",
+        "LogoListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "LogoListingModule",
       "files": [
-        "LogoListingModule.js"
+        "LogoListingModule.js",
+        "LogoListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3642,37 +3915,43 @@
     {
       "id": "NewIntegrationModule",
       "files": [
-        "NewIntegrationModule.js"
+        "NewIntegrationModule.js",
+        "NewIntegrationModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "PartnerContentPanel",
       "files": [
-        "PartnerContentPanel.js"
+        "PartnerContentPanel.js",
+        "PartnerContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "PartnerDetails",
       "files": [
-        "PartnerDetails.js"
+        "PartnerDetails.js",
+        "PartnerDetails.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "PartnerListing",
       "files": [
-        "PartnerListing.js"
+        "PartnerListing.js",
+        "PartnerListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NewPartnerListingModule",
       "files": [
-        "NewPartnerListingModule.js"
+        "NewPartnerListingModule.js",
+        "NewPartnerListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NewIntegrationListingModule",
       "files": [
-        "NewIntegrationListingModule.js"
+        "NewIntegrationListingModule.js",
+        "NewIntegrationListingModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3702,7 +3981,8 @@
     {
       "id": "PodcastContentPanel",
       "files": [
-        "PodcastContentPanel.js"
+        "PodcastContentPanel.js",
+        "PodcastContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3720,19 +4000,22 @@
     {
       "id": "PostDetails",
       "files": [
-        "PostDetails.js"
+        "PostDetails.js",
+        "PostDetails.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "PostListing",
       "files": [
-        "PostListing.js"
+        "PostListing.js",
+        "PostListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "PricingPackagesModule",
       "files": [
-        "PricingPackagesModule.js"
+        "PricingPackagesModule.js",
+        "PricingPackagesModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3751,13 +4034,14 @@
       "id": "ResourceDetails",
       "files": [
         "ResourceDetails.js",
-        "ResourceDetails.47a6a108d231cb3cc4ec.hot-update.js"
+        "ResourceDetails.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "ReviewRotator",
       "files": [
-        "ReviewRotator.js"
+        "ReviewRotator.js",
+        "ReviewRotator.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3775,25 +4059,29 @@
     {
       "id": "RightORLeftContentModule",
       "files": [
-        "RightORLeftContentModule.js"
+        "RightORLeftContentModule.js",
+        "RightORLeftContentModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "RightOrLeftCaseStudyTestimonial",
       "files": [
-        "RightOrLeftCaseStudyTestimonial.js"
+        "RightOrLeftCaseStudyTestimonial.js",
+        "RightOrLeftCaseStudyTestimonial.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "RightOrLeftSteps",
       "files": [
-        "RightOrLeftSteps.js"
+        "RightOrLeftSteps.js",
+        "RightOrLeftSteps.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "SearchResults",
       "files": [
-        "SearchResults.js"
+        "SearchResults.js",
+        "SearchResults.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3811,7 +4099,8 @@
     {
       "id": "SingleTestimonialPanel",
       "files": [
-        "SingleTestimonialPanel.js"
+        "SingleTestimonialPanel.js",
+        "SingleTestimonialPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3823,25 +4112,29 @@
     {
       "id": "StarterTemplateDetails",
       "files": [
-        "StarterTemplateDetails.js"
+        "StarterTemplateDetails.js",
+        "StarterTemplateDetails.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "StarterTemplateListing",
       "files": [
-        "StarterTemplateListing.js"
+        "StarterTemplateListing.js",
+        "StarterTemplateListing.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "StayInTouch",
       "files": [
-        "StayInTouch.js"
+        "StayInTouch.js",
+        "StayInTouch.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "SubmissionForm",
       "files": [
-        "SubmissionForm.js"
+        "SubmissionForm.js",
+        "SubmissionForm.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3877,51 +4170,57 @@
     {
       "id": "TriplePanelComparisonModule",
       "files": [
-        "TriplePanelComparisonModule.js"
+        "TriplePanelComparisonModule.js",
+        "TriplePanelComparisonModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "TriplePanelModule",
       "files": [
-        "TriplePanelModule.js"
+        "TriplePanelModule.js",
+        "TriplePanelModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "TwoPanelFeatureComparison",
       "files": [
-        "TwoPanelFeatureComparison.js"
+        "TwoPanelFeatureComparison.js",
+        "TwoPanelFeatureComparison.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "VerticalContentPanel",
       "files": [
-        "VerticalContentPanel.js"
+        "VerticalContentPanel.js",
+        "VerticalContentPanel.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "VideoPlayerModule",
       "files": [
-        "VideoPlayerModule.js"
+        "VideoPlayerModule.js",
+        "VideoPlayerModule.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NewFeaturedResource",
       "files": [
-        "NewFeaturedResource.js"
+        "NewFeaturedResource.js",
+        "NewFeaturedResource.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NewDowloadableEbooks",
       "files": [
         "NewDowloadableEbooks.js",
-        "NewDowloadableEbooks.47a6a108d231cb3cc4ec.hot-update.js"
+        "NewDowloadableEbooks.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NewWebinarDowload",
       "files": [
         "NewWebinarDowload.js",
-        "NewWebinarDowload.47a6a108d231cb3cc4ec.hot-update.js"
+        "NewWebinarDowload.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
@@ -3933,21 +4232,22 @@
     {
       "id": "NewAllResources",
       "files": [
-        "NewAllResources.js"
+        "NewAllResources.js",
+        "NewAllResources.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NewEBookThankYou",
       "files": [
         "NewEBookThankYou.js",
-        "NewEBookThankYou.47a6a108d231cb3cc4ec.hot-update.js"
+        "NewEBookThankYou.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
       "id": "NEWSocialSubscribe",
       "files": [
         "NEWSocialSubscribe.js",
-        "NEWSocialSubscribe.47a6a108d231cb3cc4ec.hot-update.js"
+        "NEWSocialSubscribe.56b48d2b0f6b00ddafc2.hot-update.js"
       ]
     },
     {
