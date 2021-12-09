@@ -79,7 +79,11 @@ const RecommendedWebinar = ({item}) => {
 		return (
 			<div className="recommend-webinar">
 				<h3>Recommended Webinars</h3>
-				<LazyBackground className="re-webina-thumb bg" src={customFields.image?.url} />
+				<LazyBackground className="re-webina-thumb bg ps-rv" src={customFields.image?.url} >
+					<Link to={link} className="ps-as d-flex align-items-center justify-content-center"><span className="sr-only">{customFields.title}</span>
+						<span class="icomoon icon-video"><span class="path3"></span></span>
+					</Link>
+				</LazyBackground>
 				<div className="content-blog">
 					<p>
 						{renderTags(customFields.resourceType, 'category')}

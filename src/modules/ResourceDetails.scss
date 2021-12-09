@@ -186,6 +186,26 @@
 	// border-radius: 8px;
 	// border-bottom-left-radius: 0;
 	// border-bottom-right-radius: 0;
+	&:hover {
+		.icon-video {
+			background: rgba(255, 255, 255, 0.6);
+		}
+	}
+	.icon-video {
+		width: 60px;
+		height: 60px;
+		font-size: 50px;
+		background: $white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 60px;
+		transition: all .25s;
+		>.path3 {
+			position: relative;
+			top: 4px;
+		}
+	}
 }
 .content-blog {
 	padding: 18px 20px;
@@ -248,13 +268,12 @@
 
 	.res-download-detail {
 		.cs-detail-cont-left {
-			max-width: 50%;
+			max-width: calc(100% - 425px);
 		}
 		.cs-detail-cont-right {
-			max-width: 50%;
-			flex: 0 0 580px;
+			max-width: 425px;
+			flex: 0 0 425px;
 			padding-left: 15px;
-			padding-right: 15px;
 		}
 	}
 }
@@ -269,10 +288,11 @@
 	}
 	.res-download-detail {
 		.cs-detail-cont-left {
-			max-width: 60%;
+			max-width: calc(100% - 565px);
 		}
 		.cs-detail-cont-right {
-			max-width: 40%;
+			flex: 0 0 565px;
+			max-width: 565px;
 		}
 	}
 	.recommend-webinar {
