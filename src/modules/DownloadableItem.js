@@ -22,6 +22,8 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
     <div className={`downloadable-box h-100 transition-25 ps-rv d-flex flex-column  ${isVerticalImage ? 'vertical' : 'horizon'}`}>
         {isVerticalImage &&
          <div className="downloadable-thumb-vertical ps-rv">
+           <Link to={link} className="ps-as d-flex align-items-center justify-content-center"><span className="sr-only">{title}</span>
+            </Link>
             <div className="downloadable-pattern">
             <Lazyload offset={Helpers.lazyOffset}><img src="/images/features/downloadable-pattern.svg" className="bg transition-25" alt={title || 'Ebook'}></img></Lazyload>
             </div>
