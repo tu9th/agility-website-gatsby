@@ -58,7 +58,8 @@ const renderTags = (tags, type) => {
 // }
 
 
-const TopReads = ({ item }) => {
+const TopReads = ({ item, isWebinar }) => {
+	// console.log('itemitem', item);
 	return (
 		<>
 			<div className="top-read-for-u">
@@ -66,7 +67,12 @@ const TopReads = ({ item }) => {
 					<div className="top-read-line"></div>
 				</div>
 			</div>
-			<NewDowloadableEbooks item={item} />
+			{isWebinar &&
+			<NewWebinarDowload item={item} />
+			}
+			{!isWebinar &&
+				<NewDowloadableEbooks item={item} />
+			}
 		</>
 	);
 }
@@ -266,8 +272,8 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
-        if (count < 3 && resources[0].customFields?.resourceTypeName === 'eBook') {
-          results.push(resources[0])
+        if (count < 3 && resources[i].customFields?.resourceTypeName === resource.resourceTypeName) {
+          results.push(resources[i])
           count++
         }
         if (count === 3) {
@@ -282,6 +288,7 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 	const topReadsItem = {
 		customFields: {
 			listeBooks: handleGetTopReads(topReadIds),
+			listWebinar: handleGetTopReads(topReadIds),
 			cTAButton: {
 				href: '/resources',
 				text: 'View All Resources'
@@ -374,7 +381,7 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 
 		{(resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName && resource.resourceTypeName.toLowerCase() === 'webinar') &&
 			<>
-				<TopReads item={topReadsItem} />
+				<TopReads item={topReadsItem} isWebinar={ isWebinar } />
 				<div className="space-80"></div>
 			</>
 		}
