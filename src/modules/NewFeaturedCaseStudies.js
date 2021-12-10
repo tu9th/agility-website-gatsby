@@ -8,7 +8,7 @@ import { animationElementInnerComponent } from '../global/javascript/animation'
 
 const NewFeaturedCaseStudies = ({ item }) => {
   const { content, cTAButton, listCaseStudies } = item?.customFields
-  console.log('NewFeaturedCaseStudies', listCaseStudies)
+  // console.log('NewFeaturedCaseStudies', listCaseStudies)
   const listCaseStudiesRender = listCaseStudies?.map((post, index) => {
     post.url = 'case-studies/' + post?.customFields?.uRL
     return (

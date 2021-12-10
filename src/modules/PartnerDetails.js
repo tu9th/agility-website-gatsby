@@ -330,11 +330,8 @@ export default props => (
 						<IntegrationDetailSimilar viewModel={viewModel} />
 						</>
 					}
-					{/* { !isIntegration && <PartnerDetails {...viewModel} /> } */}
+					{ !isIntegration && <PartnerDetails {...viewModel} /> }
 				</section>
-				<div className="space-100"></div>
-				<PartnerDetails {...viewModel} />
-				<div className="space-100"></div>
 				</>
 			);
 		}}
@@ -342,33 +339,40 @@ export default props => (
 )
 
 const PartnerDetails = ({ item, dynamicPageItem }) => {
-	console.log('dynamicPageItem', dynamicPageItem);
+	// console.log('dynamicPageItem', dynamicPageItem);
 	item = dynamicPageItem.customFields;
 
 
 	const regions = item.customTags ?? []
 
 	return (
-		// <section className="p-w case-study-details">
-		// 	<div className="container-my">
-		// 		<div className="case-study-details-container">
+		<>
+		<section className="p-w case-study-details">
+			<div className="container-my">
+				<div className="case-study-details-container">
 
-		// 			<div className="case-study-left">
-		// 				<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.textblob)}></div>
-		// 			</div>
-		// 			{
-		// 				(item.rightContentCopy || item.quote) &&
+					<div className="case-study-left">
+						<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.textblob)}></div>
+					</div>
+					{
+						(item.rightContentCopy || item.quote) &&
 
-		// 				<div className="case-study-right">
-		// 					<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.rightContentCopy)}></div>
-		// 					{item.quote && <div className="color-text"><p>{item.quote}</p></div>}
-		// 				</div>
-		// 			}
-		// 		</div>
-		// 	</div>
-		// </section>
+						<div className="case-study-right">
+							<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.rightContentCopy)}></div>
+							{item.quote && <div className="color-text"><p>{item.quote}</p></div>}
+						</div>
+					}
+				</div>
+			</div>
+		</section>
 
-		<section>
+	
+	</>
+	);
+}
+
+/* 
+	<section>
 		<div className="space-70 space-dt-90"></div>
 		<div className="container ps-rv z-2">
 			<div className="d-lg-flex flex-wrap">
@@ -390,7 +394,6 @@ Their diverse skillsets and vast scope of industry-based knowledge is what enabl
 					<div className="small-paragraph cs-tag-wrap last-mb-none">
 						<h4>Website</h4>
 						<p>
-							{/* {renderTags(resourceTopics, 'topic')} */}
 							<span className="d-inline-block cs-tag ps-rv">
 								{item.website?.text}
 								<Link to={item.website?.href} target="_self" className="ps-as"><span className="sr-only">{item.website?.text}</span></Link>
@@ -408,7 +411,6 @@ Their diverse skillsets and vast scope of industry-based knowledge is what enabl
 					<div className="small-paragraph cs-tag-wrap last-mb-none">
 						<h4>Tier</h4>
 						<p>
-							{/* {renderTags(resourceTopics, 'topic')} */}
 						</p>
 					</div>
 					<div className="space-60"></div>
@@ -417,9 +419,7 @@ Their diverse skillsets and vast scope of industry-based knowledge is what enabl
 			</div>
 		</div>
 	</section>
-	);
-}
-
+*/
 
 const renderTags = (tags, type) => {
 	if (typeof (tags) === 'object' && !tags.length) {

@@ -9,7 +9,6 @@ import './NewFeaturedResource.scss'
 
 const NewFeaturedResource = ({ item }) => {
   const { image, bookCover, resourceTypeName, title, uRL, textblob, fileDownload } = item?.customFields?.featuredResource?.customFields
-  console.log('item?.customFields?.featuredResource?.customFields', item?.customFields?.featuredResource?.customFields);
 
   bookCover.label = bookCover.label ? bookCover.label : title
   /* animation module */

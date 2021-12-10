@@ -9,7 +9,7 @@ import { animationElementInnerComponent } from '../global/javascript/animation';
 
 const NewDowloadableEbooks = ({ item }) => {
   const { content, cTAButton, listWebinar } = item?.customFields
-  console.log('NewDowloadableEbooks', item);
+  // console.log('NewDowloadableEbooks', item);
   const listWebinars = listWebinar?.map((post, index) => {
     return (
       <div className="col-md-6 col-lg-4 mb-45" key={index}>
