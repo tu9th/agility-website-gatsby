@@ -240,6 +240,7 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
 	// const isEbook = dynamicPageItem.customFields.resourceTypeName.toLowerCase() === 'ebook'
 
   const handleGetTopWebinars = (topWebinarIds) => {
+    console.log(topWebinarIds, 'topWebinarIds' , resources);
     let results = topWebinarIds || []
     // if (topWebinarIds?.length) {
     //   const formatTopWebinarIds = topWebinarIds.map(id => Number(id))
@@ -253,8 +254,9 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
-        if (count < 3 && resources[0].customFields?.resourceTypeName === 'Webinar') {
-          results.push(resources[0])
+        if (count < 3 && resources[i].customFields?.resourceTypeName === 'Webinar') {
+          results.push(resources[i])
+          console.log('ưeb', );
           count++
         }
         if (count === 3) {
@@ -276,8 +278,8 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {
-        if (count < 3 && resources[0].customFields?.resourceTypeName === 'eBook') {
-          results.push(resources[0])
+        if (count < 3 && resources[i].customFields?.resourceTypeName === 'eBook') {
+          results.push(resources[i])
           count++
         }
         if (count === 3) {
