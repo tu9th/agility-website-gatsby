@@ -200,7 +200,7 @@ const FeatureRes = ({ eBookSelected }) => {
   const { downloadButtonText, fileDownload, webinarURL, image, excerpt, title, thankYouContent, bookCover, resourceTypeName} = eBookSelected?.customFields
   const urlCover = bookCover ? bookCover.url : '/images/ebook-cover-default.png'
   const isWebinar = resourceTypeName.toLowerCase() === 'webinar'
-  const buttonCtaUrl = isWebinar ? webinarURL.href : fileDownload.url
+  const buttonCtaUrl = isWebinar ? (webinarURL ? webinarURL.href : '') : (fileDownload ? fileDownload?.url : '')
 
   return (
     <section className="thanks-block">
