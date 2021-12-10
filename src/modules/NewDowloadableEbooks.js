@@ -7,7 +7,6 @@ import { Link } from 'gatsby'
 import { animationElementInnerComponent } from '../global/javascript/animation';
 
 const NewDowloadableEbooks = ({ item }) => {
-	console.log('NewDowloadableEbooks', item)
   const { content, cTAButton, listeBooks } = item?.customFields
   const listEBooks = listeBooks?.map((post, index) => {
     return (

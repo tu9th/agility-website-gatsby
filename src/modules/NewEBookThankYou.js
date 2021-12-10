@@ -196,11 +196,11 @@ const DownloadEbook = ({topReads, isVerticalImage}) => {
 }
 
 const FeatureRes = ({ eBookSelected }) => {
-  console.log('eBookSelected', eBookSelected);
+  // console.log('eBookSelected', eBookSelected);
   const { downloadButtonText, fileDownload, webinarURL, image, excerpt, title, thankYouContent, bookCover, resourceTypeName} = eBookSelected?.customFields
   const urlCover = bookCover ? bookCover.url : '/images/ebook-cover-default.png'
   const isWebinar = resourceTypeName.toLowerCase() === 'webinar'
-  const buttonCtaUrl = isWebinar ? (webinarURL ? webinarURL.href : '') : (fileDownload ? fileDownload?.url : '')
+  // const buttonCtaUrl = isWebinar ? (webinarURL ? webinarURL.href : '') : (fileDownload ? fileDownload?.url : '')
 
   return (
     <section className="thanks-block">
@@ -214,7 +214,7 @@ const FeatureRes = ({ eBookSelected }) => {
                   <div dangerouslySetInnerHTML={renderHTML(thankYouContent)}></div>
                 }
                 { downloadButtonText &&
-                  <a href={buttonCtaUrl || '#'} className="btn btn-yellow text-uppercase">{downloadButtonText}</a>
+                  <a href={fileDownload?.url || '#'} className="btn btn-yellow text-uppercase">{downloadButtonText}</a>
                 }
               </div>
             </div>
@@ -231,7 +231,7 @@ const FeatureRes = ({ eBookSelected }) => {
 }
 
 const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
-  console.log('dynamicPageItem', item, dynamicPageItem);
+  // console.log('dynamicPageItem', item, dynamicPageItem);
   const [eBookSelected, setEBookSelected] = useState(dynamicPageItem)
   const topWebinarIds = eBookSelected?.customFields?.topWebinars
   const topReadIds = eBookSelected?.customFields?.topReads

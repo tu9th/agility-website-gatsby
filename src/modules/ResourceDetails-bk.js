@@ -10,7 +10,7 @@ const ResourceDetails = ({ item, dynamicPageItem }) => {
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 
-	console.log('item', item);
+	// console.log('item', item);
 	return (
 		<section className="resource-details">
 			<div className="rich-text">

@@ -9,14 +9,14 @@ import { renderHTML } from '../agility/utils';
 
 const PartnerContentPanel = ({ item, dynamicPageItem }) => {
     item = dynamicPageItem.customFields;
-    console.log('panel', dynamicPageItem);
+    // console.log('panel', dynamicPageItem);
     var bgColor = item.brandBGColor;
     var fgColor = item.brandFGColor;
     const [isIntegration, setIsIntegration] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
     const title = item.title
-    const panelCopy = item.contentPanelCopy
+    const panelCopy = item?.contentPanelCopy
 
     const detectIntegration = () => {
         const detectIntegration = window.location.pathname.includes('/integrations')
@@ -80,7 +80,7 @@ const PartnerContentPanel = ({ item, dynamicPageItem }) => {
                 </div>
             </section>}
 
-            <div className="space-100"></div>
+            {/* <div className="space-100"></div>
             <section className="new-partner-banner bg-17">
                 <div className="container">
                     <div className="row">
@@ -114,7 +114,7 @@ const PartnerContentPanel = ({ item, dynamicPageItem }) => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </React.Fragment>
     );
 }

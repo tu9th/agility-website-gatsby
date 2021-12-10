@@ -9,7 +9,6 @@ import './DownloadEbookForm.scss';
 
 
 const DownloadEbookForm = ({ item, slug }) => {
-  console.log('itemitem', item);
 	item = item.customFields;
 	const firstNameLabel = item.firstNameLabel ?? 'First Name'
 	const lastNameLabel = item.lastNameLabel ?? 'Last Name'
@@ -22,7 +21,7 @@ const DownloadEbookForm = ({ item, slug }) => {
     ...item.redirectURL,
     href: item.redirectURL.href.replace('##URL##', slug)
   }
-  console.log('redirectUrl', redirectUrl);
+  // console.log('redirectUrl', redirectUrl);
 	return (
     <div className="download-form text-center">
       <h3>{ item.formTitle || `Get the Resource Title`}</h3>

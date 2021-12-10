@@ -238,7 +238,7 @@ export default props => (
 )
 const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 
-	console.log('dynamicPageItem', item, dynamicPageItem);
+	// console.log('dynamicPageItem', item, dynamicPageItem);
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]

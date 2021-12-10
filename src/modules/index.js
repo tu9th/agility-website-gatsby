@@ -96,6 +96,7 @@ const NewWebinarDowload = loadable(() => import("./NewWebinarDowload"))
 const NewFeaturedCaseStudies = loadable(() => import("./NewFeaturedCaseStudies"))
 const NewAllResources = loadable(() => import("./NewAllResources"))
 const NewEBookThankYou = loadable(() => import("./NewEBookThankYou"))
+const NEWWebinarThankYou = loadable(() => import("./NewEBookThankYou"))
 const NEWSocialSubscribe = loadable(() => import("./NEWSocialSubscribe"))
 
 const allModules = {
@@ -192,6 +193,7 @@ const allModules = {
 	"NEWFeaturedCaseStudies": NewFeaturedCaseStudies,
 	"NEWAllResources": NewAllResources,
 	"NEWeBookThankYou": NewEBookThankYou,
+	"NEWWebinarThankYou": NEWWebinarThankYou,
 	"NEWSocialSubscribe": NEWSocialSubscribe,
 }
 

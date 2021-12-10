@@ -12,8 +12,6 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
   const body = post?.customFields?.excerpt || ''
   const urlCustomer = post?.customFields?.customerWhiteLogo?.url
 
-  console.log('DownloadableItem', post);
-
 	const trimText = (text) => {
 		let txt = text.split(' ')
 		return txt.length > 18 ? txt.slice(0, 18).join(' ').concat('...') : txt.join(' ')
