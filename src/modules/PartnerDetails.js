@@ -330,54 +330,10 @@ export default props => (
 						<IntegrationDetailSimilar viewModel={viewModel} />
 						</>
 					}
-					{ !isIntegration && <PartnerDetails {...viewModel} /> }
+					{/* { !isIntegration && <PartnerDetails {...viewModel} /> } */}
 				</section>
 				<div className="space-100"></div>
-				<section>
-					<div className="space-70 space-dt-90"></div>
-					<div className="container ps-rv z-2">
-						<div className="d-lg-flex flex-wrap">
-							<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
-								<div className="cs-detail-inner last-mb-none">
-									<h2>Partner Overview</h2>
-									<p>mintyfusion Studios is a dynamic design and development studio with a passion for turning ideas into multifaceted bespoke software solutions by combining innovative thinking and state of the art technology.
-
-Based in Vancouver, British Columbia, mintyfusion is redefining commerce for businesses by providing them with customizable and scalable tools and services.
-
-Their diverse skillsets and vast scope of industry-based knowledge is what enables our clients to profitably grow their businesses, whilst building strong customer relations.</p>
-
-										<blockquote>
-											In December, my team had taken a 4-day weekend for Thanksgiving for the first time in many years, thanks to Agility CMS!
-										</blockquote>
-								</div>
-							</div>
-							<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
-								<div className="small-paragraph cs-tag-wrap last-mb-none">
-									<h4>Website</h4>
-									<p>
-										{/* {renderTags(resourceTopics, 'topic')} */}
-									</p>
-								</div>
-
-								<div className="small-paragraph cs-tag-wrap last-mb-none">
-									<h4>Region</h4>
-									<p>
-										{/* {renderTags(resourceTopics, 'topic')} */}
-									</p>
-								</div>
-
-								<div className="small-paragraph cs-tag-wrap last-mb-none">
-									<h4>Tier</h4>
-									<p>
-										{/* {renderTags(resourceTopics, 'topic')} */}
-									</p>
-								</div>
-								<div className="space-60"></div>
-								<RightCTA rightCTAContent={'Hello'} rightCTAButton={{text: 'hello', href: '#'}} />
-							</div>
-						</div>
-					</div>
-				</section>
+				<PartnerDetails {...viewModel} />
 				<div className="space-100"></div>
 				</>
 			);
@@ -386,28 +342,81 @@ Their diverse skillsets and vast scope of industry-based knowledge is what enabl
 )
 
 const PartnerDetails = ({ item, dynamicPageItem }) => {
+	console.log('dynamicPageItem', dynamicPageItem);
 	item = dynamicPageItem.customFields;
+
+
+	const regions = item.customTags ?? []
+
 	return (
-		<section className="p-w case-study-details">
-			<div className="container-my">
-				<div className="case-study-details-container">
+		// <section className="p-w case-study-details">
+		// 	<div className="container-my">
+		// 		<div className="case-study-details-container">
 
-					<div className="case-study-left">
-						<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.textblob)}></div>
+		// 			<div className="case-study-left">
+		// 				<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.textblob)}></div>
+		// 			</div>
+		// 			{
+		// 				(item.rightContentCopy || item.quote) &&
+
+		// 				<div className="case-study-right">
+		// 					<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.rightContentCopy)}></div>
+		// 					{item.quote && <div className="color-text"><p>{item.quote}</p></div>}
+		// 				</div>
+		// 			}
+		// 		</div>
+		// 	</div>
+		// </section>
+
+		<section>
+		<div className="space-70 space-dt-90"></div>
+		<div className="container ps-rv z-2">
+			<div className="d-lg-flex flex-wrap">
+				<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
+					<div className="cs-detail-inner last-mb-none">
+						<h2>Partner Overview</h2>
+						<p>mintyfusion Studios is a dynamic design and development studio with a passion for turning ideas into multifaceted bespoke software solutions by combining innovative thinking and state of the art technology.
+
+Based in Vancouver, British Columbia, mintyfusion is redefining commerce for businesses by providing them with customizable and scalable tools and services.
+
+Their diverse skillsets and vast scope of industry-based knowledge is what enables our clients to profitably grow their businesses, whilst building strong customer relations.</p>
+
+							<blockquote>
+								In December, my team had taken a 4-day weekend for Thanksgiving for the first time in many years, thanks to Agility CMS!
+							</blockquote>
 					</div>
-					{
-						(item.rightContentCopy || item.quote) &&
+				</div>
+				<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
+					<div className="small-paragraph cs-tag-wrap last-mb-none">
+						<h4>Website</h4>
+						<p>
+							{/* {renderTags(resourceTopics, 'topic')} */}
+							<span className="d-inline-block cs-tag ps-rv">
+								{item.website?.text}
+								<Link to={item.website?.href} target="_self" className="ps-as"><span className="sr-only">{item.website?.text}</span></Link>
+							</span>
+						</p>
+					</div>
 
-						<div className="case-study-right">
-							<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.rightContentCopy)}></div>
-							{item.quote && <div className="color-text"><p>{item.quote}</p></div>}
-						</div>
-					}
+					<div className="small-paragraph cs-tag-wrap last-mb-none">
+						<h4>Region</h4>
+						<p>
+							{renderTags(regions, 'topic')}
+						</p>
+					</div>
+
+					<div className="small-paragraph cs-tag-wrap last-mb-none">
+						<h4>Tier</h4>
+						<p>
+							{/* {renderTags(resourceTopics, 'topic')} */}
+						</p>
+					</div>
+					<div className="space-60"></div>
+					<RightCTA rightCTAContent={'Hello'} rightCTAButton={{text: 'hello', href: '#'}} />
 				</div>
 			</div>
-		</section>
-
-
+		</div>
+	</section>
 	);
 }
 

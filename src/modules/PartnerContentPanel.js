@@ -5,19 +5,25 @@ import "./CaseStudyContentPanel.scss"
 import "./NewPartnerContentPanel.scss"
 
 import { Link } from 'gatsby';
+import { renderHTML } from '../agility/utils';
 
 const PartnerContentPanel = ({ item, dynamicPageItem }) => {
     item = dynamicPageItem.customFields;
+    console.log('panel', dynamicPageItem);
     var bgColor = item.brandBGColor;
     var fgColor = item.brandFGColor;
     const [isIntegration, setIsIntegration] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const title = item.title
+    const panelCopy = item.contentPanelCopy
 
     const detectIntegration = () => {
         const detectIntegration = window.location.pathname.includes('/integrations')
         setIsIntegration(detectIntegration)
         setIsLoaded(true)
     }
+    
 
     useEffect(() => {
         detectIntegration()
@@ -83,8 +89,8 @@ const PartnerContentPanel = ({ item, dynamicPageItem }) => {
                                 <div className="d-table-cell align-middle">
                                     <Link to={'#'} className="mb-35 d-block back-to-partner">Explore All Partners</Link>
                                     <div className="text-white">
-                                        <h1>9thWonder</h1>
-                                        <p>9thWonder is a global strategic marketing, media and ideas company that sees the greatness in everyday brands.</p>
+                                        <h1>{title}</h1>
+                                        <div className="" dangerouslySetInnerHTML={renderHTML(panelCopy)}></div>
                                         <p>
                                             <Link to={'#'} className="btn btn-primary">Contact This Partner</Link>
                                             <Link to={'#'} className="btn btn-visit-site">Visit Website</Link>
