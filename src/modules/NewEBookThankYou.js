@@ -227,10 +227,13 @@ const FeatureRes = ({ eBookSelected }) => {
 }
 
 const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
-  console.log('dynamicPageItem', dynamicPageItem);
+  console.log('dynamicPageItem', item, dynamicPageItem);
   const [eBookSelected, setEBookSelected] = useState(dynamicPageItem)
   const topWebinarIds = eBookSelected?.customFields?.topWebinars
   const topReadIds = eBookSelected?.customFields?.topReads
+
+  // const isWebinar = dynamicPageItem.customFields.resourceTypeName.toLowerCase() === 'webinar'
+	// const isEbook = dynamicPageItem.customFields.resourceTypeName.toLowerCase() === 'ebook'
 
   const handleGetTopWebinars = (topWebinarIds) => {
     let results = topWebinarIds || []

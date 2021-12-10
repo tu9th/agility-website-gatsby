@@ -10,6 +10,8 @@ import LazyBackground from '../utils/LazyBackground'
 import PostItemImageVertical from '../modules/DownloadableItem'
 import DownloadEbookForm from '../components/forms/DownloadEbookForm'
 import NewDowloadableEbooks from './NewDowloadableEbooks'
+import NewWebinarDowload from './NewWebinarDowload'
+import RightCTA from '../components/RightCTA';
 import { animationElementInnerComponent } from '../global/javascript/animation';
 
 
@@ -35,25 +37,25 @@ const renderTags = (tags, type) => {
 	})
 }
 
-const RightCTA = ({rightCTAButton, rightCTAContent}) => {
+// const RightCTA = ({rightCTAButton, rightCTAContent}) => {
 
-  return (
-		<>
-			{rightCTAContent && rightCTAButton.href &&
-				<div className="learn-more-cta bg-58 text-white">
-					<div className="d-table w-100">
-						<div className="d-table-cell align-middle text-center small-paragraph last-mb-none">
-							<div dangerouslySetInnerHTML={renderHTML(rightCTAContent)}></div>
-							{ rightCTAButton &&
-								<Link to={rightCTAButton.href} className="btn btn-white mb-0">{rightCTAButton.text || 'Watch Now'}</Link>
-							}
-						</div>
-					</div>
-				</div>
-			}
-		</>
-  )
-}
+//   return (
+// 		<>
+// 			{rightCTAContent && rightCTAButton.href &&
+// 				<div className="learn-more-cta bg-58 text-white">
+// 					<div className="d-table w-100">
+// 						<div className="d-table-cell align-middle text-center small-paragraph last-mb-none">
+// 							<div dangerouslySetInnerHTML={renderHTML(rightCTAContent)}></div>
+// 							{ rightCTAButton &&
+// 								<Link to={rightCTAButton.href} className="btn btn-white mb-0">{rightCTAButton.text || 'Watch Now'}</Link>
+// 							}
+// 						</div>
+// 					</div>
+// 				</div>
+// 			}
+// 		</>
+//   )
+// }
 
 
 const TopReads = ({ item }) => {
@@ -236,15 +238,19 @@ export default props => (
 )
 const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 
+	console.log('dynamicPageItem', item, dynamicPageItem);
 	let resource = dynamicPageItem.customFields;
 	item = item.customFields;
 	const resourceTypes = Array.isArray(resource.resourceType) || !resource.resourceType ? resource.resourceType : [resource.resourceType]
 	const resourceTopics = Array.isArray(resource.resourceTopics) || !resource.resourceTopics ? resource.resourceTopics : [resource.resourceTopics]
+
+	const isWebinar = resource.resourceTypeName.toLowerCase() === 'webinar'
+	const isEbook = resource.resourceTypeName.toLowerCase() === 'ebook'
 	const classModule = resource.resourceTypeName &&
-	(resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName.toLowerCase() === 'webinar') ? 'res-download-detail' : '';
+	(isEbook || isWebinar) ? 'res-download-detail' : '';
 
 	const thumbImage = resource.resourceTypeName &&
-	(resource.resourceTypeName.toLowerCase() === 'ebook' || resource.resourceTypeName.toLowerCase() === 'webinar') ? resource.bookCover : resource.image;
+	(isEbook || isWebinar) ? resource.bookCover : resource.image;
 	if (thumbImage) {
 		thumbImage.label = thumbImage?.label ? thumbImage.label : resource.title
 	}
@@ -271,9 +277,10 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
     }
     return results
   }
+
+	/* content for top read for you */
 	const topReadsItem = {
 		customFields: {
-			content: `<h2>Top Picks For You</h2>`,
 			listeBooks: handleGetTopReads(topReadIds),
 			cTAButton: {
 				href: '/resources',
@@ -281,6 +288,8 @@ const ResourceDetails = ({ item, dynamicPageItem, resources }) => {
 			}
 		}
 	}
+	topReadsItem.customFields.content = isWebinar ? '<h2>Top Webinars For You</h2>' : '<h2>Top Picks For You</h2>';
+	/*  */
 
 	const linkResource = `/resources/${resource.resourceTypeName.toLowerCase()}/${resource.uRL}`
 
