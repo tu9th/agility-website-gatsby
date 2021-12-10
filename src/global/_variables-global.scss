@@ -5,6 +5,9 @@ $translate: 100px;
   -ms-flex-align: center;
   align-items: center !important;
 }
+.align-items-end {
+  align-items: flex-end !important;
+}
 .justify-content-between {
   justify-content: space-between !important;
 }

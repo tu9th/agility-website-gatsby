@@ -1,0 +1,59 @@
+@import "../global/_variables.scss";
+@import '../global/setting';
+
+.new-partner-banner {
+  padding: 50px 0;
+}
+.back-to-partner {
+  color: $color-ff;
+  font-size: rem(13);
+  line-height: 18px;
+  letter-spacing: 1px;
+  font-weight: $fw-semi-bold;
+  text-decoration: none;
+  &:hover {
+    color: $white;
+  }
+}
+.btn-visit-site {
+  border-color: $white;
+  color: $white;
+}
+.partner-banner-right {
+  background-color: $white;
+  border-radius: 8px;
+  position: relative;
+  padding: 40px 50px;
+}
+.partner-icon-bg {
+  position: absolute;
+  bottom: -45px;
+  right: -45px;
+  height: 100%;
+  width: 100%;
+  img {
+    max-height: 100%;
+    display: block;
+    margin-left: auto;
+  }
+}
+.partner-banner-logo {
+  max-width: 400px;
+  margin: 0 auto;
+}
+@media screen and(min-width: 992px) {
+  .new-partner-banner {
+    padding: 70px 0;
+  }
+}
+@media screen and(min-width: 1200px) {
+  .partner-banner-right {
+    margin-left: 25px;
+    min-height: 317px;
+  }
+}
+@media screen and(min-width: 1501px) {
+  .new-partner-banner {
+    padding: 124px 0 84px;
+  }
+}

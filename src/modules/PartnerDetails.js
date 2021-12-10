@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import IntegrationDetailContent from './IntegrationDetailContent'
 import IntegrationDetailGuideLink from './IntegrationDetailGuideLink'
@@ -11,6 +11,10 @@ import * as ArrayUtils from '../utils/array-utils.js';
 import "./CaseStudyDetails.scss"
 import "./PartnerDetail.scss"
 import "./RichTextArea.scss"
+
+
+import RightCTA from '../components/RightCTA';
+
 const CaseStudyGallery = ({ dataList, galleryId, title, settingsOveride }) => {
   const mediaLists = dataList // query?.allAgilityCaseStudy?.edges
   const founded = mediaLists?.filter(i => {
@@ -317,6 +321,7 @@ export default props => (
 				isIntegrationReference
 			}
 			return (
+				<>
 				<section className="mod-integration-partner">
 					{ isIntegration && <>
 						<IntegrationDetailContent viewModel={viewModel}/>
@@ -327,6 +332,54 @@ export default props => (
 					}
 					{ !isIntegration && <PartnerDetails {...viewModel} /> }
 				</section>
+				<div className="space-100"></div>
+				<section>
+					<div className="space-70 space-dt-90"></div>
+					<div className="container ps-rv z-2">
+						<div className="d-lg-flex flex-wrap">
+							<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
+								<div className="cs-detail-inner last-mb-none">
+									<h2>Partner Overview</h2>
+									<p>mintyfusion Studios is a dynamic design and development studio with a passion for turning ideas into multifaceted bespoke software solutions by combining innovative thinking and state of the art technology.
+
+Based in Vancouver, British Columbia, mintyfusion is redefining commerce for businesses by providing them with customizable and scalable tools and services.
+
+Their diverse skillsets and vast scope of industry-based knowledge is what enables our clients to profitably grow their businesses, whilst building strong customer relations.</p>
+
+										<blockquote>
+											In December, my team had taken a 4-day weekend for Thanksgiving for the first time in many years, thanks to Agility CMS!
+										</blockquote>
+								</div>
+							</div>
+							<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
+								<div className="small-paragraph cs-tag-wrap last-mb-none">
+									<h4>Website</h4>
+									<p>
+										{/* {renderTags(resourceTopics, 'topic')} */}
+									</p>
+								</div>
+
+								<div className="small-paragraph cs-tag-wrap last-mb-none">
+									<h4>Region</h4>
+									<p>
+										{/* {renderTags(resourceTopics, 'topic')} */}
+									</p>
+								</div>
+
+								<div className="small-paragraph cs-tag-wrap last-mb-none">
+									<h4>Tier</h4>
+									<p>
+										{/* {renderTags(resourceTopics, 'topic')} */}
+									</p>
+								</div>
+								<div className="space-60"></div>
+								<RightCTA rightCTAContent={'Hello'} rightCTAButton={{text: 'hello', href: '#'}} />
+							</div>
+						</div>
+					</div>
+				</section>
+				<div className="space-100"></div>
+				</>
 			);
 		}}
 	/>
@@ -356,4 +409,26 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 
 
 	);
+}
+
+
+const renderTags = (tags, type) => {
+	if (typeof (tags) === 'object' && !tags.length) {
+		let link = `/resources/${type}/${tags?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+		return (
+			<span className="d-inline-block cs-tag ps-rv">
+				{tags?.customFields?.title}
+				<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tags?.customFields?.title}</span></Link>
+			</span>
+		)
+	}
+	return tags?.map((tag, index) => {
+		let link = `/resources/${type}/${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+		return (
+			<span key={index} className="d-inline-block cs-tag ps-rv">
+				{tag?.customFields?.title}
+				<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
+			</span>
+		)
+	})
 }
