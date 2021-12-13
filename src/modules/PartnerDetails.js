@@ -8,6 +8,9 @@ import * as StringUtils from "../utils/string-utils"
 import Slider from 'react-slick'
 import * as ArrayUtils from '../utils/array-utils.js';
 
+import RelativePartners from '../components/relative-partner';
+import { animationElementInnerComponent } from '../global/javascript/animation';
+
 import "./CaseStudyDetails.scss"
 import "./PartnerDetail.scss"
 import "./RichTextArea.scss"
@@ -322,16 +325,16 @@ export default props => (
 			}
 			return (
 				<>
-				<section className="mod-integration-partner">
 					{ isIntegration && <>
+					<section className="mod-integration-partner">
 						<IntegrationDetailContent viewModel={viewModel}/>
 						<CaseStudyGallery dataList={mediaLists} galleryId={customFields?.gallery?.galleryid || customFields?.screenshots?.galleryid} title={customFields.title} />
 						{steps && steps.length > 0 && <IntegrationDetailGuideLink viewModel={viewModel}/>}
 						<IntegrationDetailSimilar viewModel={viewModel} />
-						</>
+					</section>
+					</>
 					}
 					{ !isIntegration && <PartnerDetails {...viewModel} /> }
-				</section>
 				</>
 			);
 		}}
@@ -339,15 +342,29 @@ export default props => (
 )
 
 const PartnerDetails = ({ item, dynamicPageItem }) => {
-	// console.log('dynamicPageItem', dynamicPageItem);
-	item = dynamicPageItem.customFields;
+	console.log('dynamicPageItem', dynamicPageItem, item);
+	const customFields = dynamicPageItem.customFields;
 
 
-	const regions = item.customTags ?? []
+	const regions = customFields.customTags ?? []
+
+	/* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
 
 	return (
 		<>
-		<section className="p-w case-study-details">
+		{/* <section className="p-w case-study-details">
 			<div className="container-my">
 				<div className="case-study-details-container">
 
@@ -364,79 +381,106 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 					}
 				</div>
 			</div>
-		</section>
+		</section> */}
 
-	
+		<section ref={thisModuleRef} className="new-partner-detail animation">
+			<div className="space-70 space-dt-90"></div>
+			<div className="container ps-rv z-2 anima-bottom">
+				<div className="d-lg-flex flex-wrap">
+					<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
+						<div className="cs-detail-inner last-mb-none">
+							<h2>Partner Overview</h2>
+							<div dangerouslySetInnerHTML={renderHTML(customFields.textblob)}></div>
+
+							<div className="cs-quote">
+								<div dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
+							</div>
+						</div>
+					</div>
+					<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
+						{customFields.website &&
+						<div className="small-paragraph cs-tag-wrap last-mb-none">
+							<h4>Website</h4>
+							<p>
+								<span className="d-inline-block cs-tag ps-rv">
+									{customFields.website?.text}
+									<Link to={customFields.website?.href} target="_self" className="ps-as"><span className="sr-only">{customFields.website?.text}</span></Link>
+								</span>
+							</p>
+						</div>}
+						
+						{regions && regions.length &&
+						<div className="small-paragraph cs-tag-wrap last-mb-none">
+							<h4>Region</h4>
+							<p>
+								{renderTags(regions)}
+							</p>
+						</div>}
+
+
+						{customFields?.partnerTier_TextField &&
+						<div className="small-paragraph cs-tag-wrap last-mb-none">
+							<h4>Tier</h4>
+							<p>
+								<span className="d-inline-block cs-tag ps-rv">
+									{customFields.partnerTier_TextField}
+								</span>
+							</p>
+						</div>}
+						{(customFields.linkedInURL || customFields.twitterURL || customFields.facebookURL) &&
+						<div className="cs-d-social">
+							<h4>Follow Partner</h4>
+							<div className="soc-box d-flex flex-wrap">
+								{customFields.linkedInURL &&
+								<a href={ customFields.linkedInURL } target="_blank" className="d-flex align-items-center justify-content-center">
+									<span className="icomoon icon-linkedin2"></span>
+								</a>}
+								{customFields.twitterURL &&
+								<a href={ customFields.twitterURL } target="_blank" className="d-flex align-items-center justify-content-center">
+									<span className="icomoon icon-twitter"></span>
+								</a>}
+								{customFields.facebookURL &&
+								<a href={ customFields.facebookURL } target="_blank" className="d-flex align-items-center justify-content-center">
+									<span className="icomoon icon-facebook"></span>
+								</a>}
+							</div>
+						</div>}
+
+						{customFields.servicesOffered &&
+						<div className="servicesOffered content-ul beauty-ul">
+							<h4>Services Offered</h4>
+							<div dangerouslySetInnerHTML={renderHTML(customFields.servicesOffered)}></div>
+						</div>
+						}
+						
+						
+						<div className="space-60"></div>
+						<RightCTA rightCTAContent={item.customFields?.cTAContent} rightCTAButton={item.customFields?.cTAButton} />
+					</div>
+				</div>
+			</div>
+		</section>
+		<div className="space-60 space-dt-80"></div>
+		<RelativePartners regions={regions} currentPartnerId={dynamicPageItem.contentID} />
+		<div className="space-70 space-dt-100"></div>
 	</>
 	);
 }
 
 /* 
-	<section>
-		<div className="space-70 space-dt-90"></div>
-		<div className="container ps-rv z-2">
-			<div className="d-lg-flex flex-wrap">
-				<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
-					<div className="cs-detail-inner last-mb-none">
-						<h2>Partner Overview</h2>
-						<p>mintyfusion Studios is a dynamic design and development studio with a passion for turning ideas into multifaceted bespoke software solutions by combining innovative thinking and state of the art technology.
-
-Based in Vancouver, British Columbia, mintyfusion is redefining commerce for businesses by providing them with customizable and scalable tools and services.
-
-Their diverse skillsets and vast scope of industry-based knowledge is what enables our clients to profitably grow their businesses, whilst building strong customer relations.</p>
-
-							<blockquote>
-								In December, my team had taken a 4-day weekend for Thanksgiving for the first time in many years, thanks to Agility CMS!
-							</blockquote>
-					</div>
-				</div>
-				<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
-					<div className="small-paragraph cs-tag-wrap last-mb-none">
-						<h4>Website</h4>
-						<p>
-							<span className="d-inline-block cs-tag ps-rv">
-								{item.website?.text}
-								<Link to={item.website?.href} target="_self" className="ps-as"><span className="sr-only">{item.website?.text}</span></Link>
-							</span>
-						</p>
-					</div>
-
-					<div className="small-paragraph cs-tag-wrap last-mb-none">
-						<h4>Region</h4>
-						<p>
-							{renderTags(regions, 'topic')}
-						</p>
-					</div>
-
-					<div className="small-paragraph cs-tag-wrap last-mb-none">
-						<h4>Tier</h4>
-						<p>
-						</p>
-					</div>
-					<div className="space-60"></div>
-					<RightCTA rightCTAContent={'Hello'} rightCTAButton={{text: 'hello', href: '#'}} />
-				</div>
-			</div>
-		</div>
-	</section>
+	
 */
 
 const renderTags = (tags, type) => {
-	if (typeof (tags) === 'object' && !tags.length) {
-		let link = `/resources/${type}/${tags?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
-		return (
-			<span className="d-inline-block cs-tag ps-rv">
-				{tags?.customFields?.title}
-				<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tags?.customFields?.title}</span></Link>
-			</span>
-		)
+	if (!Array.isArray(tags)) {
+		tags = [tags]
 	}
 	return tags?.map((tag, index) => {
-		let link = `/resources/${type}/${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+		// let link = `/resources/${type}/${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 		return (
 			<span key={index} className="d-inline-block cs-tag ps-rv">
 				{tag?.customFields?.title}
-				<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
+				{/* <Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link> */}
 			</span>
 		)
 	})
