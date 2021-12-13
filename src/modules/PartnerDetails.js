@@ -276,6 +276,7 @@ export default props => (
 				}
 			})
 
+			console.log('helloo', queryData);
 			//filter out only those logos that we want...
 			let documentation = queryData[isIntegrationReference ? 'allAgilityLink' :'allAgilityLinks'].nodes.filter(m => {
 				return m.properties.referenceName === documentReferenceName;
@@ -321,7 +322,8 @@ export default props => (
 				steps: steps || [],
 				similarPartner,
 				overviewItems,
-				isIntegrationReference
+				isIntegrationReference,
+				allAgilityLinks: queryData.allAgilityLinks
 			}
 			return (
 				<>
@@ -341,12 +343,21 @@ export default props => (
 	/>
 )
 
-const PartnerDetails = ({ item, dynamicPageItem }) => {
-	console.log('dynamicPageItem', dynamicPageItem, item);
+const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
+	console.log('dynamicPageItem', dynamicPageItem, allAgilityLinks);
 	const customFields = dynamicPageItem.customFields;
 
+	const allLinks = Array.isArray(allAgilityLinks.nodes) ? allAgilityLinks.nodes : []
 
 	const regions = customFields.customTags ?? []
+
+	const caseStudies = allLinks.filter(caseStudy => {
+		if (caseStudy?.properties?.referenceName === customFields?.caseStuides?.referencename) {
+			return caseStudy
+		}
+	})
+
+	// console.log('caseStudies', caseStudies,allLinks, customFields?.caseStuides.referencename);
 
 	/* animation module */
 	const thisModuleRef = useRef(null)
@@ -433,6 +444,19 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 								</span>
 							</p>
 						</div>}
+
+						{caseStudies && caseStudies.length &&
+						<div className="last-mb-none relevant-case-studies">
+								<h4>Case Studies</h4>
+							{caseStudies.map(caseStudy => {
+								return (
+									<p>
+										<Link to={caseStudy.customFields?.uRL?.href} target={caseStudy.customFields?.uRL?.target}>{caseStudy.customFields?.uRL?.text}</Link>
+									</p>
+								)
+							})}
+						</div>}
+
 						{(customFields.linkedInURL || customFields.twitterURL || customFields.facebookURL) &&
 						<div className="cs-d-social">
 							<h4>Follow Partner</h4>
@@ -450,7 +474,7 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 									<span className="icomoon icon-facebook"></span>
 								</a>}
 							</div>
-						</div>}
+						</div>}		
 
 						{customFields.servicesOffered &&
 						<div className="servicesOffered content-ul beauty-ul">
