@@ -1,7 +1,8 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
-import React from "react";
+import React, {useEffect, useRef} from "react";
 // import PostItem from "../modules/PostItem";
 import ResponsiveImage from "./responsive-image";
+import { animationElementInnerComponent } from '../global/javascript/animation';
 
 const RelativePartners = ({regions = [], currentPartnerId}) => {
 
@@ -37,10 +38,6 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
     }`)
 
 
-    const checkPartnerHasSameRegion = (item) => {
-      
-    }
-
 
     const allPartners = query.allAgilityPartner?.nodes
     
@@ -49,45 +46,51 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
     const renderPartnerList = allPartners.filter((partner, index) => {
       for (let i = 0; i < regions.length; i++) {
         if (partner.customFields?.customTagsNames && partner.customFields?.customTagsNames?.indexOf(regions[i].customFields?.title) !== -1 && partner.contentID !== currentPartnerId) {
-          // console.log('good');
           return partner          
         }
       }
-      // if (index === 51) {
-      //   console.log('aaa', partner, partner.customFields?.website);
-      // }
-      // if (partner.customFields?.website?.text === '9thwonder.com') {
-      //   return partner
-      // }
     })
 
 
     const renderLists = renderPartnerList.slice(0, 3)
-    // console.log('renderPartnerList', renderPartnerList, renderLists);
 
 
+  /* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
   return (
     <>
-      <section className="relative-partner">
-        <div className="container">
-        <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul">
+      <section ref={thisModuleRef} className="relative-partner animation">
+        <div className="container ps-rv">
+        <div className="top-read-line"></div>
+        <div className="mx-auto mb-45 last-mb-none max-w-940 text-center beauty-ul anima-bottom delay-1">
           <h2>More Partners From Your Region</h2>
         </div>
-          <div className="row">
-            {renderLists.map((partner, index) => {
+          <div className="row anima-bottom delay-3">
+            {renderLists.map((partner) => {
               const link = `/partners/implementation/${partner?.customFields?.uRL}`
-              console.log('partner.customFields?.title', partner.customFields?.title, link);
-              const post = {
-                customFields: {
-                  postImage: {
-                    url: partner.customFields?.partnerLogo?.url
-                  },
-                  uRL: link,
-                  title: partner.customFields?.title,
-                  excerpt: partner.customFields?.excerpt
-                }
+              // console.log('partner.customFields?.title', partner.customFields?.title, link);
+              // const post = {
+              //   customFields: {
+              //     postImage: {
+              //       url: partner.customFields?.partnerLogo?.url
+              //     },
+              //     uRL: link,
+              //     title: partner.customFields?.title,
+              //     excerpt: partner.customFields?.excerpt
+              //   }
 
-              }
+              // }
               return (
                 <div className="col-12 col-md-6 col-lg-4 post-item" key={`post-${partner.contentID}`}>
                   <div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
@@ -97,7 +100,7 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
               )
             })}
           </div>
-          <div className="text-center mt-45">
+          <div className="text-center mt-45 anima-bottom delay-4">
             <Link to={'/partners/implementation'} className="btn mb-0">
               <span>Explore All Partners</span>
             </Link>
