@@ -169,7 +169,7 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 
 	return (
 		<>
-			<section className="mod-new-post-listing mod-integration-listing">
+			<section className="mod-new-post-listing mod-integration-listing new-partner-list">
 				<div className="container">
 					<div className="filter-wrap small-paragraph case-filter-box">
 						<SelectC8 className="d-inline-block" data={postOpts} onChange={onChangeFilter} />
@@ -179,12 +179,13 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 						<PostResult posts={postRender} loadMoreIdx={loadMoreIdx} />
 					</div>
 
-					{loadMoreIdx <= postRender.length - 1 && <div className="text-center">
-					<a className="btn btn-load-more" onClick={loadMoreHandler}>
+					{loadMoreIdx <= postRender.length - 1 && <div className="text-center mt-35">
+					<a className="btn btn-load-more mb-0" onClick={loadMoreHandler}>
 						<span>Load More</span>
 					</a>
 				</div>}
 				</div>
+				<div className="space-60 space-dt-90"></div>
 			</section>
 			<Spacing item={item}/>
 		</>
