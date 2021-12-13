@@ -240,7 +240,6 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
 	// const isEbook = dynamicPageItem.customFields.resourceTypeName.toLowerCase() === 'ebook'
 
   const handleGetTopWebinars = (topWebinarIds) => {
-    console.log(topWebinarIds, 'topWebinarIds' , resources);
     let results = topWebinarIds || []
     // if (topWebinarIds?.length) {
     //   const formatTopWebinarIds = topWebinarIds.map(id => Number(id))
@@ -256,7 +255,6 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
       for(let i = 0; i < resources.length; i++) {
         if (count < 3 && resources[i].customFields?.resourceTypeName === 'Webinar') {
           results.push(resources[i])
-          console.log('ưeb', );
           count++
         }
         if (count === 3) {
@@ -291,7 +289,6 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
   }
 
   const topWebinar = handleGetTopWebinars(topWebinarIds)
-  console.log('topWebinar', topWebinar);
 
   const topRead = handleGetTopReads(topReadIds)
 
