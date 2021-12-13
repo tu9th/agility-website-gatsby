@@ -276,7 +276,6 @@ export default props => (
 				}
 			})
 
-			console.log('helloo', queryData);
 			//filter out only those logos that we want...
 			let documentation = queryData[isIntegrationReference ? 'allAgilityLink' :'allAgilityLinks'].nodes.filter(m => {
 				return m.properties.referenceName === documentReferenceName;
@@ -344,7 +343,6 @@ export default props => (
 )
 
 const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
-	console.log('dynamicPageItem', dynamicPageItem, allAgilityLinks);
 	const customFields = dynamicPageItem.customFields;
 
 	const allLinks = Array.isArray(allAgilityLinks.nodes) ? allAgilityLinks.nodes : []
