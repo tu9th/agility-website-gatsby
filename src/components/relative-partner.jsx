@@ -79,20 +79,8 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
           <div className="row anima-bottom delay-3">
             {renderLists.map((partner) => {
               const link = `/partners/implementation/${partner?.customFields?.uRL}`
-              // console.log('partner.customFields?.title', partner.customFields?.title, link);
-              // const post = {
-              //   customFields: {
-              //     postImage: {
-              //       url: partner.customFields?.partnerLogo?.url
-              //     },
-              //     uRL: link,
-              //     title: partner.customFields?.title,
-              //     excerpt: partner.customFields?.excerpt
-              //   }
-
-              // }
               return (
-                <div className="col-12 col-md-6 col-lg-4 post-item" key={`post-${partner.contentID}`}>
+                <div className="col-12 col-md-6 col-lg-4 mb-45 mb-lg-0 post-item" key={`post-${partner.contentID}`}>
                   <div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
                     <PostItem logoImg={partner.customFields?.partnerLogo} link={link} title={partner.customFields?.title} excerpt={partner.customFields?.excerpt} />
                   </div>
