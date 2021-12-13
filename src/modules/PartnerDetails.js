@@ -385,7 +385,7 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 
 		<section ref={thisModuleRef} className="new-partner-detail animation">
 			<div className="space-70 space-dt-90"></div>
-			<div className="container ps-rv z-2 anima-bottom">
+			<div className="container ps-rv z-2 anima-bottom delay-1">
 				<div className="d-lg-flex flex-wrap">
 					<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
 						<div className="cs-detail-inner last-mb-none">
@@ -393,7 +393,13 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 							<div dangerouslySetInnerHTML={renderHTML(customFields.textblob)}></div>
 
 							<div className="cs-quote">
-								<div dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
+								{(customFields.quote && customFields.quote.indexOf('<blockquote>') !== -1) &&
+									<div dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
+								}
+								{(customFields.quote && customFields.quote.indexOf('<blockquote>') === -1) &&
+									<blockquote dangerouslySetInnerHTML={renderHTML(customFields.quote)}></blockquote>
+								}
+								
 							</div>
 						</div>
 					</div>
