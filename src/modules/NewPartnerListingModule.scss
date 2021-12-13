@@ -55,6 +55,11 @@
     }
   }
 }
+.new-partner-list {
+  .box-scroll {
+    max-height: 370px !important;
+  }
+}
 
 @media (min-width: 992px) {
   .mod-integration-listing {
