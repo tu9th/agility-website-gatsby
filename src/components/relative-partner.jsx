@@ -2,6 +2,7 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import React, {useEffect, useRef} from "react";
 // import PostItem from "../modules/PostItem";
 import ResponsiveImage from "./responsive-image";
+import { AgilityImage } from "@agility/gatsby-image-agilitycms";
 import { animationElementInnerComponent } from '../global/javascript/animation';
 
 const RelativePartners = ({regions = [], currentPartnerId}) => {
@@ -51,8 +52,19 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
       }
     })
 
+    const tmp = []
+    while(tmp.length < 3) {
+      const random = parseInt(Math.random() * (renderPartnerList.length - 1))
+      if (tmp.indexOf(random) === -1) {
+        tmp.push(random)
+      }
+    }
 
-    const renderLists = renderPartnerList.slice(0, 3)
+    const renderLists = [
+      renderPartnerList[tmp[0]],
+      renderPartnerList[tmp[1]],
+      renderPartnerList[tmp[2]],
+    ]
 
 
   /* animation module */
@@ -111,7 +123,7 @@ const PostItem = ({ logoImg, link, title, excerpt }) => {
 		<>
       <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
         <div className="case-thumb ps-rv overflow-hidden">
-          {logoImg && <ResponsiveImage img={logoImg} />}
+          {logoImg && <AgilityImage image={logoImg} />}
         </div>
         <div className="case-content d-flex flex-column small-paragraph flex">
           <div className="flex-0-0">

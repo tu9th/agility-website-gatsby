@@ -403,7 +403,7 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 
 							<div className="cs-quote">
 								{(customFields.quote && customFields.quote.indexOf('<blockquote>') !== -1) &&
-									<div dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
+									<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
 								}
 								{(customFields.quote && customFields.quote.indexOf('<blockquote>') === -1) &&
 									<blockquote dangerouslySetInnerHTML={renderHTML(customFields.quote)}></blockquote>
