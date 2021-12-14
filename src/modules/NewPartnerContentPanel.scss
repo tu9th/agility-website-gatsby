@@ -64,16 +64,24 @@
     margin-left: 25px;
     min-height: 317px;
   }
-}
-@media screen and(min-width: 1501px) {
   .new-partner-banner {
-    padding: 124px 0 84px;
     h1 {
       margin-bottom: 45px;
     }
     .part-banner-content {
       margin-bottom: 45px;
     }
+  }
+}
+@media screen and(min-width: 1501px) {
+  .new-partner-banner {
+    padding: 124px 0 84px;
+    // h1 {
+    //   margin-bottom: 45px;
+    // }
+    // .part-banner-content {
+    //   margin-bottom: 45px;
+    // }
   }
   .partner-icon-bg {
     bottom: -60px;

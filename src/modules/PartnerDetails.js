@@ -414,13 +414,10 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 					</div>
 					<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
 						{customFields.website &&
-						<div className="small-paragraph cs-tag-wrap last-mb-none">
+						<div className="small-paragraph cs-website last-mb-none">
 							<h4>Website</h4>
 							<p>
-								<span className="d-inline-block cs-tag ps-rv">
-									{customFields.website?.text}
-									<Link to={customFields.website?.href} target="_self" className="ps-as"><span className="sr-only">{customFields.website?.text}</span></Link>
-								</span>
+								<Link to={customFields.website?.href} target="_blank"><span>{customFields.website?.text}</span></Link>
 							</p>
 						</div>}
 						
