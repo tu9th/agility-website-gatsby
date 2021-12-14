@@ -3,6 +3,9 @@
 
 .new-partner-banner {
   padding: 50px 0;
+  .d-table {
+    padding: 25px 0 0;
+  }
 }
 .back-to-partner {
   color: $color-ff;
@@ -11,19 +14,26 @@
   letter-spacing: 1px;
   font-weight: $fw-semi-bold;
   text-decoration: none;
+  margin-bottom: 45px;
   &:hover {
-    color: $white;
+    color: $white !important;
   }
 }
 .btn-visit-site {
   border-color: $white;
   color: $white;
+  &:hover {
+    color: $white !important;
+    border-color: $color-58;
+    background-color: $color-58;
+  }
 }
 .partner-banner-right {
   background-color: $white;
   border-radius: 8px;
   position: relative;
   padding: 40px 50px;
+  min-height: 200px;
 }
 .partner-icon-bg {
   position: absolute;
@@ -58,9 +68,18 @@
 @media screen and(min-width: 1501px) {
   .new-partner-banner {
     padding: 124px 0 84px;
+    h1 {
+      margin-bottom: 45px;
+    }
+    .part-banner-content {
+      margin-bottom: 45px;
+    }
   }
   .partner-icon-bg {
     bottom: -60px;
     right: -80px;
+  }
+  .back-to-partner {
+    margin-bottom: 60px;
   }
 }

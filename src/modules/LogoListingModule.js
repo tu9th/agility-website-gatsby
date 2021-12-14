@@ -10,14 +10,25 @@ import ResponsiveImage from '../components/responsive-image';
 import Helpers from '../global/javascript/Helpers'
 import Lazyload from 'react-lazyload'
 
-const LogoListingModule = ({ item }) => {
+const LogoListingModule = ({item, page}) => {
+	// console.log('dynamicPageItem', page);
 	const [spaceBottom, setSpaceBottom] = useState(false)
 	const [isIntegration, setIsIntegration] = useState(false);
 	const heading = item.customFields.title
 	const logos = item.customFields.logos
 	const classSection = `module LogoListingModule animation  ${item.customFields.darkMode && item.customFields.darkMode === 'true' ? 'dark-mode bg-17 text-white': ''}`
+	let shuffleLogos = []
+	// let tmpIndex = [];
+	// for(let i = 0; i < logos.length; i++) {
+	// 		tmpIndex.push(i)
+	// }
 
-	const shuffleLogos = ArrayUtils.shuffleArray(logos)
+	/* not shuffle for this page, bug when shuffle */
+	if (page?.name !== 'implementation') {
+		shuffleLogos = ArrayUtils.shuffleArray(logos)
+	} else {
+		shuffleLogos = logos
+	}
 
 	const listLogos = shuffleLogos.map((key, idx) => {
 
@@ -28,8 +39,7 @@ const LogoListingModule = ({ item }) => {
 		}
 		const className = `logo-item logo-v${idx + 1}`
 		let logoImage = key.customFields.logo.url
-		// let imageSlider = <AgilityImage image={key.customFields.logo}/>
-		let imageSlider = <ResponsiveImage img={key.customFields.logo}/>
+		let imageSlider = <AgilityImage image={key.customFields.logo}/>
 		const logoTitle = key.customFields.logo.label
 		const link = key?.customFields?.uRL?.href
 		const target = key?.customFields?.uRL?.target
