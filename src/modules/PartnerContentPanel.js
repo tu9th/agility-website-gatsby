@@ -92,10 +92,10 @@ const PartnerContentPanel = ({ item, dynamicPageItem }) => {
                         <div className="col-lg-6">
                             <div className="d-table w-100">
                                 <div className="d-table-cell align-middle">
-                                    <Link to={'/partners/implementation'} className="mb-35 d-block back-to-partner">Explore All Partners</Link>
-                                    <div className="text-white">
+                                    <Link to={'/partners/implementation'} className="mb-45 d-block back-to-partner"><span className="icomoon icon-chevron-left"></span>Explore All Partners</Link>
+                                    <div className="text-white last-mb-none">
                                         <h1>{title}</h1>
-                                        <div className="" dangerouslySetInnerHTML={renderHTML(panelCopy)}></div>
+                                        <div className="part-banner-content" dangerouslySetInnerHTML={renderHTML(panelCopy)}></div>
                                         <p>
                                             {customFields.contactURL?.href &&
                                             <Link to={customFields.contactURL?.href} className="btn btn-primary">{customFields.contactURL?.text ?? 'Contact This Partner'}</Link>}
@@ -109,11 +109,11 @@ const PartnerContentPanel = ({ item, dynamicPageItem }) => {
                             
                         </div>
                         <div className="col-lg-6">
-                            <div className="ps-rv h-100">
+                            <div className="ps-rv">
                                 <div className="partner-icon-bg d-flex align-items-end justify-content-end">
                                     <img src="/images/features/icon-Container.svg" alt="Icon" />
                                 </div>
-                                <div className="partner-banner-right h-100 d-flex align-items-center justify-content-center bg-white">
+                                <div className="partner-banner-right d-flex align-items-center justify-content-center bg-white">
                                     <div className="partner-banner-logo">
                                     <ResponsiveImage img={customFields.partnerLogo} />
                                     {/* <img className="" src="/images/features/9th-logo.png" alt="9thWonder" /> */}
