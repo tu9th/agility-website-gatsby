@@ -34,7 +34,7 @@ const DownloadableItem = ({ post, isVerticalImage }) => {
           <div className="downloadable-thumb ps-rv overflow-hidden">
             <LazyBackground src={thumbUrl} className="bg h-100 transition-25"></LazyBackground>
             <Link to={link} className="ps-as d-flex align-items-center justify-content-center"><span className="sr-only">{title}</span>
-              <span class="icomoon icon-video"><span class="path3"></span></span>
+              <span className="icomoon icon-video"><span className="path3"></span></span>
             </Link>
           </div>
         }
