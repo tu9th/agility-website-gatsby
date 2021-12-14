@@ -53,18 +53,26 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
     })
 
     const tmp = []
-    while(tmp.length < 3) {
-      const random = parseInt(Math.random() * (renderPartnerList.length - 1))
-      if (tmp.indexOf(random) === -1) {
-        tmp.push(random)
+    let renderLists = []
+    if (renderPartnerList.length > 3) {
+      while(tmp.length < 3) {
+        const random = parseInt(Math.random() * (renderPartnerList.length - 1))
+        if (tmp.indexOf(random) === -1) {
+          tmp.push(random)
+        }
       }
+
+      renderLists = [
+        renderPartnerList[tmp[0]],
+        renderPartnerList[tmp[1]],
+        renderPartnerList[tmp[2]]
+      ]
+    } else {
+      renderLists = renderPartnerList
     }
 
-    const renderLists = [
-      renderPartnerList[tmp[0]],
-      renderPartnerList[tmp[1]],
-      renderPartnerList[tmp[2]],
-    ]
+
+    
 
 
   /* animation module */
