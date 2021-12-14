@@ -99,7 +99,7 @@ const PostDetailItem = ({post}) => {
           }], { skipTitle: true })}
         </div>
         <h3>
-          <Link to={link} className="color-inherit">{post?.customFields?.title}</Link>
+          {post?.customFields?.title}
         </h3>
       </div>
       {link && <Link to={link} className="link-line flex-0-0 link-purple">Read More</Link>}
