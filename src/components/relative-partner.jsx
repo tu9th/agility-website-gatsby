@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 // import PostItem from "../modules/PostItem";
 import ResponsiveImage from "./responsive-image";
 import { AgilityImage } from "@agility/gatsby-image-agilitycms";
@@ -39,6 +39,7 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
     }`)
 
 
+    const [renderLists, setRenderLists] = useState([])
 
     const allPartners = query.allAgilityPartner?.nodes
     
@@ -52,27 +53,31 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
       }
     })
 
-    const tmp = []
-    let renderLists = []
-    if (renderPartnerList.length > 3) {
-      while(tmp.length < 3) {
-        const random = parseInt(Math.random() * (renderPartnerList.length - 1))
-        if (tmp.indexOf(random) === -1) {
-          tmp.push(random)
+
+
+
+    useEffect(() => {
+      const tmp = []
+      let tmpLists = []
+      if (renderPartnerList.length > 3) {
+        while(tmp.length < 3) {
+          const random = parseInt(Math.random() * (renderPartnerList.length - 1))
+          if (tmp.indexOf(random) === -1) {
+            tmp.push(random)
+          }
         }
+  
+        tmpLists = [
+          renderPartnerList[tmp[0]],
+          renderPartnerList[tmp[1]],
+          renderPartnerList[tmp[2]]
+        ]
+      } else {
+        tmpLists = renderPartnerList
       }
 
-      renderLists = [
-        renderPartnerList[tmp[0]],
-        renderPartnerList[tmp[1]],
-        renderPartnerList[tmp[2]]
-      ]
-    } else {
-      renderLists = renderPartnerList
-    }
-
-
-    
+      setRenderLists(tmpLists)
+    }, [])
 
 
   /* animation module */
