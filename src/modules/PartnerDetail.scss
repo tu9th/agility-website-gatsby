@@ -109,6 +109,9 @@
     font-size: rem(15);
     line-height: 1.73;
   }
+  h4 {
+    margin-bottom: 6px;
+  }
 }
 
 
@@ -119,6 +122,12 @@
   .new-partner-detail {
     .cs-detail-inner {
       max-width: 710px;
+    }
+    .cs-website {
+      margin-bottom: 35px;
+      h4 {
+        margin-bottom: 6px;
+      }
     }
   }
 }
