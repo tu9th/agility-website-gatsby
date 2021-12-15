@@ -25,6 +25,11 @@ const NewFeaturedResource = ({ item }) => {
 		}
 	}, [])
 
+  const trimText = (text) => {
+		let txt = text.split(' ')
+		return txt.length > 20 ? txt.slice(0, 20).join(' ').concat('...') : txt.join(' ')
+	}
+
 	return (
     <>
     <section ref={thisModuleRef} className="new-feature-res ps-rv animation">
@@ -32,8 +37,10 @@ const NewFeaturedResource = ({ item }) => {
       <div className="container ps-rv z-2 bg anima-bottom">
         <div className="row">
           <div className="col col-12 col-lg-6">
-            <div className="resource-lp-left max-w-470 ps-rv last-mb-none">
-              <ResponsiveImage img={bookCover} />
+            <div className="resource-lp-left max-w-400 ps-rv mb-45 lg-mb-0 last-mb-none">
+              <div className="ps-rv">
+                <ResponsiveImage img={bookCover} />
+              </div>
             </div>
           </div>
           <div className="col col-12 col-lg-6">
@@ -48,7 +55,7 @@ const NewFeaturedResource = ({ item }) => {
                 }
                 {
                   textblob &&
-                  <div dangerouslySetInnerHTML={renderHTML(textblob)}></div>
+                  <div dangerouslySetInnerHTML={renderHTML(trimText(textblob))}></div>
                 }
                 { uRL && resourceTypeName &&
                   <a href={`/resources/${resourceTypeName.toLowerCase()}/${uRL}`} className="btn mb-0">Download</a>

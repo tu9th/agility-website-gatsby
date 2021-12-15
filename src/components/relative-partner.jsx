@@ -105,7 +105,7 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
             {renderLists.map((partner) => {
               const link = `/partners/implementation/${partner?.customFields?.uRL}`
               return (
-                <div className="col-12 col-md-6 col-lg-4 mb-45 mb-lg-0 post-item" key={`post-${partner.contentID}`}>
+                <div className="col-12 col-md-6 col-lg-4 mb-45 lg-mb-0 post-item" key={`post-${partner.contentID}`}>
                   <div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
                     <PostItem logoImg={partner.customFields?.partnerLogo} link={link} title={partner.customFields?.title} excerpt={partner.customFields?.excerpt} />
                   </div>

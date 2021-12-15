@@ -283,7 +283,7 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
     <>
       <FeatureRes eBookSelected={eBookSelected} />
 			<section className="mod-new-post-listing">
-        <div className="space-20 space-dt-40"></div>
+        <div className="space-60 space-dt-80"></div>
         <FeatureCaseStudies topWebinar={topWebinar} />
         <div className="space-30 space-dt-80"></div>
         {topRead && topRead.length &&
