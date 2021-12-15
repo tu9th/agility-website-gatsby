@@ -196,7 +196,6 @@ const DownloadEbook = ({topReads, isVerticalImage}) => {
 }
 
 const FeatureRes = ({ eBookSelected }) => {
-  // console.log('eBookSelected', eBookSelected);
   const { downloadButtonText, fileDownload, webinarURL, image, excerpt, title, thankYouContent, bookCover, resourceTypeName} = eBookSelected?.customFields
   const urlCover = bookCover ? bookCover.url : '/images/ebook-cover-default.png'
   const isWebinar = resourceTypeName.toLowerCase() === 'webinar'
@@ -231,7 +230,6 @@ const FeatureRes = ({ eBookSelected }) => {
 }
 
 const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
-  // console.log('dynamicPageItem', item, dynamicPageItem);
   const [eBookSelected, setEBookSelected] = useState(dynamicPageItem)
   const topWebinarIds = eBookSelected?.customFields?.topWebinars
   const topReadIds = eBookSelected?.customFields?.topReads
@@ -241,14 +239,6 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
 
   const handleGetTopWebinars = (topWebinarIds) => {
     let results = topWebinarIds || []
-    // if (topWebinarIds?.length) {
-    //   const formatTopWebinarIds = topWebinarIds.map(id => Number(id))
-    //   results = resources.filter(res => {
-    //     return formatTopWebinarIds.includes(res.contentID)
-    //   })
-    // }
-
-    // console.log('topWebinarIds', results);
 
     if(results.length < 3) {
       let count = results.length
@@ -267,12 +257,7 @@ const NewEBookThankYou = ({ item, resources, dynamicPageItem }) => {
 
   const handleGetTopReads = (topReadIds) => {
     let results = topReadIds || []
-    // if (topReadIds?.length) {
-    //   const formatTopReadIds = topReadIds.map(id => Number(id))
-    //   results = resources.filter(res => {
-    //     return formatTopReadIds.includes(res.contentID)
-    //   })
-    // }
+
     if(results.length < 3) {
       let count = results.length
       for(let i = 0; i < resources.length; i++) {

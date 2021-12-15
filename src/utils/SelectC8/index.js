@@ -79,7 +79,6 @@ const RenderSelectC8 = ({ data, onChange, multipleSelect = false, className }, r
       optionChoose.name = data.name
       optionChoose.value = selectedArray
     }
-    console.log(`optionChoose`, optionChoose)
     onChange(optionChoose)
   }
 
