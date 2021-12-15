@@ -1,14 +1,15 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import {  graphql, StaticQuery } from "gatsby"
 import * as StringUtils from "../utils/string-utils"
 import SelectC8 from '../utils/SelectC8'
-import Helpers from '../global/javascript/Helpers'
+import Helpers, {getQueryParams} from '../global/javascript/Helpers'
 import { Link } from 'gatsby'
 import { renderHTML } from '../agility/utils'
 import LazyBackground from '../utils/LazyBackground'
 // import { DateTime } from 'luxon'
 import Spacing from './Spacing'
 import Lazyload from 'react-lazyload'
+import { animationElementInnerComponent } from '../global/javascript/animation'
 
 import './NewPartnerListing.scss'
 
@@ -165,12 +166,43 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 				mod.style.display = 'none'
 			})
 		}, 1000)
+
+		/*  */
+		const searchParams = getQueryParams(window.location.search)
+		// console.log(searchParams, 'regionParam', tmpPostOptions);
+		if (searchParams.region) {
+			const optionsValue = Object.values(tmpPostOptions.options)
+			const optionsKey = Object.keys(tmpPostOptions.options)
+			optionsValue.map((val, idx) => {
+				const slug = val.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')
+				if (slug === searchParams.region) {
+					// const newOptions = {...postOpts, selectedOption: parseInt(optionsKey[idx])}
+						// console.log('newOptions', newOptions.selectedOption);
+					// setPostOpts(newOptions)
+					onChangeFilter({name: val, value: [parseInt(optionsKey[idx])]})
+				}
+			})
+		}
 	}, [])
+	
+		/* animation module */
+		const thisModuleRef = useRef(null)
+		useEffect(() => {
+			const scrollEventFunc = () => {
+				animationElementInnerComponent(thisModuleRef.current)
+			}
+			animationElementInnerComponent(thisModuleRef.current)
+			window.addEventListener('scroll', scrollEventFunc)
+	
+			return () => {
+				window.removeEventListener('scroll', scrollEventFunc)
+			}
+		}, [])
 
 	return (
 		<>
-			<section className="mod-new-post-listing mod-integration-listing new-partner-list">
-				<div className="container">
+			<section ref={thisModuleRef} className="mod-new-post-listing mod-integration-listing new-partner-list animation">
+				<div className="container anima-bottom">
 					<div className="filter-wrap small-paragraph case-filter-box">
 						<SelectC8 className="d-inline-block" data={postOpts} onChange={onChangeFilter} />
 					</div>

@@ -348,6 +348,7 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 	const allLinks = Array.isArray(allAgilityLinks.nodes) ? allAgilityLinks.nodes : []
 
 	const regions = customFields.customTags ?? []
+	// console.log('regions', regions);
 
 	const caseStudies = allLinks.filter(caseStudy => {
 		if (caseStudy?.properties?.referenceName === customFields?.caseStuides?.referencename) {
@@ -443,9 +444,9 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 						{caseStudies && caseStudies.length &&
 						<div className="last-mb-none relevant-case-studies">
 								<h4>Case Studies</h4>
-							{caseStudies.map(caseStudy => {
+							{caseStudies.map((caseStudy, idx) => {
 								return (
-									<p>
+									<p key={idx}>
 										<Link to={caseStudy.customFields?.uRL?.href} target={caseStudy.customFields?.uRL?.target}>{caseStudy.customFields?.uRL?.text}</Link>
 									</p>
 								)
@@ -501,11 +502,11 @@ const renderTags = (tags, type) => {
 		tags = [tags]
 	}
 	return tags?.map((tag, index) => {
-		// let link = `/resources/${type}/${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+		let link = `/partners/implementation?region=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
 		return (
 			<span key={index} className="d-inline-block cs-tag ps-rv">
 				{tag?.customFields?.title}
-				{/* <Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link> */}
+				<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
 			</span>
 		)
 	})
