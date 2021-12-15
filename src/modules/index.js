@@ -91,6 +91,15 @@ const TwoPanelFeatureComparison = loadable(() => import("./TwoPanelFeatureCompar
 const VerticalContentPanel = loadable(() => import("./VerticalContentPanel"))
 const VideoPlayerModule = loadable(() => import("./VideoPlayerModule"))
 
+//==== New Resource ======//
+const NewFeaturedResource = loadable(() => import("./NewFeaturedResource"))
+const NewDowloadableEbooks = loadable(() => import("./NewDowloadableEbooks"))
+const NewWebinarDowload = loadable(() => import("./NewWebinarDowload"))
+const NewFeaturedCaseStudies = loadable(() => import("./NewFeaturedCaseStudies"))
+const NewAllResources = loadable(() => import("./NewAllResources"))
+const NewEBookThankYou = loadable(() => import("./NewEBookThankYou"))
+const NEWWebinarThankYou = loadable(() => import("./NewEBookThankYou"))
+const NEWSocialSubscribe = loadable(() => import("./NEWSocialSubscribe"))
 
 const allModules = {
 	"2BoxContent": TwoBoxContent,
@@ -136,7 +145,6 @@ const allModules = {
 	"PartnerContentPanel": PartnerContentPanel,
 	"PartnerDetails": PartnerDetails,
 	"NEW-IntegrationDetail": PartnerDetails,
-	"PartnerListing": PartnerListing,
 	"NewPartnerListingModule": NewPartnerListingModule,
 	"NEW-ResourceTagTitle": NewResourcesTagTitle,
 	'NEW-ResourceTagTagList': NewResourceTagList,
@@ -183,8 +191,14 @@ const allModules = {
 	"TwoPanelFeatureComparison": TwoPanelFeatureComparison,
 	"VerticalContentPanel": VerticalContentPanel,
 	"VideoPlayerModule": VideoPlayerModule,
-
-
+	"NEWFeaturedResource": NewFeaturedResource,
+	"NEWDownloadableeBooks": NewDowloadableEbooks,
+	"NEWWebinarDownload": NewWebinarDowload,
+	"NEWFeaturedCaseStudies": NewFeaturedCaseStudies,
+	"NEWAllResources": NewAllResources,
+	"NEWeBookThankYou": NewEBookThankYou,
+	"NEWWebinarThankYou": NEWWebinarThankYou,
+	"NEWSocialSubscribe": NEWSocialSubscribe,
 }
 
 export const getModule = (name) => {
