@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef} from 'react';
 import {  graphql, StaticQuery } from "gatsby"
 import * as StringUtils from "../utils/string-utils"
 import SelectC8 from '../utils/SelectC8'
-import Helpers, {getQueryParams} from '../global/javascript/Helpers'
+import Helpers, {getQueryParams, removeURLParam, addUrlParam } from '../global/javascript/Helpers'
 import { Link } from 'gatsby'
 import { renderHTML } from '../agility/utils'
 import LazyBackground from '../utils/LazyBackground'
@@ -122,6 +122,9 @@ const PostResult = ({posts, loadMoreIdx}) => {
 }
 
 const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) => {
+
+	const [isFirstLoad, setIsFirstLoad] = useState(true)
+
 	const [loadMoreIdx, setLoadMoreIdx] = useState( numberItemPerPage ? Number(numberItemPerPage) : 12)
 	const tmpPostOptions = {
 		name: 'partner-tag',
@@ -150,6 +153,16 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 			setPostOpts({...tmpPostOptions, selectedOption: value})
 		}
 		setLoadMoreIdx(numberItemPerPage ? Number(numberItemPerPage) : 12)
+
+		/* update url when filter action */
+		if (!isFirstLoad) {
+			if (value.includes(1)) {
+				window.history.pushState({}, '', removeURLParam('region'))
+			} else {
+				const url = addUrlParam('region', postOpts.options[value].toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-'))
+				window.history.pushState({}, '', url)
+			}
+		}
 	}
 
 	const loadMoreHandler = () => {
@@ -176,13 +189,12 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 			optionsValue.map((val, idx) => {
 				const slug = val.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')
 				if (slug === searchParams.region) {
-					// const newOptions = {...postOpts, selectedOption: parseInt(optionsKey[idx])}
-						// console.log('newOptions', newOptions.selectedOption);
-					// setPostOpts(newOptions)
 					onChangeFilter({name: val, value: [parseInt(optionsKey[idx])]})
 				}
 			})
 		}
+
+		setIsFirstLoad(false)
 	}, [])
 	
 		/* animation module */
