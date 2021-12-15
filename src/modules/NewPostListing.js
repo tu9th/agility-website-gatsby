@@ -87,6 +87,7 @@ export default props => (
 			let posts = queryData.allAgilityBlogPost.nodes;
 			let item = props.item;
 			const allAgilityNewBlogCategory = queryData.allAgilityNewBlogCategory.nodes
+			const allAgilityBlogCategory = queryData.allAgilityBlogCategory.nodes
 			const [loadMoreIdx, setLoadMoreIdx] = useState(12)
 
 			posts.forEach(p => {
@@ -106,10 +107,10 @@ export default props => (
 				selectedOption: [1]
 			}
 
+			let postsFilter = posts
+
 			if (props.dynamicPageItem && props.dynamicPageItem.properties.definitionName === "BlogTag") {
 				const tagContentID = props.dynamicPageItem.contentID;
-				// tmpPostOptions.selectedOption = [tagContentID]
-				console.log('testtt', )
 				const findCategory = allAgilityNewBlogCategory.find(category => {
 					return encodeURIComponent(props.dynamicPageItem.customFields.title.toLowerCase().replace(/ /g, "-")) === encodeURIComponent(category.customFields.title.toLowerCase().replace(/ /g, "-"))
 				})
@@ -117,15 +118,16 @@ export default props => (
 				if (findCategory) {
 					tmpPostOptions.selectedOption = [findCategory.contentID]
 				}
+				console.log(tagContentID)
 
-				posts = posts.filter(p => {
+				postsFilter = posts.filter(p => {
 					if (! p.tags || ! (p.tags.length > 0)) return false;
 					const index = p.tags.findIndex(t => { return parseInt(t.contentID) === parseInt(tagContentID); });
 					return index >= 0;
 				});
 			}
 			const [postOpts, setPostOpts] = useState(tmpPostOptions)
-			const [postRender, setPostRender] = useState(posts)
+			const [postRender, setPostRender] = useState(postsFilter)
 
 			//filter by tag if neccessary
 
@@ -162,14 +164,26 @@ export default props => (
 					url = '/resources/posts'
 				} else {
 					const detailCategory = queryData.allAgilityNewBlogCategory.nodes.find((node) => {
-						console.log(value, node.contentID)
 						return value.includes(node.contentID)
 					})
 					if (detailCategory) {
 						url = `/resources/posts/tag/${encodeURIComponent(detailCategory.customFields.title.toLowerCase().replace(/ /g, "-"))}`
 					}
+					const labelSelected = postOpts.options[value[0]].toLowerCase().replace(/ /g, "-")
+
+
+					const tmpPosts = posts.filter(post => {
+						if (! post.tags || ! (post.tags.length > 0)) return false;
+						const index = post.tags.findIndex(t => {
+							return labelSelected === t.customFields.title.toLowerCase().replace(/ /g, "-")
+						});
+						return index >= 0;
+					})
+					setPostRender(tmpPosts)
+
 				}
-				window.location.href = url
+				setLoadMoreIdx(12)
+				window.history.pushState('Agility', '', url)
 			}
 
 			return (
