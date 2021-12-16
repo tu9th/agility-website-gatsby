@@ -290,9 +290,10 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
 
                 <div className="meta top">
                   <div className="author">
-                    <div className="author-image">
+                    <LazyBackground className="author-image bg" src={author && author.image ? author.image.url : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg"} />
+                    {/* <div className="author-image">
                       <img src={author && author.image ? author.image.url + '?w=100' : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg?w=100"} alt={author && author.title ? author.title : 'image author'} />
-                    </div>
+                    </div> */}
                     <h5 className="h5">{author?.title}</h5>
                   </div>
                 </div>
