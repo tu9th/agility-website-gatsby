@@ -229,7 +229,6 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
       })
     }, 1500);
   });
-  console.log(post)
 
   return (
     <>
