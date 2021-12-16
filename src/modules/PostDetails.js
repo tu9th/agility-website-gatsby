@@ -15,8 +15,9 @@ import "./PostDetails.scss"
 const AboutAuthor = ({ author }) => {
   return <div className="meta about-author">
     <div className="author">
-      <div className="author-image flex-0-0">
-        <img src={author && author.image ? author.image.url + '?w=100' : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg?w=100"} alt={author && author.title ? author.title : 'image author'} />
+      <div className="">
+        <LazyBackground className="author-image flex-0-0 bg" src={author && author.image ? author.image.url : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg"} />
+        {/* <img src={author && author.image ? author.image.url : "https://static.agilitycms.com/authors/blank-head-profile-pic.jpg"} alt={author && author.title ? author.title : 'image author'} /> */}
       </div>
       <div className="author-content last-mb-none">
         <h5 className="h5">About the Author</h5>
