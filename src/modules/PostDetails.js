@@ -185,7 +185,7 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
       }
     }
   }
-  const author = post.author.customFields;
+  const author = post?.author?.customFields;
   const hasTweets = post.textblob && post.textblob.indexOf('class="twitter-tweet"') !== -1;
   const [state, setState] = useState({
     loaded: false
