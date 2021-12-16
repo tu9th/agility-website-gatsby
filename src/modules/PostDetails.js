@@ -229,6 +229,7 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
       })
     }, 1500);
   });
+  console.log(post)
 
   return (
     <>
@@ -304,13 +305,14 @@ const PostDetails = ({ item, dynamicPageItem, page, queryData }) => {
             <div className="col-lg-5"></div>
           </div>
           <div className="row">
-            <div className="col-lg-7 rich-text">
+            <div className="col-lg-7 rich-text mb-0">
               {post.postImage &&
                 <div className="image">
                   <ResponsiveImage img={post.postImage} layout="fullWidth" />
                 </div>
               }
               <div className="post-content" dangerouslySetInnerHTML={renderHTML(post.textblob)}></div>
+              {post.cTA && <CallToAction item={post.cTA} />}
               <div className="mod-space space-40 space-dt-40"></div>
               <AboutAuthor author={author}/>
             </div>
