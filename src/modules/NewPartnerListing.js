@@ -11,8 +11,6 @@ import Spacing from './Spacing'
 import Lazyload from 'react-lazyload'
 import { animationElementInnerComponent } from '../global/javascript/animation'
 
-import './NewPartnerListing.scss'
-
 export default props => (
 	<StaticQuery
 		query={graphql`
@@ -196,7 +194,7 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 
 		setIsFirstLoad(false)
 	}, [])
-	
+
 		/* animation module */
 		const thisModuleRef = useRef(null)
 		useEffect(() => {
@@ -205,7 +203,7 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 			}
 			animationElementInnerComponent(thisModuleRef.current)
 			window.addEventListener('scroll', scrollEventFunc)
-	
+
 			return () => {
 				window.removeEventListener('scroll', scrollEventFunc)
 			}
