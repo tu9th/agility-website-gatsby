@@ -128,7 +128,7 @@ const NewPartnerListing = ({item, resources, resourceType, numberItemPerPage}) =
 	const [loadMoreIdx, setLoadMoreIdx] = useState( numberItemPerPage ? Number(numberItemPerPage) : 12)
 	const tmpPostOptions = {
 		name: 'partner-tag',
-		options: { ...resourceType.reduce((obj, node) => {
+		options: { ...resourceType.filter(node => node.properties.referenceName === `implementationpartnertags`).reduce((obj, node) => {
 			obj[node.contentID] = node.customFields.title
 			return obj
 		}, {}), 1: 'All Partners' },
