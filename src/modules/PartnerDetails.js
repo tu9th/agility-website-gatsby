@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
 import { renderHTML } from '../agility/utils'
 import IntegrationDetailContent from './IntegrationDetailContent'
 import IntegrationDetailGuideLink from './IntegrationDetailGuideLink'
@@ -8,9 +8,16 @@ import * as StringUtils from "../utils/string-utils"
 import Slider from 'react-slick'
 import * as ArrayUtils from '../utils/array-utils.js';
 
+import RelativePartners from '../components/relative-partner';
+import { animationElementInnerComponent } from '../global/javascript/animation';
+
 import "./CaseStudyDetails.scss"
 import "./PartnerDetail.scss"
 import "./RichTextArea.scss"
+
+
+import RightCTA from '../components/RightCTA';
+
 const CaseStudyGallery = ({ dataList, galleryId, title, settingsOveride }) => {
   const mediaLists = dataList // query?.allAgilityCaseStudy?.edges
   const founded = mediaLists?.filter(i => {
@@ -314,27 +321,77 @@ export default props => (
 				steps: steps || [],
 				similarPartner,
 				overviewItems,
-				isIntegrationReference
+				isIntegrationReference,
+				allAgilityLinks: queryData.allAgilityLinks
 			}
 			return (
-				<section className="mod-integration-partner">
+				<>
 					{ isIntegration && <>
+					<section className="mod-integration-partner">
 						<IntegrationDetailContent viewModel={viewModel}/>
 						<CaseStudyGallery dataList={mediaLists} galleryId={customFields?.gallery?.galleryid || customFields?.screenshots?.galleryid} title={customFields.title} />
 						{steps && steps.length > 0 && <IntegrationDetailGuideLink viewModel={viewModel}/>}
 						<IntegrationDetailSimilar viewModel={viewModel} />
-						</>
+					</section>
+					</>
 					}
 					{ !isIntegration && <PartnerDetails {...viewModel} /> }
-				</section>
+				</>
 			);
 		}}
 	/>
 )
 
-const PartnerDetails = ({ item, dynamicPageItem }) => {
-	item = dynamicPageItem.customFields;
+const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
+	const customFields = dynamicPageItem.customFields;
+
+	const allLinks = Array.isArray(allAgilityLinks.nodes) ? allAgilityLinks.nodes : []
+
+	const regions = customFields.customTags ?? []
+	// console.log('regions', regions);
+
+	const caseStudies = allLinks.filter(caseStudy => {
+		if (caseStudy?.properties?.referenceName === customFields?.caseStuides?.referencename) {
+			return caseStudy
+		}
+	})
+
+	// console.log('caseStudies', caseStudies,allLinks, customFields?.caseStuides.referencename);
+
+	/* animation module */
+	const thisModuleRef = useRef(null)
+	useEffect(() => {
+		const scrollEventFunc = () => {
+			animationElementInnerComponent(thisModuleRef.current)
+		}
+		animationElementInnerComponent(thisModuleRef.current)
+		window.addEventListener('scroll', scrollEventFunc)
+
+		return () => {
+			window.removeEventListener('scroll', scrollEventFunc)
+		}
+	}, [])
+
 	return (
+		<>
+		{/* <section className="p-w case-study-details">
+			<div className="container-my">
+				<div className="case-study-details-container">
+
+					<div className="case-study-left">
+						<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.textblob)}></div>
+					</div>
+					{
+						(item.rightContentCopy || item.quote) &&
+
+						<div className="case-study-right">
+							<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.rightContentCopy)}></div>
+							{item.quote && <div className="color-text"><p>{item.quote}</p></div>}
+						</div>
+					}
+				</div>
+			</div>
+		</section> */}
 
 		<section ref={thisModuleRef} className="new-partner-detail animation">
 			<div className="space-70 space-dt-90"></div>
@@ -429,7 +486,28 @@ const PartnerDetails = ({ item, dynamicPageItem }) => {
 				</div>
 			</div>
 		</section>
-
-
+		<div className="space-60 space-dt-80"></div>
+		<RelativePartners regions={regions} currentPartnerId={dynamicPageItem.contentID} />
+		<div className="space-70 space-dt-100"></div>
+	</>
 	);
+}
+
+/* 
+	
+*/
+
+const renderTags = (tags, type) => {
+	if (!Array.isArray(tags)) {
+		tags = [tags]
+	}
+	return tags?.map((tag, index) => {
+		let link = `/partners/implementation?region=${tag?.customFields?.title?.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/--+/g, '-')}`
+		return (
+			<span key={index} className="d-inline-block cs-tag ps-rv">
+				{tag?.customFields?.title}
+				<Link to={link} target="_self" className="ps-as"><span className="sr-only">{tag?.customFields?.title}</span></Link>
+			</span>
+		)
+	})
 }
