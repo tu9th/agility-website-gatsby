@@ -76,46 +76,106 @@ exports.createResolvers = (args) => {
 exports.createSchemaCustomization = ({ actions }) => {
 	const { createTypes } = actions
 	const typeDefs = `
-    type agilityFeatureListItemCustomFields implements Node {
-      moreInfoLink: agilityFeatureListItemCustomFieldsMoreInfoLink
-		}
-		type agilityFeatureListItemCustomFieldsMoreInfoLink {
-			href: String,
-			target: String,
-			text:String
-		}
-    type agilityGlobalHeaderCustomFields implements Node {
-      contactus: agilityGlobalHeaderCustomFieldsContactus
-			marketingBannerButton: agilityGlobalHeaderCustomFieldsMarketingButton
-		}
-		type agilityGlobalHeaderCustomFieldsContactus {
-			href: String,
-			target: String,
-			text:String
-		}
-		type agilityGlobalHeaderCustomFieldsMarketingButton {
-			href: String,
-			target: String,
-			text:String
-		}
-		type agilityPackageFeaturesCustomFields implements Node {
-			description: String
-		}
-		type agilityPricingPackagesCustomFields implements Node {
-			pricingPlan: String,
-			yearlyPricingPlan: String,
-			yearlyCTAButton: agilityPricingPackagesCustomFieldsYearlyCTAButton,
-			yearlySaleCost: String
-		}
-		type agilityPricingPackagesCustomFieldsYearlyCTAButton {
-			href: String,
-			target: String,
-			text:String
-		}
-		type agilityCaseStudyCustomFields {
-			caseStudyIndustries_TextField: String
-			caseStudyChallenges_TextField: String
-		}
+	type agilityFeatureListItemCustomFields implements Node {
+		moreInfoLink: agilityFeatureListItemCustomFieldsMoreInfoLink
+	}
+	type agilityFeatureListItemCustomFieldsMoreInfoLink {
+		href: String,
+		target: String,
+		text:String
+	}
+	type agilityGlobalHeaderCustomFields implements Node {
+		contactus: agilityGlobalHeaderCustomFieldsContactus
+		marketingBannerButton: agilityGlobalHeaderCustomFieldsMarketingButton
+	}
+	type agilityGlobalHeaderCustomFieldsContactus {
+		href: String,
+		target: String,
+		text:String
+	}
+	type agilityGlobalHeaderCustomFieldsMarketingButton {
+		href: String,
+		target: String,
+		text:String
+	}
+	type agilityPackageFeaturesCustomFields implements Node {
+		description: String
+	}
+	type agilityPricingPackagesCustomFields implements Node {
+		pricingPlan: String,
+		yearlyPricingPlan: String,
+		yearlyCTAButton: agilityPricingPackagesCustomFieldsYearlyCTAButton,
+		yearlySaleCost: String
+	}
+	type agilityPricingPackagesCustomFieldsYearlyCTAButton {
+		href: String,
+		target: String,
+		text:String
+	}
+	type agilityCaseStudyCustomFields {
+		caseStudyIndustries_TextField: String
+		caseStudyChallenges_TextField: String
+	}
+	type agilityJob implements Node {
+		languageCode: String,
+		contentID: Int,
+		properties: agilityJobProperties,
+		customFields: agilityJobCustomFields
+	}
+	type agilityJobProperties {
+		referenceName: String,
+		itemOrder: Int
+	}
+	type agilityJobCustomFields {
+		title: String,
+		textblob: String,
+		icon: agilityJobCustomFieldsIcon
+		bottomLink: agilityJobCustomFieldsBottomLink
+	}
+	type agilityJobCustomFieldsIcon {
+		label: String,
+		url: String
+	}
+	type agilityJobCustomFieldsBottomLink {
+		href: String,
+		target: String,
+		text: String
+	}
+	type agilityResourceCustomFields {
+		topReads_TextField: String,
+		downloadButtonText: String,
+		topWebinars_TextField: String,
+		topWebinars_ValueField: String,
+		resourceTopics_TextField: String,
+		resourceTopics_ValueField: String,
+		topReads_ValueField: String,
+		thankYouContent: String,
+
+		bookCover: agilityResourceCustomFieldsBookCover,
+		resourceTopics: agilityResourceCustomFieldsResourceTopics,
+		topReads: agilityResourceCustomFieldsTopReads,
+		topWebinars: agilityResourceCustomFieldsTopWebinars
+	}
+	type agilityResourceCustomFieldsBookCover {
+		url: String
+		filesize: Int
+		pixelWidth: String
+		height: Int
+		width: Int
+	}
+
+	 type agilityResourceCustomFieldsResourceTopics {
+		referencename: String
+		sortids: String
+	 }
+	 type agilityResourceCustomFieldsTopReads {
+		referencename: String
+		sortids: String
+	 }
+	 type agilityResourceCustomFieldsTopWebinars {
+		referencename: String
+		sortids: String
+	 }
   `
 	createTypes(typeDefs)
 }
