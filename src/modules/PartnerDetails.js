@@ -422,7 +422,7 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 							</p>
 						</div>}
 						
-						{regions && regions.length &&
+						{regions && regions.length > 0 &&
 						<div className="small-paragraph cs-tag-wrap last-mb-none">
 							<h4>Region</h4>
 							<p>
@@ -441,7 +441,7 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 							</p>
 						</div>}
 
-						{caseStudies && caseStudies.length &&
+						{caseStudies && caseStudies.length > 0 &&
 						<div className="last-mb-none relevant-case-studies">
 								<h4>Case Studies</h4>
 							{caseStudies.map((caseStudy, idx) => {
