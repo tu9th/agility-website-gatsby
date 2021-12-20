@@ -403,10 +403,10 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 							<div dangerouslySetInnerHTML={renderHTML(customFields.textblob)}></div>
 
 							<div className="cs-quote">
-								{(customFields.quote && customFields.quote.indexOf('<blockquote>') !== -1) &&
+								{(customFields.quote && customFields.quote.length > 0 && customFields.quote.indexOf('<blockquote>') !== -1) &&
 									<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
 								}
-								{(customFields.quote && customFields.quote.indexOf('<blockquote>') === -1) &&
+								{(customFields.quote && customFields.quote.length > 0 && customFields.quote.indexOf('<blockquote>') === -1) &&
 									<blockquote dangerouslySetInnerHTML={renderHTML(customFields.quote)}></blockquote>
 								}
 								
