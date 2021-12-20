@@ -335,21 +335,97 @@ export default props => (
 const PartnerDetails = ({ item, dynamicPageItem }) => {
 	item = dynamicPageItem.customFields;
 	return (
-		<section className="p-w case-study-details">
-			<div className="container-my">
-				<div className="case-study-details-container">
 
-					<div className="case-study-left">
-						<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.textblob)}></div>
-					</div>
-					{
-						(item.rightContentCopy || item.quote) &&
+		<section ref={thisModuleRef} className="new-partner-detail animation">
+			<div className="space-70 space-dt-90"></div>
+			<div className="container ps-rv z-2 anima-bottom delay-1">
+				<div className="d-lg-flex flex-wrap">
+					<div className="cs-detail-cont-left detail-block-left content-ul beauty-ul">
+						<div className="cs-detail-inner last-mb-none">
+							<h2>Partner Overview</h2>
+							<div dangerouslySetInnerHTML={renderHTML(customFields.textblob)}></div>
 
-						<div className="case-study-right">
-							<div className="rich-text" dangerouslySetInnerHTML={renderHTML(item.rightContentCopy)}></div>
-							{item.quote && <div className="color-text"><p>{item.quote}</p></div>}
+							<div className="cs-quote">
+								{(customFields.quote && customFields.quote.indexOf('<blockquote>') !== -1) &&
+									<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
+								}
+								{(customFields.quote && customFields.quote.indexOf('<blockquote>') === -1) &&
+									<blockquote dangerouslySetInnerHTML={renderHTML(customFields.quote)}></blockquote>
+								}
+								
+							</div>
 						</div>
-					}
+					</div>
+					<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
+						{customFields.website &&
+						<div className="small-paragraph cs-website last-mb-none">
+							<h4>Website</h4>
+							<p>
+								<Link to={customFields.website?.href} target="_blank"><span>{customFields.website?.text}</span></Link>
+							</p>
+						</div>}
+						
+						{regions && regions.length > 0 &&
+						<div className="small-paragraph cs-tag-wrap last-mb-none">
+							<h4>Region</h4>
+							<p>
+								{renderTags(regions)}
+							</p>
+						</div>}
+
+
+						{customFields?.partnerTier_TextField &&
+						<div className="small-paragraph cs-tag-wrap last-mb-none">
+							<h4>Tier</h4>
+							<p>
+								<span className="d-inline-block cs-tag ps-rv">
+									{customFields.partnerTier_TextField}
+								</span>
+							</p>
+						</div>}
+
+						{caseStudies && caseStudies.length > 0 &&
+						<div className="last-mb-none relevant-case-studies">
+								<h4>Case Studies</h4>
+							{caseStudies.map((caseStudy, idx) => {
+								return (
+									<p key={idx}>
+										<Link to={caseStudy.customFields?.uRL?.href} target={caseStudy.customFields?.uRL?.target}>{caseStudy.customFields?.uRL?.text}</Link>
+									</p>
+								)
+							})}
+						</div>}
+
+						{(customFields.linkedInURL || customFields.twitterURL || customFields.facebookURL) &&
+						<div className="cs-d-social">
+							<h4>Follow Partner</h4>
+							<div className="soc-box d-flex flex-wrap">
+								{customFields.linkedInURL &&
+								<a href={ customFields.linkedInURL } target="_blank" className="d-flex align-items-center justify-content-center">
+									<span className="icomoon icon-linkedin2"></span>
+								</a>}
+								{customFields.twitterURL &&
+								<a href={ customFields.twitterURL } target="_blank" className="d-flex align-items-center justify-content-center">
+									<span className="icomoon icon-twitter"></span>
+								</a>}
+								{customFields.facebookURL &&
+								<a href={ customFields.facebookURL } target="_blank" className="d-flex align-items-center justify-content-center">
+									<span className="icomoon icon-facebook"></span>
+								</a>}
+							</div>
+						</div>}		
+
+						{customFields.servicesOffered &&
+						<div className="servicesOffered content-ul beauty-ul">
+							<h4>Services Offered</h4>
+							<div dangerouslySetInnerHTML={renderHTML(customFields.servicesOffered)}></div>
+						</div>
+						}
+						
+						
+						<div className="space-60"></div>
+						<RightCTA rightCTAContent={item.customFields?.cTAContent} rightCTAButton={item.customFields?.cTAButton} />
+					</div>
 				</div>
 			</div>
 		</section>
