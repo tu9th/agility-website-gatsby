@@ -114,7 +114,7 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
             })}
           </div>
           <div className="text-center mt-45 anima-bottom delay-4">
-            <Link to={'/partners/implementation'} className="btn mb-0">
+            <Link to={'/partners/implementation'} className="btn btn-load-more mb-0">
               <span>Explore All Partners</span>
             </Link>
           </div>
