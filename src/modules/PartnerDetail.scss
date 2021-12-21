@@ -102,6 +102,11 @@
       object-fit: contain !important;
     }
   }
+  .btn-load-more {
+    &::after {
+      display: none;
+    }
+  }
 }
 .relevant-case-studies {
   a {

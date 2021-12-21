@@ -41,24 +41,21 @@ const RelativePartners = ({regions = [], currentPartnerId}) => {
 
     const [renderLists, setRenderLists] = useState([])
 
-    const allPartners = query.allAgilityPartner?.nodes
-    
-    // console.log('query part', allPartners, regions, currentPartnerId);
-
-    const renderPartnerList = allPartners.filter((partner, index) => {
-      for (let i = 0; i < regions.length; i++) {
-        if (partner.customFields?.customTagsNames && partner.customFields?.customTagsNames?.indexOf(regions[i].customFields?.title) !== -1 && partner.contentID !== currentPartnerId) {
-          return partner          
-        }
-      }
-    })
-
-
-
-
     useEffect(() => {
+      const allPartners = query.allAgilityPartner?.nodes
+          
       const tmp = []
       let tmpLists = []
+      // console.log('query part', allPartners, regions, currentPartnerId);
+  
+      const renderPartnerList = allPartners.filter((partner, index) => {
+        for (let i = 0; i < regions.length; i++) {
+          if (partner.customFields?.customTagsNames && partner.customFields?.customTagsNames?.indexOf(regions[i].customFields?.title) !== -1 && partner.contentID !== currentPartnerId) {
+            return partner          
+          }
+        }
+      })
+
       if (renderPartnerList.length > 3) {
         while(tmp.length < 3) {
           const random = parseInt(Math.random() * (renderPartnerList.length - 1))
