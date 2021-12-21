@@ -402,15 +402,17 @@ const PartnerDetails = ({ item, dynamicPageItem, allAgilityLinks }) => {
 							<h2>Partner Overview</h2>
 							<div dangerouslySetInnerHTML={renderHTML(customFields.textblob)}></div>
 
-							<div className="cs-quote">
 								{(customFields.quote && customFields.quote.length > 0 && customFields.quote.indexOf('<blockquote>') !== -1) &&
+								<div className="cs-quote">
 									<div className="last-mb-none" dangerouslySetInnerHTML={renderHTML(customFields.quote)}></div>
+								</div>
 								}
 								{(customFields.quote && customFields.quote.length > 0 && customFields.quote.indexOf('<blockquote>') === -1) &&
-									<blockquote dangerouslySetInnerHTML={renderHTML(customFields.quote)}></blockquote>
+									<div className="cs-quote">
+										<blockquote dangerouslySetInnerHTML={renderHTML(customFields.quote)}></blockquote>
+									</div>
 								}
 								
-							</div>
 						</div>
 					</div>
 					<div className="cs-detail-cont-right detail-block-right content-ul beauty-ul">
