@@ -81,3 +81,15 @@
   //   min-height: 140px;
   // }
 }
+@media (max-width: 767px) {
+
+  .LogoListingModule {
+    .slick-dots {
+      bottom: auto;
+      top: calc(100% + 20px);
+    }
+  }
+  // .slick-list {
+  //   min-height: 140px;
+  // }
+}
