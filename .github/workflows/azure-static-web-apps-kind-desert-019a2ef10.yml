@@ -30,7 +30,7 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "public" # Built app content directory - optional
-          app_build_command: "npm i && AGILITY_GUID=80dc0987-be84-4405-a572-aba199832f68 AGILITY_API_KEY=defaultPreview.6ddcb15cfad15bc5b0df1da3cd019f5dc009d1e9a11fa83c2cbdb7886c687dba ENABLE_GATSBY_REFRESH_ENDPOINT=true npm run build"
+          app_build_command: " npm install -g gatsby-cli && npm i && AGILITY_GUID=80dc0987-be84-4405-a572-aba199832f68 AGILITY_API_KEY=defaultPreview.6ddcb15cfad15bc5b0df1da3cd019f5dc009d1e9a11fa83c2cbdb7886c687dba ENABLE_GATSBY_REFRESH_ENDPOINT=true npm run build"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
