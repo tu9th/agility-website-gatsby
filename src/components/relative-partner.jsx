@@ -131,7 +131,7 @@ const PostItem = ({ logoImg, link, title, excerpt }) => {
 	}
 	return (
 		<>
-      <div className="case-box h-100 transition-25 ps-rv d-flex flex-column">
+      {/* <div className="case-box h-100 transition-25 ps-rv d-flex flex-column"> */}
         <div className="case-thumb ps-rv overflow-hidden">
           {logoImg && <AgilityImage image={logoImg} />}
         </div>
@@ -147,7 +147,7 @@ const PostItem = ({ logoImg, link, title, excerpt }) => {
           }
         </div>
         <Link to={link} className=" ps-as"><span className="sr-only">{title}</span></Link>
-      </div>
+      {/* </div> */}
 		</>
 	)
 }
