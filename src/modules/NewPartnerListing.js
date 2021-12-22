@@ -107,9 +107,7 @@ const PostResult = ({posts, loadMoreIdx}) => {
 			const title = post?.customFields?.title
 			const excerpt = post?.customFields?.excerpt
 			return <div className="col-12 col-md-6 col-lg-4 post-item" key={`post-${post.contentID}`}>
-			<div className="case-box h-100 transition-25 flex-column new-post ps-rv d-flex">
 				<PostItem thumbUrl={thumbUrl} link={link} title={title} excerpt={excerpt} />
-			</div>
 		</div>
 		})
 		return (<>{postResults}</>)
