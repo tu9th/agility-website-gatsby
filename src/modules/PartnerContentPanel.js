@@ -89,7 +89,7 @@ const PartnerContentPanel = ({ item, dynamicPageItem }) => {
             <section ref={thisModuleRef} className="new-partner-banner bg-17 animation">
                 <div className="container anima-bottom">
                     <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 panel-col mb-35 mb-lg-0">
                             <div className="d-table w-100">
                                 <div className="d-table-cell align-middle">
                                     <Link to={'/partners/implementation'} className="mb-45 d-block back-to-partner"><span className="icomoon icon-chevron-left"></span>Explore All Partners</Link>
