@@ -5,7 +5,7 @@
 	"version": "2.1.1",
 	"license": "MIT",
 	"scripts": {
-		"build": "gatsby clean && gatsby build",
+		"build": "gatsby clean && AGILITY_GUID=80dc0987-be84-4405-a572-aba199832f68 AGILITY_API_KEY=defaultPreview.6ddcb15cfad15bc5b0df1da3cd019f5dc009d1e9a11fa83c2cbdb7886c687dba ENABLE_GATSBY_REFRESH_ENDPOINT=true AGILITY_API_ISPREVIEW=true gatsby build",
 		"clean": "gatsby clean",
 		"develop": "gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx}",
